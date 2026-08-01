@@ -924,57 +924,61 @@ function showCategory(category) {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ToolBox - Free Online Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- PDF libraries -->
+<title>ToolBox - Useful Tools</title>
+
+<!-- PDF Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-<!-- QR library -->
+<!-- QR Code Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:#f5f6fa;
-color:#222
+color:#222;
 }
 
 header{
-background:#fff;
-padding:18px 20px;
+background:white;
+padding:18px;
 font-size:27px;
 font-weight:bold;
 box-shadow:0 2px 10px #0001;
 position:sticky;
 top:0;
-z-index:10
+z-index:10;
 }
 
 .container{
-max-width:1150px;
+max-width:1100px;
 margin:auto;
-padding:20px
+padding:20px;
 }
 
 .hero{
 text-align:center;
-padding:25px 5px
+padding:25px 5px;
 }
 
 .hero h1{
-font-size:40px;
-margin:10px
+font-size:38px;
+margin:10px;
 }
 
 .hero p{
 color:#666;
-font-size:18px
+font-size:17px;
 }
 
 .search{
@@ -983,49 +987,29 @@ padding:16px;
 border:1px solid #ddd;
 border-radius:15px;
 font-size:17px;
-margin:15px 0
-}
-
-.categories{
-display:flex;
-gap:10px;
-overflow-x:auto;
-padding:10px 0 20px
-}
-
-.category{
-border:0;
-background:#fff;
-padding:12px 20px;
-border-radius:25px;
-white-space:nowrap;
-cursor:pointer
-}
-
-.category.active{
-background:#222;
-color:#fff
+margin:15px 0;
 }
 
 .tools{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-gap:20px
+gap:20px;
 }
 
 .tool-card{
-background:#fff;
+background:white;
 padding:23px;
 border-radius:20px;
-box-shadow:0 5px 20px #0000000d
+box-shadow:0 5px 20px #0001;
 }
 
 .tool-card h2{
-margin-top:0
+margin-top:0;
 }
 
 .tool-card p{
-color:#666
+color:#666;
+line-height:1.5;
 }
 
 .open{
@@ -1034,38 +1018,41 @@ color:white;
 border:0;
 padding:12px 18px;
 border-radius:10px;
-cursor:pointer
+cursor:pointer;
+font-size:15px;
 }
 
 .tool-box{
 display:none;
 border-top:1px solid #ddd;
 margin-top:18px;
-padding-top:18px
+padding-top:18px;
 }
 
-input,textarea,select{
+input,
+textarea,
+select{
 width:100%;
 padding:12px;
 margin:6px 0;
 border:1px solid #ccc;
 border-radius:10px;
-font-size:16px
+font-size:16px;
 }
 
 textarea{
 min-height:120px;
-resize:vertical
+resize:vertical;
 }
 
 .action{
 background:#222;
-color:#fff;
+color:white;
 border:0;
 padding:11px 15px;
 border-radius:9px;
 cursor:pointer;
-margin:4px 2px
+margin:4px 2px;
 }
 
 .result{
@@ -1073,13 +1060,13 @@ background:#f1f2f6;
 padding:13px;
 border-radius:10px;
 margin-top:10px;
-word-break:break-word
+word-break:break-word;
 }
 
 .calc{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:6px
+gap:6px;
 }
 
 .calc button{
@@ -1087,109 +1074,196 @@ padding:16px 5px;
 border:0;
 border-radius:9px;
 font-size:17px;
-cursor:pointer
+cursor:pointer;
 }
 
 #qr{
 display:flex;
 justify-content:center;
-margin:15px
+margin:20px;
 }
 
 #pdfPreview img{
 max-width:100%;
-margin:8px 0;
-border-radius:8px
+display:block;
+margin:12px auto;
+border-radius:8px;
 }
 
 footer{
 text-align:center;
 padding:40px 15px;
-color:#666
+color:#666;
 }
 
 @media(max-width:600px){
-.hero h1{font-size:32px}
-.tools{grid-template-columns:1fr}
+
+.hero h1{
+font-size:30px;
 }
+
+.tools{
+grid-template-columns:1fr;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header>🧰 ToolBox</header>
+<header>
+🧰 ToolBox
+</header>
 
 <div class="container">
 
 <section class="hero">
-<h1>Free Tools for Everyone</h1>
-<p>Simple, useful tools in one place.</p>
+
+<h1>Useful Tools For Everyone</h1>
+
+<p>
+Free, simple and mobile-friendly tools.
+</p>
 
 <input
-id="search"
 class="search"
-placeholder="🔍 Search tools..."
+id="search"
+placeholder="🔍 Search a tool..."
 oninput="searchTools()">
 
-<div class="categories">
-<button class="category active" onclick="filterTools('all',this)">All</button>
-<button class="category" onclick="filterTools('calculator',this)">Calculators</button>
-<button class="category" onclick="filterTools('student',this)">Student</button>
-<button class="category" onclick="filterTools('text',this)">Text</button>
-<button class="category" onclick="filterTools('pdf',this)">PDF</button>
-<button class="category" onclick="filterTools('utility',this)">Utilities</button>
-</div>
 </section>
+
 
 <div class="tools">
 
-<!-- CALCULATOR -->
-<div class="tool-card" data-name="calculator" data-category="calculator">
-<h2>🧮 Calculator</h2>
-<p>Basic mathematical calculator.</p>
-<button class="open" onclick="openTool('calc')">Open</button>
 
-<div class="tool-box" id="calc">
-<input id="display" readonly value="0">
+<!-- 1. TRANSLATOR -->
 
-<div class="calc">
-<button onclick="addCalc('7')">7</button>
-<button onclick="addCalc('8')">8</button>
-<button onclick="addCalc('9')">9</button>
-<button onclick="addCalc('/')">÷</button>
+<div class="tool-card"
+data-name="translator language translation">
 
-<button onclick="addCalc('4')">4</button>
-<button onclick="addCalc('5')">5</button>
-<button onclick="addCalc('6')">6</button>
-<button onclick="addCalc('*')">×</button>
+<h2>🌐 Translator</h2>
 
-<button onclick="addCalc('1')">1</button>
-<button onclick="addCalc('2')">2</button>
-<button onclick="addCalc('3')">3</button>
-<button onclick="addCalc('-')">−</button>
+<p>
+Translate text into different languages.
+</p>
 
-<button onclick="addCalc('0')">0</button>
-<button onclick="addCalc('.')">.</button>
-<button onclick="calcResult()">=</button>
-<button onclick="addCalc('+')">+</button>
+<button
+class="open"
+onclick="openTool('translator')">
+Open Translator
+</button>
+
+<div
+class="tool-box"
+id="translator">
+
+<div id="google_translate_element"></div>
+
+<textarea
+id="translateText"
+placeholder="Type or paste text here...">
+</textarea>
+
+<button
+class="action"
+onclick="copyTranslation()">
+Copy Text
+</button>
+
 </div>
 
-<button class="action" onclick="clearCalc()">Clear</button>
-</div>
 </div>
 
 
-<!-- SCIENTIFIC CALCULATOR -->
-<div class="tool-card" data-name="scientific calculator" data-category="calculator student">
+<!-- 2. WIFI QR -->
+
+<div class="tool-card"
+data-name="wifi qr generator wifi password">
+
+<h2>📶 Wi-Fi QR Generator</h2>
+
+<p>
+Create a QR code for your Wi-Fi network.
+</p>
+
+<button
+class="open"
+onclick="openTool('wifi')">
+Open Wi-Fi QR
+</button>
+
+<div
+class="tool-box"
+id="wifi">
+
+<input
+id="wifiName"
+placeholder="Wi-Fi name">
+
+<input
+id="wifiPassword"
+placeholder="Wi-Fi password">
+
+<select id="wifiSecurity">
+
+<option value="WPA">
+WPA / WPA2
+</option>
+
+<option value="WEP">
+WEP
+</option>
+
+<option value="nopass">
+No Password
+</option>
+
+</select>
+
+<button
+class="action"
+onclick="generateWifiQR()">
+Generate QR
+</button>
+
+<div id="qr"></div>
+
+</div>
+
+</div>
+
+
+<!-- 3. SCIENTIFIC CALCULATOR -->
+
+<div class="tool-card"
+data-name="scientific calculator math">
+
 <h2>🔬 Scientific Calculator</h2>
-<p>Calculate sin, cos, tan, square root, powers and more.</p>
-<button class="open" onclick="openTool('scientific')">Open</button>
 
-<div class="tool-box" id="scientific">
+<p>
+Calculate trigonometry, square roots, powers and more.
+</p>
 
-<input id="sciDisplay" readonly value="0">
+<button
+class="open"
+onclick="openTool('scientific')">
+Open Calculator
+</button>
+
+<div
+class="tool-box"
+id="scientific">
+
+<input
+id="sciDisplay"
+readonly
+value="0">
 
 <div class="calc">
+
 <button onclick="sciAdd('7')">7</button>
 <button onclick="sciAdd('8')">8</button>
 <button onclick="sciAdd('9')">9</button>
@@ -1207,291 +1281,327 @@ oninput="searchTools()">
 
 <button onclick="sciAdd('0')">0</button>
 <button onclick="sciAdd('.')">.</button>
-<button onclick="sciCalculate()">=</button>
+<button onclick="scientificCalculate()">=</button>
 <button onclick="sciAdd('+')">+</button>
-</div>
-
-<button class="action" onclick="sciFunction('sqrt')">√</button>
-<button class="action" onclick="sciFunction('sin')">sin</button>
-<button class="action" onclick="sciFunction('cos')">cos</button>
-<button class="action" onclick="sciFunction('tan')">tan</button>
-<button class="action" onclick="sciFunction('log')">log</button>
-<button class="action" onclick="sciFunction('square')">x²</button>
-<button class="action" onclick="clearSci()">Clear</button>
 
 </div>
+
+<br>
+
+<button
+class="action"
+onclick="scientificFunction('sqrt')">
+√
+</button>
+
+<button
+class="action"
+onclick="scientificFunction('sin')">
+sin
+</button>
+
+<button
+class="action"
+onclick="scientificFunction('cos')">
+cos
+</button>
+
+<button
+class="action"
+onclick="scientificFunction('tan')">
+tan
+</button>
+
+<button
+class="action"
+onclick="scientificFunction('log')">
+log
+</button>
+
+<button
+class="action"
+onclick="scientificFunction('square')">
+x²
+</button>
+
+<button
+class="action"
+onclick="clearScientific()">
+Clear
+</button>
+
+</div>
+
 </div>
 
 
-<!-- AGE -->
-<div class="tool-card" data-name="age calculator" data-category="calculator">
-<h2>🎂 Age Calculator</h2>
-<p>Calculate your age.</p>
-<button class="open" onclick="openTool('age')">Open</button>
+<!-- 4. NUMBER SYSTEM -->
 
-<div class="tool-box" id="age">
-<input type="date" id="birth">
-<button class="action" onclick="ageCalc()">Calculate</button>
-<div class="result" id="ageResult"></div>
-</div>
-</div>
+<div class="tool-card"
+data-name="number system converter binary decimal octal hexadecimal">
 
-
-<!-- PERCENTAGE -->
-<div class="tool-card" data-name="percentage calculator" data-category="calculator student">
-<h2>📊 Percentage Calculator</h2>
-<button class="open" onclick="openTool('percentage')">Open</button>
-
-<div class="tool-box" id="percentage">
-<input type="number" id="obtained" placeholder="Marks obtained">
-<input type="number" id="total" placeholder="Total marks">
-<button class="action" onclick="percentageCalc()">Calculate</button>
-<div class="result" id="percentageResult"></div>
-</div>
-</div>
-
-
-<!-- NUMBER SYSTEM -->
-<div class="tool-card" data-name="number system converter binary decimal hexadecimal octal" data-category="student">
 <h2>🔢 Number-System Converter</h2>
-<p>Decimal → Binary, Octal and Hexadecimal.</p>
-<button class="open" onclick="openTool('number')">Open</button>
-
-<div class="tool-box" id="number">
-<input type="number" id="decimalNumber" placeholder="Enter decimal number">
-<button class="action" onclick="numberConvert()">Convert</button>
-<div class="result" id="numberResult"></div>
-</div>
-</div>
-
-
-<!-- WIFI QR -->
-<div class="tool-card" data-name="wifi qr generator wifi password qr code" data-category="utility">
-<h2>📶 Wi-Fi QR Generator</h2>
-<p>Create a QR code for your Wi-Fi network.</p>
-<button class="open" onclick="openTool('wifi')">Open</button>
-
-<div class="tool-box" id="wifi">
-
-<input id="wifiName" placeholder="Wi-Fi name (SSID)">
-
-<input id="wifiPassword" placeholder="Wi-Fi password">
-
-<select id="wifiSecurity">
-<option value="WPA">WPA/WPA2</option>
-<option value="WEP">WEP</option>
-<option value="nopass">No password</option>
-</select>
-
-<button class="action" onclick="makeWifiQR()">Generate QR</button>
-
-<div id="qr"></div>
-
-<div class="result">
-Scan this QR code with a phone to connect to the Wi-Fi.
-</div>
-
-</div>
-</div>
-
-
-<!-- TRANSLATOR -->
-<div class="tool-card" data-name="translator language translator english hindi telugu" data-category="utility student">
-<h2>🌐 Translator</h2>
-<p>Translate text using Google Translate.</p>
-<button class="open" onclick="openTool('translator')">Open</button>
-
-<div class="tool-box" id="translator">
-
-<div id="google_translate_element"></div>
 
 <p>
-Type your text below, then use the translation control above.
+Convert decimal numbers to Binary, Octal and Hexadecimal.
 </p>
 
-<textarea id="translateText" placeholder="Type text here..."></textarea>
+<button
+class="open"
+onclick="openTool('numberSystem')">
+Open Converter
+</button>
 
-<button class="action" onclick="copyTranslate()">Copy Text</button>
+<div
+class="tool-box"
+id="numberSystem">
+
+<input
+type="number"
+id="decimalNumber"
+placeholder="Enter decimal number">
+
+<button
+class="action"
+onclick="convertNumberSystem()">
+Convert
+</button>
+
+<div
+class="result"
+id="numberResult">
+Result will appear here.
+</div>
 
 </div>
+
 </div>
 
 
-<!-- LOREM IPSUM -->
-<div class="tool-card" data-name="lorem ipsum generator" data-category="text student">
+<!-- 5. LOREM IPSUM -->
+
+<div class="tool-card"
+data-name="lorem ipsum generator placeholder text">
+
 <h2>📝 Lorem Ipsum Generator</h2>
-<p>Generate placeholder text for websites and designs.</p>
-<button class="open" onclick="openTool('lorem')">Open</button>
 
-<div class="tool-box" id="lorem">
+<p>
+Generate placeholder text for websites and designs.
+</p>
 
-<input type="number" id="paragraphCount" value="3" min="1" max="20">
+<button
+class="open"
+onclick="openTool('lorem')">
+Open Generator
+</button>
 
-<button class="action" onclick="generateLorem()">Generate</button>
+<div
+class="tool-box"
+id="lorem">
 
-<textarea id="loremResult"></textarea>
+<input
+type="number"
+id="paragraphs"
+value="3"
+min="1"
+max="20"
+placeholder="Number of paragraphs">
+
+<button
+class="action"
+onclick="generateLorem()">
+Generate
+</button>
+
+<textarea
+id="loremResult"
+placeholder="Generated text will appear here...">
+</textarea>
 
 </div>
+
 </div>
 
 
-<!-- IMAGE PDF -->
-<div class="tool-card" data-name="image to pdf image pdf converter" data-category="pdf utility">
+<!-- 6. IMAGE TO PDF -->
+
+<div class="tool-card"
+data-name="image to pdf jpg png pdf converter">
+
 <h2>🖼️ Image → PDF</h2>
-<p>Convert one or more images into a PDF.</p>
-<button class="open" onclick="openTool('imagePdf')">Open</button>
 
-<div class="tool-box" id="imagePdf">
+<p>
+Convert one or multiple images into a PDF.
+</p>
 
-<input type="file" id="imageFiles" accept="image/*" multiple>
+<button
+class="open"
+onclick="openTool('imagePDF')">
+Open
+</button>
 
-<button class="action" onclick="imagesToPDF()">Create PDF</button>
+<div
+class="tool-box"
+id="imagePDF">
+
+<input
+type="file"
+id="imageFiles"
+accept="image/*"
+multiple>
+
+<button
+class="action"
+onclick="imagesToPDF()">
+Create PDF
+</button>
 
 <div class="result">
-Select multiple images and create one PDF.
+Select multiple images to create one PDF.
 </div>
 
 </div>
+
 </div>
 
 
-<!-- PDF IMAGES -->
-<div class="tool-card" data-name="pdf to images pdf pages images" data-category="pdf">
+<!-- 7. PDF TO IMAGES -->
+
+<div class="tool-card"
+data-name="pdf to images pdf pages png jpg">
+
 <h2>📄 PDF → Images</h2>
-<p>Convert PDF pages into images.</p>
-<button class="open" onclick="openTool('pdfImages')">Open</button>
 
-<div class="tool-box" id="pdfImages">
+<p>
+Convert PDF pages into images.
+</p>
 
-<input type="file" id="pdfToImage" accept="application/pdf">
+<button
+class="open"
+onclick="openTool('pdfImages')">
+Open
+</button>
 
-<button class="action" onclick="pdfToImages()">Convert</button>
+<div
+class="tool-box"
+id="pdfImages">
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<button
+class="action"
+onclick="pdfToImages()">
+Convert
+</button>
 
 <div id="pdfPreview"></div>
 
 </div>
+
 </div>
 
 
-<!-- MERGE PDF -->
-<div class="tool-card" data-name="merge pdf combine pdf join pdf" data-category="pdf">
+<!-- 8. CUT SPLIT PDF -->
+
+<div class="tool-card"
+data-name="cut pdf split pdf extract pages">
+
+<h2>✂️ Cut / Split PDF</h2>
+
+<p>
+Extract selected pages from a PDF.
+</p>
+
+<button
+class="open"
+onclick="openTool('splitPDF')">
+Open
+</button>
+
+<div
+class="tool-box"
+id="splitPDF">
+
+<input
+type="file"
+id="splitFile"
+accept="application/pdf">
+
+<input
+id="pageNumbers"
+placeholder="Example: 1,3,5 or 2-5">
+
+<button
+class="action"
+onclick="splitPdf()">
+Create PDF
+</button>
+
+<div class="result">
+Example: enter 1,3,5 to keep pages 1, 3 and 5.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- 9. MERGE PDF -->
+
+<div class="tool-card"
+data-name="merge pdf combine pdf join pdf">
+
 <h2>📎 Merge PDFs</h2>
-<p>Combine multiple PDF files into one PDF.</p>
-<button class="open" onclick="openTool('mergePdf')">Open</button>
 
-<div class="tool-box" id="mergePdf">
+<p>
+Combine multiple PDF files into one PDF.
+</p>
 
-<input type="file" id="mergeFiles" accept="application/pdf" multiple>
+<button
+class="open"
+onclick="openTool('mergePDF')">
+Open
+</button>
 
-<button class="action" onclick="mergePDFs()">Merge PDFs</button>
+<div
+class="tool-box"
+id="mergePDF">
+
+<input
+type="file"
+id="mergeFiles"
+accept="application/pdf"
+multiple>
+
+<button
+class="action"
+onclick="mergePDFs()">
+Merge PDFs
+</button>
 
 <div class="result">
 Select two or more PDF files.
 </div>
 
 </div>
+
 </div>
 
 
-<!-- SPLIT PDF -->
-<div class="tool-card" data-name="cut pdf split pdf pdf pages" data-category="pdf">
-<h2>✂️ Cut / Split PDF</h2>
-<p>Extract selected pages from a PDF.</p>
-<button class="open" onclick="openTool('splitPdf')">Open</button>
-
-<div class="tool-box" id="splitPdf">
-
-<input type="file" id="splitFile" accept="application/pdf">
-
-<input
-id="pageNumbers"
-placeholder="Pages e.g. 1,3,5 or 2-5">
-
-<button class="action" onclick="splitPDF()">Create PDF</button>
-
-<div class="result">
-Enter the pages you want to keep.
 </div>
 
 </div>
-</div>
 
-
-<!-- WORD COUNTER -->
-<div class="tool-card" data-name="word counter character counter" data-category="text student">
-<h2>📝 Word Counter</h2>
-<button class="open" onclick="openTool('word')">Open</button>
-
-<div class="tool-box" id="word">
-
-<textarea id="wordText" oninput="wordCount()" placeholder="Enter text"></textarea>
-
-<div class="result" id="wordResult">
-Words: 0<br>
-Characters: 0
-</div>
-
-</div>
-</div>
-
-
-<!-- TEXT CASE -->
-<div class="tool-card" data-name="text case converter uppercase lowercase title" data-category="text">
-<h2>🔤 Text Case Converter</h2>
-<button class="open" onclick="openTool('case')">Open</button>
-
-<div class="tool-box" id="case">
-
-<textarea id="caseText"></textarea>
-
-<button class="action" onclick="upper()">UPPERCASE</button>
-<button class="action" onclick="lower()">lowercase</button>
-<button class="action" onclick="titleCase()">Title Case</button>
-
-</div>
-</div>
-
-
-<!-- PASSWORD -->
-<div class="tool-card" data-name="password generator secure password" data-category="utility">
-<h2>🔐 Password Generator</h2>
-<button class="open" onclick="openTool('password')">Open</button>
-
-<div class="tool-box" id="password">
-
-<input type="number" id="passwordLength" value="14" min="4" max="50">
-
-<button class="action" onclick="generatePassword()">Generate</button>
-
-<div class="result" id="passwordResult"></div>
-
-</div>
-</div>
-
-
-<!-- STOPWATCH -->
-<div class="tool-card" data-name="stopwatch timer" data-category="utility student">
-<h2>⏱️ Stopwatch</h2>
-<button class="open" onclick="openTool('stopwatch')">Open</button>
-
-<div class="tool-box" id="stopwatch">
-
-<h2 id="stopwatchDisplay">00:00:00</h2>
-
-<button class="action" onclick="startWatch()">Start</button>
-<button class="action" onclick="stopWatch()">Stop</button>
-<button class="action" onclick="resetWatch()">Reset</button>
-
-</div>
-</div>
-
-</div>
 
 <footer>
-🧰 ToolBox — Free online tools for everyone
-</footer>
 
-</div>
+🧰 ToolBox<br>
+Free useful tools for everyone.
+
+</footer>
 
 
 <script>
@@ -1499,9 +1609,15 @@ Characters: 0
 /* OPEN TOOL */
 
 function openTool(id){
+
 const box=document.getElementById(id);
-box.style.display=
-box.style.display==="block"?"none":"block";
+
+if(box.style.display==="block"){
+box.style.display="none";
+}else{
+box.style.display="block";
+}
+
 }
 
 
@@ -1509,277 +1625,238 @@ box.style.display==="block"?"none":"block";
 
 function searchTools(){
 
-const q=document.getElementById("search")
-.value.toLowerCase();
+const query=
+document.getElementById("search")
+.value
+.toLowerCase();
 
-document.querySelectorAll(".tool-card").forEach(card=>{
-
-card.style.display=
-card.dataset.name.toLowerCase().includes(q)
-?"block":"none";
-
-});
-
-}
-
-
-/* FILTER */
-
-function filterTools(category,button){
-
-document.querySelectorAll(".category")
-.forEach(b=>b.classList.remove("active"));
-
-button.classList.add("active");
-
-document.querySelectorAll(".tool-card")
+document
+.querySelectorAll(".tool-card")
 .forEach(card=>{
 
-if(category==="all"){
-card.style.display="block";
-}else{
+const name=
+card.dataset.name
+.toLowerCase();
+
 card.style.display=
-card.dataset.category.includes(category)
-?"block":"none";
-}
+name.includes(query)
+?"block"
+:"none";
 
 });
 
 }
 
 
-/* BASIC CALCULATOR */
+/* TRANSLATOR */
 
-let calc="";
+function copyTranslation(){
 
-function addCalc(v){
+const text=
+document
+.getElementById("translateText")
+.value;
 
-calc+=v;
+navigator.clipboard.writeText(text);
 
-document.getElementById("display").value=calc;
-}
-
-function clearCalc(){
-
-calc="";
-
-document.getElementById("display").value="0";
-}
-
-function calcResult(){
-
-try{
-
-if(!/^[0-9+\-*/(). ]+$/.test(calc))
-throw new Error();
-
-calc=String(Function(
-'"use strict";return ('+calc+')'
-)());
-
-document.getElementById("display").value=calc;
-
-}catch{
-
-calc="";
-
-document.getElementById("display").value="Error";
-
-}
-
-}
-
-
-/* SCIENTIFIC CALCULATOR */
-
-let sci="";
-
-function sciAdd(v){
-
-sci+=v;
-
-document.getElementById("sciDisplay").value=sci;
-}
-
-function clearSci(){
-
-sci="";
-
-document.getElementById("sciDisplay").value="0";
-}
-
-function sciCalculate(){
-
-try{
-
-if(!/^[0-9+\-*/(). ]+$/.test(sci))
-throw new Error();
-
-sci=String(Function(
-'"use strict";return ('+sci+')'
-)());
-
-document.getElementById("sciDisplay").value=sci;
-
-}catch{
-
-sci="Error";
-
-document.getElementById("sciDisplay").value=sci;
-
-}
-
-}
-
-function sciFunction(type){
-
-let value=parseFloat(
-document.getElementById("sciDisplay").value
-);
-
-if(isNaN(value))return;
-
-let result;
-
-if(type==="sqrt")result=Math.sqrt(value);
-if(type==="sin")result=Math.sin(value*Math.PI/180);
-if(type==="cos")result=Math.cos(value*Math.PI/180);
-if(type==="tan")result=Math.tan(value*Math.PI/180);
-if(type==="log")result=Math.log10(value);
-if(type==="square")result=value*value;
-
-sci=String(result);
-
-document.getElementById("sciDisplay").value=sci;
-}
-
-
-/* AGE */
-
-function ageCalc(){
-
-const value=document.getElementById("birth").value;
-
-if(!value){
-document.getElementById("ageResult").innerText=
-"Select your birth date.";
-return;
-}
-
-const birth=new Date(value);
-const today=new Date();
-
-let age=today.getFullYear()-birth.getFullYear();
-
-if(
-today.getMonth()<birth.getMonth()||
-(
-today.getMonth()===birth.getMonth()&&
-today.getDate()<birth.getDate()
-)
-){
-age--;
-}
-
-document.getElementById("ageResult").innerText=
-"Your age is "+age+" years.";
-
-}
-
-
-/* PERCENTAGE */
-
-function percentageCalc(){
-
-const a=parseFloat(
-document.getElementById("obtained").value
-);
-
-const b=parseFloat(
-document.getElementById("total").value
-);
-
-if(!b){
-document.getElementById("percentageResult").innerText=
-"Enter valid marks.";
-return;
-}
-
-document.getElementById("percentageResult").innerText=
-((a/b)*100).toFixed(2)+"%";
-
-}
-
-
-/* NUMBER SYSTEM */
-
-function numberConvert(){
-
-const n=parseInt(
-document.getElementById("decimalNumber").value,
-10
-);
-
-if(isNaN(n)){
-document.getElementById("numberResult").innerText=
-"Enter a valid decimal number.";
-return;
-}
-
-document.getElementById("numberResult").innerHTML=
-"Decimal: "+n+
-"<br>Binary: "+n.toString(2)+
-"<br>Octal: "+n.toString(8)+
-"<br>Hexadecimal: "+n.toString(16).toUpperCase();
+alert("Text copied.");
 
 }
 
 
 /* WIFI QR */
 
-function makeWifiQR(){
+function generateWifiQR(){
 
-const ssid=
-document.getElementById("wifiName").value;
+const name=
+document.getElementById("wifiName")
+.value;
 
 const password=
-document.getElementById("wifiPassword").value;
+document.getElementById("wifiPassword")
+.value;
 
 const security=
-document.getElementById("wifiSecurity").value;
+document.getElementById("wifiSecurity")
+.value;
 
-if(!ssid){
+if(!name){
+
 alert("Enter Wi-Fi name.");
+
 return;
+
 }
 
-const qrText=
+const wifiString=
 "WIFI:T:"+security+
-";S:"+ssid+
+";S:"+name+
 ";P:"+password+
 ";;";
 
-document.getElementById("qr").innerHTML="";
+document.getElementById("qr")
+.innerHTML="";
 
-new QRCode(document.getElementById("qr"),{
-text:qrText,
+new QRCode(
+document.getElementById("qr"),
+{
+text:wifiString,
 width:220,
 height:220
-});
+}
+);
 
 }
 
 
-/* TRANSLATOR COPY */
+/* SCIENTIFIC CALCULATOR */
 
-function copyTranslate(){
+let sciExpression="";
 
-const text=
-document.getElementById("translateText").value;
+function sciAdd(value){
 
-navigator.clipboard.writeText(text);
+sciExpression+=value;
 
-alert("Text copied.");
+document
+.getElementById("sciDisplay")
+.value=sciExpression;
+
+}
+
+
+function clearScientific(){
+
+sciExpression="";
+
+document
+.getElementById("sciDisplay")
+.value="0";
+
+}
+
+
+function scientificCalculate(){
+
+try{
+
+if(!/^[0-9+\-*/(). ]+$/
+.test(sciExpression)){
+
+throw new Error();
+
+}
+
+const result=
+Function(
+'"use strict";return ('+
+sciExpression+
+')'
+)();
+
+sciExpression=
+String(result);
+
+document
+.getElementById("sciDisplay")
+.value=result;
+
+}catch{
+
+sciExpression="";
+
+document
+.getElementById("sciDisplay")
+.value="Error";
+
+}
+
+}
+
+
+function scientificFunction(type){
+
+const value=
+parseFloat(
+document
+.getElementById("sciDisplay")
+.value
+);
+
+if(isNaN(value)){
+return;
+}
+
+let result;
+
+if(type==="sqrt"){
+result=Math.sqrt(value);
+}
+
+if(type==="sin"){
+result=Math.sin(value*Math.PI/180);
+}
+
+if(type==="cos"){
+result=Math.cos(value*Math.PI/180);
+}
+
+if(type==="tan"){
+result=Math.tan(value*Math.PI/180);
+}
+
+if(type==="log"){
+result=Math.log10(value);
+}
+
+if(type==="square"){
+result=value*value;
+}
+
+sciExpression=
+String(result);
+
+document
+.getElementById("sciDisplay")
+.value=result;
+
+}
+
+
+/* NUMBER SYSTEM */
+
+function convertNumberSystem(){
+
+const number=
+parseInt(
+document
+.getElementById("decimalNumber")
+.value,
+10
+);
+
+if(isNaN(number)){
+
+document
+.getElementById("numberResult")
+.innerText=
+"Please enter a valid decimal number.";
+
+return;
+
+}
+
+document
+.getElementById("numberResult")
+.innerHTML=
+"Decimal: "+number+
+"<br><br>"+
+"Binary: "+number.toString(2)+
+"<br><br>"+
+"Octal: "+number.toString(8)+
+"<br><br>"+
+"Hexadecimal: "+
+number.toString(16).toUpperCase();
+
 }
 
 
@@ -1791,98 +1868,57 @@ const loremWords=[
 "do","eiusmod","tempor","incididunt",
 "ut","labore","et","dolore","magna",
 "aliqua","enim","ad","minim","veniam",
-"quis","nostrud","exercitation",
-"ullamco","laboris","nisi","aliquip"
+"quis","nostrud","exercitation","ullamco",
+"laboris","nisi","aliquip","commodo",
+"consequat","duis","aute","irure"
 ];
+
 
 function generateLorem(){
 
-const count=parseInt(
-document.getElementById("paragraphCount").value
+const count=
+parseInt(
+document
+.getElementById("paragraphs")
+.value
 );
 
 let output="";
 
 for(let p=0;p<count;p++){
 
-let sentence="";
+let paragraph="";
 
-for(let i=0;i<35;i++){
+for(let i=0;i<45;i++){
 
-sentence+=
+paragraph+=
 loremWords[
-Math.floor(Math.random()*loremWords.length)
+Math.floor(
+Math.random()*
+loremWords.length
+)
 ]+" ";
 
 }
 
-output+=
-sentence.trim().charAt(0).toUpperCase()+
-sentence.trim().slice(1)+".\n\n";
+paragraph=
+paragraph.trim();
+
+paragraph=
+paragraph.charAt(0)
+.toUpperCase()+
+paragraph.slice(1)+
+".";
+
+output+=paragraph+
+"\n\n";
 
 }
 
-document.getElementById("loremResult").value=
+document
+.getElementById("loremResult")
+.value=
 output;
-
-}
-
-
-/* IMAGE TO PDF */
-
-async function imagesToPDF(){
-
-const files=
-document.getElementById("imageFiles").files;
-
-if(!files.length){
-alert("Select images first.");
-return;
-}
-
-const {jsPDF}=window.jspdf;
-
-const pdf=new jsPDF();
-
-for(let i=0;i<files.length;i++){
-
-const data=await readFile(files[i]);
-
-const img=new Image();
-
-await new Promise(resolve=>{
-
-img.onload=resolve;
-
-img.src=data;
-
-});
-
-if(i>0)pdf.addPage();
-
-const pageWidth=pdf.internal.pageSize.getWidth();
-const pageHeight=pdf.internal.pageSize.getHeight();
-
-const ratio=Math.min(
-pageWidth/img.width,
-pageHeight/img.height
-);
-
-const w=img.width*ratio;
-const h=img.height*ratio;
-
-pdf.addImage(
-img,
-"JPEG",
-(pageWidth-w)/2,
-(pageHeight-h)/2,
-w,
-h
-);
-
-}
-
-pdf.save("ToolBox-Images.pdf");
 
 }
 
@@ -1891,11 +1927,15 @@ pdf.save("ToolBox-Images.pdf");
 
 function readFile(file){
 
-return new Promise((resolve,reject)=>{
+return new Promise(
+(resolve,reject)=>{
 
-const reader=new FileReader();
+const reader=
+new FileReader();
 
-reader.onload=()=>resolve(reader.result);
+reader.onload=()=>{
+resolve(reader.result);
+};
 
 reader.onerror=reject;
 
@@ -1906,397 +1946,94 @@ reader.readAsDataURL(file);
 }
 
 
+/* IMAGE TO PDF */
+
+async function imagesToPDF(){
+
+const files=
+document
+.getElementById("imageFiles")
+.files;
+
+if(files.length===0){
+
+alert("Please select images.");
+
+return;
+
+}
+
+const {jsPDF}=
+window.jspdf;
+
+const pdf=
+new jsPDF();
+
+for(let i=0;i<files.length;i++){
+
+const data=
+await readFile(files[i]);
+
+const image=
+new Image();
+
+await new Promise(resolve=>{
+
+image.onload=resolve;
+
+image.src=data;
+
+});
+
+if(i>0){
+
+pdf.addPage();
+
+}
+
+const pageWidth=
+pdf.internal.pageSize
+.getWidth();
+
+const pageHeight=
+pdf.internal.pageSize
+.getHeight();
+
+const ratio=
+Math.min(
+pageWidth/image.width,
+pageHeight/image.height
+);
+
+const width=
+image.width*ratio;
+
+const height=
+image.height*ratio;
+
+pdf.addImage(
+image,
+"JPEG",
+(pageWidth-width)/2,
+(pageHeight-height)/2,
+width,
+height
+);
+
+}
+
+pdf.save("ToolBox-Images.pdf");
+
+}
+
+
 /* PDF TO IMAGES */
 
 async function pdfToImages(){
 
 const file=
-document.getElementById("pdfToImage").files[0];
-
-if(!file){
-alert("Select a PDF.");
-return;
-}
-
-const arrayBuffer=
-await file.arrayBuffer();
-
-const pdf=
-await pdfjsLib.getDocument({
-data:arrayBuffer
-}).promise;
-
-const preview=
-document.getElementById("pdfPreview");
-
-preview.innerHTML="";
-
-for(let pageNo=1;pageNo<=pdf.numPages;pageNo++){
-
-const page=
-await pdf.getPage(pageNo);
-
-const viewport=
-page.getViewport({scale:1.5});
-
-const canvas=
-document.createElement("canvas");
-
-canvas.width=viewport.width;
-canvas.height=viewport.height;
-
-await page.render({
-canvasContext:canvas.getContext("2d"),
-viewport:viewport
-}).promise;
-
-const img=document.createElement("img");
-
-img.src=canvas.toDataURL("image/png");
-
-preview.appendChild(img);
-
-}
-
-}
-
-
-/* MERGE PDF */
-
-async function mergePDFs(){
-
-const files=
-document.getElementById("mergeFiles").files;
-
-if(files.length<2){
-alert("Select at least two PDF files.");
-return;
-}
-
-const merged=
-await PDFLib.PDFDocument.create();
-
-for(const file of files){
-
-const bytes=
-await file.arrayBuffer();
-
-const pdf=
-await PDFLib.PDFDocument.load(bytes);
-
-const pages=
-await merged.copyPages(
-pdf,
-pdf.getPageIndices()
-);
-
-pages.forEach(page=>{
-merged.addPage(page);
-});
-
-}
-
-const result=
-await merged.save();
-
-downloadBlob(
-new Blob([result],{
-type:"application/pdf"
-}),
-"merged.pdf"
-);
-
-}
-
-
-/* SPLIT PDF */
-
-async function splitPDF(){
-
-const file=
-document.getElementById("splitFile").files[0];
-
-const pageText=
-document.getElementById("pageNumbers").value.trim();
-
-if(!file||!pageText){
-alert("Select PDF and enter pages.");
-return;
-}
-
-const source=
-await PDFLib.PDFDocument.load(
-await file.arrayBuffer()
-);
-
-const output=
-await PDFLib.PDFDocument.create();
-
-const pages=parsePages(
-pageText,
-source.getPageCount()
-);
-
-if(!pages.length){
-alert("Invalid page numbers.");
-return;
-}
-
-const copied=
-await output.copyPages(
-source,
-pages
-);
-
-copied.forEach(page=>{
-output.addPage(page);
-});
-
-const bytes=
-await output.save();
-
-downloadBlob(
-new Blob([bytes],{
-type:"application/pdf"
-}),
-"split-pages.pdf"
-);
-
-}
-
-
-/* PAGE PARSER */
-
-function parsePages(text,total){
-
-const set=new Set();
-
-text.split(",").forEach(part=>{
-
-part=part.trim();
-
-if(part.includes("-")){
-
-const range=part.split("-");
-
-let start=parseInt(range[0]);
-let end=parseInt(range[1]);
-
-if(
-isNaN(start)||
-isNaN(end)
-)return;
-
-if(start>end){
-[start,end]=[end,start];
-}
-
-for(let i=start;i<=end;i++){
-
-if(i>=1&&i<=total){
-set.add(i-1);
-}
-
-}
-
-}else{
-
-const n=parseInt(part);
-
-if(n>=1&&n<=total){
-set.add(n-1);
-}
-
-}
-
-});
-
-return Array.from(set).sort((a,b)=>a-b);
-
-}
-
-
-/* DOWNLOAD */
-
-function downloadBlob(blob,name){
-
-const url=
-URL.createObjectURL(blob);
-
-const a=
-document.createElement("a");
-
-a.href=url;
-a.download=name;
-a.click();
-
-setTimeout(()=>{
-URL.revokeObjectURL(url);
-},1000);
-
-}
-
-
-/* WORD COUNTER */
-
-function wordCount(){
-
-const text=
-document.getElementById("wordText").value;
-
-const words=
-text.trim()
-?text.trim().split(/\s+/).length
-:0;
-
-document.getElementById("wordResult").innerHTML=
-"Words: "+words+
-"<br>Characters: "+text.length;
-
-}
-
-
-/* TEXT CASE */
-
-function upper(){
-
-const e=
-document.getElementById("caseText");
-
-e.value=e.value.toUpperCase();
-
-}
-
-function lower(){
-
-const e=
-document.getElementById("caseText");
-
-e.value=e.value.toLowerCase();
-
-}
-
-function titleCase(){
-
-const e=
-document.getElementById("caseText");
-
-e.value=e.value.toLowerCase()
-.replace(/\b\w/g,
-x=>x.toUpperCase());
-
-}
-
-
-/* PASSWORD */
-
-function generatePassword(){
-
-const length=
-parseInt(
-document.getElementById("passwordLength").value
-);
-
-const chars=
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ"+
-"abcdefghijklmnopqrstuvwxyz"+
-"0123456789!@#$%^&*";
-
-let password="";
-
-for(let i=0;i<length;i++){
-
-password+=
-chars[
-Math.floor(
-Math.random()*chars.length
-)
-];
-
-}
-
-document.getElementById("passwordResult").innerText=
-password;
-
-}
-
-
-/* STOPWATCH */
-
-let watchSeconds=0;
-let watchInterval=null;
-
-function updateWatch(){
-
-watchSeconds++;
-
-const h=
-Math.floor(watchSeconds/3600);
-
-const m=
-Math.floor((watchSeconds%3600)/60);
-
-const s=
-watchSeconds%60;
-
-document.getElementById("stopwatchDisplay").innerText=
-String(h).padStart(2,"0")+":"+
-String(m).padStart(2,"0")+":"+
-String(s).padStart(2,"0");
-
-}
-
-function startWatch(){
-
-if(!watchInterval){
-
-watchInterval=
-setInterval(updateWatch,1000);
-
-}
-
-}
-
-function stopWatch(){
-
-clearInterval(watchInterval);
-
-watchInterval=null;
-
-}
-
-function resetWatch(){
-
-stopWatch();
-
-watchSeconds=0;
-
-document.getElementById("stopwatchDisplay").innerText=
-"00:00:00";
-
-}
-
-</script>
-
-
-<!-- Google Translate -->
-<script>
-function googleTranslateElementInit(){
-new google.translate.TranslateElement(
-{
-pageLanguage:'en',
-includedLanguages:
-'en,te,hi,ta,kn,ml,mr,bn,gu,pa,ur',
-autoDisplay:false
-},
-'google_translate_element'
-);
-}
-</script>
-
-<script
-src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-</script>
-
-</body>
-</html>
+document
+.getElementById("pdfFile")
+.files[0];
+
+if(!
