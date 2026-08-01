@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ToolBox - Free Tools for Everyone</title>
+
+<title>ToolBox - Free Online Tools</title>
 
 <style>
 * {
@@ -21,140 +21,136 @@ body {
 header {
   background: white;
   padding: 18px 25px;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .hero {
   text-align: center;
-  padding: 55px 20px 30px;
+  padding: 45px 20px 25px;
 }
 
 .hero h1 {
-  font-size: 42px;
+  font-size: 40px;
   margin-bottom: 10px;
 }
 
 .hero p {
-  font-size: 20px;
   color: #666;
+  font-size: 18px;
 }
 
 .search {
-  display: block;
   width: 90%;
   max-width: 650px;
-  margin: 35px auto;
-  padding: 20px;
+  padding: 17px;
+  margin: 20px auto;
+  display: block;
   border: 1px solid #ddd;
-  border-radius: 18px;
-  font-size: 20px;
-  outline: none;
+  border-radius: 15px;
+  font-size: 17px;
 }
 
 .categories {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   overflow-x: auto;
   padding: 10px 5%;
+  margin-bottom: 20px;
 }
 
-.category {
-  background: white;
-  padding: 15px 25px;
-  border-radius: 30px;
-  white-space: nowrap;
+.categories button {
   border: none;
-  font-size: 17px;
+  background: white;
+  padding: 12px 20px;
+  border-radius: 25px;
   cursor: pointer;
+  white-space: nowrap;
+  font-size: 15px;
+}
+
+.categories button:hover {
+  background: #222;
+  color: white;
 }
 
 .tools {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 0 20px;
+  width: 92%;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .tool-card {
   background: white;
-  padding: 28px;
-  margin-bottom: 20px;
-  border-radius: 22px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.07);
 }
 
 .tool-card h2 {
   margin-top: 0;
 }
 
-.tool-card button {
-  padding: 14px 20px;
-  border: none;
-  border-radius: 12px;
-  background: #222;
-  color: white;
-  font-size: 17px;
-  cursor: pointer;
-}
-
-.calculator {
-  display: none;
-  margin-top: 20px;
-}
-
-.display {
+.tool-card input,
+.tool-card textarea,
+.tool-card select {
   width: 100%;
-  padding: 18px;
-  font-size: 28px;
-  text-align: right;
+  padding: 12px;
+  margin: 7px 0;
   border: 1px solid #ddd;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  border-radius: 10px;
+  font-size: 16px;
 }
 
-.calc-buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-
-.calc-buttons button {
-  padding: 20px 5px;
-  font-size: 20px;
+.tool-card button {
   border: none;
-  border-radius: 12px;
-  background: #eee;
-  color: #222;
-}
-
-.calc-buttons button.operator {
   background: #222;
   color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px 3px;
 }
 
-.calc-buttons button.equal {
-  background: #555;
-  color: white;
+.tool-card button:hover {
+  opacity: .8;
+}
+
+.result {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f1f2f6;
+  border-radius: 10px;
+  font-weight: bold;
+  min-height: 20px;
 }
 
 footer {
   text-align: center;
-  padding: 40px;
-  color: #777;
+  margin-top: 50px;
+  padding: 25px;
+  background: white;
+  color: #666;
 }
 
-@media (max-width: 600px) {
+.hidden {
+  display: none;
+}
+
+@media(max-width:600px) {
   .hero h1 {
-    font-size: 34px;
+    font-size: 32px;
   }
 
-  .hero p {
-    font-size: 18px;
-  }
-
-  header {
-    font-size: 26px;
+  .tools {
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -171,90 +167,291 @@ footer {
   <input
     class="search"
     id="search"
-    type="text"
-    placeholder="🔍 Search for a tool..."
+    placeholder="🔎 Search for a tool..."
     oninput="searchTools()"
   >
 </section>
 
 <div class="categories">
-  <button class="category">All</button>
-  <button class="category">Calculators</button>
-  <button class="category">Student</button>
-  <button class="category">Text</button>
-  <button class="category">Image</button>
+  <button onclick="showCategory('all')">All</button>
+  <button onclick="showCategory('calculator')">Calculators</button>
+  <button onclick="showCategory('student')">Student</button>
+  <button onclick="showCategory('text')">Text</button>
+  <button onclick="showCategory('utility')">Utilities</button>
 </div>
 
-<section class="tools">
+<div class="tools">
 
-  <div class="tool-card" data-name="calculator">
-    <h2>🧮 Calculator</h2>
-    <p>Perform basic mathematical calculations quickly.</p>
+<!-- CALCULATOR -->
 
-    <button onclick="showCalculator()">Open Calculator</button>
+<div class="tool-card" data-category="calculator" data-name="calculator">
+<h2>🧮 Calculator</h2>
 
-    <div class="calculator" id="calculator">
+<input id="calcDisplay" readonly value="0">
 
-      <input
-        class="display"
-        id="display"
-        type="text"
-        readonly
-        value="0"
-      >
+<div>
+<button onclick="calcAdd('7')">7</button>
+<button onclick="calcAdd('8')">8</button>
+<button onclick="calcAdd('9')">9</button>
+<button onclick="calcAdd('/')">÷</button>
+</div>
 
-      <div class="calc-buttons">
+<div>
+<button onclick="calcAdd('4')">4</button>
+<button onclick="calcAdd('5')">5</button>
+<button onclick="calcAdd('6')">6</button>
+<button onclick="calcAdd('*')">×</button>
+</div>
 
-        <button onclick="clearDisplay()">AC</button>
-        <button onclick="deleteLast()">⌫</button>
-        <button onclick="addValue('%')">%</button>
-        <button class="operator" onclick="addValue('/')">÷</button>
+<div>
+<button onclick="calcAdd('1')">1</button>
+<button onclick="calcAdd('2')">2</button>
+<button onclick="calcAdd('3')">3</button>
+<button onclick="calcAdd('-')">−</button>
+</div>
 
-        <button onclick="addValue('7')">7</button>
-        <button onclick="addValue('8')">8</button>
-        <button onclick="addValue('9')">9</button>
-        <button class="operator" onclick="addValue('*')">×</button>
+<div>
+<button onclick="calcAdd('0')">0</button>
+<button onclick="calcAdd('.')">.</button>
+<button onclick="calculate()">=</button>
+<button onclick="calcAdd('+')">+</button>
+</div>
 
-        <button onclick="addValue('4')">4</button>
-        <button onclick="addValue('5')">5</button>
-        <button onclick="addValue('6')">6</button>
-        <button class="operator" onclick="addValue('-')">−</button>
+<button onclick="clearCalc()">Clear</button>
+</div>
 
-        <button onclick="addValue('1')">1</button>
-        <button onclick="addValue('2')">2</button>
-        <button onclick="addValue('3')">3</button>
-        <button class="operator" onclick="addValue('+')">+</button>
 
-        <button onclick="addValue('0')">0</button>
-        <button onclick="addValue('.')">.</button>
-        <button class="equal" onclick="calculate()">=</button>
+<!-- AGE CALCULATOR -->
 
-      </div>
-    </div>
-  </div>
+<div class="tool-card" data-category="calculator" data-name="age calculator">
+<h2>🎂 Age Calculator</h2>
 
-  <div class="tool-card" data-name="age calculator">
-    <h2>🎂 Age Calculator</h2>
-    <p>Calculate your exact age from your date of birth.</p>
-    <button onclick="alert('Age Calculator coming next!')">
-      Open Age Calculator
-    </button>
-  </div>
+<input type="date" id="birthDate">
 
-</section>
+<button onclick="calculateAge()">Calculate Age</button>
+
+<div class="result" id="ageResult"></div>
+</div>
+
+
+<!-- PERCENTAGE -->
+
+<div class="tool-card" data-category="calculator" data-name="percentage calculator">
+<h2>📊 Percentage Calculator</h2>
+
+<input type="number" id="percentValue" placeholder="Enter value">
+<input type="number" id="percentTotal" placeholder="Enter total">
+
+<button onclick="percentage()">Calculate</button>
+
+<div class="result" id="percentResult"></div>
+</div>
+
+
+<!-- BMI -->
+
+<div class="tool-card" data-category="calculator" data-name="bmi calculator">
+<h2>⚖️ BMI Calculator</h2>
+
+<input type="number" id="height" placeholder="Height in cm">
+<input type="number" id="weight" placeholder="Weight in kg">
+
+<button onclick="bmi()">Calculate BMI</button>
+
+<div class="result" id="bmiResult"></div>
+</div>
+
+
+<!-- UNIT CONVERTER -->
+
+<div class="tool-card" data-category="utility" data-name="unit converter">
+<h2>📏 Unit Converter</h2>
+
+<input type="number" id="km" placeholder="Kilometers">
+
+<button onclick="convertKm()">Convert to Miles</button>
+
+<div class="result" id="kmResult"></div>
+</div>
+
+
+<!-- WORD COUNTER -->
+
+<div class="tool-card" data-category="text" data-name="word counter">
+<h2>📝 Word Counter</h2>
+
+<textarea id="wordText" rows="6"
+placeholder="Type or paste your text..."
+oninput="countWords()"></textarea>
+
+<div class="result" id="wordResult">
+Words: 0 | Characters: 0
+</div>
+</div>
+
+
+<!-- CASE CONVERTER -->
+
+<div class="tool-card" data-category="text" data-name="text case converter">
+<h2>🔤 Text Case Converter</h2>
+
+<textarea id="caseText" rows="5"
+placeholder="Enter text"></textarea>
+
+<button onclick="upperCase()">UPPERCASE</button>
+<button onclick="lowerCase()">lowercase</button>
+<button onclick="titleCase()">Title Case</button>
+
+</div>
+
+
+<!-- PASSWORD GENERATOR -->
+
+<div class="tool-card" data-category="utility" data-name="password generator">
+<h2>🔐 Password Generator</h2>
+
+<input id="passwordLength"
+type="number"
+value="12"
+min="4"
+max="50">
+
+<button onclick="generatePassword()">Generate Password</button>
+
+<div class="result" id="passwordResult"></div>
+</div>
+
+
+<!-- DATE DIFFERENCE -->
+
+<div class="tool-card" data-category="utility" data-name="date calculator">
+<h2>📅 Date Difference</h2>
+
+<input type="date" id="date1">
+<input type="date" id="date2">
+
+<button onclick="dateDifference()">Calculate Days</button>
+
+<div class="result" id="dateResult"></div>
+</div>
+
+
+<!-- STOPWATCH -->
+
+<div class="tool-card" data-category="utility" data-name="stopwatch">
+<h2>⏱️ Stopwatch</h2>
+
+<div class="result" id="stopwatch">
+00:00:00
+</div>
+
+<button onclick="startStopwatch()">Start</button>
+<button onclick="stopStopwatch()">Stop</button>
+<button onclick="resetStopwatch()">Reset</button>
+</div>
+
+
+<!-- STUDENT MARKS -->
+
+<div class="tool-card" data-category="student" data-name="marks percentage">
+<h2>🎓 Marks Percentage</h2>
+
+<input type="number" id="marksObtained"
+placeholder="Marks obtained">
+
+<input type="number" id="marksTotal"
+placeholder="Total marks">
+
+<button onclick="marksPercentage()">Calculate</button>
+
+<div class="result" id="marksResult"></div>
+</div>
+
+
+<!-- GPA -->
+
+<div class="tool-card" data-category="student" data-name="gpa calculator">
+<h2>🎓 Simple GPA Calculator</h2>
+
+<input type="number" id="gpa1" placeholder="Subject 1 grade">
+<input type="number" id="gpa2" placeholder="Subject 2 grade">
+<input type="number" id="gpa3" placeholder="Subject 3 grade">
+<input type="number" id="gpa4" placeholder="Subject 4 grade">
+
+<button onclick="calculateGPA()">Calculate GPA</button>
+
+<div class="result" id="gpaResult"></div>
+</div>
+
+
+<!-- AGE IN DAYS -->
+
+<div class="tool-card" data-category="utility" data-name="age in days">
+<h2>📆 Days Since Birth</h2>
+
+<input type="date" id="daysBirth">
+
+<button onclick="daysSinceBirth()">Calculate</button>
+
+<div class="result" id="daysResult"></div>
+</div>
+
+
+<!-- JSON FORMATTER -->
+
+<div class="tool-card" data-category="text" data-name="json formatter">
+<h2>💻 JSON Formatter</h2>
+
+<textarea id="jsonText" rows="7"
+placeholder='Paste JSON here'></textarea>
+
+<button onclick="formatJSON()">Format JSON</button>
+
+<div class="result" id="jsonResult"></div>
+</div>
+
+
+<!-- TEXT REVERSE -->
+
+<div class="tool-card" data-category="text" data-name="text reverse">
+<h2>🔄 Reverse Text</h2>
+
+<textarea id="reverseText"
+rows="5"
+placeholder="Enter text"></textarea>
+
+<button onclick="reverseText()">Reverse</button>
+
+<div class="result" id="reverseResult"></div>
+</div>
+
+
+<!-- RANDOM NUMBER -->
+
+<div class="tool-card" data-category="utility" data-name="random number generator">
+<h2>🎲 Random Number</h2>
+
+<input type="number" id="randomMin" placeholder="Minimum">
+<input type="number" id="randomMax" placeholder="Maximum">
+
+<button onclick="randomNumber()">Generate</button>
+
+<div class="result" id="randomResult"></div>
+</div>
+
+</div>
 
 <footer>
-  🧰 ToolBox — Free useful online tools for everyone
+🧰 ToolBox — Free useful online tools for everyone
 </footer>
+
 
 <script>
 
-function showCalculator() {
-  document.getElementById("calculator").style.display = "block";
-}
+/* CALCULATOR */
 
-function addValue(value) {
-  const display = document.getElementById("display");
+function calcAdd(value) {
+  let display = document.getElementById("calcDisplay");
 
   if (display.value === "0") {
     display.value = value;
@@ -263,22 +460,8 @@ function addValue(value) {
   }
 }
 
-function clearDisplay() {
-  document.getElementById("display").value = "0";
-}
-
-function deleteLast() {
-  const display = document.getElementById("display");
-
-  display.value = display.value.slice(0, -1);
-
-  if (display.value === "") {
-    display.value = "0";
-  }
-}
-
 function calculate() {
-  const display = document.getElementById("display");
+  let display = document.getElementById("calcDisplay");
 
   try {
     display.value = Function(
@@ -289,27 +472,448 @@ function calculate() {
   }
 }
 
+function clearCalc() {
+  document.getElementById("calcDisplay").value = "0";
+}
+
+
+/* AGE */
+
+function calculateAge() {
+
+  let birth = document.getElementById("birthDate").value;
+
+  if (!birth) {
+    document.getElementById("ageResult").innerText =
+      "Please select your birth date.";
+    return;
+  }
+
+  let birthDate = new Date(birth);
+  let today = new Date();
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+
+  let month = today.getMonth() - birthDate.getMonth();
+
+  if (
+    month < 0 ||
+    (month === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  document.getElementById("ageResult").innerText =
+    "Your age is " + age + " years.";
+}
+
+
+/* PERCENTAGE */
+
+function percentage() {
+
+  let value = Number(
+    document.getElementById("percentValue").value
+  );
+
+  let total = Number(
+    document.getElementById("percentTotal").value
+  );
+
+  if (!total) {
+    document.getElementById("percentResult").innerText =
+      "Enter valid values.";
+    return;
+  }
+
+  let result = (value / total) * 100;
+
+  document.getElementById("percentResult").innerText =
+    result.toFixed(2) + "%";
+}
+
+
+/* BMI */
+
+function bmi() {
+
+  let height = Number(
+    document.getElementById("height").value
+  );
+
+  let weight = Number(
+    document.getElementById("weight").value
+  );
+
+  if (!height || !weight) {
+    document.getElementById("bmiResult").innerText =
+      "Enter height and weight.";
+    return;
+  }
+
+  let meters = height / 100;
+
+  let result = weight / (meters * meters);
+
+  document.getElementById("bmiResult").innerText =
+    "BMI: " + result.toFixed(2);
+}
+
+
+/* UNIT CONVERTER */
+
+function convertKm() {
+
+  let km = Number(
+    document.getElementById("km").value
+  );
+
+  let miles = km * 0.621371;
+
+  document.getElementById("kmResult").innerText =
+    miles.toFixed(3) + " miles";
+}
+
+
+/* WORD COUNTER */
+
+function countWords() {
+
+  let text =
+    document.getElementById("wordText").value;
+
+  let words =
+    text.trim() === ""
+      ? 0
+      : text.trim().split(/\s+/).length;
+
+  let characters = text.length;
+
+  document.getElementById("wordResult").innerText =
+    "Words: " + words +
+    " | Characters: " + characters;
+}
+
+
+/* CASE CONVERTER */
+
+function upperCase() {
+
+  let box = document.getElementById("caseText");
+
+  box.value = box.value.toUpperCase();
+}
+
+function lowerCase() {
+
+  let box = document.getElementById("caseText");
+
+  box.value = box.value.toLowerCase();
+}
+
+function titleCase() {
+
+  let box = document.getElementById("caseText");
+
+  box.value = box.value
+    .toLowerCase()
+    .replace(/\b\w/g, function(letter) {
+      return letter.toUpperCase();
+    });
+}
+
+
+/* PASSWORD */
+
+function generatePassword() {
+
+  let length =
+    Number(document.getElementById("passwordLength").value);
+
+  let chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+  let password = "";
+
+  for (let i = 0; i < length; i++) {
+
+    password +=
+      chars.charAt(
+        Math.floor(Math.random() * chars.length)
+      );
+  }
+
+  document.getElementById("passwordResult").innerText =
+    password;
+}
+
+
+/* DATE DIFFERENCE */
+
+function dateDifference() {
+
+  let first =
+    new Date(document.getElementById("date1").value);
+
+  let second =
+    new Date(document.getElementById("date2").value);
+
+  if (isNaN(first) || isNaN(second)) {
+    document.getElementById("dateResult").innerText =
+      "Select both dates.";
+    return;
+  }
+
+  let difference =
+    Math.abs(second - first);
+
+  let days =
+    Math.ceil(difference / (1000 * 60 * 60 * 24));
+
+  document.getElementById("dateResult").innerText =
+    days + " days";
+}
+
+
+/* STOPWATCH */
+
+let stopwatchSeconds = 0;
+let stopwatchInterval = null;
+
+function updateStopwatch() {
+
+  stopwatchSeconds++;
+
+  let hours =
+    Math.floor(stopwatchSeconds / 3600);
+
+  let minutes =
+    Math.floor((stopwatchSeconds % 3600) / 60);
+
+  let seconds =
+    stopwatchSeconds % 60;
+
+  document.getElementById("stopwatch").innerText =
+    String(hours).padStart(2,"0") + ":" +
+    String(minutes).padStart(2,"0") + ":" +
+    String(seconds).padStart(2,"0");
+}
+
+function startStopwatch() {
+
+  if (stopwatchInterval) return;
+
+  stopwatchInterval =
+    setInterval(updateStopwatch, 1000);
+}
+
+function stopStopwatch() {
+
+  clearInterval(stopwatchInterval);
+
+  stopwatchInterval = null;
+}
+
+function resetStopwatch() {
+
+  stopStopwatch();
+
+  stopwatchSeconds = 0;
+
+  document.getElementById("stopwatch").innerText =
+    "00:00:00";
+}
+
+
+/* MARKS */
+
+function marksPercentage() {
+
+  let obtained =
+    Number(document.getElementById("marksObtained").value);
+
+  let total =
+    Number(document.getElementById("marksTotal").value);
+
+  if (!total) {
+    document.getElementById("marksResult").innerText =
+      "Enter valid marks.";
+    return;
+  }
+
+  let result =
+    (obtained / total) * 100;
+
+  document.getElementById("marksResult").innerText =
+    "Percentage: " + result.toFixed(2) + "%";
+}
+
+
+/* GPA */
+
+function calculateGPA() {
+
+  let values = [
+    Number(document.getElementById("gpa1").value),
+    Number(document.getElementById("gpa2").value),
+    Number(document.getElementById("gpa3").value),
+    Number(document.getElementById("gpa4").value)
+  ];
+
+  let valid =
+    values.filter(x => !isNaN(x));
+
+  if (valid.length === 0) {
+    document.getElementById("gpaResult").innerText =
+      "Enter grades.";
+    return;
+  }
+
+  let sum =
+    values.reduce((a,b) => a+b, 0);
+
+  let result =
+    sum / values.length;
+
+  document.getElementById("gpaResult").innerText =
+    "Average GPA: " + result.toFixed(2);
+}
+
+
+/* DAYS SINCE BIRTH */
+
+function daysSinceBirth() {
+
+  let birth =
+    new Date(document.getElementById("daysBirth").value);
+
+  if (isNaN(birth)) {
+    document.getElementById("daysResult").innerText =
+      "Select your birth date.";
+    return;
+  }
+
+  let today = new Date();
+
+  let difference =
+    today - birth;
+
+  let days =
+    Math.floor(
+      difference / (1000 * 60 * 60 * 24)
+    );
+
+  document.getElementById("daysResult").innerText =
+    "Approximately " + days + " days.";
+}
+
+
+/* JSON FORMATTER */
+
+function formatJSON() {
+
+  let text =
+    document.getElementById("jsonText").value;
+
+  try {
+
+    let object =
+      JSON.parse(text);
+
+    document.getElementById("jsonResult").innerText =
+      JSON.stringify(object, null, 2);
+
+  } catch {
+
+    document.getElementById("jsonResult").innerText =
+      "Invalid JSON.";
+  }
+}
+
+
+/* REVERSE TEXT */
+
+function reverseText() {
+
+  let text =
+    document.getElementById("reverseText").value;
+
+  document.getElementById("reverseResult").innerText =
+    text.split("").reverse().join("");
+}
+
+
+/* RANDOM NUMBER */
+
+function randomNumber() {
+
+  let min =
+    Number(document.getElementById("randomMin").value);
+
+  let max =
+    Number(document.getElementById("randomMax").value);
+
+  if (min > max) {
+    [min, max] = [max, min];
+  }
+
+  let result =
+    Math.floor(
+      Math.random() * (max - min + 1)
+    ) + min;
+
+  document.getElementById("randomResult").innerText =
+    result;
+}
+
+
+/* SEARCH */
+
 function searchTools() {
-  const search = document
-    .getElementById("search")
+
+  let query =
+    document.getElementById("search")
     .value
     .toLowerCase();
 
-  const tools = document.querySelectorAll(".tool-card");
+  let cards =
+    document.querySelectorAll(".tool-card");
 
-  tools.forEach(tool => {
+  cards.forEach(card => {
 
-    const name = tool
-      .getAttribute("data-name")
-      .toLowerCase();
+    let name =
+      card.dataset.name.toLowerCase();
 
-    if (name.includes(search)) {
-      tool.style.display = "block";
+    if (name.includes(query)) {
+      card.classList.remove("hidden");
     } else {
-      tool.style.display = "none";
+      card.classList.add("hidden");
+    }
+  });
+}
+
+
+/* CATEGORY */
+
+function showCategory(category) {
+
+  let cards =
+    document.querySelectorAll(".tool-card");
+
+  cards.forEach(card => {
+
+    if (
+      category === "all" ||
+      card.dataset.category === category
+    ) {
+      card.classList.remove("hidden");
+    } else {
+      card.classList.add("hidden");
     }
 
   });
+
+  document.getElementById("search").value = "";
 }
 
 </script>
