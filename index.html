@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta name="google-site-verification" content="2pvDL_BQFyDf7ohEZvtr26sIwESvcuhZG_83rrjifL0" />
      <title>ToolNova - Free Student & Creator Tools</title>
 
 <meta name="description"
@@ -13,7 +12,7 @@ content="free online tools, student tools, PDF tools, video tools, image tools, 
 <meta name="robots" content="index, follow">
 
 <link rel="canonical"
-href="https://ktanujasri856-cmd.github.io/"> 
+href="https://ktanujasri856-cmd.github.io/Toolbox-website/"> 
       <h1>ToolNova - Free Online Tools</h1>
 
 <p>
@@ -22,5273 +21,1125 @@ Use calculators, PDF tools, image tools, video tools
 and productivity tools directly in your browser.
 </p>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-      maximum-scale=1.0,user-scalable=no">
-
-<title>ToolBox Pro Max</title>
-
-<!-- PDF libraries -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
-<!-- QR -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#635bff">
+<title>StudentPro 200+</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box}
 :root{
-  --bg:#f4f6fb;
-  --card:#ffffff;
-  --text:#15171c;
-  --muted:#687080;
-  --border:#e4e7ee;
-  --primary:#5b5ce2;
-  --primary2:#7b61ff;
-  --danger:#e5484d;
-  --shadow:0 8px 30px rgba(20,25,50,.08);
+ --bg:#f5f7fb;
+ --card:#fff;
+ --text:#111827;
+ --muted:#667085;
+ --primary:#635bff;
+ --border:#e4e7ec;
 }
-
-body.dark{
-  --bg:#101218;
-  --card:#191c24;
-  --text:#f5f7fb;
-  --muted:#aab1c0;
-  --border:#2b303b;
-  --shadow:0 8px 30px rgba(0,0,0,.3);
+.dark{
+ --bg:#0b1020;
+ --card:#151b2e;
+ --text:#f8fafc;
+ --muted:#aab3c5;
+ --border:#29324a;
 }
-
 body{
-  font-family:
-    Inter,Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  transition:.2s;
+ margin:0;
+ font-family:system-ui,Arial,sans-serif;
+ background:var(--bg);
+ color:var(--text);
 }
-
-button,input,textarea,select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.app{
-  max-width:1250px;
-  margin:auto;
-  padding-bottom:90px;
-}
-
-/* HEADER */
-
 header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  padding:14px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+ position:sticky;
+ top:0;
+ z-index:20;
+ background:var(--card);
+ border-bottom:1px solid var(--border);
+ padding:14px;
+ display:flex;
+ gap:10px;
+ align-items:center;
 }
-
 .logo{
-  font-size:21px;
-  font-weight:800;
+ font-size:23px;
+ font-weight:900;
+ white-space:nowrap;
 }
-
-.logo span{
-  color:var(--primary);
-}
-
-.header-actions{
-  display:flex;
-  gap:8px;
-}
-
-.icon-btn{
-  border:1px solid var(--border);
-  background:var(--bg);
-  color:var(--text);
-  width:42px;
-  height:42px;
-  border-radius:13px;
-}
-
-/* HERO */
-
-.hero{
-  padding:28px 18px 15px;
-}
-
-.hero h1{
-  font-size:clamp(28px,6vw,48px);
-  line-height:1.05;
-  margin-bottom:10px;
-}
-
-.hero h1 span{
-  color:var(--primary);
-}
-
-.hero p{
-  color:var(--muted);
-  margin-bottom:20px;
-}
-
+.logo span{color:var(--primary)}
 .search{
-  width:100%;
-  padding:16px 18px;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  border-radius:17px;
-  outline:none;
-  box-shadow:var(--shadow);
+ flex:1;
+ padding:11px;
+ border:1px solid var(--border);
+ border-radius:12px;
+ background:var(--bg);
+ color:var(--text);
 }
-
-.search:focus{
-  border-color:var(--primary);
+button{
+ border:0;
+ border-radius:10px;
+ padding:10px 14px;
+ cursor:pointer;
 }
-
-/* CATEGORY */
-
-.section{
-  padding:10px 18px;
-}
-
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:13px;
-}
-
-.section-title h2{
-  font-size:20px;
-}
-
-.categories{
-  display:grid;
-  grid-template-columns:
-    repeat(auto-fit,minmax(130px,1fr));
-  gap:10px;
-}
-
-.category{
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  border-radius:17px;
-  padding:18px 10px;
-  text-align:center;
-  box-shadow:var(--shadow);
-}
-
-.category div{
-  font-size:28px;
-  margin-bottom:7px;
-}
-
-.category small{
-  color:var(--muted);
-}
-
-/* TOOLS */
-
-.tools{
-  display:grid;
-  grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
-  gap:15px;
-}
-
-.tool{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:18px;
-  box-shadow:var(--shadow);
-  position:relative;
-}
-
-.tool-head{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-}
-
-.tool-icon{
-  font-size:30px;
-}
-
-.tool h3{
-  font-size:18px;
-  margin-bottom:4px;
-}
-
-.tool p{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.45;
-}
-
-.tool-actions{
-  display:flex;
-  gap:8px;
-  margin-top:15px;
-}
-
-.primary{
-  background:var(--primary);
-  color:white;
-  border:0;
-  padding:11px 15px;
-  border-radius:11px;
-  font-weight:700;
-}
-
+.primary{background:var(--primary);color:white}
 .secondary{
-  background:var(--bg);
-  color:var(--text);
-  border:1px solid var(--border);
-  padding:11px 15px;
-  border-radius:11px;
+ background:var(--card);
+ color:var(--text);
+ border:1px solid var(--border)
 }
-
-.favorite{
-  position:absolute;
-  right:14px;
-  top:14px;
-  border:0;
-  background:transparent;
-  font-size:20px;
+.layout{display:flex}
+aside{
+ width:240px;
+ position:fixed;
+ top:61px;
+ bottom:0;
+ overflow:auto;
+ background:var(--card);
+ border-right:1px solid var(--border);
+ padding:12px;
 }
-
-.tool-panel{
-  display:none;
-  margin-top:16px;
-  border-top:1px solid var(--border);
-  padding-top:16px;
+aside button{
+ width:100%;
+ text-align:left;
+ background:transparent;
+ color:var(--text);
+ margin:2px 0;
 }
-
-.tool-panel.active{
-  display:block;
+aside button:hover{
+ background:#635bff16;
+ color:var(--primary);
 }
-
-/* FORMS */
-
+main{
+ margin-left:240px;
+ width:calc(100% - 240px);
+ padding:20px;
+}
+.hero{
+ padding:28px;
+ border-radius:22px;
+ background:linear-gradient(135deg,#635bff,#8b5cf6);
+ color:white;
+ margin-bottom:18px;
+}
+.hero h1{margin:0;font-size:30px}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+ gap:13px;
+}
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:16px;
+ padding:17px;
+ cursor:pointer;
+ transition:.15s;
+}
+.card:hover{
+ transform:translateY(-2px);
+ border-color:var(--primary);
+}
+.card b{font-size:16px}
+.card small{
+ display:block;
+ color:var(--muted);
+ margin-top:5px;
+}
+.section{margin-top:25px}
+.panel{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:16px;
+ padding:18px;
+}
 input,textarea,select{
-  width:100%;
-  padding:12px;
-  margin:5px 0;
-  border-radius:10px;
-  border:1px solid var(--border);
-  background:var(--bg);
-  color:var(--text);
-  outline:none;
+ width:100%;
+ padding:11px;
+ border-radius:10px;
+ border:1px solid var(--border);
+ background:var(--card);
+ color:var(--text);
+ margin:5px 0;
 }
-
-textarea{
-  min-height:120px;
-  resize:vertical;
-}
-
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
+textarea{min-height:130px}
+.toolpage{display:none}
+.toolpage.active{display:block}
 .result{
-  margin-top:10px;
-  padding:14px;
-  border-radius:12px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  word-break:break-word;
+ margin-top:12px;
+ padding:13px;
+ background:#635bff12;
+ border-radius:10px;
+ white-space:pre-wrap;
 }
-
-.small{
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* CALCULATOR */
-
-.calc-display{
-  font-size:25px;
-  text-align:right;
-}
-
-.calc-grid{
-  display:grid;
-  grid-template-columns:
-    repeat(4,1fr);
-  gap:6px;
-  margin-top:8px;
-}
-
-.calc-grid button{
-  padding:14px 5px;
-  border:1px solid var(--border);
-  background:var(--bg);
-  color:var(--text);
-  border-radius:10px;
-}
-
-.calc-grid button.equal{
-  background:var(--primary);
-  color:white;
-}
-
-/* IMAGE CREATOR */
-
-.canvas-wrap{
-  overflow:auto;
-  background:
-    repeating-conic-gradient(
-      #ddd 0% 25%,
-      #fff 0% 50%
-    ) 50% / 20px 20px;
-  border-radius:14px;
-  padding:10px;
-  min-height:250px;
-}
-
-body.dark .canvas-wrap{
-  background:
-    repeating-conic-gradient(
-      #30343d 0% 25%,
-      #20232a 0% 50%
-    ) 50% / 20px 20px;
-}
-
-#drawingCanvas{
-  display:block;
-  background:white;
-  touch-action:none;
-  max-width:none;
-  margin:auto;
-}
-
-.toolbar{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin:8px 0;
-}
-
-.toolbar button{
-  border:1px solid var(--border);
-  background:var(--bg);
-  color:var(--text);
-  padding:9px 11px;
-  border-radius:9px;
-}
-
-.color-input{
-  width:55px;
-  height:40px;
-  padding:2px;
-}
-
-/* QR */
-
-#qr{
-  display:flex;
-  justify-content:center;
-  padding:15px;
-}
-
-/* PDF */
-
-.file{
-  padding:12px;
-  border:1px dashed var(--border);
-  border-radius:12px;
-}
-
-.preview{
-  display:grid;
-  gap:10px;
-  margin-top:10px;
-}
-
-.preview img{
-  max-width:100%;
-  border-radius:10px;
-}
-
-/* BOTTOM NAV */
-
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(700px,100%);
-  background:var(--card);
-  border:1px solid var(--border);
-  z-index:200;
-  display:grid;
-  grid-template-columns:
-    repeat(4,1fr);
-  padding:8px;
-  box-shadow:0 -5px 25px rgba(0,0,0,.08);
-}
-
-.bottom-nav button{
-  border:0;
-  background:transparent;
-  color:var(--muted);
-  padding:8px 3px;
-  font-size:12px;
-}
-
-.bottom-nav button strong{
-  display:block;
-  font-size:19px;
-}
-
-/* EMPTY */
-
-.empty{
+.back{margin-bottom:15px}
+@media(max-width:750px){
+ aside{width:65px}
+ aside button{
+  font-size:0;
   text-align:center;
-  color:var(--muted);
-  padding:35px 10px;
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-  .app{
-    padding-bottom:80px;
-  }
-
-  .tools{
-    grid-template-columns:1fr;
-  }
-
-  .row{
-    grid-template-columns:1fr;
-  }
-
-  .hero{
-    padding-top:22px;
-  }
-
-  .section{
-    padding-left:14px;
-    padding-right:14px;
-  }
-
-  .categories{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .tool{
-    border-radius:18px;
-  }
-
-  .calc-grid button{
-    padding:13px 4px;
-  }
+ }
+ main{
+  margin-left:65px;
+  width:calc(100% - 65px);
+  padding:10px;
+ }
+ .logo{font-size:19px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
 <header>
-  <div class="logo">
-    🧰 ToolBox <span>Pro Max</span>
-  </div>
-
-  <div class="header-actions">
-    <button class="icon-btn"
-            onclick="toggleTheme()"
-            id="themeBtn">🌙</button>
-  </div>
+<div class="logo">Student<span>Pro</span></div>
+<input id="search" class="search"
+placeholder="🔍 Search 200+ tools..."
+oninput="searchTools()">
+<button class="secondary" onclick="darkMode()">🌙</button>
 </header>
 
+<div class="layout">
 
-<section class="hero">
+<aside>
+<button onclick="show('home')">🏠 Home</button>
+<button onclick="show('math')">🧮 Maths</button>
+<button onclick="show('science')">⚛️ Science</button>
+<button onclick="show('chemistry')">🧪 Chemistry</button>
+<button onclick="show('coding')">💻 Coding</button>
+<button onclick="show('text')">🔤 Text</button>
+<button onclick="show('study')">📚 Study</button>
+<button onclick="show('files')">📄 Files</button>
+<button onclick="show('image')">🖼️ Image</button>
+<button onclick="show('video')">🎥 Video</button>
+<button onclick="show('utilities')">🛠️ Utilities</button>
+<button onclick="show('numbers')">🔢 Numbers</button>
+<button onclick="show('games')">🎮 Games</button>
+</aside>
 
-  <h1>
-    Everything you need,<br>
-    <span>in one toolbox.</span>
-  </h1>
+<main>
 
-  <p>
-    Student tools, image tools, PDF tools and
-    everyday utilities — built for mobile.
-  </p>
+<!-- HOME -->
+<section id="home" class="toolpage active">
+<div class="hero">
+<h1>StudentPro 200+ 🚀</h1>
+<p>One browser-based toolkit for students.</p>
+</div>
 
-  <input
-    id="globalSearch"
-    class="search"
-    placeholder="🔍 Search any tool..."
-    oninput="searchTools()">
-
+<div class="panel">
+<h2>⚡ Quick Tools</h2>
+<div id="homeTools" class="grid"></div>
+</div>
 </section>
 
-
-<section class="section">
-
-  <div class="section-title">
-    <h2>📂 Categories</h2>
-  </div>
-
-  <div class="categories">
-
-    <button class="category"
-            onclick="filterCategory('student')">
-      <div>🎓</div>
-      Student
-      <br>
-      <small>Study tools</small>
-    </button>
-
-    <button class="category"
-            onclick="filterCategory('image')">
-      <div>🎨</div>
-      Image
-      <br>
-      <small>Create & edit</small>
-    </button>
-
-    <button class="category"
-            onclick="filterCategory('pdf')">
-      <div>📄</div>
-      PDF
-      <br>
-      <small>PDF tools</small>
-    </button>
-
-    <button class="category"
-            onclick="filterCategory('utility')">
-      <div>🛠️</div>
-      Utilities
-      <br>
-      <small>Everyday tools</small>
-    </button>
-
-  </div>
-
+<!-- MATH -->
+<section id="math" class="toolpage">
+<h2>🧮 Mathematics</h2>
+<div id="mathTools" class="grid"></div>
 </section>
 
+<!-- SCIENCE -->
+<section id="science" class="toolpage">
+<h2>⚛️ Physics</h2>
+<div id="scienceTools" class="grid"></div>
+</section>
 
-<!-- TOOLS -->
+<!-- CHEMISTRY -->
+<section id="chemistry" class="toolpage">
+<h2>🧪 Chemistry</h2>
+<div id="chemTools" class="grid"></div>
+</section>
 
-<section class="section">
+<!-- CODING -->
+<section id="coding" class="toolpage">
+<h2>💻 Coding</h2>
+<div id="codingTools" class="grid"></div>
+</section>
 
-<div class="section-title">
-  <h2>⭐ All Tools</h2>
+<!-- TEXT -->
+<section id="text" class="toolpage">
+<h2>🔤 Text & English</h2>
+
+<div class="panel">
+<textarea id="textInput"
+placeholder="Enter text here..."></textarea>
+
+<button class="primary" onclick="upper()">UPPER</button>
+<button class="primary" onclick="lower()">lower</button>
+<button class="primary" onclick="titleCase()">Title Case</button>
+<button class="primary" onclick="reverse()">Reverse</button>
+<button class="primary" onclick="clean()">Clean</button>
+<button class="primary" onclick="count()">Count</button>
+
+<div id="textResult" class="result"></div>
 </div>
 
-<div class="tools" id="tools">
+<div id="textTools" class="grid section"></div>
+</section>
 
+<!-- STUDY -->
+<section id="study" class="toolpage">
+<h2>📚 Study Tools</h2>
 
-<!-- SCIENTIFIC CALCULATOR -->
-
-<div class="tool"
-     data-category="student"
-     data-name="scientific calculator math">
-
-<button class="favorite"
-        onclick="favoriteTool(this,'Scientific Calculator')">
-  ☆
-</button>
-
-<div class="tool-head">
-  <div class="tool-icon">🧮</div>
-  <div>
-    <h3>Scientific Calculator</h3>
-    <p>Advanced calculations.</p>
-  </div>
+<div class="panel">
+<h3>⏱️ Pomodoro</h3>
+<div id="timer"
+style="font-size:50px;text-align:center;font-weight:900">
+25:00
+</div>
+<button class="primary" onclick="startPomodoro()">Start</button>
+<button class="secondary" onclick="stopPomodoro()">Stop</button>
+<button class="secondary" onclick="resetPomodoro()">Reset</button>
 </div>
 
-<div class="tool-actions">
-<button class="primary"
-        onclick="openTool('calc')">
-  Open
-</button>
+<div id="studyTools" class="grid section"></div>
+</section>
+
+<!-- FILES -->
+<section id="files" class="toolpage">
+<h2>📄 PDF & File Tools</h2>
+
+<div class="panel">
+<h3>Text → Downloadable File</h3>
+<textarea id="fileText"
+placeholder="Write content..."></textarea>
+<button class="primary" onclick="downloadTXT()">Download TXT</button>
+<button class="primary" onclick="downloadHTML()">Download HTML</button>
 </div>
 
-<div class="tool-panel" id="calc">
+<div id="fileTools" class="grid section"></div>
+</section>
 
-<input id="calcDisplay"
-       class="calc-display"
-       value="0"
-       readonly>
+<!-- IMAGE -->
+<section id="image" class="toolpage">
+<h2>🖼️ JavaScript Image Creator</h2>
 
-<div class="calc-grid">
+<div class="panel">
+<input id="imageText" placeholder="Text to place on image">
+<input id="imageWidth" type="number" value="1000">
+<input id="imageHeight" type="number" value="600">
 
-<button onclick="calcAdd('7')">7</button>
-<button onclick="calcAdd('8')">8</button>
-<button onclick="calcAdd('9')">9</button>
-<button onclick="calcAdd('/')">÷</button>
+<button class="primary" onclick="createImage()">Create Image</button>
 
-<button onclick="calcAdd('4')">4</button>
-<button onclick="calcAdd('5')">5</button>
-<button onclick="calcAdd('6')">6</button>
-<button onclick="calcAdd('*')">×</button>
+<br><br>
+<canvas id="canvas"
+style="max-width:100%;border:1px solid var(--border)">
+</canvas>
 
-<button onclick="calcAdd('1')">1</button>
-<button onclick="calcAdd('2')">2</button>
-<button onclick="calcAdd('3')">3</button>
-<button onclick="calcAdd('-')">−</button>
-
-<button onclick="calcAdd('0')">0</button>
-<button onclick="calcAdd('.')">.</button>
-<button onclick="calculate()">=</button>
-<button onclick="calcAdd('+')">+</button>
-
-</div>
-
-<div class="toolbar">
-
-<button onclick="calcFunc('sqrt')">√</button>
-<button onclick="calcFunc('square')">x²</button>
-<button onclick="calcFunc('sin')">sin</button>
-<button onclick="calcFunc('cos')">cos</button>
-<button onclick="calcFunc('tan')">tan</button>
-<button onclick="calcFunc('log')">log</button>
-<button onclick="calcFunc('ln')">ln</button>
-<button onclick="calcFunc('pi')">π</button>
-<button onclick="clearCalc()">Clear</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- PERCENTAGE -->
-
-<div class="tool"
-     data-category="student"
-     data-name="percentage calculator">
-
-<button class="favorite"
-        onclick="favoriteTool(this,'Percentage Calculator')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">📊</div>
-<div>
-<h3>Percentage Calculator</h3>
-<p>Calculate percentages quickly.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('percentage')">
-Open
+<br><br>
+<button class="primary" onclick="downloadImage()">
+Download PNG
 </button>
 </div>
 
-<div class="tool-panel" id="percentage">
+<div id="imageTools" class="grid section"></div>
+</section>
 
-<input id="percentValue"
-placeholder="Value">
+<!-- VIDEO -->
+<section id="video" class="toolpage">
+<h2>🎥 Video Studio</h2>
 
-<input id="percentTotal"
-placeholder="Total">
+<div class="panel">
+<input type="file" id="videoFile" accept="video/*">
 
-<button class="primary"
-onclick="percentageCalc()">
-Calculate
-</button>
+<br><br>
 
-<div class="result"
-id="percentageResult"></div>
+<video id="videoPreview"
+controls
+style="width:100%;max-height:400px">
+</video>
 
-</div>
-</div>
-
-
-<!-- CGPA -->
-
-<div class="tool"
-data-category="student"
-data-name="cgpa calculator gpa marks">
-
-<button class="favorite"
-onclick="favoriteTool(this,'CGPA Calculator')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">🎯</div>
-<div>
-<h3>CGPA Calculator</h3>
-<p>Calculate CGPA from semester GPAs.</p>
-</div>
+<p>
+Browser-only video processing depends on the browser's supported codecs.
+</p>
 </div>
 
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('cgpa')">
-Open
-</button>
-</div>
+<div id="videoTools" class="grid section"></div>
+</section>
 
-<div class="tool-panel" id="cgpa">
+<!-- UTILITIES -->
+<section id="utilities" class="toolpage">
+<h2>🛠️ Utilities</h2>
+<div id="utilityTools" class="grid"></div>
+</section>
 
-<input id="cgpaValues"
-placeholder="Example: 8.2, 7.8, 9.1">
+<!-- NUMBERS -->
+<section id="numbers" class="toolpage">
+<h2>🔢 Number System Laboratory</h2>
 
-<button class="primary"
-onclick="calculateCGPA()">
-Calculate CGPA
-</button>
-
-<div class="result"
-id="cgpaResult"></div>
-
-</div>
-</div>
-
-
-<!-- NUMBER SYSTEM -->
-
-<div class="tool"
-data-category="student"
-data-name="number system binary decimal octal hexadecimal">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Number System Converter')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">🔢</div>
-<div>
-<h3>Number-System Converter</h3>
-<p>Binary, decimal, octal and hexadecimal.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('numbers')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="numbers">
-
-<select id="numberBase">
-<option value="10">Decimal</option>
-<option value="2">Binary</option>
-<option value="8">Octal</option>
-<option value="16">Hexadecimal</option>
-</select>
-
+<div class="panel">
 <input id="numberInput"
 placeholder="Enter number">
 
-<button class="primary"
-onclick="convertNumbers()">
-Convert
-</button>
-
-<div class="result"
-id="numberResult"></div>
-
-</div>
-</div>
-
-
-<!-- UNIT CONVERTER -->
-
-<div class="tool"
-data-category="student utility"
-data-name="unit converter length weight temperature">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Unit Converter')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">📏</div>
-<div>
-<h3>Unit Converter</h3>
-<p>Length, weight and temperature.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('units')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="units">
-
-<select id="unitType">
-<option value="kmmi">Kilometres → Miles</option>
-<option value="mft">Metres → Feet</option>
-<option value="kg">Kilograms → Pounds</option>
-<option value="cf">Celsius → Fahrenheit</option>
+<select id="numberBase">
+<option value="2">Binary</option>
+<option value="8">Octal</option>
+<option value="10" selected>Decimal</option>
+<option value="16">Hexadecimal</option>
 </select>
 
-<input id="unitValue"
-placeholder="Enter value">
-
-<button class="primary"
-onclick="convertUnit()">
+<button class="primary" onclick="convertNumber()">
 Convert
 </button>
 
-<div class="result"
-id="unitResult"></div>
-
-</div>
-</div>
-
-
-<!-- WORD COUNTER -->
-
-<div class="tool"
-data-category="student utility"
-data-name="word counter character counter text">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Word Counter')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">📝</div>
-<div>
-<h3>Word & Character Counter</h3>
-<p>Count words, characters and lines.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('counter')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="counter">
-
-<textarea
-id="counterText"
-oninput="countText()"
-placeholder="Type or paste text..."></textarea>
-
-<div class="result"
-id="counterResult">
-Words: 0<br>
-Characters: 0<br>
-Lines: 0
-</div>
-
-</div>
-</div>
-
-
-<!-- CASE CONVERTER -->
-
-<div class="tool"
-data-category="student utility"
-data-name="case converter uppercase lowercase title">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Case Converter')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">🔤</div>
-<div>
-<h3>Case Converter</h3>
-<p>Change text case instantly.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('case')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="case">
-
-<textarea id="caseText"
-placeholder="Enter text"></textarea>
-
-<div class="toolbar">
-<button onclick="caseConvert('upper')">UPPER</button>
-<button onclick="caseConvert('lower')">lower</button>
-<button onclick="caseConvert('title')">Title</button>
-<button onclick="caseConvert('sentence')">Sentence</button>
-</div>
-
-</div>
-</div>
-
-
-<!-- LOREM -->
-
-<div class="tool"
-data-category="utility"
-data-name="lorem ipsum generator">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Lorem Ipsum')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">📖</div>
-<div>
-<h3>Lorem Ipsum</h3>
-<p>Generate placeholder text.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('lorem')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="lorem">
-
-<input id="loremCount"
-type="number"
-value="2"
-min="1"
-max="20">
-
-<button class="primary"
-onclick="generateLorem()">
-Generate
-</button>
-
-<textarea id="loremOutput"></textarea>
-
-</div>
-</div>
-
-
-<!-- WIFI QR -->
-
-<div class="tool"
-data-category="utility"
-data-name="wifi qr generator password">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Wi-Fi QR Generator')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">📶</div>
-<div>
-<h3>Wi-Fi QR Generator</h3>
-<p>Create a scannable Wi-Fi QR code.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('wifi')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="wifi">
-
-<input id="wifiName"
-placeholder="Wi-Fi name">
-
-<input id="wifiPassword"
-placeholder="Wi-Fi password">
-
-<select id="wifiSecurity">
-<option value="WPA">WPA/WPA2</option>
-<option value="WEP">WEP</option>
-<option value="nopass">No password</option>
-</select>
-
-<button class="primary"
-onclick="makeQR()">
-Generate
-</button>
-
-<div id="qr"></div>
-
-</div>
-</div>
-
-
-<!-- IMAGE CREATOR -->
-
-<div class="tool"
-data-category="image"
-data-name="image creator graphic maker drawing poster">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Image Creator')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">🎨</div>
-<div>
-<h3>Image Creator</h3>
-<p>Draw and create graphics with JavaScript.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openImageCreator()">
-Open Creator
-</button>
-</div>
-
-<div class="tool-panel" id="imageCreator">
-
-<div class="row">
-
-<div>
-<label class="small">Width</label>
-<input id="canvasWidth"
-type="number"
-value="800">
-</div>
-
-<div>
-<label class="small">Height</label>
-<input id="canvasHeight"
-type="number"
-value="500">
-</div>
-
-</div>
-
-<div class="toolbar">
-
-<button onclick="resizeCanvas()">Resize</button>
-
-<button onclick="setTool('draw')">
-✏️ Draw
-</button>
-
-<button onclick="setTool('erase')">
-🧹 Eraser
-</button>
-
-<button onclick="addText()">
-📝 Text
-</button>
-
-<button onclick="drawRectangle()">
-▭ Rectangle
-</button>
-
-<button onclick="drawCircle()">
-⚪ Circle
-</button>
-
-<button onclick="drawLine()">
-➖ Line
-</button>
-
-<button onclick="undoCanvas()">
-↩️ Undo
-</button>
-
-<button onclick="clearCanvas()">
-🧹 Clear
-</button>
-
-</div>
-
-<div class="toolbar">
-
-<label>
-Color
-<input
-id="drawColor"
-class="color-input"
-type="color"
-value="#000000">
-</label>
-
-<label>
-Size
-<input
-id="brushSize"
-type="range"
-min="1"
-max="50"
-value="5">
-</label>
-
-<button onclick="downloadCanvas('png')">
-PNG
-</button>
-
-<button onclick="downloadCanvas('jpg')">
-JPG
-</button>
-
-</div>
-
-<div class="canvas-wrap">
-
-<canvas
-id="drawingCanvas"
-width="800"
-height="500">
-</canvas>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- IMAGE TO PDF -->
-
-<div class="tool"
-data-category="pdf"
-data-name="image to pdf jpg png">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Image to PDF')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">🖼️</div>
-<div>
-<h3>Image → PDF</h3>
-<p>Convert images into one PDF.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('imagePdf')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="imagePdf">
-
-<input
-class="file"
-id="imagePdfFiles"
-type="file"
-accept="image/*"
-multiple>
-
-<button class="primary"
-onclick="imagesToPDF()">
-Create PDF
-</button>
-
-</div>
-</div>
-
-
-<!-- PDF TO IMAGE -->
-
-<div class="tool"
-data-category="pdf"
-data-name="pdf to images png jpg">
-
-<button class="favorite"
-onclick="favoriteTool(this,'PDF to Images')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">📄</div>
-<div>
-<h3>PDF → Images</h3>
-<p>Convert PDF pages to images.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('pdfImage')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="pdfImage">
-
-<input
-class="file"
-id="pdfImageFile"
-type="file"
-accept="application/pdf">
-
-<button class="primary"
-onclick="pdfToImages()">
-Convert
-</button>
-
-<div class="preview"
-id="pdfImagePreview"></div>
-
-</div>
-</div>
-
-
-<!-- MERGE PDF -->
-
-<div class="tool"
-data-category="pdf"
-data-name="merge pdf combine">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Merge PDF')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">📎</div>
-<div>
-<h3>Merge PDFs</h3>
-<p>Combine multiple PDF files.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('merge')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="merge">
-
-<input
-class="file"
-id="mergeFiles"
-type="file"
-accept="application/pdf"
-multiple>
-
-<button class="primary"
-onclick="mergePDF()">
-Merge
-</button>
-
-</div>
-</div>
-
-
-<!-- SPLIT PDF -->
-
-<div class="tool"
-data-category="pdf"
-data-name="split cut pdf pages">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Split PDF')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">✂️</div>
-<div>
-<h3>Split / Cut PDF</h3>
-<p>Extract selected pages.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('split')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="split">
-
-<input
-class="file"
-id="splitFile"
-type="file"
-accept="application/pdf">
-
-<input
-id="splitPages"
-placeholder="Example: 1,3,5 or 2-6">
-
-<button class="primary"
-onclick="splitPDF()">
-Create PDF
-</button>
-
-</div>
-</div>
-
-
-<!-- NOTES -->
-
-<div class="tool"
-data-category="student"
-data-name="notes notepad">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Notes')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">📚</div>
-<div>
-<h3>Student Notes</h3>
-<p>Save notes directly on this device.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('notes')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="notes">
-
-<textarea
-id="notesText"
-placeholder="Write your notes..."></textarea>
-
-<button class="primary"
-onclick="saveNotes()">
-Save Notes
-</button>
-
-<button class="secondary"
-onclick="clearNotes()">
-Clear
-</button>
-
-<div class="result"
-id="notesStatus"></div>
-
-</div>
-</div>
-
-
-<!-- TODO -->
-
-<div class="tool"
-data-category="student"
-data-name="todo task list checklist">
-
-<button class="favorite"
-onclick="favoriteTool(this,'To Do List')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">✅</div>
-<div>
-<h3>To-Do List</h3>
-<p>Manage your tasks.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('todo')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="todo">
-
-<input
-id="todoInput"
-placeholder="Enter task">
-
-<button class="primary"
-onclick="addTodo()">
-Add Task
-</button>
-
-<div id="todoList"></div>
-
-</div>
-</div>
-
-
-<!-- STUDY TIMER -->
-
-<div class="tool"
-data-category="student"
-data-name="study pomodoro timer">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Study Timer')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">⏱️</div>
-<div>
-<h3>Study Timer</h3>
-<p>Focus timer for studying.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('timer')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="timer">
-
-<div class="result"
-style="font-size:38px;text-align:center"
-id="timerDisplay">
-25:00
-</div>
-
-<div class="toolbar">
-
-<button onclick="startTimer()">
-▶ Start
-</button>
-
-<button onclick="pauseTimer()">
-⏸ Pause
-</button>
-
-<button onclick="resetTimer()">
-↻ Reset
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- PASSWORD -->
-
-<div class="tool"
-data-category="utility student"
-data-name="password generator secure password">
-
-<button class="favorite"
-onclick="favoriteTool(this,'Password Generator')">
-☆
-</button>
-
-<div class="tool-head">
-<div class="tool-icon">🔐</div>
-<div>
-<h3>Password Generator</h3>
-<p>Generate random passwords locally.</p>
-</div>
-</div>
-
-<div class="tool-actions">
-<button class="primary"
-onclick="openTool('password')">
-Open
-</button>
-</div>
-
-<div class="tool-panel" id="password">
-
-<input
-id="passwordLength"
-type="number"
-value="16"
-min="4"
-max="100">
-
-<button class="primary"
-onclick="generatePassword()">
-Generate
-</button>
-
-<div class="result"
-id="passwordResult"></div>
-
-</div>
+<div id="numberResult" class="result"></div>
 </div>
 
-
-</div>
+<div id="numberTools" class="grid section"></div>
 </section>
 
+<!-- GAMES -->
+<section id="games" class="toolpage">
+<h2>🎮 Student Games</h2>
+
+<div class="panel">
+<h3>🎯 Number Guess</h3>
+<p>Guess a number from 1–100.</p>
+
+<input id="guess" type="number">
+<button class="primary" onclick="guessNumber()">Guess</button>
+
+<div id="guessResult" class="result"></div>
 </div>
 
+<div id="gameTools" class="grid section"></div>
+</section>
 
-<!-- BOTTOM NAV -->
-
-<nav class="bottom-nav">
-
-<button onclick="goHome()">
-<strong>🏠</strong>
-Home
-</button>
-
-<button onclick="focusSearch()">
-<strong>🔎</strong>
-Search
-</button>
-
-<button onclick="showFavorites()">
-<strong>⭐</strong>
-Saved
-</button>
-
-<button onclick="toggleTheme()">
-<strong>🌙</strong>
-Theme
-</button>
-
-</nav>
-
+</main>
+</div>
 
 <script>
 
-/* =========================
-   BASIC NAVIGATION
-========================= */
+/* =====================================================
+TOOL DATABASE
+===================================================== */
 
-function openTool(id){
+const tools={
 
-  const panel=document.getElementById(id);
+math:[
+"Scientific Calculator",
+"Percentage Calculator",
+"Simple Interest",
+"Compound Interest",
+"EMI Calculator",
+"Discount Calculator",
+"Profit & Loss",
+"GST Calculator",
+"Ratio Calculator",
+"Proportion Calculator",
+"Average Calculator",
+"Median Calculator",
+"Mode Calculator",
+"Variance Calculator",
+"Standard Deviation",
+"Quadratic Solver",
+"Linear Equation Solver",
+"Exponent Calculator",
+"Square Root",
+"Cube Root",
+"Log Calculator",
+"Area Calculator",
+"Volume Calculator",
+"Triangle Calculator",
+"Pythagorean Calculator",
+"Permutation",
+"Combination",
+"Coordinate Distance",
+"Midpoint Calculator",
+"Random Number Generator"
+],
 
-  if(!panel) return;
+science:[
+"Speed Calculator",
+"Distance Calculator",
+"Time Calculator",
+"Force Calculator",
+"Momentum Calculator",
+"Impulse Calculator",
+"Work Calculator",
+"Power Calculator",
+"Energy Calculator",
+"Torque Calculator",
+"Acceleration Calculator",
+"Density Calculator",
+"Pressure Calculator",
+"Frequency Calculator",
+"Wavelength Calculator",
+"Kinetic Energy",
+"Potential Energy",
+"Gravitational Force",
+"Hooke's Law",
+"Spring Force",
+"Ohm's Law",
+"Electrical Power",
+"Resistance",
+"Voltage",
+"Current",
+"Electric Charge",
+"Capacitor Calculator",
+"Inductor Calculator",
+"Photon Energy",
+"Lens Formula"
+],
 
-  panel.classList.toggle("active");
+chem:[
+"Mole Calculator",
+"Molarity",
+"Molality",
+"Molar Mass",
+"Percentage Composition",
+"Dilution Calculator",
+"pH Calculator",
+"Concentration Converter",
+"Periodic Table",
+"Atomic Number Lookup",
+"Empirical Formula",
+"Molecular Formula",
+"Stoichiometry",
+"Gas Law",
+"Boyle's Law",
+"Charles' Law",
+"Ideal Gas Law",
+"Oxidation Number",
+"Electron Configuration",
+"Equation Balancer"
+],
 
-  if(panel.classList.contains("active")){
-    addRecent(id);
-  }
+coding:[
+"JavaScript Playground",
+"HTML Playground",
+"CSS Playground",
+"JSON Formatter",
+"JSON Minifier",
+"Base64 Encoder",
+"Base64 Decoder",
+"ASCII Converter",
+"URL Encoder",
+"URL Decoder",
+"Regex Tester",
+"Markdown Previewer",
+"Markdown to HTML",
+"HTML Formatter",
+"CSS Formatter",
+"JavaScript Formatter",
+"Color Converter",
+"JWT Decoder",
+"Timestamp Converter",
+"Code Line Counter"
+],
+
+text:[
+"Case Converter",
+"Text Cleaner",
+"Word Counter",
+"Character Counter",
+"Line Counter",
+"Reverse Text",
+"Title Case",
+"Sentence Case",
+"Duplicate Line Remover",
+"Space Remover",
+"Text Sorter",
+"Text Deduplicator",
+"Lorem Ipsum Generator",
+"ASCII Converter",
+"URL Encoder",
+"URL Decoder",
+"Base64 Encoder",
+"Base64 Decoder",
+"JSON Formatter",
+"JSON Minifier"
+],
+
+study:[
+"Pomodoro Timer",
+"Stopwatch",
+"Countdown",
+"Exam Countdown",
+"Study Planner",
+"Task Manager",
+"Notes",
+"Flashcards",
+"Quiz Maker",
+"GPA Calculator",
+"CGPA Calculator",
+"Attendance Calculator",
+"Grade Calculator",
+"Marks Percentage",
+"Study Streak",
+"Goal Tracker",
+"Revision Planner",
+"Daily Checklist",
+"Subject Tracker",
+"Progress Tracker"
+],
+
+files:[
+"Text to PDF",
+"HTML to PDF",
+"Images to PDF",
+"PDF Information",
+"PDF Page Counter",
+"Image Compressor",
+"Image Resizer",
+"Image Cropper",
+"Image Converter",
+"Image Rotator",
+"Image Watermark",
+"Text File Creator",
+"CSV Viewer",
+"CSV to JSON",
+"JSON to CSV",
+"File Size Calculator"
+],
+
+image:[
+"Canvas Image Creator",
+"Text to Image",
+"Drawing Canvas",
+"Shape Creator",
+"Image Resize",
+"Image Crop",
+"Image Rotate",
+"Brightness",
+"Contrast",
+"Grayscale",
+"Watermark",
+"Sticker Creator",
+"Poster Creator",
+"Certificate Creator",
+"Timetable Creator"
+],
+
+video:[
+"Video Preview",
+"Video Metadata",
+"Video Playback Speed",
+"Video Mute",
+"Video Frame Capture",
+"Video Screenshot",
+"Video Trimmer",
+"Video Cropper",
+"Video Resizer",
+"Extract Audio",
+"Slideshow Creator",
+"Text Overlay"
+],
+
+utilities:[
+"QR Generator",
+"Password Generator",
+"UUID Generator",
+"Random Number",
+"Color Picker",
+"HEX Converter",
+"RGB Converter",
+"HSL Converter",
+"Timestamp Converter",
+"Unit Converter",
+"Temperature Converter",
+"Length Converter",
+"Weight Converter",
+"Area Converter",
+"Volume Converter",
+"File Size Converter",
+"Screen Size",
+"Browser Information",
+"Device Information",
+"Keyboard Tester",
+"Text to Speech",
+"Speech Recognition",
+"World Clock",
+"Stopwatch",
+"Countdown",
+"Date Difference",
+"Age Calculator"
+],
+
+numbers:[
+"Binary to Decimal",
+"Decimal to Binary",
+"Binary to Octal",
+"Octal to Binary",
+"Binary to Hex",
+"Hex to Binary",
+"Decimal to Octal",
+"Octal to Decimal",
+"Decimal to Hex",
+"Hex to Decimal",
+"Octal to Hex",
+"Hex to Octal",
+"Binary Addition",
+"Binary Subtraction",
+"Binary Multiplication",
+"Binary Division",
+"1's Complement",
+"2's Complement",
+"Bitwise AND",
+"Bitwise OR",
+"Bitwise XOR",
+"Bitwise NOT",
+"Left Shift",
+"Right Shift",
+"ASCII to Decimal",
+"Decimal to ASCII"
+],
+
+games:[
+"Number Guess",
+"Memory Game",
+"Typing Test",
+"Tic-Tac-Toe",
+"Math Sprint",
+"Word Scramble",
+"Reaction Test",
+"Number Sequence",
+"Multiplication Challenge",
+"Quiz Challenge"
+]
+};
+
+/* =====================================================
+RENDER TOOL CARDS
+===================================================== */
+
+function card(name){
+ return `
+ <div class="card"
+ onclick="openTool('${name.replace(/'/g,"\\'")}')">
+ <b>${name}</b>
+ <small>Browser tool • No API</small>
+ </div>`;
 }
 
-function goHome(){
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
+function render(id,list){
+ document.getElementById(id).innerHTML=
+ list.map(card).join("");
 }
 
-function focusSearch(){
+render("homeTools",
+ [
+  ...tools.math.slice(0,5),
+  ...tools.study.slice(0,5),
+  ...tools.coding.slice(0,5),
+  ...tools.utilities.slice(0,5)
+ ]);
 
-  const search=
-    document.getElementById("globalSearch");
+render("mathTools",tools.math);
+render("scienceTools",tools.science);
+render("chemTools",tools.chem);
+render("codingTools",tools.coding);
+render("textTools",tools.text);
+render("studyTools",tools.study);
+render("fileTools",tools.files);
+render("imageTools",tools.image);
+render("videoTools",tools.video);
+render("utilityTools",tools.utilities);
+render("numberTools",tools.numbers);
+render("gameTools",tools.games);
 
-  search.focus();
+/* =====================================================
+NAVIGATION
+===================================================== */
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+function show(id){
+ document.querySelectorAll(".toolpage")
+ .forEach(x=>x.classList.remove("active"));
 
+ document.getElementById(id)?.classList.add("active");
+
+ scrollTo(0,0);
 }
 
+/* =====================================================
+TOOL ROUTER
+===================================================== */
 
-/* =========================
-   SEARCH
-========================= */
+function openTool(name){
+
+ if(name.includes("Calculator") ||
+ name.includes("Interest") ||
+ name.includes("Percentage") ||
+ name.includes("EMI") ||
+ name.includes("Profit") ||
+ name.includes("Discount") ||
+ name.includes("Ratio") ||
+ name.includes("Quadratic"))
+ show("math");
+
+ else if(
+ name.includes("Force") ||
+ name.includes("Momentum") ||
+ name.includes("Energy") ||
+ name.includes("Power") ||
+ name.includes("Ohm") ||
+ name.includes("Voltage") ||
+ name.includes("Current"))
+ show("science");
+
+ else if(
+ name.includes("Mole") ||
+ name.includes("Molar") ||
+ name.includes("Periodic") ||
+ name.includes("Gas") ||
+ name.includes("Chemical") ||
+ name.includes("Oxidation"))
+ show("chemistry");
+
+ else if(
+ name.includes("JavaScript") ||
+ name.includes("HTML") ||
+ name.includes("CSS") ||
+ name.includes("JSON") ||
+ name.includes("Base64") ||
+ name.includes("Regex") ||
+ name.includes("Code"))
+ show("coding");
+
+ else if(
+ name.includes("Text") ||
+ name.includes("Word") ||
+ name.includes("Character") ||
+ name.includes("Line") ||
+ name.includes("Case") ||
+ name.includes("Lorem"))
+ show("text");
+
+ else if(
+ name.includes("Study") ||
+ name.includes("GPA") ||
+ name.includes("CGPA") ||
+ name.includes("Attendance") ||
+ name.includes("Quiz") ||
+ name.includes("Flashcard"))
+ show("study");
+
+ else if(
+ name.includes("PDF") ||
+ name.includes("CSV") ||
+ name.includes("File"))
+ show("files");
+
+ else if(
+ name.includes("Image") ||
+ name.includes("Canvas") ||
+ name.includes("Drawing") ||
+ name.includes("Poster") ||
+ name.includes("Certificate"))
+ show("image");
+
+ else if(name.includes("Video"))
+ show("video");
+
+ else if(
+ name.includes("Binary") ||
+ name.includes("Decimal") ||
+ name.includes("Octal") ||
+ name.includes("Hex") ||
+ name.includes("Bitwise") ||
+ name.includes("Complement"))
+ show("numbers");
+
+ else if(
+ name.includes("Game") ||
+ name.includes("Guess") ||
+ name.includes("Typing") ||
+ name.includes("Tic-Tac"))
+ show("games");
+
+ else show("utilities");
+}
+
+/* =====================================================
+DARK MODE
+===================================================== */
+
+function darkMode(){
+ document.body.classList.toggle("dark");
+ localStorage.setItem(
+  "studentProDark",
+  document.body.classList.contains("dark")
+ );
+}
+
+if(localStorage.getItem("studentProDark")==="true")
+ document.body.classList.add("dark");
+
+/* =====================================================
+SEARCH
+===================================================== */
 
 function searchTools(){
 
-  const query=
-    document
-    .getElementById("globalSearch")
-    .value
-    .toLowerCase()
-    .trim();
+ let q=document.getElementById("search").value.toLowerCase();
 
-  document
-  .querySelectorAll(".tool")
-  .forEach(tool=>{
+ if(!q){
+  document.querySelectorAll(".card")
+  .forEach(x=>x.style.display="block");
+  return;
+ }
 
-    const text=
-      (
-        tool.dataset.name+
-        " "+
-        tool.dataset.category
-      ).toLowerCase();
-
-    tool.style.display=
-      text.includes(query)
-      ? ""
-      : "none";
-
-  });
-
+ document.querySelectorAll(".card").forEach(x=>{
+  x.style.display=
+  x.textContent.toLowerCase().includes(q)
+  ?"block":"none";
+ });
 }
 
-function filterCategory(category){
+/* =====================================================
+TEXT TOOLS
+===================================================== */
 
-  document
-  .querySelectorAll(".tool")
-  .forEach(tool=>{
-
-    const categories=
-      tool.dataset.category || "";
-
-    tool.style.display=
-      categories.includes(category)
-      ? ""
-      : "none";
-
-  });
-
-  window.scrollTo({
-    top:400,
-    behavior:"smooth"
-  });
+function upper(){
+ textResult.textContent=
+ textInput.value.toUpperCase();
 }
 
-
-/* =========================
-   THEME
-========================= */
-
-function toggleTheme(){
-
-  document.body.classList.toggle("dark");
-
-  const dark=
-    document.body.classList.contains("dark");
-
-  localStorage.setItem(
-    "theme",
-    dark ? "dark" : "light"
-  );
-
-  document.getElementById("themeBtn")
-    .textContent=
-      dark ? "☀️" : "🌙";
+function lower(){
+ textResult.textContent=
+ textInput.value.toLowerCase();
 }
 
-(function(){
-
-  if(localStorage.getItem("theme")==="dark"){
-
-    document.body.classList.add("dark");
-
-    document.getElementById("themeBtn")
-      .textContent="☀️";
-
-  }
-
-})();
-
-
-/* =========================
-   FAVORITES
-========================= */
-
-function getFavorites(){
-
-  return JSON.parse(
-    localStorage.getItem("favorites") || "[]"
-  );
-
+function titleCase(){
+ textResult.textContent=
+ textInput.value.toLowerCase()
+ .replace(/\b\w/g,x=>x.toUpperCase());
 }
 
-function favoriteTool(button,name){
-
-  let favorites=getFavorites();
-
-  if(favorites.includes(name)){
-
-    favorites=
-      favorites.filter(x=>x!==name);
-
-    button.textContent="☆";
-
-  }else{
-
-    favorites.push(name);
-
-    button.textContent="★";
-
-  }
-
-  localStorage.setItem(
-    "favorites",
-    JSON.stringify(favorites)
-  );
-
+function reverse(){
+ textResult.textContent=
+ [...textInput.value].reverse().join("");
 }
 
-function showFavorites(){
-
-  const favorites=getFavorites();
-
-  if(!favorites.length){
-
-    alert("No favorite tools yet.");
-
-    return;
-
-  }
-
-  alert(
-    "⭐ Your Favorites:\n\n"+
-    favorites.join("\n")
-  );
-
+function clean(){
+ textResult.textContent=
+ textInput.value
+ .split("\n")
+ .map(x=>x.trim().replace(/\s+/g," "))
+ .filter(Boolean)
+ .join("\n");
 }
 
+function count(){
+ let x=textInput.value;
 
-/* =========================
-   RECENT TOOLS
-========================= */
-
-function addRecent(id){
-
-  let recent=
-    JSON.parse(
-      localStorage.getItem("recent") || "[]"
-    );
-
-  recent=
-    recent.filter(x=>x!==id);
-
-  recent.unshift(id);
-
-  recent=recent.slice(0,10);
-
-  localStorage.setItem(
-    "recent",
-    JSON.stringify(recent)
-  );
-
+ textResult.textContent=
+ `Characters: ${x.length}
+Words: ${x.trim()?x.trim().split(/\s+/).length:0}
+Lines: ${x?x.split("\n").length:0}`;
 }
 
+/* =====================================================
+NUMBER SYSTEM
+===================================================== */
 
-/* =========================
-   SCIENTIFIC CALCULATOR
-========================= */
+function convertNumber(){
 
-let calcExpression="";
+ let value=numberInput.value.trim();
+ let base=Number(numberBase.value);
 
-function calcAdd(value){
+ let n=parseInt(value,base);
 
-  if(
-    document
-    .getElementById("calcDisplay")
-    .value==="Error"
-  ){
-    calcExpression="";
-  }
+ if(Number.isNaN(n)){
+  numberResult.textContent="Invalid number.";
+  return;
+ }
 
-  calcExpression+=value;
-
-  document
-    .getElementById("calcDisplay")
-    .value=
-      calcExpression || "0";
+ numberResult.textContent=
+ `Binary: ${n.toString(2)}
+Octal: ${n.toString(8)}
+Decimal: ${n}
+Hexadecimal: ${n.toString(16).toUpperCase()}`;
 }
 
-function clearCalc(){
+/* =====================================================
+IMAGE CREATOR
+===================================================== */
 
-  calcExpression="";
+function createImage(){
 
-  document
-    .getElementById("calcDisplay")
-    .value="0";
+ let w=Number(imageWidth.value)||1000;
+ let h=Number(imageHeight.value)||600;
+
+ canvas.width=w;
+ canvas.height=h;
+
+ let ctx=canvas.getContext("2d");
+
+ ctx.fillStyle="#ffffff";
+ ctx.fillRect(0,0,w,h);
+
+ ctx.fillStyle="#635bff";
+ ctx.fillRect(0,0,w,120);
+
+ ctx.fillStyle="#111827";
+ ctx.font="bold 50px Arial";
+ ctx.textAlign="center";
+
+ ctx.fillText(
+  imageText.value||"StudentPro",
+  w/2,
+  h/2
+ );
 }
 
-function calculate(){
+function downloadImage(){
 
-  try{
+ let a=document.createElement("a");
 
-    if(
-      !/^[0-9+\-*/(). ]+$/
-      .test(calcExpression)
-    ){
-      throw new Error();
-    }
+ a.download="studentpro-image.png";
+ a.href=canvas.toDataURL("image/png");
 
-    const result=
-      Function(
-        '"use strict";return ('+
-        calcExpression+
-        ')'
-      )();
-
-    calcExpression=String(result);
-
-    document
-      .getElementById("calcDisplay")
-      .value=result;
-
-  }catch{
-
-    calcExpression="";
-
-    document
-      .getElementById("calcDisplay")
-      .value="Error";
-
-  }
-
+ a.click();
 }
 
-function calcFunc(type){
+/* =====================================================
+VIDEO
+===================================================== */
 
-  let value=
-    parseFloat(
-      document
-      .getElementById("calcDisplay")
-      .value
-    );
+videoFile.onchange=()=>{
 
-  if(type==="pi"){
-    calcExpression=String(Math.PI);
-  }
+ let file=videoFile.files[0];
 
-  else if(type==="sqrt"){
-    calcExpression=String(Math.sqrt(value));
-  }
+ if(!file)return;
 
-  else if(type==="square"){
-    calcExpression=String(value*value);
-  }
+ videoPreview.src=
+ URL.createObjectURL(file);
+};
 
-  else if(type==="sin"){
-    calcExpression=
-      String(
-        Math.sin(value*Math.PI/180)
-      );
-  }
+/* =====================================================
+FILE DOWNLOADS
+===================================================== */
 
-  else if(type==="cos"){
-    calcExpression=
-      String(
-        Math.cos(value*Math.PI/180)
-      );
-  }
+function downloadTXT(){
 
-  else if(type==="tan"){
-    calcExpression=
-      String(
-        Math.tan(value*Math.PI/180)
-      );
-  }
+ let blob=new Blob(
+  [fileText.value],
+  {type:"text/plain"}
+ );
 
-  else if(type==="log"){
-    calcExpression=
-      String(Math.log10(value));
-  }
+ let a=document.createElement("a");
 
-  else if(type==="ln"){
-    calcExpression=
-      String(Math.log(value));
-  }
+ a.href=URL.createObjectURL(blob);
+ a.download="student-notes.txt";
 
-  document
-    .getElementById("calcDisplay")
-    .value=
-      calcExpression;
-
+ a.click();
 }
 
+function downloadHTML(){
 
-/* =========================
-   PERCENTAGE
-========================= */
+ let html=`
+ <!DOCTYPE html>
+ <html>
+ <body>
+ ${fileText.value}
+ </body>
+ </html>`;
 
-function percentageCalc(){
+ let blob=new Blob(
+  [html],
+  {type:"text/html"}
+ );
 
-  const value=
-    parseFloat(
-      document
-      .getElementById("percentValue")
-      .value
-    );
+ let a=document.createElement("a");
 
-  const total=
-    parseFloat(
-      document
-      .getElementById("percentTotal")
-      .value
-    );
+ a.href=URL.createObjectURL(blob);
+ a.download="student-page.html";
 
-  if(
-    isNaN(value)||
-    isNaN(total)||
-    total===0
-  ){
-
-    document
-      .getElementById("percentageResult")
-      .textContent=
-        "Enter valid values.";
-
-    return;
-  }
-
-  const result=
-    (value/total)*100;
-
-  document
-    .getElementById("percentageResult")
-    .textContent=
-      result.toFixed(2)+"%";
-
+ a.click();
 }
 
+/* =====================================================
+POMODORO
+===================================================== */
 
-/* =========================
-   CGPA
-========================= */
+let seconds=1500;
+let pomodoro;
 
-function calculateCGPA(){
+function drawTimer(){
 
-  const values=
-    document
-    .getElementById("cgpaValues")
-    .value
-    .split(",")
-    .map(Number)
-    .filter(x=>!isNaN(x));
+ let m=Math.floor(seconds/60);
+ let s=seconds%60;
 
-  if(!values.length){
-
-    document
-      .getElementById("cgpaResult")
-      .textContent=
-        "Enter GPAs separated by commas.";
-
-    return;
-  }
-
-  const average=
-    values.reduce(
-      (a,b)=>a+b,0
-    )/values.length;
-
-  document
-    .getElementById("cgpaResult")
-    .textContent=
-      "CGPA: "+average.toFixed(2);
-
+ timer.textContent=
+ `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
 }
 
+function startPomodoro(){
 
-/* =========================
-   NUMBER SYSTEM
-========================= */
+ if(pomodoro)return;
 
-function convertNumbers(){
+ pomodoro=setInterval(()=>{
 
-  const base=
-    parseInt(
-      document
-      .getElementById("numberBase")
-      .value
-    );
+  if(seconds<=0){
 
-  const input=
-    document
-    .getElementById("numberInput")
-    .value
-    .trim();
+   clearInterval(pomodoro);
+   pomodoro=null;
 
-  const result=
-    document
-    .getElementById("numberResult");
+   alert("🎉 Study session completed!");
 
-  try{
+   seconds=1500;
+   drawTimer();
 
-    const decimal=
-      parseInt(input,base);
-
-    if(isNaN(decimal)){
-      throw new Error();
-    }
-
-    result.innerHTML=
-      "Decimal: "+
-      decimal+
-      "<br><br>"+
-      "Binary: "+
-      decimal.toString(2)+
-      "<br><br>"+
-      "Octal: "+
-      decimal.toString(8)+
-      "<br><br>"+
-      "Hexadecimal: "+
-      decimal.toString(16).toUpperCase();
-
-  }catch{
-
-    result.textContent=
-      "Invalid number for the selected base.";
-
+   return;
   }
 
+  seconds--;
+  drawTimer();
+
+ },1000);
 }
 
+function stopPomodoro(){
 
-/* =========================
-   UNIT CONVERTER
-========================= */
-
-function convertUnit(){
-
-  const value=
-    parseFloat(
-      document
-      .getElementById("unitValue")
-      .value
-    );
-
-  const type=
-    document
-    .getElementById("unitType")
-    .value;
-
-  if(isNaN(value)){
-
-    document
-      .getElementById("unitResult")
-      .textContent=
-        "Enter a valid number.";
-
-    return;
-  }
-
-  let result;
-
-  if(type==="kmmi"){
-    result=value*0.621371;
-    result=result.toFixed(4)+" miles";
-  }
-
-  if(type==="mft"){
-    result=value*3.28084;
-    result=result.toFixed(4)+" feet";
-  }
-
-  if(type==="kg"){
-    result=value*2.20462;
-    result=result.toFixed(4)+" pounds";
-  }
-
-  if(type==="cf"){
-    result=(value*9/5)+32;
-    result=result.toFixed(2)+" °F";
-  }
-
-  document
-    .getElementById("unitResult")
-    .textContent=result;
-
+ clearInterval(pomodoro);
+ pomodoro=null;
 }
 
+function resetPomodoro(){
 
-/* =========================
-   WORD COUNTER
-========================= */
+ stopPomodoro();
 
-function countText(){
-
-  const text=
-    document
-    .getElementById("counterText")
-    .value;
-
-  const words=
-    text.trim()
-      ? text.trim().split(/\s+/).length
-      : 0;
-
-  const chars=text.length;
-
-  const lines=
-    text
-    ? text.split("\n").length
-    : 0;
-
-  document
-    .getElementById("counterResult")
-    .innerHTML=
-      "Words: "+words+
-      "<br>Characters: "+chars+
-      "<br>Lines: "+lines;
-
+ seconds=1500;
+ drawTimer();
 }
 
+/* =====================================================
+GUESS GAME
+===================================================== */
 
-/* =========================
-   CASE CONVERTER
-========================= */
+let secret=Math.floor(Math.random()*100)+1;
 
-function caseConvert(type){
+function guessNumber(){
 
-  const area=
-    document.getElementById("caseText");
+ let n=Number(guess.value);
 
-  const text=area.value;
+ if(n===secret){
 
-  if(type==="upper"){
-    area.value=text.toUpperCase();
-  }
+  guessResult.textContent=
+  "🎉 Correct! New number generated.";
 
-  if(type==="lower"){
-    area.value=text.toLowerCase();
-  }
+  secret=Math.floor(Math.random()*100)+1;
 
-  if(type==="title"){
+ }else if(n<secret){
 
-    area.value=
-      text.toLowerCase()
-      .replace(
-        /\b\w/g,
-        x=>x.toUpperCase()
-      );
+  guessResult.textContent="⬆️ Try higher.";
 
-  }
+ }else{
 
-  if(type==="sentence"){
-
-    area.value=
-      text
-      .toLowerCase()
-      .replace(
-        /(^\s*\w|[.!?]\s*\w)/g,
-        x=>x.toUpperCase()
-      );
-
-  }
-
+  guessResult.textContent="⬇️ Try lower.";
+ }
 }
 
-
-/* =========================
-   LOREM
-========================= */
-
-const loremWords=[
-"lorem","ipsum","dolor","sit","amet",
-"consectetur","adipiscing","elit","sed",
-"do","eiusmod","tempor","incididunt","ut",
-"labore","et","dolore","magna","aliqua",
-"enim","ad","minim","veniam","quis",
-"nostrud","exercitation","ullamco","laboris",
-"nisi","aliquip","commodo","consequat"
-];
-
-function generateLorem(){
-
-  const count=
-    parseInt(
-      document
-      .getElementById("loremCount")
-      .value
-    )||1;
-
-  let output="";
-
-  for(let p=0;p<count;p++){
-
-    let paragraph="";
-
-    for(let i=0;i<50;i++){
-
-      paragraph+=
-        loremWords[
-          Math.floor(
-            Math.random()*
-            loremWords.length
-          )
-        ]+" ";
-
-    }
-
-    paragraph=
-      paragraph.trim()+". ";
-
-    output+=
-      paragraph+
-      "\n\n";
-
-  }
-
-  document
-    .getElementById("loremOutput")
-    .value=
-      output;
-
-}
-
-
-/* =========================
-   WIFI QR
-========================= */
-
-function escapeWifi(text){
-
-  return text
-    .replace(/\\/g,"\\\\")
-    .replace(/;/g,"\\;")
-    .replace(/,/g,"\\,")
-    .replace(/:/g,"\\:");
-}
-
-function makeQR(){
-
-  const name=
-    document
-    .getElementById("wifiName")
-    .value;
-
-  const password=
-    document
-    .getElementById("wifiPassword")
-    .value;
-
-  const security=
-    document
-    .getElementById("wifiSecurity")
-    .value;
-
-  if(!name){
-
-    alert("Enter the Wi-Fi name.");
-
-    return;
-  }
-
-  const data=
-    "WIFI:T:"+
-    security+
-    ";S:"+
-    escapeWifi(name)+
-    ";P:"+
-    escapeWifi(password)+
-    ";;";
-
-  const qr=
-    document.getElementById("qr");
-
-  qr.innerHTML="";
-
-  new QRCode(qr,{
-    text:data,
-    width:220,
-    height:220
-  });
-
-}
-
-
-/* =========================
-   IMAGE CREATOR
-========================= */
-
-const canvas=
-  document.getElementById(
-    "drawingCanvas"
-  );
-
-const ctx=
-  canvas.getContext("2d");
-
-let drawing=false;
-let currentTool="draw";
-let history=[];
-
-function saveCanvasState(){
-
-  history.push(
-    canvas.toDataURL()
-  );
-
-  if(history.length>20){
-    history.shift();
-  }
-
-}
-
-function restoreImage(data){
-
-  const image=new Image();
-
-  image.onload=function(){
-
-    ctx.clearRect(
-      0,0,
-      canvas.width,
-      canvas.height
-    );
-
-    ctx.drawImage(
-      image,
-      0,0
-    );
-
-  };
-
-  image.src=data;
-
-}
-
-function getPointer(event){
-
-  const rect=
-    canvas.getBoundingClientRect();
-
-  const scaleX=
-    canvas.width/rect.width;
-
-  const scaleY=
-    canvas.height/rect.height;
-
-  let clientX;
-  let clientY;
-
-  if(event.touches){
-
-    clientX=event.touches[0].clientX;
-    clientY=event.touches[0].clientY;
-
-  }else{
-
-    clientX=event.clientX;
-    clientY=event.clientY;
-
-  }
-
-  return {
-    x:(clientX-rect.left)*scaleX,
-    y:(clientY-rect.top)*scaleY
-  };
-
-}
-
-function startDraw(event){
-
-  if(
-    currentTool!=="draw" &&
-    currentTool!=="erase"
-  ) return;
-
-  event.preventDefault();
-
-  saveCanvasState();
-
-  drawing=true;
-
-  const p=getPointer(event);
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    p.x,
-    p.y
-  );
-
-}
-
-function draw(event){
-
-  if(!drawing) return;
-
-  event.preventDefault();
-
-  const p=getPointer(event);
-
-  ctx.lineWidth=
-    parseInt(
-      document
-      .getElementById("brushSize")
-      .value
-    );
-
-  ctx.lineCap="round";
-
-  if(currentTool==="erase"){
-
-    ctx.globalCompositeOperation=
-      "destination-out";
-
-  }else{
-
-    ctx.globalCompositeOperation=
-      "source-over";
-
-    ctx.strokeStyle=
-      document
-      .getElementById("drawColor")
-      .value;
-
-  }
-
-  ctx.lineTo(
-    p.x,
-    p.y
-  );
-
-  ctx.stroke();
-
-}
-
-function stopDraw(){
-
-  drawing=false;
-
-  ctx.globalCompositeOperation=
-    "source-over";
-
-}
-
-canvas.addEventListener(
-  "mousedown",
-  startDraw
+/* =====================================================
+LOCAL STORAGE
+===================================================== */
+
+window.addEventListener("beforeunload",()=>{
+ localStorage.setItem(
+  "studentProLastVisit",
+  new Date().toISOString()
 );
-
-canvas.addEventListener(
-  "mousemove",
-  draw
-);
-
-canvas.addEventListener(
-  "mouseup",
-  stopDraw
-);
-
-canvas.addEventListener(
-  "mouseleave",
-  stopDraw
-);
-
-canvas.addEventListener(
-  "touchstart",
-  startDraw,
-  {passive:false}
-);
-
-canvas.addEventListener(
-  "touchmove",
-  draw,
-  {passive:false}
-);
-
-canvas.addEventListener(
-  "touchend",
-  stopDraw
-);
-
-function setTool(tool){
-
-  currentTool=tool;
-
-}
-
-function resizeCanvas(){
-
-  saveCanvasState();
-
-  const old=
-    document
-    .getElementById("drawingCanvas");
-
-  const oldData=
-    old.toDataURL();
-
-  canvas.width=
-    parseInt(
-      document
-      .getElementById("canvasWidth")
-      .value
-    )||800;
-
-  canvas.height=
-    parseInt(
-      document
-      .getElementById("canvasHeight")
-      .value
-    )||500;
-
-  ctx.fillStyle="white";
-
-  ctx.fillRect(
-    0,0,
-    canvas.width,
-    canvas.height
-  );
-
-}
-
-function openImageCreator(){
-
-  openTool("imageCreator");
-
-}
-
-function clearCanvas(){
-
-  saveCanvasState();
-
-  ctx.fillStyle="white";
-
-  ctx.fillRect(
-    0,0,
-    canvas.width,
-    canvas.height
-  );
-
-}
-
-function undoCanvas(){
-
-  if(!history.length){
-
-    return;
-
-  }
-
-  const data=
-    history.pop();
-
-  restoreImage(data);
-
-}
-
-function addText(){
-
-  const text=
-    prompt(
-      "Enter text:"
-    );
-
-  if(!text) return;
-
-  saveCanvasState();
-
-  ctx.globalCompositeOperation=
-    "source-over";
-
-  ctx.fillStyle=
-    document
-    .getElementById("drawColor")
-    .value;
-
-  ctx.font="32px Arial";
-
-  ctx.fillText(
-    text,
-    50,
-    60
-  );
-
-}
-
-function drawRectangle(){
-
-  saveCanvasState();
-
-  ctx.globalCompositeOperation=
-    "source-over";
-
-  ctx.strokeStyle=
-    document
-    .getElementById("drawColor")
-    .value;
-
-  ctx.lineWidth=
-    parseInt(
-      document
-      .getElementById("brushSize")
-      .value
-    );
-
-  ctx.strokeRect(
-    80,80,
-    220,130
-  );
-
-}
-
-function drawCircle(){
-
-  saveCanvasState();
-
-  ctx.globalCompositeOperation=
-    "source-over";
-
-  ctx.strokeStyle=
-    document
-    .getElementById("drawColor")
-    .value;
-
-  ctx.lineWidth=5;
-
-  ctx.beginPath();
-
-  ctx.arc(
-    300,220,
-    80,
-    0,
-    Math.PI*2
-  );
-
-  ctx.stroke();
-
-}
-
-function drawLine(){
-
-  saveCanvasState();
-
-  ctx.strokeStyle=
-    document
-    .getElementById("drawColor")
-    .value;
-
-  ctx.lineWidth=5;
-
-  ctx.beginPath();
-
-  ctx.moveTo(80,80);
-
-  ctx.lineTo(350,250);
-
-  ctx.stroke();
-
-}
-
-function downloadCanvas(type){
-
-  const link=
-    document.createElement("a");
-
-  link.download=
-    "toolbox-image."+
-    type;
-
-  link.href=
-    canvas.toDataURL(
-      type==="jpg"
-      ?"image/jpeg"
-      :"image/png"
-    );
-
-  link.click();
-
-}
-
-
-/* =========================
-   IMAGE TO PDF
-========================= */
-
-async function imagesToPDF(){
-
-  const files=
-    document
-    .getElementById("imagePdfFiles")
-    .files;
-
-  if(!files.length){
-
-    alert("Select images first.");
-
-    return;
-  }
-
-  const PDFDocument=
-    PDFLib.PDFDocument;
-
-  const pdf=
-    await PDFDocument.create();
-
-  for(const file of files){
-
-    const bytes=
-      new Uint8Array(
-        await file.arrayBuffer()
-      );
-
-    let image;
-
-    if(file.type==="image/png"){
-
-      image=
-        await pdf.embedPng(bytes);
-
-    }else{
-
-      image=
-        await pdf.embedJpg(bytes);
-
-    }
-
-    const page=
-      pdf.addPage([
-        image.width,
-        image.height
-      ]);
-
-    page.drawImage(
-      image,
-      {
-        x:0,
-        y:0,
-        width:image.width,
-        height:image.height
-      }
-    );
-
-  }
-
-  const result=
-    await pdf.save();
-
-  downloadBlob(
-    result,
-    "images.pdf",
-    "application/pdf"
-  );
-
-}
-
-
-/* =========================
-   PDF TO IMAGES
-========================= */
-
-async function pdfToImages(){
-
-  const file=
-    document
-    .getElementById("pdfImageFile")
-    .files[0];
-
-  if(!file){
-
-    alert("Select a PDF.");
-
-    return;
-  }
-
-  const buffer=
-    await file.arrayBuffer();
-
-  const pdf=
-    await pdfjsLib
-    .getDocument({
-      data:buffer
-    })
-    .promise;
-
-  const preview=
-    document
-    .getElementById("pdfImagePreview");
-
-  preview.innerHTML="";
-
-  for(
-    let i=1;
-    i<=pdf.numPages;
-    i++
-  ){
-
-    const page=
-      await pdf.getPage(i);
-
-    const viewport=
-      page.getViewport({
-        scale:1.5
-      });
-
-    const canvas=
-      document.createElement("canvas");
-
-    canvas.width=
-      viewport.width;
-
-    canvas.height=
-      viewport.height;
-
-    await page.render({
-      canvasContext:
-        canvas.getContext("2d"),
-      viewport
-    }).promise;
-
-    const image=
-      canvas.toDataURL(
-        "image/png"
-      );
-
-    const img=
-      document.createElement("img");
-
-    img.src=image;
-
-    const download=
-      document.createElement("button");
-
-    download.className=
-      "primary";
-
-    download.textContent=
-      "Download Page "+i;
-
-    download.onclick=()=>{
-
-      const a=
-        document.createElement("a");
-
-      a.href=image;
-
-      a.download=
-        "page-"+i+".png";
-
-      a.click();
-
-    };
-
-    preview.appendChild(img);
-
-    preview.appendChild(download);
-
-  }
-
-}
-
-
-/* =========================
-   MERGE PDF
-========================= */
-
-async function mergePDF(){
-
-  const files=
-    document
-    .getElementById("mergeFiles")
-    .files;
-
-  if(files.length<2){
-
-    alert("Select at least two PDFs.");
-
-    return;
-  }
-
-  const output=
-    await PDFLib
-    .PDFDocument
-    .create();
-
-  for(const file of files){
-
-    const source=
-      await PDFLib
-      .PDFDocument
-      .load(
-        await file.arrayBuffer()
-      );
-
-    const pages=
-      await output.copyPages(
-        source,
-        source.getPageIndices()
-      );
-
-    pages.forEach(
-      page=>output.addPage(page)
-    );
-
-  }
-
-  const bytes=
-    await output.save();
-
-  downloadBlob(
-    bytes,
-    "merged.pdf",
-    "application/pdf"
-  );
-
-}
-
-
-/* =========================
-   SPLIT PDF
-========================= */
-
-function parsePageList(text,total){
-
-  const pages=new Set();
-
-  text
-  .split(",")
-  .forEach(part=>{
-
-    part=part.trim();
-
-    if(part.includes("-")){
-
-      const pieces=
-        part.split("-");
-
-      let start=
-        parseInt(pieces[0]);
-
-      let end=
-        parseInt(pieces[1]);
-
-      if(
-        isNaN(start)||
-        isNaN(end)
-      ) return;
-
-      if(start>end){
-
-        const temp=start;
-
-        start=end;
-        end=temp;
-
-      }
-
-      for(
-        let i=start;
-        i<=end;
-        i++
-      ){
-
-        if(
-          i>=1 &&
-          i<=total
-        ){
-          pages.add(i-1);
-        }
-
-      }
-
-    }else{
-
-      const page=
-        parseInt(part);
-
-      if(
-        page>=1 &&
-        page<=total
-      ){
-        pages.add(page-1);
-      }
-
-    }
-
-  });
-
-  return [...pages].sort(
-    (a,b)=>a-b
-  );
-
-}
-
-async function splitPDF(){
-
-  const file=
-    document
-    .getElementById("splitFile")
-    .files[0];
-
-  const pageText=
-    document
-    .getElementById("splitPages")
-    .value;
-
-  if(!file){
-
-    alert("Select a PDF.");
-
-    return;
-  }
-
-  if(!pageText){
-
-    alert(
-      "Enter pages such as 1,3,5 or 2-6."
-    );
-
-    return;
-  }
-
-  const source=
-    await PDFLib
-    .PDFDocument
-    .load(
-      await file.arrayBuffer()
-    );
-
-  const output=
-    await PDFLib
-    .PDFDocument
-    .create();
-
-  const indices=
-    parsePageList(
-      pageText,
-      source.getPageCount()
-    );
-
-  if(!indices.length){
-
-    alert("No valid pages.");
-
-    return;
-  }
-
-  const pages=
-    await output.copyPages(
-      source,
-      indices
-    );
-
-  pages.forEach(
-    page=>output.addPage(page)
-  );
-
-  const bytes=
-    await output.save();
-
-  downloadBlob(
-    bytes,
-    "split.pdf",
-    "application/pdf"
-  );
-
-}
-
-
-/* =========================
-   DOWNLOAD
-========================= */
-
-function downloadBlob(
-  data,
-  filename,
-  type
-){
-
-  const blob=
-    new Blob(
-      [data],
-      {type:type}
-    );
-
-  const url=
-    URL.createObjectURL(blob);
-
-  const a=
-    document.createElement("a");
-
-  a.href=url;
-
-  a.download=filename;
-
-  document.body.appendChild(a);
-
-  a.click();
-
-  a.remove();
-
-  setTimeout(
-    ()=>URL.revokeObjectURL(url),
-    1000
-  );
-
-}
-
-
-/* =========================
-   NOTES
-========================= */
-
-(function(){
-
-  const saved=
-    localStorage.getItem(
-      "toolboxNotes"
-    );
-
-  if(saved){
-
-    document
-      .getElementById("notesText")
-      .value=saved;
-
-  }
-
-})();
-
-function saveNotes(){
-
-  const text=
-    document
-    .getElementById("notesText")
-    .value;
-
-  localStorage.setItem(
-    "toolboxNotes",
-    text
-  );
-
-  document
-    .getElementById("notesStatus")
-    .textContent=
-      "✅ Notes saved on this device.";
-
-}
-
-function clearNotes(){
-
-  if(
-    confirm(
-      "Clear your saved notes?"
-    )
-  ){
-
-    localStorage.removeItem(
-      "toolboxNotes"
-    );
-
-    document
-      .getElementById("notesText")
-      .value="";
-
-    document
-      .getElementById("notesStatus")
-      .textContent=
-        "Notes cleared.";
-
-  }
-
-}
-
-
-/* =========================
-   TODO
-========================= */
-
-let todos=
-  JSON.parse(
-    localStorage.getItem(
-      "toolboxTodos"
-    )||"[]"
-  );
-
-function renderTodos(){
-
-  const list=
-    document
-    .getElementById("todoList");
-
-  list.innerHTML="";
-
-  todos.forEach(
-    (todo,index)=>{
-
-      const row=
-        document.createElement("div");
-
-      row.className="result";
-
-      row.innerHTML=
-        "☑️ "+
-        escapeHTML(todo)+
-        " <button class='secondary' "+
-        "onclick='deleteTodo("+index+")'>"+
-        "Delete</button>";
-
-      list.appendChild(row);
-
-    }
-  );
-
-}
-
-function addTodo(){
-
-  const input=
-    document
-    .getElementById("todoInput");
-
-  const text=
-    input.value.trim();
-
-  if(!text) return;
-
-  todos.push(text);
-
-  localStorage.setItem(
-    "toolboxTodos",
-    JSON.stringify(todos)
-  );
-
-  input.value="";
-
-  renderTodos();
-
-}
-
-function deleteTodo(index){
-
-  todos.splice(index,1);
-
-  localStorage.setItem(
-    "toolboxTodos",
-    JSON.stringify(todos)
-  );
-
-  renderTodos();
-
-}
-
-function escapeHTML(text){
-
-  return text
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-renderTodos();
-
-
-/* =========================
-   STUDY TIMER
-========================= */
-
-let timerSeconds=25*60;
-let timerInterval=null;
-
-function updateTimer(){
-
-  const minutes=
-    Math.floor(
-      timerSeconds/60
-    );
-
-  const seconds=
-    timerSeconds%60;
-
-  document
-    .getElementById("timerDisplay")
-    .textContent=
-      String(minutes).padStart(2,"0")+
-      ":"+
-      String(seconds).padStart(2,"0");
-
-}
-
-function startTimer(){
-
-  if(timerInterval) return;
-
-  timerInterval=
-    setInterval(()=>{
-
-      if(timerSeconds<=0){
-
-        clearInterval(timerInterval);
-
-        timerInterval=null;
-
-        alert("🎉 Study session complete!");
-
-        return;
-
-      }
-
-      timerSeconds--;
-
-      updateTimer();
-
-    },1000);
-
-}
-
-function pauseTimer(){
-
-  clearInterval(timerInterval);
-
-  timerInterval=null;
-
-}
-
-function resetTimer(){
-
-  pauseTimer();
-
-  timerSeconds=25*60;
-
-  updateTimer();
-
-}
-
-updateTimer();
-
-
-/* =========================
-   PASSWORD GENERATOR
-========================= */
-
-function generatePassword(){
-
-  const length=
-    Math.min(
-      100,
-      Math.max(
-        4,
-        parseInt(
-          document
-          .getElementById("passwordLength")
-          .value
-        )||16
-      )
-    );
-
-  const chars=
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"+
-    "abcdefghijklmnopqrstuvwxyz"+
-    "0123456789"+
-    "!@#$%^&*()_+-=[]{}";
-
-  let password="";
-
-  const random=
-    new Uint32Array(length);
-
-  crypto.getRandomValues(random);
-
-  for(let i=0;i<length;i++){
-
-    password+=
-      chars[
-        random[i]%chars.length
-      ];
-
-  }
-
-  document
-    .getElementById("passwordResult")
-    .textContent=
-      password;
-
-}
-
-
-/* =========================
-   INITIAL CANVAS
-========================= */
-
-ctx.fillStyle="white";
-
-ctx.fillRect(
-  0,
-  0,
-  canvas.width,
-  canvas.height
-);
+});
 
 </script>
-
-    
-
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  font-family:Arial, sans-serif;
-  background:#f4f7fb;
-  color:#172033;
-}
-
-header{
-  padding:20px;
-  background:#111827;
-  color:white;
-  text-align:center;
-}
-
-header h1{
-  font-size:28px;
-}
-
-header p{
-  margin-top:6px;
-  color:#cbd5e1;
-}
-
-.container{
-  width:min(1100px,94%);
-  margin:25px auto;
-}
-
-.card{
-  background:white;
-  border-radius:18px;
-  padding:20px;
-  margin-bottom:20px;
-  box-shadow:0 8px 25px rgba(0,0,0,.08);
-}
-
-h2{
-  margin-bottom:15px;
-}
-
-h3{
-  margin:15px 0 10px;
-}
-
-input[type=file]{
-  width:100%;
-  padding:14px;
-  border:2px dashed #94a3b8;
-  border-radius:12px;
-  background:#f8fafc;
-}
-
-video{
-  width:100%;
-  max-height:500px;
-  background:#000;
-  border-radius:15px;
-  margin-top:15px;
-}
-
-button{
-  border:0;
-  padding:12px 16px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:bold;
-  margin:5px;
-}
-
-.primary{
-  background:#2563eb;
-  color:white;
-}
-
-.secondary{
-  background:#e2e8f0;
-  color:#111827;
-}
-
-.danger{
-  background:#dc2626;
-  color:white;
-}
-
-.green{
-  background:#16a34a;
-  color:white;
-}
-
-.buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-  margin-top:12px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:15px;
-}
-
-.tool{
-  background:#f8fafc;
-  border:1px solid #e2e8f0;
-  border-radius:14px;
-  padding:15px;
-}
-
-.tool h3{
-  margin-top:0;
-}
-
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-label{
-  display:block;
-  margin-bottom:6px;
-  font-weight:bold;
-}
-
-input[type=number],
-input[type=text],
-select{
-  width:100%;
-  padding:12px;
-  border:1px solid #cbd5e1;
-  border-radius:9px;
-}
-
-.info{
-  background:#eff6ff;
-  padding:15px;
-  border-radius:12px;
-  margin-top:15px;
-  line-height:1.7;
-}
-
-.frames{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:12px;
-  margin-top:15px;
-}
-
-.frames img{
-  width:100%;
-  border-radius:10px;
-}
-
-.record-area{
-  margin-top:15px;
-}
-
-.record-preview{
-  width:100%;
-  border-radius:15px;
-  background:#000;
-}
-
-.progress{
-  width:100%;
-  height:10px;
-  background:#e2e8f0;
-  border-radius:10px;
-  overflow:hidden;
-  margin-top:10px;
-}
-
-.progress div{
-  width:0%;
-  height:100%;
-  background:#2563eb;
-}
-
-footer{
-  text-align:center;
-  padding:30px;
-  color:#64748b;
-}
-
-@media(max-width:600px){
-  .row{
-    grid-template-columns:1fr;
-  }
-
-  header h1{
-    font-size:23px;
-  }
-
-  button{
-    width:100%;
-    margin:4px 0;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>🎥 Tool Master Video Studio</h1>
-  <p>Browser-based video tools — no AI API required</p>
-</header>
-
-<div class="container">
-
-<!-- VIDEO INPUT -->
-<div class="card">
-
-  <h2>🎬 Video Editor</h2>
-
-  <input
-    id="videoFile"
-    type="file"
-    accept="video/*">
-
-  <video
-    id="video"
-    controls
-    playsinline>
-  </video>
-
-  <div id="videoInfo" class="info">
-    Select a video to see its information.
-  </div>
-
-</div>
-
-
-<!-- BASIC CONTROLS -->
-<div class="card">
-
-  <h2>🎛️ Video Controls</h2>
-
-  <div class="buttons">
-
-    <button class="primary"
-      onclick="playVideo()">
-      ▶️ Play
-    </button>
-
-    <button class="secondary"
-      onclick="pauseVideo()">
-      ⏸️ Pause
-    </button>
-
-    <button class="secondary"
-      onclick="restartVideo()">
-      🔄 Restart
-    </button>
-
-    <button class="secondary"
-      onclick="toggleMute()">
-      🔇 Mute
-    </button>
-
-    <button class="secondary"
-      onclick="changeSpeed()">
-      ⚡ Speed
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- VIDEO CUTTER -->
-<div class="card">
-
-  <h2>✂️ Video Cutter</h2>
-
-  <div class="row">
-
-    <div>
-      <label>Start Time (seconds)</label>
-      <input
-        id="startTime"
-        type="number"
-        min="0"
-        value="0">
-    </div>
-
-    <div>
-      <label>End Time (seconds)</label>
-      <input
-        id="endTime"
-        type="number"
-        min="0"
-        value="0">
-    </div>
-
-  </div>
-
-  <button
-    class="primary"
-    onclick="createClip()">
-    ✂️ Create Clip
-  </button>
-
-  <p style="margin-top:10px;color:#64748b">
-    The clip is created in WebM format directly in your browser.
-  </p>
-
-</div>
-
-
-<!-- FRAME EXTRACTOR -->
-<div class="card">
-
-  <h2>📸 Video → Images</h2>
-
-  <p>
-    Extract five frames from your video.
-  </p>
-
-  <button
-    class="primary"
-    onclick="extractFrames()">
-    📸 Extract Frames
-  </button>
-
-  <div
-    id="frames"
-    class="frames">
-  </div>
-
-</div>
-
-
-<!-- VIDEO INFO -->
-<div class="card">
-
-  <h2>ℹ️ Video Information</h2>
-
-  <div
-    id="metadata"
-    class="info">
-    Select a video.
-  </div>
-
-</div>
-
-
-<!-- SCREEN RECORDER -->
-<div class="card">
-
-  <h2>🖥️ Screen Recorder</h2>
-
-  <p>
-    Record your screen directly from the browser.
-  </p>
-
-  <button
-    class="green"
-    onclick="startScreenRecorder()">
-    🔴 Start Screen Recording
-  </button>
-
-  <div id="screenRecorderArea"
-       class="record-area">
-  </div>
-
-</div>
-
-
-<!-- CAMERA -->
-<div class="card">
-
-  <h2>📷 Camera Recorder</h2>
-
-  <button
-    class="green"
-    onclick="startCameraRecorder()">
-    📷 Start Camera
-  </button>
-
-  <div id="cameraArea"
-       class="record-area">
-  </div>
-
-</div>
-
-
-<!-- VOICE -->
-<div class="card">
-
-  <h2>🎤 Voice Recorder</h2>
-
-  <button
-    class="green"
-    onclick="startVoiceRecorder()">
-    🎤 Start Recording
-  </button>
-
-  <div id="voiceArea"
-       class="record-area">
-  </div>
-
-</div>
-
-
-<!-- IMAGE SLIDESHOW -->
-<div class="card">
-
-  <h2>🖼️ Images → Video Slideshow</h2>
-
-  <input
-    id="images"
-    type="file"
-    accept="image/*"
-    multiple>
-
-  <br>
-
-  <button
-    class="primary"
-    onclick="createSlideshow()">
-    🎞️ Create Slideshow
-  </button>
-
-  <div id="slideshowArea"></div>
-
-</div>
-
-
-<!-- THUMBNAIL -->
-<div class="card">
-
-  <h2>🎨 Video Thumbnail Creator</h2>
-
-  <p>
-    Select a frame and download it as a thumbnail.
-  </p>
-
-  <button
-    class="primary"
-    onclick="createThumbnail()">
-    🖼️ Create Thumbnail
-  </button>
-
-  <div id="thumbnailArea"></div>
-
-</div>
-
-
-<!-- EXTRA TOOLS -->
-<div class="card">
-
-  <h2>🛠️ Extra Video Tools</h2>
-
-  <div class="grid">
-
-    <div class="tool">
-      <h3>🔇 Mute</h3>
-      <p>Mute video playback.</p>
-      <button
-        class="secondary"
-        onclick="toggleMute()">
-        Mute
-      </button>
-    </div>
-
-    <div class="tool">
-      <h3>⚡ Speed</h3>
-      <p>Change playback speed.</p>
-      <button
-        class="secondary"
-        onclick="changeSpeed()">
-        Change
-      </button>
-    </div>
-
-    <div class="tool">
-      <h3>📐 Resolution</h3>
-      <p>View video dimensions.</p>
-      <button
-        class="secondary"
-        onclick="showMetadata()">
-        Check
-      </button>
-    </div>
-
-    <div class="tool">
-      <h3>📸 Frame</h3>
-      <p>Capture current frame.</p>
-      <button
-        class="secondary"
-        onclick="captureCurrentFrame()">
-        Capture
-      </button>
-    </div>
-
-  </div>
-
-</div>
-
-</div>
-
-
-<footer>
-  Tool Master • Video Studio • Runs in your browser
-</footer>
-
-
-<script>
-
-/* =========================
-   VIDEO PLAYER
-========================= */
-
-const video =
-  document.getElementById("video");
-
-const videoFile =
-  document.getElementById("videoFile");
-
-
-videoFile.addEventListener(
-  "change",
-  function(){
-
-    const file =
-      this.files[0];
-
-    if(!file) return;
-
-    video.src =
-      URL.createObjectURL(file);
-
-    video.onloadedmetadata =
-      function(){
-
-        document.getElementById(
-          "endTime"
-        ).value =
-          video.duration.toFixed(2);
-
-        showMetadata();
-
-      };
-
-  }
-);
-
-
-/* PLAY */
-
-function playVideo(){
-
-  video.play();
-
-}
-
-
-/* PAUSE */
-
-function pauseVideo(){
-
-  video.pause();
-
-}
-
-
-/* RESTART */
-
-function restartVideo(){
-
-  video.currentTime = 0;
-
-  video.play();
-
-}
-
-
-/* MUTE */
-
-function toggleMute(){
-
-  video.muted =
-    !video.muted;
-
-}
-
-
-/* SPEED */
-
-function changeSpeed(){
-
-  const speed =
-    prompt(
-      "Enter speed: 0.5, 1, 1.5, 2"
-    );
-
-  const value =
-    parseFloat(speed);
-
-  if(
-    !isNaN(value) &&
-    value > 0 &&
-    value <= 4
-  ){
-
-    video.playbackRate =
-      value;
-
-  }
-
-}
-
-
-/* =========================
-   METADATA
-========================= */
-
-function showMetadata(){
-
-  if(!video.src){
-
-    alert("Please select a video.");
-
-    return;
-
-  }
-
-  const file =
-    videoFile.files[0];
-
-  const info =
-
-    "📁 Name: " +
-    file.name +
-
-    "<br>📦 Size: " +
-    formatBytes(file.size) +
-
-    "<br>🎞️ Type: " +
-    file.type +
-
-    "<br>⏱️ Duration: " +
-    formatTime(video.duration) +
-
-    "<br>📐 Resolution: " +
-    video.videoWidth +
-    " × " +
-    video.videoHeight;
-
-  document.getElementById(
-    "videoInfo"
-  ).innerHTML = info;
-
-  document.getElementById(
-    "metadata"
-  ).innerHTML = info;
-
-}
-
-
-/* =========================
-   VIDEO CUTTER
-========================= */
-
-async function createClip(){
-
-  if(!video.src){
-
-    alert("Please select a video.");
-
-    return;
-
-  }
-
-  const start =
-    parseFloat(
-      document.getElementById(
-        "startTime"
-      ).value
-    );
-
-  const end =
-    parseFloat(
-      document.getElementById(
-        "endTime"
-      ).value
-    );
-
-  if(
-    isNaN(start) ||
-    isNaN(end) ||
-    start < 0 ||
-    end <= start ||
-    end > video.duration
-  ){
-
-    alert(
-      "Please enter valid start and end times."
-    );
-
-    return;
-
-  }
-
-
-  const canvas =
-    document.createElement(
-      "canvas"
-    );
-
-  canvas.width =
-    video.videoWidth;
-
-  canvas.height =
-    video.videoHeight;
-
-
-  const ctx =
-    canvas.getContext("2d");
-
-
-  const canvasStream =
-    canvas.captureStream(30);
-
-
-  let audioStream = null;
-
-  try{
-
-    const audioContext =
-      new AudioContext();
-
-    const source =
-      audioContext
-      .createMediaElementSource(video);
-
-    const destination =
-      audioContext
-      .createMediaStreamDestination();
-
-    source.connect(destination);
-
-    source.connect(
-      audioContext.destination
-    );
-
-    audioStream =
-      destination.stream;
-
-    audioStream
-      .getAudioTracks()
-      .forEach(
-        track =>
-          canvasStream.addTrack(track)
-      );
-
-  }catch(error){
-
-    console.log(
-      "Audio unavailable",
-      error
-    );
-
-  }
-
-
-  let options = {};
-
-  if(
-    MediaRecorder
-      .isTypeSupported(
-        "video/webm;codecs=vp9"
-      )
-  ){
-
-    options.mimeType =
-      "video/webm;codecs=vp9";
-
-  }
-
-
-  const recorder =
-    new MediaRecorder(
-      canvasStream,
-      options
-    );
-
-
-  const chunks = [];
-
-
-  recorder.ondataavailable =
-    function(event){
-
-      if(event.data.size > 0){
-
-        chunks.push(
-          event.data
-        );
-
-      }
-
-    };
-
-
-  recorder.onstop =
-    function(){
-
-      const blob =
-        new Blob(
-          chunks,
-          {
-            type:"video/webm"
-          }
-        );
-
-      downloadBlob(
-        blob,
-        "video-clip.webm"
-      );
-
-    };
-
-
-  video.currentTime =
-    start;
-
-
-  await waitForSeek();
-
-
-  recorder.start();
-
-  video.play();
-
-
-  function draw(){
-
-    if(
-      video.currentTime >= end ||
-      video.ended
-    ){
-
-      video.pause();
-
-      recorder.stop();
-
-      return;
-
-    }
-
-
-    ctx.drawImage(
-      video,
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-
-    requestAnimationFrame(draw);
-
-  }
-
-
-  draw();
-
-}
-
-
-function waitForSeek(){
-
-  return new Promise(
-    resolve => {
-
-      const done =
-        function(){
-
-          video.removeEventListener(
-            "seeked",
-            done
-          );
-
-          resolve();
-
-        };
-
-      video.addEventListener(
-        "seeked",
-        done
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================
-   EXTRACT FRAMES
-========================= */
-
-async function extractFrames(){
-
-  if(!video.src){
-
-    alert(
-      "Please select a video."
-    );
-
-    return;
-
-  }
-
-
-  const area =
-    document.getElementById(
-      "frames"
-    );
-
-  area.innerHTML = "";
-
-
-  const duration =
-    video.duration;
-
-
-  const count = 5;
-
-
-  for(
-    let i = 0;
-    i < count;
-    i++
-  ){
-
-    const time =
-      duration *
-      (i / (count - 1));
-
-
-    video.currentTime =
-      time;
-
-
-    await waitForSeek();
-
-
-    const canvas =
-      document.createElement(
-        "canvas"
-      );
-
-
-    canvas.width =
-      video.videoWidth;
-
-    canvas.height =
-      video.videoHeight;
-
-
-    canvas
-      .getContext("2d")
-      .drawImage(
-        video,
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
-
-
-    const image =
-      canvas.toDataURL(
-        "image/png"
-      );
-
-
-    const box =
-      document.createElement(
-        "div"
-      );
-
-
-    const img =
-      document.createElement(
-        "img"
-      );
-
-    img.src =
-      image;
-
-
-    const button =
-      document.createElement(
-        "button"
-      );
-
-    button.className =
-      "primary";
-
-    button.textContent =
-      "Download Frame";
-
-
-    button.onclick =
-      function(){
-
-        downloadDataURL(
-          image,
-          "video-frame-" +
-          (i + 1) +
-          ".png"
-        );
-
-      };
-
-
-    box.appendChild(img);
-
-    box.appendChild(button);
-
-    area.appendChild(box);
-
-  }
-
-}
-
-
-/* =========================
-   CURRENT FRAME
-========================= */
-
-function captureCurrentFrame(){
-
-  if(!video.src){
-
-    alert(
-      "Please select a video."
-    );
-
-    return;
-
-  }
-
-
-  const canvas =
-    document.createElement(
-      "canvas"
-    );
-
-
-  canvas.width =
-    video.videoWidth;
-
-  canvas.height =
-    video.videoHeight;
-
-
-  canvas
-    .getContext("2d")
-    .drawImage(
-      video,
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-
-  const image =
-    canvas.toDataURL(
-      "image/png"
-    );
-
-
-  downloadDataURL(
-    image,
-    "video-frame.png"
-  );
-
-}
-
-
-/* =========================
-   THUMBNAIL CREATOR
-========================= */
-
-function createThumbnail(){
-
-  if(!video.src){
-
-    alert(
-      "Please select a video."
-    );
-
-    return;
-
-  }
-
-
-  const canvas =
-    document.createElement(
-      "canvas"
-    );
-
-
-  canvas.width = 1280;
-
-  canvas.height = 720;
-
-
-  const ctx =
-    canvas.getContext("2d");
-
-
-  ctx.fillStyle =
-    "#000";
-
-  ctx.fillRect(
-    0,
-    0,
-    1280,
-    720
-  );
-
-
-  const ratio =
-    Math.min(
-      1280 / video.videoWidth,
-      720 / video.videoHeight
-    );
-
-
-  const width =
-    video.videoWidth *
-    ratio;
-
-  const height =
-    video.videoHeight *
-    ratio;
-
-
-  const x =
-    (1280 - width) / 2;
-
-  const y =
-    (720 - height) / 2;
-
-
-  ctx.drawImage(
-    video,
-    x,
-    y,
-    width,
-    height
-  );
-
-
-  const image =
-    canvas.toDataURL(
-      "image/jpeg",
-      .92
-    );
-
-
-  const area =
-    document.getElementById(
-      "thumbnailArea"
-    );
-
-
-  area.innerHTML =
-    "<img style='width:100%;border-radius:12px;margin-top:15px' src='" +
-    image +
-    "'>";
-
-
-  downloadDataURL(
-    image,
-    "youtube-thumbnail.jpg"
-  );
-
-}
-
-
-/* =========================
-   SCREEN RECORDER
-========================= */
-
-async function startScreenRecorder(){
-
-  try{
-
-    const stream =
-      await navigator
-      .mediaDevices
-      .getDisplayMedia({
-        video:true,
-        audio:true
-      });
-
-
-    startRecorder(
-      stream,
-      "screen-recording.webm",
-      "screenRecorderArea"
-    );
-
-
-  }catch(error){
-
-    alert(
-      "Screen recording cancelled."
-    );
-
-  }
-
-}
-
-
-/* =========================
-   CAMERA RECORDER
-========================= */
-
-async function startCameraRecorder(){
-
-  try{
-
-    const stream =
-      await navigator
-      .mediaDevices
-      .getUserMedia({
-        video:true,
-        audio:true
-      });
-
-
-    const area =
-      document.getElementById(
-        "cameraArea"
-      );
-
-
-    area.innerHTML = "";
-
-
-    const preview =
-      document.createElement(
-        "video"
-      );
-
-
-    preview.autoplay = true;
-
-    preview.muted = true;
-
-    preview.className =
-      "record-preview";
-
-    preview.srcObject =
-      stream;
-
-
-    area.appendChild(
-      preview
-    );
-
-
-    createStopButton(
-      area,
-      stream,
-      "camera-recording.webm"
-    );
-
-
-  }catch(error){
-
-    alert(
-      "Camera permission was denied."
-    );
-
-  }
-
-}
-
-
-/* =========================
-   VOICE RECORDER
-========================= */
-
-async function startVoiceRecorder(){
-
-  try{
-
-    const stream =
-      await navigator
-      .mediaDevices
-      .getUserMedia({
-        audio:true
-      });
-
-
-    startRecorder(
-      stream,
-      "voice-recording.webm",
-      "voiceArea"
-    );
-
-
-  }catch(error){
-
-    alert(
-      "Microphone permission was denied."
-    );
-
-  }
-
-}
-
-
-/* =========================
-   MEDIA RECORDER
-========================= */
-
-function startRecorder(
-  stream,
-  filename,
-  areaID
-){
-
-  const chunks = [];
-
-
-  const recorder =
-    new MediaRecorder(
-      stream
-    );
-
-
-  recorder.ondataavailable =
-    function(event){
-
-      if(event.data.size){
-
-        chunks.push(
-          event.data
-        );
-
-      }
-
-    };
-
-
-  recorder.onstop =
-    function(){
-
-      const blob =
-        new Blob(
-          chunks,
-          {
-            type:
-              recorder.mimeType ||
-              "video/webm"
-          }
-        );
-
-
-      downloadBlob(
-        blob,
-        filename
-      );
-
-
-      stream
-        .getTracks()
-        .forEach(
-          track =>
-            track.stop()
-        );
-
-    };
-
-
-  recorder.start();
-
-
-  const area =
-    document.getElementById(
-      areaID
-    );
-
-
-  area.innerHTML = `
-
-    <div class="info">
-
-      🔴 Recording...
-
-      <br>
-
-      <button
-        class="danger"
-        id="stopButton">
-
-        ⏹️ Stop & Save
-
-      </button>
-
-    </div>
-
-  `;
-
-
-  document
-    .getElementById(
-      "stopButton"
-    )
-    .onclick =
-    function(){
-
-      recorder.stop();
-
-    };
-
-}
-
-
-/* =========================
-   CAMERA STOP BUTTON
-========================= */
-
-function createStopButton(
-  area,
-  stream,
-  filename
-){
-
-  const button =
-    document.createElement(
-      "button"
-    );
-
-
-  button.className =
-    "danger";
-
-  button.textContent =
-    "⏹️ Stop & Save";
-
-
-  const chunks = [];
-
-
-  const recorder =
-    new MediaRecorder(
-      stream
-    );
-
-
-  recorder.ondataavailable =
-    event => {
-
-      if(event.data.size){
-
-        chunks.push(
-          event.data
-        );
-
-      }
-
-    };
-
-
-  recorder.onstop =
-    function(){
-
-      const blob =
-        new Blob(
-          chunks,
-          {
-            type:"video/webm"
-          }
-        );
-
-
-      downloadBlob(
-        blob,
-        filename
-      );
-
-
-      stream
-        .getTracks()
-        .forEach(
-          track =>
-            track.stop()
-        );
-
-    };
-
-
-  recorder.start();
-
-
-  button.onclick =
-    function(){
-
-      recorder.stop();
-
-      button.remove();
-
-    };
-
-
-  area.appendChild(
-    button
-  );
-
-}
-
-
-/* =========================
-   IMAGE SLIDESHOW
-========================= */
-
-async function createSlideshow(){
-
-  const files =
-    document.getElementById(
-      "images"
-    ).files;
-
-
-  if(!files.length){
-
-    alert(
-      "Select some images first."
-    );
-
-    return;
-
-  }
-
-
-  const canvas =
-    document.createElement(
-      "canvas"
-    );
-
-
-  canvas.width = 1280;
-
-  canvas.height = 720;
-
-
-  const ctx =
-    canvas.getContext("2d");
-
-
-  const stream =
-    canvas.captureStream(30);
-
-
-  const recorder =
-    new MediaRecorder(
-      stream
-    );
-
-
-  const chunks = [];
-
-
-  recorder.ondataavailable =
-    event => {
-
-      if(event.data.size){
-
-        chunks.push(
-          event.data
-        );
-
-      }
-
-    };
-
-
-  recorder.onstop =
-    function(){
-
-      const blob =
-        new Blob(
-          chunks,
-          {
-            type:"video/webm"
-          }
-        );
-
-
-      downloadBlob(
-        blob,
-        "image-slideshow.webm"
-      );
-
-    };
-
-
-  recorder.start();
-
-
-  for(
-    const file of files
-  ){
-
-    const image =
-      await loadImage(file);
-
-
-    ctx.fillStyle =
-      "#000";
-
-    ctx.fillRect(
-      0,
-      0,
-      1280,
-      720
-    );
-
-
-    const ratio =
-      Math.min(
-        1280 / image.width,
-        720 / image.height
-      );
-
-
-    const width =
-      image.width * ratio;
-
-    const height =
-      image.height * ratio;
-
-
-    const x =
-      (1280-width)/2;
-
-    const y =
-      (720-height)/2;
-
-
-    ctx.drawImage(
-      image,
-      x,
-      y,
-      width,
-      height
-    );
-
-
-    await sleep(2000);
-
-  }
-
-
-  recorder.stop();
-
-}
-
-
-/* =========================
-   HELPERS
-========================= */
-
-function loadImage(file){
-
-  return new Promise(
-    resolve => {
-
-      const image =
-        new Image();
-
-      image.onload =
-        () => resolve(image);
-
-      image.src =
-        URL.createObjectURL(
-          file
-        );
-
-    }
-  );
-
-}
-
-
-function sleep(ms){
-
-  return new Promise(
-    resolve =>
-      setTimeout(
-        resolve,
-        ms
-      )
-  );
-
-}
-
-
-function downloadBlob(
-  blob,
-  filename
-){
-
-  const url =
-    URL.createObjectURL(
-      blob
-    );
-
-
-  const a =
-    document.createElement(
-      "a"
-    );
-
-
-  a.href = url;
-
-  a.download =
-    filename;
-
-
-  document.body.appendChild(a);
-
-  a.click();
-
-  a.remove();
-
-
-  setTimeout(
-    () =>
-      URL.revokeObjectURL(
-        url
-      ),
-    1000
-  );
-
-}
-
-
-function downloadDataURL(
-  dataURL,
-  filename
-){
-
-  const a =
-    document.createElement(
-      "a"
-    );
-
-
-  a.href =
-    dataURL;
-
-  a.download =
-    filename;
-
-
-  document.body.appendChild(a);
-
-  a.click();
-
-  a.remove();
-
-}
-
-
-function formatBytes(bytes){
-
-  if(bytes === 0)
-    return "0 Bytes";
-
-
-  const units =
-    [
-      "Bytes",
-      "KB",
-      "MB",
-      "GB"
-    ];
-
-
-  const i =
-    Math.floor(
-      Math.log(bytes) /
-      Math.log(1024)
-    );
-
-
-  return (
-    bytes /
-    Math.pow(1024,i)
-  ).toFixed(2)
-  + " " +
-  units[i];
-
-}
-
-
-function formatTime(seconds){
-
-  if(!isFinite(seconds))
-    return "0:00";
-
-
-  const minutes =
-    Math.floor(
-      seconds / 60
-    );
-
-
-  const secs =
-    Math.floor(
-      seconds % 60
-    );
-
-
-  return (
-    minutes +
-    ":" +
-    String(secs)
-      .padStart(2,"0")
-  );
-
-}
-
-</script>
-
 
 </body>
 </html>
