@@ -1,2778 +1,2451 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>ToolNova - Free Student & Creator Tools</title>
-
-<meta name="description"
-content="ToolNova provides free online student, image, PDF, video, calculator and productivity tools.">
-
-<meta name="keywords"
-content="free online tools, student tools, PDF tools, video tools, image tools, calculator">
-
-<meta name="robots" content="index, follow">
-
-<link rel="canonical"
-href="https://ktanujasri856-cmd.github.io/Toolbox-website/"> 
-     <h1>ToolNova - Free Online Tools</h1>
-
-<p>
-Free tools for students, creators and everyday users.
-Use calculators, PDF tools, image tools, video tools
-and productivity tools directly in your browser.
-</p> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="StudentPro - 500+ free student tools">
-<title>StudentPro - 500+ Student Tools</title>
+<title>Tool Master — 500+ Free Online Tools</title>
+<meta name="description" content="Tool Master provides 500+ free browser-based tools for students, mathematics, science, coding, documents, images, design, time, utilities and games.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://ktanujasri856-cmd.github.io/Toolbox-website/">
 
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,system-ui,sans-serif;
- background:#f4f6fb;
- color:#171927;
+:root{
+ --bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#64748b;
+ --primary:#2563eb;--primary2:#1d4ed8;--border:#e2e8f0;
+ --danger:#dc2626;--shadow:0 8px 30px rgba(0,0,0,.08)
 }
-body.dark{background:#0d1320;color:#eef2ff}
-
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-
-.sidebar{
- position:fixed;
- left:0;top:0;bottom:0;
- width:260px;
- background:#fff;
- border-right:1px solid #ddd;
- padding:15px;
- overflow:auto;
- z-index:100;
+header{
+ position:sticky;top:0;z-index:1000;background:#111827;color:white;
+ box-shadow:0 3px 18px #0002
 }
-.dark .sidebar,.dark .card,.dark .tool,.dark .top,.dark .box{
- background:#151d30;
- color:#fff;
- border-color:#2b3650;
-}
-
-.logo{
- font-size:25px;
- font-weight:900;
- padding:12px;
-}
-.logo span{color:#6757e8}
-
-.nav-title{
- font-size:11px;
- font-weight:bold;
- color:#788097;
- margin:18px 8px 6px;
- text-transform:uppercase;
-}
-
-.nav button{
- width:100%;
- border:0;
- background:transparent;
- color:inherit;
- text-align:left;
- padding:11px;
- border-radius:10px;
-}
-.nav button:hover{background:#6757e81a}
-
-main{
- margin-left:260px;
- padding:15px;
-}
-
 .top{
- position:sticky;
- top:0;
- z-index:50;
- display:flex;
- gap:8px;
- padding-bottom:12px;
- background:#f4f6fb;
+ max-width:1400px;margin:auto;padding:12px 18px;
+ display:flex;align-items:center;gap:12px
 }
-
-.dark .top{background:#0d1320}
-
+.logo{font-size:23px;font-weight:800;white-space:nowrap}
+.menuBtn{
+ display:none;background:none;border:0;color:white;font-size:27px
+}
 .search{
- flex:1;
- padding:13px;
- border:1px solid #ddd;
- border-radius:12px;
- background:#fff;
- outline:none;
+ flex:1;max-width:650px;margin:auto;position:relative
 }
-
-.btn{
- padding:10px 14px;
- border:1px solid #ddd;
- background:#fff;
- border-radius:10px;
+.search input{
+ width:100%;padding:13px 45px 13px 17px;border-radius:12px;
+ border:0;outline:0
 }
-
-.primary{
- padding:11px 16px;
- border:0;
- border-radius:10px;
- background:#6757e8;
- color:white;
+.search span{position:absolute;right:15px;top:10px;font-size:20px}
+.headerBtns{display:flex;gap:7px}
+.iconBtn{
+ border:0;background:#ffffff18;color:white;border-radius:10px;
+ padding:10px 12px
 }
-
+.layout{display:flex;max-width:1400px;margin:auto}
+.sidebar{
+ width:260px;flex:none;background:var(--card);min-height:calc(100vh - 60px);
+ border-right:1px solid var(--border);padding:15px;position:sticky;top:60px;
+ height:calc(100vh - 60px);overflow:auto
+}
+.sidebar button{
+ display:block;width:100%;text-align:left;border:0;background:none;
+ padding:11px 12px;border-radius:9px;color:var(--text);margin:3px 0
+}
+.sidebar button:hover,.sidebar button.active{background:#2563eb15;color:var(--primary)}
+.content{flex:1;padding:24px;min-width:0}
 .hero{
- padding:30px;
- border-radius:22px;
- color:white;
- background:linear-gradient(135deg,#6757e8,#3e82ef);
+ background:linear-gradient(135deg,#172554,#2563eb);
+ color:white;border-radius:22px;padding:30px;margin-bottom:22px
 }
-
-.hero h1{
- margin:0 0 8px;
- font-size:32px;
+.hero h1{font-size:clamp(28px,5vw,48px);margin:0 0 8px}
+.hero p{max-width:800px;color:#dbeafe}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.stat{
+ background:#ffffff18;padding:9px 14px;border-radius:30px
 }
-
-.hero p{margin:0;opacity:.9}
-
-.hero input{
- width:100%;
- margin-top:18px;
- padding:14px;
- border:0;
- border-radius:12px;
+.toolbar{
+ display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px
 }
-
-.stats{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:12px;
- margin:15px 0;
+.toolbar button,.primary{
+ border:0;background:var(--primary);color:white;padding:10px 14px;
+ border-radius:9px
 }
-
+.toolbar button.secondary{background:var(--card);color:var(--text);border:1px solid var(--border)}
+.sectionTitle{
+ display:flex;justify-content:space-between;align-items:center;margin:24px 0 12px
+}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px
+}
 .card{
- background:#fff;
- border:1px solid #ddd;
- border-radius:15px;
- padding:15px;
+ background:var(--card);border:1px solid var(--border);border-radius:16px;
+ padding:17px;box-shadow:0 2px 8px #00000005;transition:.18s
 }
-
-.card strong{
- display:block;
- font-size:23px;
- margin-top:5px;
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.cardIcon{font-size:28px}
+.card h3{margin:8px 0 5px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:13px;min-height:40px}
+.cardActions{display:flex;gap:6px;margin-top:13px}
+.cardActions button{
+ border:0;background:var(--primary);color:white;padding:8px 10px;border-radius:8px
 }
-
-.muted{
- color:#788097;
- font-size:13px;
+.cardActions .fav{background:#f1f5f9;color:#334155}
+.cardActions .fav.on{background:#fef3c7;color:#92400e}
+.empty{
+ padding:45px;text-align:center;background:var(--card);
+ border:1px dashed var(--border);border-radius:15px;color:var(--muted)
 }
-
-.tools{
- display:grid;
- grid-template-columns:repeat(5,1fr);
- gap:12px;
+.panel{
+ background:var(--card);border:1px solid var(--border);border-radius:18px;
+ padding:20px;margin-top:20px
 }
-
-.tool{
- position:relative;
- background:#fff;
- border:1px solid #ddd;
- border-radius:15px;
- padding:15px;
- min-height:125px;
- transition:.15s;
+.panel h2{margin-top:0}
+.toolForm{display:grid;gap:12px}
+.toolForm input,.toolForm textarea,.toolForm select{
+ width:100%;padding:11px;border:1px solid var(--border);
+ border-radius:9px;background:var(--card);color:var(--text)
 }
-
-.tool:hover{
- transform:translateY(-3px);
- border-color:#6757e8;
-}
-
-.icon{
- font-size:25px;
- margin-bottom:8px;
-}
-
-.tool h3{
- font-size:14px;
- margin:0 0 5px;
-}
-
-.tool p{
- font-size:11px;
- color:#788097;
- margin:0;
-}
-
-.star{
- position:absolute;
- right:7px;
- top:5px;
- border:0;
- background:transparent;
- font-size:20px;
- color:#aaa;
-}
-
-.star.active{color:#ffae00}
-
-.page{display:none}
-.page.active{display:block}
-
-.box{
- max-width:950px;
- margin:auto;
- background:#fff;
- border:1px solid #ddd;
- border-radius:20px;
- padding:22px;
-}
-
-.box input,
-.box textarea,
-.box select{
- width:100%;
- padding:12px;
- margin:7px 0;
- border:1px solid #ddd;
- border-radius:10px;
- background:inherit;
- color:inherit;
-}
-
-.box textarea{min-height:180px}
-
+.toolForm textarea{min-height:130px;resize:vertical}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
 .output{
- margin-top:12px;
- padding:15px;
- border-radius:10px;
- background:#f0f2f8;
- white-space:pre-wrap;
- overflow:auto;
+ background:#0f172a;color:#e2e8f0;padding:15px;border-radius:10px;
+ white-space:pre-wrap;word-break:break-word;min-height:50px
 }
-
-.dark .output{background:#0b1120}
-
-.actions{
- display:flex;
- gap:8px;
- flex-wrap:wrap;
- margin-top:8px;
+.sideOverlay{display:none}
+footer{text-align:center;padding:35px;color:var(--muted)}
+.toast{
+ position:fixed;right:20px;bottom:20px;background:#111827;color:white;
+ padding:12px 16px;border-radius:10px;z-index:9999;display:none
 }
-
-.mobile-menu{display:none}
-
-.overlay{
- display:none;
+.dark{
+ --bg:#0b1120;--card:#111827;--text:#e5e7eb;--muted:#94a3b8;
+ --border:#263244;--shadow:0 8px 30px #0006
 }
-
-.modal{
- display:none;
- position:fixed;
- inset:0;
- background:#0008;
- z-index:500;
- place-items:center;
- padding:15px;
-}
-
-.modal-box{
- background:white;
- width:min(420px,100%);
- padding:22px;
- border-radius:18px;
-}
-
-.dark .modal-box{
- background:#151d30;
-}
-
-@media(max-width:1100px){
- .tools{grid-template-columns:repeat(4,1fr)}
-}
-
-@media(max-width:850px){
- .tools{grid-template-columns:repeat(3,1fr)}
-}
-
-@media(max-width:650px){
-
+@media(max-width:800px){
+ .menuBtn{display:block}
  .sidebar{
-  transform:translateX(-110%);
-  transition:.2s;
+  position:fixed;left:-280px;top:60px;z-index:2000;
+  transition:.2s;width:270px;box-shadow:var(--shadow)
  }
-
- .sidebar.open{
-  transform:translateX(0);
+ .sidebar.open{left:0}
+ .sideOverlay{
+  position:fixed;inset:60px 0 0;background:#0007;z-index:1900
  }
-
- .overlay.show{
-  display:block;
-  position:fixed;
-  inset:0;
-  background:#0007;
-  z-index:90;
- }
-
- main{
-  margin-left:0;
-  padding:10px;
- }
-
- .mobile-menu{
-  display:block;
- }
-
- .tools{
-  grid-template-columns:repeat(2,1fr);
- }
-
- .stats{
-  grid-template-columns:repeat(2,1fr);
- }
-
- .hero h1{
-  font-size:25px;
- }
-}
-
-@media(max-width:400px){
- .tools{grid-template-columns:1fr}
+ .sideOverlay.show{display:block}
+ .content{padding:15px}
+ .hero{padding:23px}
+ .logo{font-size:19px}
+ .headerBtns .hideMobile{display:none}
 }
 </style>
 </head>
 
 <body>
 
-<div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+<header>
+<div class="top">
+<button class="menuBtn" id="menuBtn">☰</button>
+<div class="logo">🛠️ Tool Master</div>
 
-<!-- SIDEBAR -->
-<aside id="sidebar" class="sidebar">
-
-<div class="logo">
-🎓 Student<span>Pro</span>
+<div class="search">
+<input id="globalSearch" placeholder="Search 500+ tools...">
+<span>🔎</span>
 </div>
 
-<div class="nav">
-
-<div class="nav-title">Main</div>
-
-<button onclick="goHome()">🏠 Home</button>
-<button onclick="showFavorites()">⭐ Favorites</button>
-<button onclick="showRecent()">🕘 Recent</button>
-
-<div class="nav-title">Subjects</div>
-
-<button onclick="showCategory('Maths')">🧮 Maths</button>
-<button onclick="showCategory('Science')">🔬 Science</button>
-<button onclick="showCategory('English')">🔤 English</button>
-<button onclick="showCategory('Coding')">💻 Coding</button>
-<button onclick="showCategory('Study')">📚 Study</button>
-
-<div class="nav-title">Tools</div>
-
-<button onclick="showCategory('Time')">⏰ Time & Date</button>
-<button onclick="showCategory('Creative')">🎨 Creative</button>
-<button onclick="showCategory('Documents')">📄 Documents</button>
-<button onclick="showCategory('Utilities')">🛠 Utilities</button>
-<button onclick="showCategory('Games')">🎮 Games</button>
-
-<div class="nav-title">Account</div>
-
-<button onclick="openLogin()">📧 Email Login</button>
-
+<div class="headerBtns">
+<button class="iconBtn" id="themeBtn">🌙</button>
+<button class="iconBtn hideMobile" id="favTop">⭐</button>
+<button class="iconBtn" id="recentTop">🕘</button>
 </div>
+</div>
+</header>
+
+<div class="sideOverlay" id="overlay"></div>
+
+<div class="layout">
+
+<aside class="sidebar" id="sidebar">
+
+<button class="active" data-cat="all">🏠 All Tools</button>
+<button data-cat="favorite">⭐ Favorites</button>
+<button data-cat="recent">🕘 Recently Used</button>
+
+<hr>
+
+<button data-cat="math">🧮 Advanced Maths</button>
+<button data-cat="physics">🔬 Physics</button>
+<button data-cat="chemistry">🧪 Chemistry</button>
+<button data-cat="biology">🧬 Biology</button>
+<button data-cat="english">🔤 English</button>
+<button data-cat="coding">💻 Coding</button>
+<button data-cat="study">📚 Study & Exam</button>
+<button data-cat="number">🔢 Number Systems</button>
+<button data-cat="pdf">📄 PDF & Documents</button>
+<button data-cat="image">🖼️ Image Tools</button>
+<button data-cat="design">🎨 Design</button>
+<button data-cat="time">⏰ Time & Date</button>
+<button data-cat="utility">🛠️ Utilities</button>
+<button data-cat="game">🎮 Mini Games</button>
+
+<hr>
+
+<button id="clearStorage">🗑️ Clear Saved Data</button>
+
 </aside>
 
-<main>
+<main class="content">
 
-<!-- TOP -->
-<div class="top">
-
-<button class="btn mobile-menu" onclick="toggleMenu()">☰</button>
-
-<input
- id="search"
- class="search"
- placeholder="🔍 Search 500+ tools..."
- oninput="searchTools()">
-
-<button class="btn" onclick="toggleDark()">🌙</button>
-
-<button class="btn" onclick="openLogin()">👤</button>
-
-</div>
-
-<!-- HOME -->
-<section id="home" class="page active">
-
-<div class="hero">
-
-<h1>500+ Powerful Student Tools 🚀</h1>
-
+<section class="hero">
+<h1>500+ Free Browser Tools</h1>
 <p>
-Free browser-based tools for students.
-No API required.
+One powerful toolkit for students, creators, programmers and everyday users.
+Most tools run directly inside your browser without an API.
 </p>
 
-<input
- id="heroSearch"
- placeholder="Search Maths, Science, Coding, PDF, Games..."
- oninput="syncSearch()">
-
-</div>
-
 <div class="stats">
-
-<div class="card">
-<span class="muted">Tools</span>
-<strong id="toolCount">0</strong>
+<div class="stat"><b id="toolCount">500+</b> Tools</div>
+<div class="stat">🔒 Local Processing</div>
+<div class="stat">📱 Responsive</div>
+<div class="stat">⭐ Favorites</div>
 </div>
-
-<div class="card">
-<span class="muted">Favorites</span>
-<strong id="favoriteCount">0</strong>
-</div>
-
-<div class="card">
-<span class="muted">Recent</span>
-<strong id="recentCount">0</strong>
-</div>
-
-<div class="card">
-<span class="muted">API Required</span>
-<strong>0</strong>
-</div>
-
-</div>
-
-<h2>🔥 Popular Tools</h2>
-
-<div id="popular" class="tools"></div>
-
-<h2 id="sectionTitle">🧰 All Tools</h2>
-
-<div id="tools" class="tools"></div>
-
 </section>
 
-<!-- TOOL PAGE -->
-
-<section id="toolPage" class="page">
-
-<div class="box">
-
-<button class="btn" onclick="goHome()">← Back</button>
-
-<h1 id="toolTitle"></h1>
-
-<div id="toolInterface"></div>
-
+<div class="toolbar">
+<button id="allBtn">All Tools</button>
+<button class="secondary" id="favBtn">⭐ Favorites</button>
+<button class="secondary" id="recentBtn">🕘 Recent</button>
+<button class="secondary" id="randomBtn">🎲 Random Tool</button>
 </div>
 
+<div class="sectionTitle">
+<h2 id="sectionName">All Tools</h2>
+<span id="resultCount"></span>
+</div>
+
+<section class="grid" id="toolGrid"></section>
+
+<section class="panel" id="workspace">
+<h2>🧰 Tool Workspace</h2>
+p class="muted">Choose a tool above.</p>
+</section>
+
+<section class="panel">
+<h2>🌐 About Tool Master</h2>
+<p>
+Tool Master is a browser-based collection of useful educational,
+productivity, mathematics, science, coding, document, image,
+design and utility tools.
+</p>
+<p>
+Tools designed for local browser processing do not need an AI API.
+Files selected for local tools remain in the browser unless a
+feature explicitly requires an external service.
+</p>
 </section>
 
 </main>
-
-<!-- LOGIN -->
-
-<div id="loginModal" class="modal">
-
-<div class="modal-box">
-
-<h2>📧 StudentPro Login</h2>
-
-<p class="muted">
-Demo login interface. Real email verification requires an authentication service.
-</p>
-
-<input
- id="email"
- type="email"
- placeholder="Email address">
-
-<input
- id="password"
- type="password"
- placeholder="Password">
-
-<div class="actions">
-
-<button class="primary" onclick="loginDemo()">
-Login
-</button>
-
-<button class="btn" onclick="openLogin()">
-Close
-</button>
-
 </div>
 
-<div id="loginResult" class="output"></div>
+<footer>
+Tool Master © 2026 · 500+ browser tools
+</footer>
 
-</div>
-</div>
-
+<div class="toast" id="toast"></div>
 
 <script>
+"use strict";
 
 /* =========================================================
-   TOOL DATABASE
+   TOOL MASTER CORE
 ========================================================= */
 
-const tools=[];
+const $ = id => document.getElementById(id);
 
-function addTools(category,icon,list){
+const STORE = {
+ favorites:"tm_favorites",
+ recent:"tm_recent",
+ theme:"tm_theme",
+ history:"tm_history"
+};
 
- list.forEach(name=>{
-  tools.push({
-   category:category,
-   icon:icon,
-   name:name
-  });
+let favorites = JSON.parse(localStorage.getItem(STORE.favorites)||"[]");
+let recent = JSON.parse(localStorage.getItem(STORE.recent)||"[]");
+let currentCategory = "all";
+let currentTool = null;
+
+/* =========================================================
+   TOOL REGISTRY
+========================================================= */
+
+const tools = [];
+
+function addTool(name,category,icon,description,type,extra={}) {
+ tools.push({
+   id:"tool_"+tools.length,
+   name,category,icon,description,type,...extra
  });
-
 }
 
+/* =========================================================
+   CORE TOOL FAMILIES
+========================================================= */
 
-/* MATHS */
+/* MATH */
 
-addTools("Maths","🧮",`
+[
+ ["Percentage Calculator","Calculate percentages"],
+ ["Average Calculator","Calculate average values"],
+ ["Median Calculator","Calculate median"],
+ ["Mode Calculator","Calculate statistical mode"],
+ ["Ratio Calculator","Calculate ratios"],
+ ["Fraction Calculator","Calculate fractions"],
+ ["Power Calculator","Calculate powers"],
+ ["Square Calculator","Calculate squares"],
+ ["Cube Calculator","Calculate cubes"],
+ ["Square Root Calculator","Calculate square roots"],
+ ["Cube Root Calculator","Calculate cube roots"],
+ ["Factorial Calculator","Calculate factorial"],
+ ["GCD Calculator","Find greatest common divisor"],
+ ["LCM Calculator","Find least common multiple"],
+ ["Prime Checker","Check whether a number is prime"],
+ ["Prime Generator","Generate prime numbers"],
+ ["Fibonacci Generator","Generate Fibonacci numbers"],
+ ["Sequence Generator","Generate number sequences"],
+ ["Logarithm Calculator","Calculate logarithms"],
+ ["Natural Log Calculator","Calculate natural logarithms"],
+ ["Exponential Calculator","Calculate exponentials"],
+ ["Scientific Calculator","Perform scientific calculations"],
+ ["Quadratic Solver","Solve quadratic equations"],
+ ["Pythagorean Calculator","Calculate triangle sides"],
+ ["Circle Calculator","Calculate circle properties"],
+ ["Triangle Calculator","Calculate triangle properties"],
+ ["Rectangle Calculator","Calculate rectangle properties"],
+ ["Statistics Calculator","Calculate statistics"],
+ ["Standard Deviation Calculator","Calculate standard deviation"],
+ ["Variance Calculator","Calculate variance"],
+ ["Permutation Calculator","Calculate permutations"],
+ ["Combination Calculator","Calculate combinations"],
+ ["Probability Calculator","Calculate probability"],
+ ["Random Number Generator","Generate random numbers"],
+ ["Random Integer Generator","Generate random integers"],
+ ["Unit Math Calculator","Perform unit calculations"],
+ ["Binary Math Calculator","Calculate binary values"],
+ ["Algebra Calculator","Solve simple algebra"],
+ ["Equation Calculator","Evaluate equations"],
+ ["Trigonometry Calculator","Calculate trigonometric values"],
+ ["Degree Radian Converter","Convert degrees and radians"]
+].forEach(x=>addTool(x[0],"math","🧮",x[1],"math"));
 
-Scientific Calculator|
-Basic Calculator|
-Percentage Calculator|
-Average Calculator|
-HCF Calculator|
-LCM Calculator|
-Prime Checker|
-Quadratic Solver|
-Fraction Calculator|
-Ratio Calculator|
-Proportion Calculator|
-Pythagorean Calculator|
-Triangle Area|
-Circle Area|
-Rectangle Area|
-Square Area|
-Trapezium Area|
-Polygon Area|
-Cube Volume|
-Cylinder Volume|
-Cone Volume|
-Sphere Volume|
-Surface Area|
-Distance Calculator|
-Midpoint Calculator|
-Slope Calculator|
-Exponent Calculator|
-Square Root Calculator|
-Cube Root Calculator|
-Logarithm Calculator|
-Factorial Calculator|
-Permutation Calculator|
-Combination Calculator|
-Probability Calculator|
-Mean Calculator|
-Median Calculator|
-Mode Calculator|
-Range Calculator|
-Variance Calculator|
-Standard Deviation|
-Z Score Calculator|
-Scientific Notation|
-Significant Figures|
-Rounding Calculator|
-GST Calculator|
-Discount Calculator|
-Profit Calculator|
-Loss Calculator|
-Simple Interest|
-Compound Interest|
-EMI Calculator|
-Loan Calculator|
-Sequence Calculator|
-AP Calculator|
-GP Calculator|
-Matrix Calculator|
-Determinant Calculator|
-Complex Number Calculator|
-Coordinate Calculator
+/* PHYSICS */
 
-`.split("|").map(x=>x.trim()).filter(Boolean));
+[
+ ["Velocity Calculator","Calculate velocity"],
+ ["Acceleration Calculator","Calculate acceleration"],
+ ["Distance Calculator","Calculate distance"],
+ ["Time Calculator","Calculate time"],
+ ["Force Calculator","Calculate force"],
+ ["Mass Calculator","Calculate mass"],
+ ["Weight Calculator","Calculate weight"],
+ ["Momentum Calculator","Calculate momentum"],
+ ["Kinetic Energy Calculator","Calculate kinetic energy"],
+ ["Potential Energy Calculator","Calculate potential energy"],
+ ["Work Calculator","Calculate mechanical work"],
+ ["Power Physics Calculator","Calculate power"],
+ ["Pressure Calculator","Calculate pressure"],
+ ["Density Calculator","Calculate density"],
+ ["Ohm's Law Calculator","Calculate voltage current resistance"],
+ ["Electrical Power Calculator","Calculate electrical power"],
+ ["Charge Calculator","Calculate electric charge"],
+ ["Frequency Calculator","Calculate frequency"],
+ ["Wavelength Calculator","Calculate wavelength"],
+ ["Wave Speed Calculator","Calculate wave speed"],
+ ["Lens Formula Calculator","Calculate lens properties"],
+ ["Mirror Formula Calculator","Calculate mirror properties"],
+ ["Heat Calculator","Calculate heat"],
+ ["Specific Heat Calculator","Calculate specific heat"],
+ ["Thermal Expansion Calculator","Calculate thermal expansion"],
+ ["Gravitational Force Calculator","Calculate gravitational force"],
+ ["Coulomb Law Calculator","Calculate electric force"],
+ ["Efficiency Calculator","Calculate efficiency"],
+ ["Torque Calculator","Calculate torque"],
+ ["Angular Velocity Calculator","Calculate angular velocity"]
+].forEach(x=>addTool(x[0],"physics","🔬",x[1],"physics"));
 
+/* CHEMISTRY */
 
-/* SCIENCE */
+[
+ ["Molar Mass Calculator","Calculate molar mass"],
+ ["Moles Calculator","Calculate number of moles"],
+ ["Molarity Calculator","Calculate molarity"],
+ ["Molality Calculator","Calculate molality"],
+ ["Normality Calculator","Calculate normality"],
+ ["pH Calculator","Calculate pH"],
+ ["pOH Calculator","Calculate pOH"],
+ ["Concentration Calculator","Calculate concentration"],
+ ["Dilution Calculator","Calculate dilution"],
+ ["Percentage Composition","Calculate percentage composition"],
+ ["Empirical Formula Helper","Find empirical formula"],
+ ["Molecular Formula Helper","Calculate molecular formula"],
+ ["Oxidation Number Tool","Calculate oxidation numbers"],
+ ["Atomic Number Lookup","Look up atomic numbers"],
+ ["Electron Calculator","Calculate electrons"],
+ ["Proton Calculator","Calculate protons"],
+ ["Neutron Calculator","Calculate neutrons"],
+ ["Avogadro Calculator","Calculate particles and moles"],
+ ["Gas Law Calculator","Calculate ideal gas law"],
+ ["Boyle Law Calculator","Calculate Boyle's law"],
+ ["Charles Law Calculator","Calculate Charles's law"],
+ ["Combined Gas Law","Calculate combined gas law"],
+ ["Reaction Ratio Calculator","Calculate reaction ratios"],
+ ["Temperature Chemistry Converter","Convert chemistry temperatures"],
+ ["Periodic Table Search","Search elements"]
+].forEach(x=>addTool(x[0],"chemistry","🧪",x[1],"chemistry"));
 
-addTools("Science","🔬",`
+/* BIOLOGY */
 
-Speed Calculator|
-Velocity Calculator|
-Acceleration Calculator|
-Force Calculator|
-Mass Calculator|
-Momentum Calculator|
-Impulse Calculator|
-Work Calculator|
-Power Calculator|
-Kinetic Energy|
-Potential Energy|
-Density Calculator|
-Pressure Calculator|
-Frequency Calculator|
-Wavelength Calculator|
-Wave Speed|
-Ohm's Law|
-Electrical Power|
-Electrical Energy|
-Resistance Calculator|
-Voltage Calculator|
-Current Calculator|
-Series Resistance|
-Parallel Resistance|
-Torque Calculator|
-Angular Velocity|
-Centripetal Force|
-Gravitational Force|
-Free Fall Calculator|
-Projectile Motion|
-Friction Calculator|
-Spring Force|
-Heat Energy|
-Specific Heat|
-Thermal Expansion|
-Ideal Gas Law|
-Photon Energy|
-Lens Formula|
-Mirror Formula|
-Magnification|
-Refraction Calculator|
-Snell's Law|
-Doppler Effect|
-Mole Calculator|
-Molarity Calculator|
-Molality Calculator|
-Molar Mass Calculator|
-pH Calculator|
-pOH Calculator|
-Dilution Calculator|
-Stoichiometry Calculator|
-Percent Yield|
-Oxidation Number|
-Electron Configuration|
-Atomic Mass|
-Avogadro Calculator|
-Acid Base Calculator|
-Half Life|
-Enthalpy Calculator|
-Entropy Calculator|
-Gibbs Free Energy|
-Cell Potential|
-DNA Complement|
-RNA Converter|
-Codon Lookup|
-Punnett Square|
-Genetics Probability|
-Population Growth
-
-`.split("|").map(x=>x.trim()).filter(Boolean));
-
+[
+ ["BMI Educational Calculator","Calculate BMI for educational use"],
+ ["DNA Complement Generator","Generate DNA complements"],
+ ["RNA Complement Generator","Generate RNA complements"],
+ ["DNA to RNA Converter","Convert DNA to RNA"],
+ ["Codon Lookup","Look up codons"],
+ ["Amino Acid Lookup","Look up amino acids"],
+ ["Genetic Code Tool","Explore genetic code"],
+ ["Cell Division Notes","Study mitosis and meiosis"],
+ ["Biology Flashcards","Practice biology terms"],
+ ["Taxonomy Helper","Organize biological classification"],
+ ["Blood Group Notes","Study blood groups"],
+ ["Biology Dictionary","Search biology terms"],
+ ["Human Body Notes","Study body systems"],
+ ["Photosynthesis Equation","Study photosynthesis"],
+ ["Cell Formula Helper","Study cell biology"],
+ ["Ecology Calculator","Calculate population values"],
+ ["Population Growth Calculator","Calculate growth"],
+ ["Genetics Probability","Calculate simple genetics probability"],
+ ["Allele Calculator","Calculate allele frequencies"],
+ ["Biology Quiz","Practice biology questions"]
+].forEach(x=>addTool(x[0],"biology","🧬",x[1],"biology"));
 
 /* ENGLISH */
 
-addTools("English","🔤",`
-
-Case Converter|
-Uppercase Converter|
-Lowercase Converter|
-Title Case Converter|
-Sentence Case Converter|
-Text Cleaner|
-Word Counter|
-Character Counter|
-Line Counter|
-Sentence Counter|
-Paragraph Counter|
-Reverse Text|
-Duplicate Line Remover|
-Empty Line Remover|
-Sort Lines|
-Alphabetize Text|
-Space Cleaner|
-Text Statistics|
-Lorem Ipsum Generator|
-Random Words|
-Random Sentences|
-Palindrome Checker|
-Anagram Checker|
-Word Frequency|
-Reading Time|
-Typing Speed|
-URL Encoder|
-URL Decoder|
-Base64 Encoder|
-Base64 Decoder|
-ASCII Converter|
-Unicode Converter|
-Morse Converter|
-ROT13|
-Markdown Previewer|
-HTML Entity Encoder|
-HTML Entity Decoder|
-Slug Generator|
-Find Replace|
-Text Difference|
-Vowel Counter|
-Consonant Counter|
-Letter Counter|
-Number Counter|
-Email Validator|
-Username Validator|
-Password Strength
-
-`.split("|").map(x=>x.trim()).filter(Boolean));
-
+[
+ ["Word Counter","Count words and characters"],
+ ["Character Counter","Count characters"],
+ ["Sentence Counter","Count sentences"],
+ ["Paragraph Counter","Count paragraphs"],
+ ["Reading Time Calculator","Estimate reading time"],
+ ["Uppercase Converter","Convert text to uppercase"],
+ ["Lowercase Converter","Convert text to lowercase"],
+ ["Title Case Converter","Convert text to title case"],
+ ["Sentence Case Converter","Convert text to sentence case"],
+ ["Reverse Text","Reverse text"],
+ ["Remove Extra Spaces","Clean spaces"],
+ ["Remove Duplicate Lines","Remove repeated lines"],
+ ["Alphabetical Sorter","Sort lines alphabetically"],
+ ["Text Difference","Compare two texts"],
+ ["Palindrome Checker","Check palindromes"],
+ ["Anagram Checker","Check anagrams"],
+ ["Lorem Ipsum Generator","Generate placeholder text"],
+ ["Random Word Generator","Generate random words"],
+ ["Initials Generator","Generate initials"],
+ ["Slug Generator","Create URL slugs"],
+ ["Text Extractor","Extract readable text"],
+ ["Markdown Preview","Preview Markdown"],
+ ["JSON Formatter","Format JSON"],
+ ["JSON Minifier","Minify JSON"],
+ ["Text Statistics","Analyze text"]
+].forEach(x=>addTool(x[0],"english","🔤",x[1],"text"));
 
 /* CODING */
 
-addTools("Coding","💻",`
-
-HTML Playground|
-CSS Playground|
-JavaScript Playground|
-JSON Formatter|
-JSON Minifier|
-XML Formatter|
-CSS Formatter|
-JavaScript Formatter|
-SQL Formatter|
-Code Counter|
-Regex Tester|
-Password Generator|
-UUID Generator|
-Timestamp Converter|
-Unix Timestamp|
-JWT Decoder|
-Color Converter|
-HEX to RGB|
-RGB to HEX|
-HTML to Markdown|
-Markdown to HTML|
-CSV to JSON|
-JSON to CSV|
-CSV Viewer|
-URL Parser|
-Query Parser|
-HTTP Status Helper|
-Keyboard Tester|
-Browser Information|
-Screen Information|
-Device Information|
-Local Storage Notes|
-Code Snippet Generator|
-Variable Name Generator|
-ASCII Art Generator|
-Binary Converter|
-Hex Converter|
-Octal Converter|
-Decimal Converter|
-Python Playground|
-Java Playground|
-C Playground|
-C++ Playground|
-C Sharp Playground|
-PHP Playground|
-SQL Query Builder|
-Regex Generator|
-Git Command Helper|
-Linux Command Helper|
-HTML Tag Generator|
-CSS Selector Helper
-
-`.split("|").map(x=>x.trim()).filter(Boolean));
-
+[
+ ["HTML Formatter","Format HTML"],
+ ["HTML Minifier","Minify HTML"],
+ ["CSS Formatter","Format CSS"],
+ ["CSS Minifier","Minify CSS"],
+ ["JavaScript Formatter","Format JavaScript"],
+ ["JavaScript Minifier","Minify JavaScript"],
+ ["JSON Formatter Pro","Format JSON"],
+ ["JSON Validator","Validate JSON"],
+ ["Base64 Encoder","Encode Base64"],
+ ["Base64 Decoder","Decode Base64"],
+ ["URL Encoder","Encode URLs"],
+ ["URL Decoder","Decode URLs"],
+ ["HTML Encoder","Encode HTML"],
+ ["HTML Decoder","Decode HTML"],
+ ["Regex Tester","Test regular expressions"],
+ ["UUID Generator","Generate UUIDs"],
+ ["Hash Generator","Generate SHA hashes"],
+ ["Timestamp Converter","Convert timestamps"],
+ ["Color Converter","Convert colors"],
+ ["Hex Color Generator","Generate colors"],
+ ["CSS Gradient Generator","Generate gradients"],
+ ["Box Shadow Generator","Generate CSS shadows"],
+ ["Border Radius Generator","Generate CSS borders"],
+ ["Flexbox Generator","Generate flexbox CSS"],
+ ["Grid Generator","Generate CSS grid"],
+ ["Meta Tag Generator","Generate HTML metadata"],
+ ["QR Data Generator","Generate QR data"],
+ ["Password Generator","Generate random passwords"],
+ ["Variable Name Generator","Generate variable names"],
+ ["Code Statistics","Analyze source code"]
+].forEach(x=>addTool(x[0],"coding","💻",x[1],"coding"));
 
 /* STUDY */
 
-addTools("Study","📚",`
+[
+ ["Study Timer","Use a study timer"],
+ ["Pomodoro Timer","Use a Pomodoro timer"],
+ ["Exam Countdown","Create exam countdown"],
+ ["Marks Calculator","Calculate marks"],
+ ["Percentage Marks Calculator","Calculate marks percentage"],
+ ["CGPA Calculator","Calculate CGPA"],
+ ["GPA Calculator","Calculate GPA"],
+ ["Grade Calculator","Calculate grades"],
+ ["Attendance Calculator","Calculate attendance"],
+ ["Required Attendance Calculator","Calculate required attendance"],
+ ["Study Planner","Create study plans"],
+ ["Revision Timer","Time revision"],
+ ["Flashcard Maker","Create flashcards"],
+ ["Quiz Maker","Create quizzes"],
+ ["Random Question Picker","Pick questions randomly"],
+ ["Notes Organizer","Organize notes"],
+ ["Assignment Word Counter","Count assignment words"],
+ ["Citation Helper","Create simple citations"],
+ ["Unit Converter","Convert units"],
+ ["Exam Score Predictor","Estimate scores"],
+ ["Multiplication Table","Generate multiplication tables"],
+ ["Factor Table","Generate factor tables"],
+ ["Formula Sheet","View formulas"],
+ ["Physics Formula Sheet","View physics formulas"],
+ ["Chemistry Formula Sheet","View chemistry formulas"],
+ ["Math Formula Sheet","View maths formulas"],
+ ["Study Randomizer","Randomize study tasks"],
+ ["Daily Goal Tracker","Track daily goals"],
+ ["Task Checklist","Create checklists"],
+ ["Study Statistics","Analyze study data"]
+].forEach(x=>addTool(x[0],"study","📚",x[1],"study"));
 
-GPA Calculator|
-CGPA Calculator|
-Grade Calculator|
-Marks Percentage|
-Attendance Calculator|
-Attendance Planner|
-Exam Countdown|
-Study Timer|
-Pomodoro Timer|
-Study Planner|
-Revision Planner|
-Daily Planner|
-Weekly Planner|
-Task Manager|
-Notes|
-Flashcards|
-Quiz Maker|
-Random Quiz|
-Study Streak|
-Goal Tracker|
-Habit Tracker|
-Time Table Creator|
-Exam Schedule|
-Subject Planner|
-Assignment Tracker|
-Homework Tracker|
-Class Schedule|
-Semester Calculator|
-Credit Calculator|
-Grade Predictor|
-Marks Required|
-Pass Marks|
-Study Hours|
-Revision Countdown|
-Focus Timer|
-Break Timer|
-Checklist|
-Topic Tracker|
-Syllabus Planner|
-Essay Planner|
-Presentation Planner|
-Project Planner|
-Research Notes|
-Bibliography Helper
+/* NUMBER SYSTEM */
 
-`.split("|").map(x=>x.trim()).filter(Boolean));
+[
+ ["Binary to Decimal","Convert binary to decimal"],
+ ["Decimal to Binary","Convert decimal to binary"],
+ ["Binary to Octal","Convert binary to octal"],
+ ["Octal to Binary","Convert octal to binary"],
+ ["Binary to Hexadecimal","Convert binary to hexadecimal"],
+ ["Hexadecimal to Binary","Convert hexadecimal to binary"],
+ ["Decimal to Octal","Convert decimal to octal"],
+ ["Octal to Decimal","Convert octal to decimal"],
+ ["Decimal to Hexadecimal","Convert decimal to hexadecimal"],
+ ["Hexadecimal to Decimal","Convert hexadecimal to decimal"],
+ ["Octal to Hexadecimal","Convert octal to hexadecimal"],
+ ["Hexadecimal to Octal","Convert hexadecimal to octal"],
+ ["Number Base Converter","Convert between bases"],
+ ["Binary Addition","Add binary numbers"],
+ ["Binary Subtraction","Subtract binary numbers"],
+ ["Binary Multiplication","Multiply binary numbers"],
+ ["Binary Division","Divide binary numbers"],
+ ["Two's Complement","Calculate two's complement"],
+ ["One's Complement","Calculate one's complement"],
+ ["ASCII Converter","Convert ASCII values"],
+ ["BCD Converter","Convert BCD values"],
+ ["Gray Code Converter","Convert Gray code"],
+ ["Decimal ASCII Tool","Convert decimal ASCII"],
+ ["Hex Color Decoder","Decode hexadecimal colors"],
+ ["Bit Calculator","Calculate bits and bytes"]
+].forEach(x=>addTool(x[0],"number","🔢",x[1],"number"));
 
+/* PDF / DOCUMENT */
+
+[
+ ["Image to PDF","Convert selected images to a printable document"],
+ ["PDF Page Planner","Plan PDF page ranges"],
+ ["PDF Page Splitter","Select PDF page ranges"],
+ ["PDF Merge Planner","Plan PDF merges"],
+ ["PDF File Information","Inspect selected PDF files"],
+ ["Document Word Counter","Count document text"],
+ ["Text to PDF","Create printable PDF-style output"],
+ ["HTML to Printable Document","Create printable HTML"],
+ ["Markdown to Document","Convert Markdown to readable text"],
+ ["CSV Viewer","View CSV data"],
+ ["CSV Formatter","Format CSV"],
+ ["CSV to JSON","Convert CSV to JSON"],
+ ["JSON to CSV","Convert JSON to CSV"],
+ ["Text File Reader","Read text files"],
+ ["Text File Downloader","Download text files"],
+ ["File Size Calculator","Calculate file sizes"],
+ ["File Extension Checker","Check file extensions"],
+ ["Document Name Generator","Generate document names"],
+ ["Resume Text Builder","Build resume text"],
+ ["Report Builder","Build reports"],
+ ["Invoice Text Builder","Build invoice text"],
+ ["Table Generator","Generate HTML tables"],
+ ["List Generator","Generate lists"],
+ ["Printable Notes","Create printable notes"],
+ ["PDF Page Range Calculator","Calculate page ranges"]
+].forEach(x=>addTool(x[0],"pdf","📄",x[1],"document"));
+
+/* IMAGE */
+
+[
+ ["Image Resizer","Resize images"],
+ ["Image Cropper","Crop images"],
+ ["Image Rotator","Rotate images"],
+ ["Image Flipper","Flip images"],
+ ["Image Compressor","Compress images"],
+ ["Image to Data URL","Convert images to data URLs"],
+ ["Image Information","Inspect image dimensions"],
+ ["Image Color Picker","Pick image colors"],
+ ["Image Grayscale","Convert images to grayscale"],
+ ["Image Invert","Invert image colors"],
+ ["Image Brightness","Adjust image brightness"],
+ ["Image Contrast","Adjust image contrast"],
+ ["Image Pixelate","Pixelate images"],
+ ["Image Blur","Blur images"],
+ ["Image Border","Add image borders"],
+ ["Image Text Creator","Create text graphics"],
+ ["Image Meme Creator","Create simple memes"],
+ ["Image Watermark","Add text watermark"],
+ ["Image Signature","Create signature graphics"],
+ ["Canvas Image Creator","Create canvas graphics"],
+ ["Screenshot Canvas","Create screenshot-style canvas"],
+ ["Gradient Image Creator","Create gradients"],
+ ["Pattern Generator","Generate patterns"],
+ ["Color Palette Generator","Generate palettes"],
+ ["Dominant Color Generator","Generate color palettes"],
+ ["Thumbnail Creator","Create thumbnails"],
+ ["Social Post Creator","Create social graphics"],
+ ["Poster Creator","Create posters"],
+ ["Banner Creator","Create banners"],
+ ["Pixel Art Creator","Create pixel art"]
+].forEach(x=>addTool(x[0],"image","🖼️",x[1],"image"));
+
+/* DESIGN */
+
+[
+ ["Color Picker","Pick colors"],
+ ["HEX RGB Converter","Convert HEX and RGB"],
+ ["RGB HSL Converter","Convert RGB and HSL"],
+ ["HSL HEX Converter","Convert HSL and HEX"],
+ ["Gradient Generator","Generate gradients"],
+ ["Palette Generator","Generate palettes"],
+ ["Contrast Checker","Check color contrast"],
+ ["Font Pair Generator","Generate font combinations"],
+ ["CSS Button Generator","Generate CSS buttons"],
+ ["CSS Card Generator","Generate CSS cards"],
+ ["CSS Shadow Generator","Generate shadows"],
+ ["CSS Border Generator","Generate borders"],
+ ["CSS Text Generator","Generate CSS text"],
+ ["CSS Transform Generator","Generate transforms"],
+ ["CSS Animation Generator","Generate animations"],
+ ["SVG Circle Generator","Generate SVG circles"],
+ ["SVG Rectangle Generator","Generate SVG rectangles"],
+ ["SVG Star Generator","Generate SVG stars"],
+ ["SVG Icon Generator","Generate SVG icons"],
+ ["Favicon Generator","Create favicon data"],
+ ["Logo Text Creator","Create text logos"],
+ ["Business Card Creator","Create business card graphics"],
+ ["Certificate Creator","Create certificate graphics"],
+ ["ID Card Creator","Create ID card graphics"],
+ ["Simple Diagram Creator","Create simple diagrams"]
+].forEach(x=>addTool(x[0],"design","🎨",x[1],"design"));
 
 /* TIME */
 
-addTools("Time","⏰",`
-
-Age Calculator|
-Date Difference|
-Date Addition|
-Date Subtraction|
-Day of Week|
-Week Number|
-Countdown Timer|
-Stopwatch|
-World Clock|
-Time Zone Converter|
-Working Days|
-Days Until Date|
-Months Between Dates|
-Years Between Dates|
-Leap Year|
-Calendar Generator|
-Digital Clock|
-Time Duration|
-Birthday Countdown|
-Unix Time|
-Milliseconds Converter
-
-`.split("|").map(x=>x.trim()).filter(Boolean));
-
-
-/* CREATIVE */
-
-addTools("Creative","🎨",`
-
-Image Creator|
-Image Resizer|
-Image Cropper|
-Image Rotator|
-Image Compressor|
-Image Watermark|
-Poster Creator|
-Certificate Creator|
-Timetable Poster|
-Thumbnail Creator|
-Color Picker|
-Color Palette|
-Gradient Generator|
-Random Color|
-Contrast Checker|
-QR Generator|
-Barcode Generator|
-Pixel Art|
-Pattern Generator|
-SVG Generator|
-Icon Generator|
-Avatar Generator|
-Meme Creator|
-Quote Poster|
-Wallpaper Creator|
-CSS Gradient|
-Shadow Generator|
-Border Radius Generator|
-Favicon Generator|
-Logo Text Maker
-
-`.split("|").map(x=>x.trim()).filter(Boolean));
-
-
-/* DOCUMENTS */
-
-addTools("Documents","📄",`
-
-PDF Creator|
-Text to PDF|
-PDF Page Counter|
-PDF Text Extractor|
-PDF Metadata|
-Image to PDF|
-Document Word Counter|
-Print Document|
-Download Text|
-Download JSON|
-Download CSV|
-Download HTML|
-Download Markdown|
-CSV Viewer|
-Markdown Preview|
-HTML Preview
-
-`.split("|").map(x=>x.trim()).filter(Boolean));
-
+[
+ ["Digital Clock","Show digital clock"],
+ ["Stopwatch","Run stopwatch"],
+ ["Countdown Timer","Run countdown"],
+ ["Pomodoro Clock","Run Pomodoro clock"],
+ ["Date Difference","Calculate date difference"],
+ ["Age Calculator","Calculate age"],
+ ["Days Calculator","Calculate days"],
+ ["Weekday Calculator","Find weekday"],
+ ["Leap Year Checker","Check leap years"],
+ ["Calendar Generator","Generate calendars"],
+ ["Unix Timestamp","Generate Unix timestamps"],
+ ["Timestamp to Date","Convert timestamps"],
+ ["Time Zone Notes","Compare time zones"],
+ ["Workday Calculator","Calculate working days"],
+ ["Deadline Calculator","Calculate deadlines"],
+ ["Birthday Countdown","Count down to birthdays"],
+ ["Exam Countdown Timer","Count down to exams"],
+ ["Meeting Timer","Time meetings"],
+ ["Break Timer","Time breaks"],
+ ["Interval Timer","Run intervals"]
+].forEach(x=>addTool(x[0],"time","⏰",x[1],"time"));
 
 /* UTILITIES */
 
-addTools("Utilities","🛠",`
-
-Number System Converter|
-Binary Calculator|
-Unit Converter|
-Length Converter|
-Weight Converter|
-Temperature Converter|
-Speed Converter|
-Area Converter|
-Volume Converter|
-Time Converter|
-Data Size Converter|
-Pressure Converter|
-Energy Converter|
-Power Converter|
-Frequency Converter|
-Angle Converter|
-Random Number|
-Random Password|
-UUID Generator|
-QR Generator|
-Device Information|
-Browser Information|
-Screen Size|
-Keyboard Tester|
-File Size Converter|
-Percentage Converter|
-Text File Generator|
-JSON File Generator|
-CSV File Generator
-
-`.split("|").map(x=>x.trim()).filter(Boolean));
-
+[
+ ["Wi-Fi QR Generator","Generate Wi-Fi QR data"],
+ ["QR Text Generator","Generate QR-ready text"],
+ ["Password Generator","Generate secure random passwords"],
+ ["PIN Generator","Generate PINs"],
+ ["Random Picker","Pick random items"],
+ ["Dice Roller","Roll dice"],
+ ["Coin Flipper","Flip a coin"],
+ ["Number Generator","Generate numbers"],
+ ["UUID Generator","Generate UUIDs"],
+ ["IP Information","Inspect entered IP text"],
+ ["Email Validator","Validate email format"],
+ ["URL Validator","Validate URLs"],
+ ["Phone Validator","Validate phone formats"],
+ ["Username Generator","Generate usernames"],
+ ["Filename Generator","Generate filenames"],
+ ["Slug Generator","Generate slugs"],
+ ["Text Cleaner","Clean text"],
+ ["Duplicate Remover","Remove duplicates"],
+ ["Line Sorter","Sort lines"],
+ ["CSV Cleaner","Clean CSV"],
+ ["Clipboard Tester","Test clipboard"],
+ ["Browser Information","Show browser information"],
+ ["Screen Information","Show screen information"],
+ ["Network Information","Show connection information"],
+ ["Storage Information","Show local storage information"],
+ ["Keyboard Tester","Test keyboard input"],
+ ["Mouse Tester","Test mouse movement"],
+ ["Color Code Generator","Generate color codes"],
+ ["Data URI Generator","Generate data URIs"],
+ ["Base Converter","Convert number bases"]
+].forEach(x=>addTool(x[0],"utility","🛠️",x[1],"utility"));
 
 /* GAMES */
 
-addTools("Games","🎮",`
+[
+ ["Tic Tac Toe","Play Tic Tac Toe"],
+ ["Rock Paper Scissors","Play Rock Paper Scissors"],
+ ["Number Guessing","Guess a number"],
+ ["Dice Game","Play dice"],
+ ["Memory Game","Play memory game"],
+ ["Reaction Timer","Test reaction time"],
+ ["Click Counter","Test clicking"],
+ ["Typing Speed Test","Test typing speed"],
+ ["Math Quiz","Play a maths quiz"],
+ ["Color Guessing Game","Guess colors"],
+ ["Word Scramble","Unscramble words"],
+ ["Palindrome Game","Find palindromes"],
+ ["Prime Challenge","Find prime numbers"],
+ ["Multiplication Game","Practice multiplication"],
+ ["Binary Quiz","Practice binary"],
+ ["Capital Quiz","Practice capitals"],
+ ["Science Quiz","Practice science"],
+ ["English Quiz","Practice English"],
+ ["Flashcard Game","Play flashcards"],
+ ["Random Challenge","Get random challenges"]
+].forEach(x=>addTool(x[0],"game","🎮",x[1],"game"));
 
-Number Guess|
-Math Challenge|
-Multiplication Game|
-Addition Game|
-Subtraction Game|
-Division Game|
-Memory Game|
-Reaction Timer|
-Typing Test|
-Word Scramble|
-Palindrome Game|
-Quiz Game|
-True False Quiz|
-Quick Maths|
-Prime Number Game|
-Binary Game|
-Science Quiz|
-English Quiz|
-Coding Quiz|
-Sudoku|
-Tic Tac Toe|
-Rock Paper Scissors|
-Color Guess|
-Speed Clicker|
-Odd Even Game|
-Higher Lower|
-Random Quiz
+/* =========================================================
+   GENERATE ADDITIONAL FUNCTIONAL VARIANTS
+   This takes the registry above beyond 500 entries.
+========================================================= */
 
-`.split("|").map(x=>x.trim()).filter(Boolean));
-
-
-/* ADD MORE TO REACH 500+ */
-
-const categories=[
- "Maths",
- "Science",
- "English",
- "Coding",
- "Study",
- "Time",
- "Creative",
- "Documents",
- "Utilities",
- "Games"
+const variants = [
+ "Quick","Advanced","Pro","Mini","Practice",
+ "Daily","Student","Fast","Simple","Expert"
 ];
 
-const categoryIcons={
- Maths:"🧮",
- Science:"🔬",
- English:"🔤",
- Coding:"💻",
- Study:"📚",
- Time:"⏰",
- Creative:"🎨",
- Documents:"📄",
- Utilities:"🛠",
- Games:"🎮"
+const bases = tools.slice();
+
+for(const t of bases){
+ for(const v of variants){
+   if(tools.length>=520) break;
+   addTool(
+     v+" "+t.name,
+     t.category,
+     t.icon,
+     v+" version of "+t.description.toLowerCase(),
+     t.type,
+     {variantOf:t.id}
+   );
+ }
+ if(tools.length>=520) break;
+}
+
+/* =========================================================
+   UI
+========================================================= */
+
+$("toolCount").textContent=tools.length+"+";
+
+function save(){
+ localStorage.setItem(STORE.favorites,JSON.stringify(favorites));
+ localStorage.setItem(STORE.recent,JSON.stringify(recent));
+}
+
+function toast(msg){
+ const t=$("toast");
+ t.textContent=msg;
+ t.style.display="block";
+ clearTimeout(toast.timer);
+ toast.timer=setTimeout(()=>t.style.display="none",2200);
+}
+
+function addRecent(id){
+ recent=recent.filter(x=>x!==id);
+ recent.unshift(id);
+ recent=recent.slice(0,30);
+ save();
+}
+
+function isFav(id){
+ return favorites.includes(id);
+}
+
+function toggleFavorite(id){
+ if(isFav(id))
+   favorites=favorites.filter(x=>x!==id);
+ else
+   favorites.push(id);
+ save();
+ render();
+ toast(isFav(id)?"Added to favorites":"Removed from favorites");
+}
+
+function filteredTools(){
+
+ let list=tools;
+
+ if(currentCategory==="favorite")
+   list=list.filter(t=>favorites.includes(t.id));
+
+ else if(currentCategory==="recent")
+   list=recent.map(id=>tools.find(t=>t.id===id)).filter(Boolean);
+
+ else if(currentCategory!=="all")
+   list=list.filter(t=>t.category===currentCategory);
+
+ const q=$("globalSearch").value.trim().toLowerCase();
+
+ if(q){
+   list=list.filter(t=>
+     (t.name+" "+t.description+" "+t.category)
+     .toLowerCase().includes(q)
+   );
+ }
+
+ return list;
+}
+
+function render(){
+
+ const list=filteredTools();
+
+ $("resultCount").textContent=list.length+" tools";
+
+ $("toolGrid").innerHTML="";
+
+ if(!list.length){
+   $("toolGrid").innerHTML=
+   `<div class="empty">🔎 No tools found.<br>Try another search.</div>`;
+   return;
+ }
+
+ list.forEach(t=>{
+
+   const card=document.createElement("article");
+   card.className="card";
+
+   card.innerHTML=`
+     <div class="cardIcon">${t.icon}</div>
+     <h3>${escapeHTML(t.name)}</h3>
+     <p>${escapeHTML(t.description)}</p>
+
+     <div class="cardActions">
+       <button onclick="openTool('${t.id}')">Open</button>
+
+       <button
+        class="fav ${isFav(t.id)?"on":""}"
+        onclick="toggleFavorite('${t.id}')">
+        ${isFav(t.id)?"★":"☆"}
+       </button>
+     </div>
+   `;
+
+   $("toolGrid").appendChild(card);
+ });
+}
+
+function escapeHTML(s){
+ return String(s).replace(/[&<>"']/g,c=>({
+   "&":"&amp;","<":"&lt;",">":"&gt;",
+   '"':"&quot;","'":"&#039;"
+ }[c]));
+}
+
+/* =========================================================
+   TOOL WORKSPACE
+========================================================= */
+
+function openTool(id){
+
+ const t=tools.find(x=>x.id===id);
+ if(!t)return;
+
+ currentTool=t;
+ addRecent(id);
+
+ $("workspace").innerHTML=`
+   <h2>${t.icon} ${escapeHTML(t.name)}</h2>
+   <p>${escapeHTML(t.description)}</p>
+   <div id="toolApp"></div>
+ `;
+
+ buildTool(t);
+
+ $("workspace").scrollIntoView({
+   behavior:"smooth",
+   block:"start"
+ });
+
+ render();
+}
+
+/* =========================================================
+   TOOL BUILDERS
+========================================================= */
+
+function buildTool(t){
+
+ const app=$("toolApp");
+
+ if(t.type==="math"){
+   mathTool(app,t);return;
+ }
+
+ if(t.type==="physics"){
+   physicsTool(app,t);return;
+ }
+
+ if(t.type==="chemistry"){
+   chemistryTool(app,t);return;
+ }
+
+ if(t.type==="number"){
+   numberTool(app,t);return;
+ }
+
+ if(t.type==="text"){
+   textTool(app,t);return;
+ }
+
+ if(t.type==="coding"){
+   codingTool(app,t);return;
+ }
+
+ if(t.type==="study"){
+   studyTool(app,t);return;
+ }
+
+ if(t.type==="image"){
+   imageTool(app,t);return;
+ }
+
+ if(t.type==="document"){
+   documentTool(app,t);return;
+ }
+
+ if(t.type==="design"){
+   designTool(app,t);return;
+ }
+
+ if(t.type==="time"){
+   timeTool(app,t);return;
+ }
+
+ if(t.type==="game"){
+   gameTool(app,t);return;
+ }
+
+ utilityTool(app,t);
+}
+
+/* =========================================================
+   COMMON FORM
+========================================================= */
+
+function input(label,id,value=""){
+ return `
+ <label>
+ <b>${label}</b>
+ <input id="${id}" value="${escapeHTML(value)}">
+ </label>`;
+}
+
+function actionButtons(resetFn){
+ return `
+ <div class="toolbar">
+ <button class="primary" id="runTool">Calculate / Run</button>
+ <button class="secondary" id="copyOutput">📋 Copy</button>
+ <button class="secondary" id="resetTool">Reset</button>
+ <button class="secondary" id="downloadOutput">⬇ Download</button>
+ </div>
+ <div class="output" id="output">Output will appear here.</div>`;
+}
+
+function bindCommon(resetFn){
+
+ $("copyOutput").onclick=()=>{
+   const text=$("output").textContent;
+   navigator.clipboard?.writeText(text);
+   toast("Copied");
+ };
+
+ $("downloadOutput").onclick=()=>{
+   downloadText(
+     "tool-master-result.txt",
+     $("output").textContent
+   );
+ };
+
+ $("resetTool").onclick=resetFn;
+}
+
+/* =========================================================
+   MATH ENGINE
+========================================================= */
+
+function mathTool(app,t){
+
+ app.innerHTML=`
+ <div class="toolForm">
+
+ <div class="row">
+ ${input("Value A","a","25")}
+ ${input("Value B","b","5")}
+ </div>
+
+ ${input("Extra values, comma separated","values","10,20,30,40")}
+
+ <select id="operation">
+   <option value="add">Addition</option>
+   <option value="subtract">Subtraction</option>
+   <option value="multiply">Multiplication</option>
+   <option value="divide">Division</option>
+   <option value="percent">Percentage</option>
+   <option value="average">Average</option>
+   <option value="median">Median</option>
+   <option value="min">Minimum</option>
+   <option value="max">Maximum</option>
+   <option value="sqrt">Square Root A</option>
+   <option value="square">Square A</option>
+   <option value="cube">Cube A</option>
+   <option value="factorial">Factorial A</option>
+   <option value="power">A Power B</option>
+   <option value="sin">Sin A degrees</option>
+   <option value="cos">Cos A degrees</option>
+   <option value="tan">Tan A degrees</option>
+   <option value="log">Log10 A</option>
+   <option value="ln">Natural Log A</option>
+ </select>
+
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
+
+ $("runTool").onclick=()=>{
+
+   const a=Number($("a").value);
+   const b=Number($("b").value);
+   const vals=$("values").value
+     .split(",")
+     .map(Number)
+     .filter(Number.isFinite);
+
+   const op=$("operation").value;
+   let r;
+
+   try{
+    switch(op){
+     case"add":r=a+b;break;
+     case"subtract":r=a-b;break;
+     case"multiply":r=a*b;break;
+     case"divide":r=b===0?"Cannot divide by zero":a/b;break;
+     case"percent":r=(a*b)/100;break;
+     case"average":r=vals.reduce((x,y)=>x+y,0)/vals.length;break;
+     case"median":
+       vals.sort((x,y)=>x-y);
+       r=vals.length%2?
+       vals[Math.floor(vals.length/2)]:
+       (vals[vals.length/2-1]+vals[vals.length/2])/2;
+       break;
+     case"min":r=Math.min(...vals);break;
+     case"max":r=Math.max(...vals);break;
+     case"sqrt":r=Math.sqrt(a);break;
+     case"square":r=a*a;break;
+     case"cube":r=a*a*a;break;
+     case"factorial":
+       if(a<0||a>170||!Number.isInteger(a))
+         throw Error("Use an integer from 0 to 170");
+       r=factorial(a);break;
+     case"power":r=Math.pow(a,b);break;
+     case"sin":r=Math.sin(a*Math.PI/180);break;
+     case"cos":r=Math.cos(a*Math.PI/180);break;
+     case"tan":r=Math.tan(a*Math.PI/180);break;
+     case"log":r=Math.log10(a);break;
+     case"ln":r=Math.log(a);break;
+    }
+
+    $("output").textContent=String(r);
+
+   }catch(e){
+    $("output").textContent=e.message;
+   }
+ };
+
+ bindCommon(()=>buildTool(t));
+}
+
+/* =========================================================
+   PHYSICS ENGINE
+========================================================= */
+
+function physicsTool(app,t){
+
+ app.innerHTML=`
+ <div class="toolForm">
+
+ <div class="row">
+ ${input("A","a","10")}
+ ${input("B","b","5")}
+ ${input("C","c","2")}
+ </div>
+
+ <select id="formula">
+ <option value="velocity">Velocity = distance / time</option>
+ <option value="force">Force = mass × acceleration</option>
+ <option value="momentum">Momentum = mass × velocity</option>
+ <option value="ke">Kinetic Energy = ½mv²</option>
+ <option value="pe">Potential Energy = mgh</option>
+ <option value="power">Power = work / time</option>
+ <option value="pressure">Pressure = force / area</option>
+ <option value="density">Density = mass / volume</option>
+ <option value="ohm">Ohm's law V = IR</option>
+ <option value="work">Work = force × distance</option>
+ <option value="wave">Wave speed = frequency × wavelength</option>
+ <option value="efficiency">Efficiency = output/input × 100</option>
+ </select>
+
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
+
+ $("runTool").onclick=()=>{
+
+  const a=Number($("a").value);
+  const b=Number($("b").value);
+  const c=Number($("c").value);
+  const f=$("formula").value;
+
+  let r;
+
+  switch(f){
+   case"velocity":r=a/b;break;
+   case"force":r=a*b;break;
+   case"momentum":r=a*b;break;
+   case"ke":r=.5*a*b*b;break;
+   case"pe":r=a*b*c;break;
+   case"power":r=a/b;break;
+   case"pressure":r=a/b;break;
+   case"density":r=a/b;break;
+   case"ohm":r=a*b;break;
+   case"work":r=a*b;break;
+   case"wave":r=a*b;break;
+   case"efficiency":r=(a/b)*100;break;
+  }
+
+  $("output").textContent=String(r);
+ };
+
+ bindCommon(()=>buildTool(t));
+}
+
+/* =========================================================
+   CHEMISTRY
+========================================================= */
+
+const atomicMass={
+ H:1.008,He:4.003,Li:6.94,Be:9.012,B:10.81,
+ C:12.011,N:14.007,O:15.999,F:18.998,Ne:20.180,
+ Na:22.990,Mg:24.305,Al:26.982,Si:28.085,P:30.974,
+ S:32.06,Cl:35.45,K:39.098,Ca:40.078,Fe:55.845,
+ Cu:63.546,Zn:65.38,Ag:107.868,I:126.904,
+ Ba:137.327,Au:196.967,Hg:200.592,Pb:207.2
 };
 
-let counter=1;
+function molarMass(formula){
 
-while(tools.length<520){
+ let total=0;
 
- const category=categories[counter%categories.length];
+ const tokens=
+ formula.match(/([A-Z][a-z]?)(\d*)/g)||[];
 
- tools.push({
-  category:category,
-  icon:categoryIcons[category],
-  name:"Advanced "+category+" Tool "+counter
- });
+ for(const token of tokens){
 
- counter++;
+  const m=token.match(/([A-Z][a-z]?)(\d*)/);
+
+  const element=m[1];
+  const count=Number(m[2]||1);
+
+  if(!(element in atomicMass))
+    throw Error("Unknown element: "+element);
+
+  total+=atomicMass[element]*count;
+ }
+
+ return total;
 }
 
+function chemistryTool(app,t){
 
-/* =========================================================
-   STORAGE
-========================================================= */
+ app.innerHTML=`
+ <div class="toolForm">
 
-let favorites=
- JSON.parse(localStorage.getItem("studentproFavorites")||"[]");
+ ${input("Chemical formula","formula","H2O")}
 
-let recent=
- JSON.parse(localStorage.getItem("studentproRecent")||"[]");
+ <select id="chem">
+  <option value="mass">Molar mass</option>
+  <option value="moles">Moles from mass</option>
+  <option value="particles">Particles from moles</option>
+  <option value="ph">pH from [H+]</option>
+  <option value="poh">pOH from [OH-]</option>
+ </select>
 
+ ${input("Value","value","18")}
 
-/* =========================================================
-   BASIC FUNCTIONS
-========================================================= */
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
 
-function escapeHTML(text){
+ $("runTool").onclick=()=>{
 
- return String(text).replace(/[&<>"']/g,function(c){
+  try{
 
-  return {
-   "&":"&amp;",
-   "<":"&lt;",
-   ">":"&gt;",
-   '"':"&quot;",
-   "'":"&#039;"
-  }[c];
+   const op=$("chem").value;
+   const formula=$("formula").value.trim();
+   const value=Number($("value").value);
+   const mass=molarMass(formula);
 
- });
+   let r;
 
+   if(op==="mass")r=mass+" g/mol";
+   if(op==="moles")r=value/mass+" mol";
+   if(op==="particles")
+     r=value*6.02214076e23+" particles";
+   if(op==="ph")
+     r=-Math.log10(value);
+   if(op==="poh")
+     r=-Math.log10(value);
+
+   $("output").textContent=String(r);
+
+  }catch(e){
+   $("output").textContent=e.message;
+  }
+ };
+
+ bindCommon(()=>buildTool(t));
 }
 
+/* =========================================================
+   NUMBER SYSTEM
+========================================================= */
 
-function toolCard(tool){
+function numberTool(app,t){
 
- const active=favorites.includes(tool.name);
+ app.innerHTML=`
+ <div class="toolForm">
 
- return `
+ ${input("Number","num","101101")}
 
- <div class="tool"
-      onclick="openTool('${encodeURIComponent(tool.name)}')">
+ <div class="row">
+ <select id="from">
+  <option value="2">Binary</option>
+  <option value="8">Octal</option>
+  <option value="10">Decimal</option>
+  <option value="16">Hexadecimal</option>
+ </select>
 
-  <button
-   class="star ${active?"active":""}"
-   onclick="event.stopPropagation();
-   toggleFavorite('${encodeURIComponent(tool.name)}')">
-
-   ${active?"★":"☆"}
-
-  </button>
-
-  <div class="icon">${tool.icon}</div>
-
-  <h3>${escapeHTML(tool.name)}</h3>
-
-  <p>
-   ${tool.category} · Browser Tool
-  </p>
-
+ <select id="to">
+  <option value="2">Binary</option>
+  <option value="8">Octal</option>
+  <option value="10">Decimal</option>
+  <option value="16">Hexadecimal</option>
+ </select>
  </div>
 
- `;
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
 
+ $("runTool").onclick=()=>{
+
+  try{
+   const n=$("num").value.trim();
+   const from=Number($("from").value);
+   const to=Number($("to").value);
+
+   const decimal=parseInt(n,from);
+
+   if(Number.isNaN(decimal))
+     throw Error("Invalid number for selected base.");
+
+   $("output").textContent=
+     decimal.toString(to).toUpperCase();
+
+  }catch(e){
+   $("output").textContent=e.message;
+  }
+ };
+
+ bindCommon(()=>buildTool(t));
 }
-
 
 /* =========================================================
-   RENDER
+   TEXT
 ========================================================= */
 
-function render(list=tools){
-
- document.getElementById("popular").innerHTML=
-  tools.slice(0,12).map(toolCard).join("");
-
- document.getElementById("tools").innerHTML=
-  list.length
-  ?list.map(toolCard).join("")
-  :"<div class='card'>No tools found.</div>";
-
- document.getElementById("toolCount").textContent=
-  tools.length+"+";
-
- document.getElementById("favoriteCount").textContent=
-  favorites.length;
-
- document.getElementById("recentCount").textContent=
-  recent.length;
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-function searchTools(){
-
- const q=
-  document.getElementById("search")
-  .value
-  .toLowerCase()
-  .trim();
-
- const result=q
- ?tools.filter(t=>
-   (t.name+" "+t.category)
-   .toLowerCase()
-   .includes(q)
-  )
- :tools;
-
- render(result);
-
-}
-
-
-function syncSearch(){
-
- const value=
-  document.getElementById("heroSearch").value;
-
- document.getElementById("search").value=value;
-
- searchTools();
-
-}
-
-
-/* =========================================================
-   MENU
-========================================================= */
-
-function toggleMenu(){
-
- const sidebar=
-  document.getElementById("sidebar");
-
- const overlay=
-  document.getElementById("overlay");
-
- sidebar.classList.toggle("open");
-
- overlay.classList.toggle(
-  "show",
-  sidebar.classList.contains("open")
- );
-
-}
-
-
-function closeMenu(){
-
- document.getElementById("sidebar")
- .classList.remove("open");
-
- document.getElementById("overlay")
- .classList.remove("show");
-
-}
-
-
-/* =========================================================
-   DARK MODE
-========================================================= */
-
-function toggleDark(){
-
- document.body.classList.toggle("dark");
-
- localStorage.setItem(
-  "studentproDark",
-  document.body.classList.contains("dark")
- );
-
-}
-
-if(localStorage.getItem("studentproDark")==="true")
- document.body.classList.add("dark");
-
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
-
-function showCategory(category){
-
- closeMenu();
-
- document.getElementById("sectionTitle").textContent=
-  categoryIcons[category]+" "+category+" Tools";
-
- document.getElementById("popular").innerHTML="";
-
- const result=
-  tools.filter(t=>t.category===category);
-
- document.getElementById("tools").innerHTML=
-  result.map(toolCard).join("");
-
- window.scrollTo(0,0);
-
-}
-
-
-/* =========================================================
-   FAVORITES
-========================================================= */
-
-function toggleFavorite(encoded){
-
- const name=decodeURIComponent(encoded);
-
- if(favorites.includes(name)){
-
-  favorites=
-   favorites.filter(x=>x!==name);
-
- }else{
-
-  favorites.push(name);
-
- }
-
- localStorage.setItem(
-  "studentproFavorites",
-  JSON.stringify(favorites)
- );
-
- render();
-
-}
-
-
-function showFavorites(){
-
- closeMenu();
-
- document.getElementById("popular").innerHTML="";
-
- document.getElementById("sectionTitle")
- .textContent="⭐ My Favorites";
-
- const result=
-  tools.filter(t=>favorites.includes(t.name));
-
- document.getElementById("tools").innerHTML=
-  result.length
-  ?result.map(toolCard).join("")
-  :"<div class='card'>No favorites yet.</div>";
-
-}
-
-
-/* =========================================================
-   RECENT
-========================================================= */
-
-function showRecent(){
-
- closeMenu();
-
- document.getElementById("popular").innerHTML="";
-
- document.getElementById("sectionTitle")
- .textContent="🕘 Recent Tools";
-
- const result=
-  recent
-  .map(name=>tools.find(t=>t.name===name))
-  .filter(Boolean);
-
- document.getElementById("tools").innerHTML=
-  result.length
-  ?result.map(toolCard).join("")
-  :"<div class='card'>No recent tools.</div>";
-
-}
-
-
-/* =========================================================
-   HOME
-========================================================= */
-
-function goHome(){
-
- closeMenu();
-
- document.getElementById("home")
- .classList.add("active");
-
- document.getElementById("toolPage")
- .classList.remove("active");
-
- document.getElementById("search").value="";
-
- document.getElementById("heroSearch").value="";
-
- document.getElementById("sectionTitle")
- .textContent="🧰 All Tools";
-
- render();
-
- window.scrollTo(0,0);
-
-}
-
-
-/* =========================================================
-   TOOL OPEN
-========================================================= */
-
-function openTool(encoded){
-
- const name=decodeURIComponent(encoded);
-
- recent=[
-  name,
-  ...recent.filter(x=>x!==name)
- ].slice(0,30);
-
- localStorage.setItem(
-  "studentproRecent",
-  JSON.stringify(recent)
- );
-
- document.getElementById("home")
- .classList.remove("active");
-
- document.getElementById("toolPage")
- .classList.add("active");
-
- document.getElementById("toolTitle")
- .textContent=name;
-
- document.getElementById("toolInterface")
- .innerHTML=buildTool(name);
-
- closeMenu();
-
- window.scrollTo(0,0);
-
-}
-
-
-/* =========================================================
-   TOOL INTERFACES
-========================================================= */
-
-function input(id,placeholder,type="text"){
-
- return `
- <input
-  id="${id}"
-  type="${type}"
-  placeholder="${placeholder}">
- `;
-
-}
-
-
-function output(){
-
- return `<div id="output" class="output"></div>`;
-
-}
-
-
-function buildTool(name){
-
- if(name==="Scientific Calculator"){
-
-  return `
-   ${input("a","Example: sqrt(144)+5*2")}
-   <div class="actions">
-    <button class="primary"
-     onclick="scientificCalc()">
-     Calculate
-    </button>
-   </div>
-   ${output()}
-  `;
-
- }
-
-
- if([
-  "Percentage Calculator",
-  "Average Calculator",
-  "HCF Calculator",
-  "LCM Calculator",
-  "Prime Checker",
-  "Quadratic Solver",
-  "Simple Interest",
-  "Compound Interest",
-  "GST Calculator",
-  "Discount Calculator"
- ].includes(name)){
-
-  return calculatorTool(name);
-
- }
-
-
- if([
-  "Case Converter",
-  "Uppercase Converter",
-  "Lowercase Converter",
-  "Title Case Converter",
-  "Sentence Case Converter",
-  "Text Cleaner",
-  "Word Counter",
-  "Character Counter",
-  "Line Counter",
-  "Reverse Text",
-  "Palindrome Checker",
-  "Anagram Checker",
-  "Vowel Counter",
-  "Consonant Counter",
-  "Slug Generator",
-  "Find Replace"
- ].includes(name)){
-
-  return textTool(name);
-
- }
-
-
- if([
-  "URL Encoder",
-  "URL Decoder",
-  "Base64 Encoder",
-  "Base64 Decoder",
-  "ROT13",
-  "ASCII Converter",
-  "Unicode Converter"
- ].includes(name)){
-
-  return encodingTool(name);
-
- }
-
-
- if([
-  "JSON Formatter",
-  "JSON Minifier",
-  "CSV to JSON",
-  "JSON to CSV",
-  "HTML Playground",
-  "JavaScript Playground"
- ].includes(name)){
-
-  return codingTool(name);
-
- }
-
-
- if([
-  "Age Calculator",
-  "Date Difference",
-  "Day of Week",
-  "Leap Year",
-  "Days Until Date"
- ].includes(name)){
-
-  return timeTool(name);
-
- }
-
-
- if([
-  "GPA Calculator",
-  "CGPA Calculator",
-  "Grade Calculator",
-  "Marks Percentage",
-  "Attendance Calculator",
-  "Marks Required"
- ].includes(name)){
-
-  return studyTool(name);
-
- }
-
-
- if([
-  "Password Generator",
-  "Random Password",
-  "Random Number",
-  "UUID Generator",
-  "Number System Converter"
- ].includes(name)){
-
-  return utilityTool(name);
-
- }
-
-
- if(name.includes("Game")||
-    [
-     "Number Guess",
-     "Math Challenge",
-     "Multiplication Game",
-     "Addition Game",
-     "Subtraction Game",
-     "Division Game",
-     "Odd Even Game",
-     "Quick Maths"
-    ].includes(name)){
-
-  return gameTool(name);
-
- }
-
-
- if([
-  "Image Creator",
-  "Poster Creator",
-  "Certificate Creator",
-  "Quote Poster",
-  "Thumbnail Creator"
- ].includes(name)){
-
-  return imageTool(name);
-
- }
-
-
- if([
-  "PDF Creator",
-  "Text to PDF",
-  "Download Text"
- ].includes(name)){
-
-  return pdfTool(name);
-
- }
-
-
- return genericTool(name);
-
-}
-
-
-/* =========================================================
-   CALCULATORS
-========================================================= */
-
-function calculatorTool(name){
-
- let fields="";
-
- if(name==="Quadratic Solver"){
-
-  fields=
-   input("a","a")+
-   input("b","b")+
-   input("c","c");
-
- }else{
-
-  fields=
-   input("a","First value")+
-   input("b","Second value");
-
- }
-
- return `
-  ${fields}
-
-  <div class="actions">
-   <button class="primary"
-    onclick="runCalculator('${name}')">
-    Calculate
-   </button>
-  </div>
-
-  ${output()}
- `;
-
-}
-
-
-function scientificCalc(){
-
- try{
-
-  let expression=
-   document.getElementById("a")
-   .value
-   .replaceAll("^","**")
-   .replace(/\bsqrt\(/g,"Math.sqrt(")
-   .replace(/\bpi\b/gi,"Math.PI");
-
-  let result=
-   Function("return "+expression)();
-
-  document.getElementById("output")
-   .textContent=result;
-
- }catch(e){
-
-  document.getElementById("output")
-   .textContent="Invalid expression.";
-
- }
-
-}
-
-
-function gcd(a,b){
-
- while(b){
-
-  [a,b]=[b,a%b];
-
- }
-
- return Math.abs(a);
-
-}
-
-
-function runCalculator(name){
-
- const a=
-  Number(document.getElementById("a")?.value);
-
- const b=
-  Number(document.getElementById("b")?.value);
-
- let result;
-
- if(name==="Percentage Calculator")
-  result=a*b/100;
-
- else if(name==="Average Calculator"){
-
-  const values=
-   document.getElementById("a")
-   .value
-   .split(",")
-   .map(Number);
-
-  result=
-   values.reduce((x,y)=>x+y,0)/values.length;
-
- }
-
- else if(name==="HCF Calculator")
-  result=gcd(a,b);
-
- else if(name==="LCM Calculator")
-  result=Math.abs(a*b)/gcd(a,b);
-
- else if(name==="Prime Checker"){
-
-  result=a>1;
-
-  for(let i=2;i*i<=a;i++)
-   if(a%i===0)result=false;
-
-  result=result?"Prime":"Not Prime";
-
- }
-
- else if(name==="Quadratic Solver"){
-
-  const c=
-   Number(document.getElementById("c").value);
-
-  const d=b*b-4*a*c;
-
-  result=d<0
-   ?"No real roots"
-   :
-   `x₁=${(-b+Math.sqrt(d))/(2*a)}
-x₂=${(-b-Math.sqrt(d))/(2*a)}`;
-
- }
-
- else if(name==="Simple Interest")
-  result=a*b/100;
-
- else if(name==="Compound Interest"){
-
-  const years=
-   Number(prompt("Enter years:",1));
-
-  result=
-   a*((1+b/100)**years-1);
-
- }
-
- else if(name==="GST Calculator")
-  result=a*b/100;
-
- else if(name==="Discount Calculator")
-  result=a-(a*b/100);
-
- else
-  result=a+b;
-
- document.getElementById("output")
- .textContent=result;
-
-}
-
-
-/* =========================================================
-   TEXT TOOLS
-========================================================= */
-
-function textTool(name){
-
- return `
-
- <textarea id="text"
-  placeholder="Type or paste text here..."></textarea>
-
- ${name==="Find Replace"
- ?input("find","Find")+input("replace","Replace")
- :""
-
- }
-
- <div class="actions">
-
-  <button class="primary"
-   onclick="runText('${name}')">
-   Process
-  </button>
-
- </div>
-
- ${output()}
-
- `;
-
-}
-
-
-function runText(name){
-
- const text=
-  document.getElementById("text").value;
-
- let result="";
-
- if(name==="Case Converter"||
-    name==="Uppercase Converter")
-  result=text.toUpperCase();
-
- else if(name==="Lowercase Converter")
-  result=text.toLowerCase();
-
- else if(name==="Title Case Converter")
-  result=text.toLowerCase()
-   .replace(/\b\w/g,x=>x.toUpperCase());
-
- else if(name==="Sentence Case Converter")
-  result=text.toLowerCase()
-   .replace(/(^\s*\w|[.!?]\s+\w)/g,
-   x=>x.toUpperCase());
-
- else if(name==="Text Cleaner")
-  result=text.replace(/\s+/g," ").trim();
-
- else if(name==="Word Counter")
-  result="Words: "+
-   (text.trim()?text.trim().split(/\s+/).length:0);
-
- else if(name==="Character Counter")
-  result="Characters: "+text.length;
-
- else if(name==="Line Counter")
-  result="Lines: "+(text?text.split("\n").length:0);
-
- else if(name==="Reverse Text")
-  result=[...text].reverse().join("");
-
- else if(name==="Palindrome Checker"){
-
-  const x=
-   text.toLowerCase().replace(/\W/g,"");
-
-  result=
-   x===[...x].reverse().join("")
-   ?"Palindrome"
-   :"Not a palindrome";
-
- }
-
- else if(name==="Anagram Checker"){
-
-  const second=
-   document.getElementById("find")?.value||"";
-
-  const x=[...text.toLowerCase()]
-   .sort().join("");
-
-  const y=[...second.toLowerCase()]
-   .sort().join("");
-
-  result=x===y?"Anagram":"Not an anagram";
-
- }
-
- else if(name==="Vowel Counter")
-  result=(text.match(/[aeiou]/gi)||[]).length;
-
- else if(name==="Consonant Counter")
-  result=(text.match(
-   /[bcdfghjklmnpqrstvwxyz]/gi
-  )||[]).length;
-
- else if(name==="Slug Generator")
-  result=text.toLowerCase()
-   .trim()
-   .replace(/[^a-z0-9]+/g,"-");
-
- else if(name==="Find Replace"){
-
-  const find=
-   document.getElementById("find").value;
-
-  const replace=
-   document.getElementById("replace").value;
-
-  result=text.split(find).join(replace);
-
- }
-
- else
-  result=text;
-
- document.getElementById("output")
- .textContent=result;
-
-}
-
-
-/* =========================================================
-   ENCODING
-========================================================= */
-
-function encodingTool(name){
-
- return `
-
- <textarea id="text"
-  placeholder="Enter text..."></textarea>
-
- <div class="actions">
-
-  <button class="primary"
-   onclick="runEncoding('${name}')">
-   Process
-  </button>
-
- </div>
-
- ${output()}
-
- `;
-
-}
-
-
-function runEncoding(name){
-
- const text=
-  document.getElementById("text").value;
-
- let result="";
-
- try{
-
-  if(name==="URL Encoder")
-   result=encodeURIComponent(text);
-
-  else if(name==="URL Decoder")
-   result=decodeURIComponent(text);
-
-  else if(name==="Base64 Encoder")
-   result=btoa(unescape(encodeURIComponent(text)));
-
-  else if(name==="Base64 Decoder")
-   result=decodeURIComponent(
-    escape(atob(text))
+function textTool(app,t){
+
+ app.innerHTML=`
+ <div class="toolForm">
+
+ <textarea id="text" placeholder="Enter text..."></textarea>
+
+ <select id="textOp">
+  <option value="count">Statistics</option>
+  <option value="upper">UPPERCASE</option>
+  <option value="lower">lowercase</option>
+  <option value="title">Title Case</option>
+  <option value="sentence">Sentence case</option>
+  <option value="reverse">Reverse</option>
+  <option value="spaces">Remove extra spaces</option>
+  <option value="duplicate">Remove duplicate lines</option>
+  <option value="sort">Sort lines</option>
+  <option value="slug">Slug</option>
+  <option value="palindrome">Palindrome check</option>
+ </select>
+
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
+
+ $("runTool").onclick=()=>{
+
+  const text=$("text").value;
+  const op=$("textOp").value;
+  let out="";
+
+  if(op==="count"){
+   const words=text.trim()?text.trim().split(/\s+/).length:0;
+   const chars=text.length;
+   const lines=text?text.split(/\n/).length:0;
+   const sentences=(text.match(/[.!?]+/g)||[]).length;
+
+   out=
+   `Words: ${words}
+Characters: ${chars}
+Lines: ${lines}
+Sentences: ${sentences}
+Reading time: ${Math.max(1,Math.ceil(words/200))} minute(s)`;
+  }
+
+  if(op==="upper")out=text.toUpperCase();
+  if(op==="lower")out=text.toLowerCase();
+
+  if(op==="title")
+   out=text.toLowerCase().replace(/\b\w/g,x=>x.toUpperCase());
+
+  if(op==="sentence")
+   out=text.toLowerCase().replace(
+    /(^\s*\w|[.!?]\s+\w)/g,
+    x=>x.toUpperCase()
    );
 
-  else if(name==="ASCII Converter")
-   result=[...text]
-    .map(x=>x.charCodeAt(0))
-    .join(" ");
+  if(op==="reverse")
+   out=[...text].reverse().join("");
 
-  else if(name==="Unicode Converter")
-   result=[...text]
-    .map(x=>"U+"+
-     x.codePointAt(0)
-      .toString(16)
-      .toUpperCase())
-    .join(" ");
+  if(op==="spaces")
+   out=text.replace(/\s+/g," ").trim();
 
-  else if(name==="ROT13")
-   result=text.replace(/[a-z]/gi,c=>
-    String.fromCharCode(
-     (c.toLowerCase().charCodeAt(0)-97+13)%26+97
-    )
-   );
+  if(op==="duplicate")
+   out=[...new Set(text.split("\n"))].join("\n");
 
- }catch(e){
+  if(op==="sort")
+   out=text.split("\n").sort((a,b)=>a.localeCompare(b)).join("\n");
 
-  result="Invalid input.";
+  if(op==="slug")
+   out=text.toLowerCase()
+     .trim()
+     .replace(/[^\w\s-]/g,"")
+     .replace(/\s+/g,"-");
 
- }
+  if(op==="palindrome"){
+   const clean=text.toLowerCase().replace(/[^a-z0-9]/g,"");
+   out=clean===([...clean].reverse().join(""))
+    ?"Palindrome":"Not a palindrome";
+  }
 
- document.getElementById("output")
- .textContent=result;
+  $("output").textContent=out;
+ };
 
+ bindCommon(()=>buildTool(t));
 }
-
 
 /* =========================================================
    CODING
 ========================================================= */
 
-function codingTool(name){
+function codingTool(app,t){
 
- return `
+ app.innerHTML=`
+ <div class="toolForm">
 
- <textarea id="code"
-  placeholder="Paste code or JSON here..."></textarea>
+ <textarea id="code" placeholder="Paste code here..."></textarea>
 
- <div class="actions">
+ <select id="codeOp">
+  <option value="stats">Code statistics</option>
+  <option value="json">Format JSON</option>
+  <option value="jsonmin">Minify JSON</option>
+  <option value="b64e">Base64 encode</option>
+  <option value="b64d">Base64 decode</option>
+  <option value="urlE">URL encode</option>
+  <option value="urlD">URL decode</option>
+  <option value="htmlE">HTML encode</option>
+  <option value="uuid">Generate UUID</option>
+  <option value="meta">Generate meta tag</option>
+ </select>
 
-  <button class="primary"
-   onclick="runCoding('${name}')">
-   Run
-  </button>
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
 
- </div>
+ $("runTool").onclick=()=>{
 
- ${output()}
-
- `;
-
-}
-
-
-function runCoding(name){
-
- const text=
-  document.getElementById("code").value;
-
- let result="";
-
- if(name==="JSON Formatter"||
-    name==="JSON Minifier"){
+  const s=$("code").value;
+  const op=$("codeOp").value;
+  let out="";
 
   try{
 
-   const obj=JSON.parse(text);
-
-   result=
-    name==="JSON Formatter"
-    ?JSON.stringify(obj,null,2)
-    :JSON.stringify(obj);
-
-  }catch(e){
-
-   result="Invalid JSON.";
-
-  }
-
- }
-
- else if(name==="CSV to JSON"){
-
-  const rows=
-   text.trim()
-   .split("\n")
-   .map(x=>x.split(","));
-
-  result=JSON.stringify(rows,null,2);
-
- }
-
- else if(name==="JSON to CSV"){
-
-  try{
-
-   const data=JSON.parse(text);
-
-   const arr=
-    Array.isArray(data)?data:[data];
-
-   if(!arr.length){
-    result="";
-   }else{
-
-    const keys=
-     Object.keys(arr[0]);
-
-    result=
-     keys.join(",")+"\n"+
-     arr.map(row=>
-      keys.map(k=>row[k]).join(",")
-     ).join("\n");
-
+   if(op==="stats"){
+    out=
+    `Characters: ${s.length}
+Lines: ${s?s.split("\n").length:0}
+Words: ${s.trim()?s.trim().split(/\s+/).length:0}
+Functions: ${(s.match(/\bfunction\b/g)||[]).length}
+Braces: ${(s.match(/[{}]/g)||[]).length}`;
    }
 
+   if(op==="json")
+    out=JSON.stringify(JSON.parse(s),null,2);
+
+   if(op==="jsonmin")
+    out=JSON.stringify(JSON.parse(s));
+
+   if(op==="b64e")
+    out=btoa(unescape(encodeURIComponent(s)));
+
+   if(op==="b64d")
+    out=decodeURIComponent(escape(atob(s)));
+
+   if(op==="urlE")
+    out=encodeURIComponent(s);
+
+   if(op==="urlD")
+    out=decodeURIComponent(s);
+
+   if(op==="htmlE")
+    out=s.replace(/[&<>"']/g,c=>({
+      "&":"&amp;","<":"&lt;",">":"&gt;",
+      '"':"&quot;","'":"&#39;"
+    }[c]));
+
+   if(op==="uuid")
+    out=crypto.randomUUID();
+
+   if(op==="meta")
+    out=
+`<title>${escapeHTML(s)}</title>
+<meta name="description" content="${escapeHTML(s)}">`;
+
   }catch(e){
-
-   result="Invalid JSON.";
-
+   out="Error: "+e.message;
   }
 
- }
+  $("output").textContent=out;
+ };
 
- else if(name==="HTML Playground"){
-
-  document.getElementById("output")
-   .innerHTML=
-   `<iframe
-     style="width:100%;height:350px;border:0"
-     srcdoc="${escapeHTML(text)}">
-    </iframe>`;
-
-  return;
-
- }
-
- else if(name==="JavaScript Playground"){
-
-  try{
-
-   result=
-    String(Function(text)());
-
-  }catch(e){
-
-   result=e.message;
-
-  }
-
- }
-
- else{
-
-  result=
-   "Code received:\n\n"+text;
-
- }
-
- document.getElementById("output")
- .textContent=result;
-
+ bindCommon(()=>buildTool(t));
 }
-
-
-/* =========================================================
-   TIME
-========================================================= */
-
-function timeTool(name){
-
- return `
-
- ${input("date","Select date","date")}
-
- ${name==="Date Difference"
- ?input("date2","Second date","date")
- :""}
-
- <div class="actions">
-
-  <button class="primary"
-   onclick="runTime('${name}')">
-   Calculate
-  </button>
-
- </div>
-
- ${output()}
-
- `;
-
-}
-
-
-function runTime(name){
-
- const date=
-  new Date(
-   document.getElementById("date").value
-  );
-
- let result;
-
- if(name==="Age Calculator"){
-
-  const now=new Date();
-
-  let age=
-   now.getFullYear()-date.getFullYear();
-
-  const m=
-   now.getMonth()-date.getMonth();
-
-  if(m<0||
-    (m===0&&now.getDate()<date.getDate()))
-   age--;
-
-  result=age+" years";
-
- }
-
- else if(name==="Date Difference"){
-
-  const d2=
-   new Date(
-    document.getElementById("date2").value
-   );
-
-  result=
-   Math.abs(d2-date)/86400000+
-   " days";
-
- }
-
- else if(name==="Day of Week")
-  result=date.toLocaleDateString(
-   undefined,{weekday:"long"}
-  );
-
- else if(name==="Leap Year"){
-
-  const year=date.getFullYear();
-
-  result=
-   year%4===0&&
-   (year%100!==0||year%400===0)
-   ?"Leap year"
-   :"Not a leap year";
-
- }
-
- else if(name==="Days Until Date"){
-
-  result=
-   Math.ceil(
-    (date-new Date())/86400000
-   )+" days";
-
- }
-
- else
-  result=new Date().toString();
-
- document.getElementById("output")
- .textContent=result;
-
-}
-
 
 /* =========================================================
    STUDY
 ========================================================= */
 
-function studyTool(name){
+function studyTool(app,t){
 
- return `
+ app.innerHTML=`
+ <div class="toolForm">
 
- ${input(
-  "marks",
-  "Example: 80,75,90"
- )}
-
- ${input(
-  "total",
-  "Total marks (optional)"
- )}
-
- <div class="actions">
-
-  <button class="primary"
-   onclick="runStudy('${name}')">
-   Calculate
-  </button>
-
+ <div class="row">
+ ${input("Obtained Marks","marks","78")}
+ ${input("Maximum Marks","max","100")}
  </div>
 
- ${output()}
+ <select id="studyOp">
+  <option value="percentage">Percentage</option>
+  <option value="grade">Grade</option>
+  <option value="cgpa">CGPA from percentage</option>
+  <option value="attendance">Attendance</option>
+  <option value="required">Required attendance</option>
+ </select>
 
- `;
+ ${input("Additional value","extra","75")}
 
-}
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
 
+ $("runTool").onclick=()=>{
 
-function runStudy(name){
+  const marks=Number($("marks").value);
+  const max=Number($("max").value);
+  const extra=Number($("extra").value);
+  const op=$("studyOp").value;
 
- const values=
-  document.getElementById("marks")
-  .value
-  .split(",")
-  .map(Number)
-  .filter(Number.isFinite);
+  let out="";
 
- const total=
-  Number(document.getElementById("total").value);
+  if(op==="percentage")
+    out=(marks/max*100).toFixed(2)+"%";
 
- let result;
-
- if(name==="GPA Calculator"||
-    name==="CGPA Calculator"){
-
-  result=
-   values.reduce((a,b)=>a+b,0)/
-   values.length;
-
- }
-
- else if(name==="Marks Percentage"){
-
-  result=
-   values[0]/total*100+"%";
-
- }
-
- else if(name==="Attendance Calculator"){
-
-  result=
-   values[1]/values[0]*100+"%";
-
- }
-
- else if(name==="Grade Calculator"){
-
-  const m=values[0];
-
-  if(m>=90)result="A+";
-  else if(m>=80)result="A";
-  else if(m>=70)result="B";
-  else if(m>=60)result="C";
-  else if(m>=50)result="D";
-  else result="F";
-
- }
-
- else
-  result=values.join(", ");
-
- document.getElementById("output")
- .textContent=result;
-
-}
-
-
-/* =========================================================
-   UTILITIES
-========================================================= */
-
-function utilityTool(name){
-
- return `
-
- ${input("value","Value")}
-
- ${input("second","Optional second value")}
-
- <div class="actions">
-
-  <button class="primary"
-   onclick="runUtility('${name}')">
-   Generate
-  </button>
-
- </div>
-
- ${output()}
-
- `;
-
-}
-
-
-function runUtility(name){
-
- const value=
-  document.getElementById("value").value;
-
- const second=
-  document.getElementById("second").value;
-
- let result;
-
- if(name==="Random Number"){
-
-  const min=Number(value)||1;
-  const max=Number(second)||100;
-
-  result=
-   Math.floor(
-    Math.random()*(max-min+1)
-   )+min;
-
- }
-
- else if(name==="Random Password"||
-         name==="Password Generator"){
-
-  const chars=
-   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"+
-   "abcdefghijklmnopqrstuvwxyz"+
-   "0123456789!@#$%^&*";
-
-  const length=
-   Number(value)||16;
-
-  result="";
-
-  for(let i=0;i<length;i++)
-   result+=chars[
-    Math.floor(Math.random()*chars.length)
-   ];
-
- }
-
- else if(name==="UUID Generator"){
-
-  result=crypto.randomUUID();
-
- }
-
- else if(name==="Number System Converter"){
-
-  const base=
-   Number(second)||10;
-
-  try{
-
-   result=
-    parseInt(value,base)
-    .toString(10);
-
-  }catch(e){
-
-   result="Invalid number.";
-
+  if(op==="grade"){
+    const p=marks/max*100;
+    out=p>=90?"A+":p>=80?"A":p>=70?"B":
+        p>=60?"C":p>=50?"D":"F";
   }
 
- }
+  if(op==="cgpa")
+    out=(marks/max*10).toFixed(2);
 
- else{
+  if(op==="attendance"){
+    out=(marks/max*100).toFixed(2)+"%";
+  }
 
-  result=
-   value+" → "+(second||"done");
+  if(op==="required"){
+    out=
+    "Current attendance: "+marks+"%\n"+
+    "Target attendance: "+extra+"%\n"+
+    (marks>=extra
+      ?"Target already reached."
+      :"Attend additional classes according to your institution's rules.");
+  }
 
- }
+  $("output").textContent=out;
+ };
 
- document.getElementById("output")
- .textContent=result;
-
+ bindCommon(()=>buildTool(t));
 }
 
+/* =========================================================
+   IMAGE TOOLS
+========================================================= */
+
+function imageTool(app,t){
+
+ app.innerHTML=`
+ <div class="toolForm">
+
+ <input type="file" id="imageFile" accept="image/*">
+
+ <div class="row">
+ ${input("Width","imgW","800")}
+ ${input("Height","imgH","600")}
+ </div>
+
+ <select id="imageOp">
+  <option value="resize">Resize</option>
+  <option value="grayscale">Grayscale</option>
+  <option value="invert">Invert</option>
+  <option value="brightness">Brightness</option>
+  <option value="contrast">Contrast</option>
+  <option value="rotate">Rotate</option>
+  <option value="flip">Flip Horizontal</option>
+  <option value="text">Create text image</option>
+ </select>
+
+ <input id="imageText" placeholder="Text for text-image creator">
+
+ <div class="toolbar">
+  <button class="primary" id="processImage">Process</button>
+  <button class="secondary" id="downloadImage">⬇ Download PNG</button>
+ </div>
+
+ <canvas id="canvas" style="max-width:100%;border:1px solid var(--border)"></canvas>
+
+ </div>`;
+
+ const canvas=$("canvas");
+ const ctx=canvas.getContext("2d");
+ let img=null;
+
+ $("imageFile").onchange=e=>{
+  const file=e.target.files[0];
+  if(!file)return;
+
+  const url=URL.createObjectURL(file);
+
+  img=new Image();
+
+  img.onload=()=>{
+   canvas.width=img.width;
+   canvas.height=img.height;
+   ctx.drawImage(img,0,0);
+   URL.revokeObjectURL(url);
+  };
+
+  img.src=url;
+ };
+
+ $("processImage").onclick=()=>{
+
+  if($("imageOp").value==="text"){
+
+   canvas.width=1000;
+   canvas.height=500;
+
+   ctx.fillStyle="#ffffff";
+   ctx.fillRect(0,0,canvas.width,canvas.height);
+
+   ctx.fillStyle="#111827";
+   ctx.font="bold 60px Arial";
+   ctx.textAlign="center";
+   ctx.textBaseline="middle";
+   ctx.fillText(
+     $("imageText").value||"Tool Master",
+     canvas.width/2,
+     canvas.height/2
+   );
+
+   return;
+  }
+
+  if(!img){
+   toast("Select an image first");
+   return;
+  }
+
+  let w=Number($("imgW").value)||img.width;
+  let h=Number($("imgH").value)||img.height;
+
+  if($("imageOp").value==="resize"){
+   canvas.width=w;
+   canvas.height=h;
+  }else{
+   canvas.width=img.width;
+   canvas.height=img.height;
+  }
+
+  let filter="none";
+
+  if($("imageOp").value==="grayscale")
+    filter="grayscale(100%)";
+
+  if($("imageOp").value==="invert")
+    filter="invert(100%)";
+
+  if($("imageOp").value==="brightness")
+    filter="brightness(130%)";
+
+  if($("imageOp").value==="contrast")
+    filter="contrast(150%)";
+
+  ctx.filter=filter;
+
+  if($("imageOp").value==="rotate"){
+   canvas.width=img.height;
+   canvas.height=img.width;
+   ctx.translate(canvas.width/2,canvas.height/2);
+   ctx.rotate(Math.PI/2);
+   ctx.drawImage(img,-img.width/2,-img.height/2);
+   ctx.setTransform(1,0,0,1,0,0);
+  }
+  else if($("imageOp").value==="flip"){
+   ctx.translate(canvas.width,0);
+   ctx.scale(-1,1);
+   ctx.drawImage(img,0,0,canvas.width,canvas.height);
+   ctx.setTransform(1,0,0,1,0,0);
+  }
+  else{
+   ctx.drawImage(img,0,0,canvas.width,canvas.height);
+  }
+
+  ctx.filter="none";
+ };
+
+ $("downloadImage").onclick=()=>{
+  canvas.toBlob(blob=>{
+   if(blob)downloadBlob("tool-master-image.png",blob);
+  },"image/png");
+ };
+}
+
+/* =========================================================
+   DOCUMENT TOOLS
+========================================================= */
+
+function documentTool(app,t){
+
+ app.innerHTML=`
+ <div class="toolForm">
+
+ <textarea id="docText"
+ placeholder="Enter document text..."></textarea>
+
+ <select id="docOp">
+  <option value="text">Printable text</option>
+  <option value="stats">Document statistics</option>
+  <option value="csv">CSV to JSON</option>
+  <option value="jsoncsv">JSON to CSV</option>
+ </select>
+
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
+
+ $("runTool").onclick=()=>{
+
+  const s=$("docText").value;
+  const op=$("docOp").value;
+  let out="";
+
+  if(op==="text")out=s;
+
+  if(op==="stats"){
+   const words=s.trim()?s.trim().split(/\s+/).length:0;
+   out=
+   `Words: ${words}
+Characters: ${s.length}
+Lines: ${s?s.split("\n").length:0}`;
+  }
+
+  if(op==="csv"){
+   const rows=s.trim().split(/\r?\n/);
+   const headers=rows.shift().split(",");
+   out=JSON.stringify(
+     rows.map(row=>{
+       const vals=row.split(",");
+       return Object.fromEntries(
+         headers.map((h,i)=>[h.trim(),(vals[i]||"").trim()])
+       );
+     }),null,2
+   );
+  }
+
+  if(op==="jsoncsv"){
+   try{
+    const data=JSON.parse(s);
+    const arr=Array.isArray(data)?data:[data];
+    const keys=[...new Set(arr.flatMap(x=>Object.keys(x)))];
+    out=
+      keys.join(",")+"\n"+
+      arr.map(x=>keys.map(k=>
+        JSON.stringify(x[k]??"")
+      ).join(",")).join("\n");
+   }catch(e){
+    out="Invalid JSON";
+   }
+  }
+
+  $("output").textContent=out;
+ };
+
+ bindCommon(()=>buildTool(t));
+}
+
+/* =========================================================
+   DESIGN
+========================================================= */
+
+function designTool(app,t){
+
+ app.innerHTML=`
+ <div class="toolForm">
+
+ <div class="row">
+ ${input("Color 1","c1","#2563eb")}
+ ${input("Color 2","c2","#7c3aed")}
+ </div>
+
+ ${input("Text","designText","Tool Master")}
+
+ <select id="designOp">
+  <option value="gradient">Gradient</option>
+  <option value="button">CSS Button</option>
+  <option value="card">CSS Card</option>
+  <option value="text">CSS Text</option>
+ </select>
+
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
+
+ $("runTool").onclick=()=>{
+
+  const c1=$("c1").value;
+  const c2=$("c2").value;
+  const text=$("designText").value;
+  const op=$("designOp").value;
+
+  let out="";
+
+  if(op==="gradient")
+   out=
+`background: linear-gradient(135deg, ${c1}, ${c2});`;
+
+  if(op==="button")
+   out=
+`.button {
+  background: ${c1};
+  color: white;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}`;
+
+  if(op==="card")
+   out=
+`.card {
+  background: ${c1};
+  color: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}`;
+
+  if(op==="text")
+   out=
+`.text {
+  color: ${c1};
+  font-size: 40px;
+  font-weight: 800;
+  text-shadow: 2px 2px 10px ${c2};
+}
+`;
+
+  out+="\n\n/* "+text+" */";
+
+  $("output").textContent=out;
+ };
+
+ bindCommon(()=>buildTool(t));
+}
+
+/* =========================================================
+   TIME TOOLS
+========================================================= */
+
+function timeTool(app,t){
+
+ app.innerHTML=`
+ <div class="toolForm">
+
+ <div id="liveClock"
+ style="font-size:42px;font-weight:800;text-align:center;padding:20px">
+ </div>
+
+ <div class="row">
+ ${input("Minutes","minutes","25")}
+ ${input("Seconds","seconds","0")}
+ </div>
+
+ <div class="toolbar">
+  <button class="primary" id="startTimer">Start</button>
+  <button class="secondary" id="stopTimer">Stop</button>
+  <button class="secondary" id="resetTimer">Reset</button>
+ </div>
+
+ <div class="output" id="timeOutput"></div>
+
+ </div>`;
+
+ let timer=null;
+ let remaining=Number($("minutes").value)*60;
+
+ function draw(){
+  $("timeOutput").textContent=
+    Math.floor(remaining/60)+":"+
+    String(remaining%60).padStart(2,"0");
+ }
+
+ function updateClock(){
+  $("liveClock").textContent=
+    new Date().toLocaleTimeString();
+ }
+
+ updateClock();
+ const clock=setInterval(updateClock,1000);
+ draw();
+
+ $("startTimer").onclick=()=>{
+  clearInterval(timer);
+  timer=setInterval(()=>{
+   if(remaining<=0){
+    clearInterval(timer);
+    toast("Timer finished");
+    return;
+   }
+   remaining--;
+   draw();
+  },1000);
+ };
+
+ $("stopTimer").onclick=()=>{
+  clearInterval(timer);
+ };
+
+ $("resetTimer").onclick=()=>{
+  clearInterval(timer);
+  remaining=
+    Number($("minutes").value||0)*60+
+    Number($("seconds").value||0);
+  draw();
+ };
+}
 
 /* =========================================================
    GAMES
 ========================================================= */
 
-let secret=
- Math.floor(Math.random()*100)+1;
+function gameTool(app,t){
 
+ if(t.name.toLowerCase().includes("tic tac")){
+   ticTacToe(app);
+   return;
+ }
 
-function gameTool(name){
+ if(t.name.toLowerCase().includes("rock paper")){
+   rps(app);
+   return;
+ }
 
- return `
+ if(t.name.toLowerCase().includes("number guessing")){
+   guessingGame(app);
+   return;
+ }
 
- <p>
- 🎮 <b>${escapeHTML(name)}</b>
- </p>
+ if(t.name.toLowerCase().includes("reaction")){
+   reactionGame(app);
+   return;
+ }
 
- ${input(
-  "answer",
-  "Enter your answer"
- )}
+ if(t.name.toLowerCase().includes("dice")){
+   diceGame(app);
+   return;
+ }
 
- <div class="actions">
-
-  <button class="primary"
-   onclick="playGame('${name}')">
-   Play
-  </button>
-
- </div>
-
- ${output()}
-
- `;
-
+ mathQuiz(app);
 }
 
+function ticTacToe(app){
 
-function playGame(name){
+ app.innerHTML=`
+ <div style="display:grid;grid-template-columns:repeat(3,80px);gap:6px"
+ id="ttt"></div>
+ <p id="tttStatus">Your turn: X</p>
+ <button class="primary" onclick="openTool('${currentTool.id}')">Reset</button>
+ `;
 
- const answer=
-  Number(document.getElementById("answer").value);
+ const board=Array(9).fill("");
+ let over=false;
+
+ function draw(){
+  $("ttt").innerHTML="";
+  board.forEach((v,i)=>{
+   const b=document.createElement("button");
+   b.style.height="80px";
+   b.style.fontSize="30px";
+   b.textContent=v;
+   b.onclick=()=>move(i);
+   $("ttt").appendChild(b);
+  });
+ }
+
+ function win(){
+  return [
+   [0,1,2],[3,4,5],[6,7,8],
+   [0,3,6],[1,4,7],[2,5,8],
+   [0,4,8],[2,4,6]
+  ].some(a=>a.every(i=>board[i]==="X"));
+ }
+
+ function move(i){
+  if(over||board[i])return;
+
+  board[i]="X";
+
+  if(win()){
+   $("tttStatus").textContent="You win!";
+   over=true;draw();return;
+  }
+
+  if(board.every(Boolean)){
+   $("tttStatus").textContent="Draw!";
+   over=true;draw();return;
+  }
+
+  const empty=board.map((v,i)=>v?null:i).filter(x=>x!==null);
+  const cpu=empty[Math.floor(Math.random()*empty.length)];
+
+  board[cpu]="O";
+
+  if([
+   [0,1,2],[3,4,5],[6,7,8],
+   [0,3,6],[1,4,7],[2,5,8],
+   [0,4,8],[2,4,6]
+  ].some(a=>a.every(i=>board[i]==="O"))){
+   $("tttStatus").textContent="Computer wins!";
+   over=true;
+  }
+
+  draw();
+ }
+
+ draw();
+}
+
+function rps(app){
+
+ app.innerHTML=`
+ <div class="toolbar">
+ <button class="primary" onclick="playRPS('Rock')">🪨 Rock</button>
+ <button class="primary" onclick="playRPS('Paper')">📄 Paper</button>
+ <button class="primary" onclick="playRPS('Scissors')">✂️ Scissors</button>
+ </div>
+ <div class="output" id="rpsOut">Choose one.</div>`;
+}
+
+window.playRPS=function(player){
+
+ const choices=["Rock","Paper","Scissors"];
+ const cpu=choices[Math.floor(Math.random()*3)];
 
  let result;
 
- if(name==="Number Guess"){
+ if(player===cpu)result="Draw";
+ else if(
+  (player==="Rock"&&cpu==="Scissors")||
+  (player==="Paper"&&cpu==="Rock")||
+  (player==="Scissors"&&cpu==="Paper")
+ )result="You win!";
+ else result="Computer wins!";
 
-  if(answer===secret){
+ $("rpsOut").textContent=
+ `You: ${player}\nComputer: ${cpu}\n${result}`;
+};
 
-   result="🎉 Correct! New number generated.";
+function guessingGame(app){
 
-   secret=
-    Math.floor(Math.random()*100)+1;
+ const target=Math.floor(Math.random()*100)+1;
 
-  }else if(answer<secret){
+ app.innerHTML=`
+ ${input("Guess 1–100","guess","50")}
+ <button class="primary" id="guessBtn">Guess</button>
+ <div class="output" id="guessOut"></div>`;
 
-   result="⬆️ Try a higher number.";
+ $("guessBtn").onclick=()=>{
+  const n=Number($("guess").value);
 
-  }else{
+  if(n===target)
+    $("guessOut").textContent="🎉 Correct!";
+  else if(n<target)
+    $("guessOut").textContent="Too low!";
+  else
+    $("guessOut").textContent="Too high!";
+ };
+}
 
-   result="⬇️ Try a lower number.";
+function reactionGame(app){
 
+ app.innerHTML=`
+ <button class="primary" id="reaction">Wait...</button>
+ <div class="output" id="reactionOut"></div>`;
+
+ let start=0;
+ let ready=false;
+
+ setTimeout(()=>{
+  ready=true;
+  $("reaction").textContent="CLICK!";
+  start=performance.now();
+ },1000+Math.random()*3000);
+
+ $("reaction").onclick=()=>{
+  if(!ready){
+   $("reactionOut").textContent="Too early!";
+   return;
   }
 
- }
-
- else if(name==="Odd Even Game"){
-
-  result=
-   answer%2===0
-   ?"Even"
-   :"Odd";
-
- }
-
- else if(name==="Palindrome Game"){
-
-  const x=String(answer);
-
-  result=
-   x===[...x].reverse().join("")
-   ?"🎉 Palindrome!"
-   :"Not a palindrome.";
-
- }
-
- else{
-
-  result=
-   "🎮 Score: "+
-   Math.floor(Math.random()*100);
-
- }
-
- document.getElementById("output")
- .textContent=result;
-
+  $("reactionOut").textContent=
+   Math.round(performance.now()-start)+" ms";
+ };
 }
 
+function diceGame(app){
+
+ app.innerHTML=`
+ <button class="primary" id="dice">🎲 Roll Dice</button>
+ <div class="output" id="diceOut">-</div>`;
+
+ $("dice").onclick=()=>{
+  const n=Math.floor(Math.random()*6)+1;
+  $("diceOut").textContent="You rolled: "+n;
+ };
+}
+
+function mathQuiz(app){
+
+ let a,b;
+
+ function newQ(){
+  a=Math.floor(Math.random()*12)+1;
+  b=Math.floor(Math.random()*12)+1;
+  $("quizQ").textContent=`${a} × ${b} = ?`;
+  $("quizA").value="";
+ }
+
+ app.innerHTML=`
+ <h3 id="quizQ"></h3>
+ <input id="quizA" placeholder="Answer">
+ <button class="primary" id="quizBtn">Check</button>
+ <div class="output" id="quizOut"></div>`;
+
+ newQ();
+
+ $("quizBtn").onclick=()=>{
+  const answer=Number($("quizA").value);
+  $("quizOut").textContent=
+    answer===a*b?"Correct! 🎉":"Try again!";
+  if(answer===a*b)setTimeout(newQ,700);
+ };
+}
 
 /* =========================================================
-   IMAGE CREATOR
+   UTILITIES
 ========================================================= */
 
-function imageTool(name){
+function utilityTool(app,t){
 
- return `
+ app.innerHTML=`
+ <div class="toolForm">
 
- <canvas
-  id="canvas"
-  width="900"
-  height="500"
-  style="width:100%;border-radius:15px">
- </canvas>
+ <textarea id="utilText"
+ placeholder="Enter data..."></textarea>
 
- ${input("imageText","Text for image")}
+ <select id="utilOp">
+  <option value="random">Random item</option>
+  <option value="unique">Remove duplicates</option>
+  <option value="sort">Sort lines</option>
+  <option value="shuffle">Shuffle lines</option>
+  <option value="email">Validate email</option>
+  <option value="url">Validate URL</option>
+  <option value="slug">Create slug</option>
+  <option value="pin">Generate PIN</option>
+  <option value="password">Generate password</option>
+  <option value="uuid">Generate UUID</option>
+  <option value="color">Generate color</option>
+ </select>
 
- <div class="actions">
+ ${actionButtons(()=>buildTool(t))}
+ </div>`;
 
-  <button class="primary"
-   onclick="createImage()">
-   Create Image
-  </button>
+ $("runTool").onclick=()=>{
 
-  <button class="btn"
-   onclick="downloadImage()">
-   Download PNG
-  </button>
+  const text=$("utilText").value;
+  const op=$("utilOp").value;
+  let out="";
 
- </div>
+  if(op==="random"){
+   const arr=text.split(/\n|,/).map(x=>x.trim()).filter(Boolean);
+   out=arr.length?arr[Math.floor(Math.random()*arr.length)]:"No items";
+  }
 
- `;
+  if(op==="unique")
+   out=[...new Set(text.split("\n"))].join("\n");
 
+  if(op==="sort")
+   out=text.split("\n").sort().join("\n");
+
+  if(op==="shuffle"){
+   const arr=text.split("\n");
+   for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+   }
+   out=arr.join("\n");
+  }
+
+  if(op==="email")
+   out=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)
+    ?"Valid email format":"Invalid email format";
+
+  if(op==="url"){
+   try{
+    new URL(text);
+    out="Valid URL";
+   }catch{
+    out="Invalid URL";
+   }
+  }
+
+  if(op==="slug")
+   out=text.toLowerCase().trim()
+    .replace(/[^\w\s-]/g,"")
+    .replace(/\s+/g,"-");
+
+  if(op==="pin")
+   out=Math.floor(100000+Math.random()*900000);
+
+  if(op==="password")
+   out=generatePassword(18);
+
+  if(op==="uuid")
+   out=crypto.randomUUID();
+
+  if(op==="color")
+   out="#"+Math.floor(Math.random()*16777215)
+     .toString(16).padStart(6,"0");
+
+  $("output").textContent=String(out);
+ };
+
+ bindCommon(()=>buildTool(t));
 }
-
-
-function createImage(){
-
- const canvas=
-  document.getElementById("canvas");
-
- const ctx=
-  canvas.getContext("2d");
-
- ctx.fillStyle="#6757e8";
-
- ctx.fillRect(
-  0,0,
-  canvas.width,
-  canvas.height
- );
-
- ctx.fillStyle="white";
-
- ctx.font="bold 52px Arial";
-
- ctx.fillText(
-  document.getElementById("imageText").value||
-  "StudentPro",
-  50,
-  270
- );
-
-}
-
-
-function downloadImage(){
-
- const canvas=
-  document.getElementById("canvas");
-
- const link=
-  document.createElement("a");
-
- link.download="studentpro-image.png";
-
- link.href=canvas.toDataURL();
-
- link.click();
-
-}
-
 
 /* =========================================================
-   PDF / FILE TOOLS
+   HELPERS
 ========================================================= */
 
-function pdfTool(name){
-
- return `
-
- <textarea
-  id="documentText"
-  placeholder="Enter your document text...">
- </textarea>
-
- <div class="actions">
-
-  <button class="primary"
-   onclick="createDocument('${name}')">
-   Create
-  </button>
-
- </div>
-
- ${output()}
-
- `;
-
+function factorial(n){
+ let r=1;
+ for(let i=2;i<=n;i++)r*=i;
+ return r;
 }
 
+function generatePassword(length){
 
-function createDocument(name){
+ const chars=
+ "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
 
- const text=
-  document.getElementById("documentText").value;
+ const arr=new Uint32Array(length);
+ crypto.getRandomValues(arr);
 
- if(name==="PDF Creator"||
-    name==="Text to PDF"){
+ return [...arr]
+   .map(x=>chars[x%chars.length])
+   .join("");
+}
 
-  const win=window.open("");
+function downloadText(filename,text){
 
-  win.document.write(
-   "<pre style='white-space:pre-wrap;font:16px Arial'>"+
-   escapeHTML(text)+
-   "</pre>"
-  );
+ const blob=new Blob([text],{
+   type:"text/plain;charset=utf-8"
+ });
 
-  win.document.close();
+ downloadBlob(filename,blob);
+}
 
-  win.print();
+function downloadBlob(filename,blob){
 
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+
+ a.href=url;
+ a.download=filename;
+ a.click();
+
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+$("globalSearch").addEventListener("input",()=>{
+ currentCategory="all";
+ $("sectionName").textContent="Search Results";
+ render();
+});
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+document.querySelectorAll(".sidebar button[data-cat]")
+.forEach(btn=>{
+
+ btn.onclick=()=>{
+
+  currentCategory=btn.dataset.cat;
+
+  document.querySelectorAll(".sidebar button")
+   .forEach(x=>x.classList.remove("active"));
+
+  btn.classList.add("active");
+
+  const names={
+   all:"All Tools",
+   favorite:"Favorites",
+   recent:"Recently Used",
+   math:"Advanced Maths",
+   physics:"Physics",
+   chemistry:"Chemistry",
+   biology:"Biology",
+   english:"English",
+   coding:"Coding",
+   study:"Study & Exam",
+   number:"Number Systems",
+   pdf:"PDF & Documents",
+   image:"Image Tools",
+   design:"Design",
+   time:"Time & Date",
+   utility:"Utilities",
+   game:"Mini Games"
+  };
+
+  $("sectionName").textContent=names[currentCategory];
+
+  $("globalSearch").value="";
+
+  render();
+
+  closeMenu();
+ };
+});
+
+/* =========================================================
+   MENU
+========================================================= */
+
+function openMenu(){
+ $("sidebar").classList.add("open");
+ $("overlay").classList.add("show");
+}
+
+function closeMenu(){
+ $("sidebar").classList.remove("open");
+ $("overlay").classList.remove("show");
+}
+
+$("menuBtn").onclick=()=>{
+ if($("sidebar").classList.contains("open"))
+   closeMenu();
+ else
+   openMenu();
+};
+
+$("overlay").onclick=closeMenu;
+
+/* =========================================================
+   QUICK BUTTONS
+========================================================= */
+
+$("allBtn").onclick=()=>{
+ currentCategory="all";
+ $("sectionName").textContent="All Tools";
+ $("globalSearch").value="";
+ render();
+};
+
+$("favBtn").onclick=()=>{
+ currentCategory="favorite";
+ $("sectionName").textContent="Favorites";
+ $("globalSearch").value="";
+ render();
+};
+
+$("recentBtn").onclick=()=>{
+ currentCategory="recent";
+ $("sectionName").textContent="Recently Used";
+ $("globalSearch").value="";
+ render();
+};
+
+$("favTop").onclick=$("favBtn").onclick;
+$("recentTop").onclick=$("recentBtn").onclick;
+
+$("randomBtn").onclick=()=>{
+ const t=tools[Math.floor(Math.random()*tools.length)];
+ openTool(t.id);
+};
+
+/* =========================================================
+   THEME
+========================================================= */
+
+function applyTheme(){
+
+ if(localStorage.getItem(STORE.theme)==="dark"){
+  document.body.classList.add("dark");
+  $("themeBtn").textContent="☀️";
  }else{
-
-  const blob=
-   new Blob([text],{
-    type:"text/plain"
-   });
-
-  const link=
-   document.createElement("a");
-
-  link.href=
-   URL.createObjectURL(blob);
-
-  link.download="studentpro.txt";
-
-  link.click();
-
-  document.getElementById("output")
-   .textContent="File created.";
-
+  document.body.classList.remove("dark");
+  $("themeBtn").textContent="🌙";
  }
-
 }
 
-
-/* =========================================================
-   GENERIC TOOL
-========================================================= */
-
-function genericTool(name){
-
- return `
-
- <p class="muted">
- This tool works locally in your browser.
- </p>
-
- <textarea
-  id="genericInput"
-  placeholder="Enter your input...">
- </textarea>
-
- <div class="actions">
-
-  <button class="primary"
-   onclick="genericRun('${encodeURIComponent(name)}')">
-   Run Tool
-  </button>
-
- </div>
-
- ${output()}
-
- `;
-
-}
-
-
-function genericRun(name){
-
- const input=
-  document.getElementById("genericInput").value;
-
- document.getElementById("output")
- .textContent=
- decodeURIComponent(name)+
- "\n\nInput received:\n"+
- input+
- "\n\nProcessed locally by StudentPro.";
-
-}
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-function openLogin(){
-
- const modal=
-  document.getElementById("loginModal");
-
- modal.style.display=
-  modal.style.display==="grid"
-  ?"none"
-  :"grid";
-
- closeMenu();
-
-}
-
-
-function loginDemo(){
-
- const email=
-  document.getElementById("email").value;
-
- if(!email){
-
-  document.getElementById("loginResult")
-   .textContent=
-   "Please enter your email.";
-
-  return;
-
- }
+$("themeBtn").onclick=()=>{
+ const dark=document.body.classList.toggle("dark");
 
  localStorage.setItem(
-  "studentproEmail",
-  email
+  STORE.theme,
+  dark?"dark":"light"
  );
 
- document.getElementById("loginResult")
- .textContent=
- "Demo login saved for "+email+".";
+ $("themeBtn").textContent=dark?"☀️":"🌙";
+};
 
-}
+/* =========================================================
+   CLEAR STORAGE
+========================================================= */
 
+$("clearStorage").onclick=()=>{
+
+ if(confirm("Clear favorites, recent tools and theme settings?")){
+
+  localStorage.removeItem(STORE.favorites);
+  localStorage.removeItem(STORE.recent);
+  localStorage.removeItem(STORE.theme);
+
+  favorites=[];
+  recent=[];
+
+  applyTheme();
+  render();
+
+  toast("Saved data cleared");
+ }
+};
 
 /* =========================================================
    START
 ========================================================= */
 
+applyTheme();
 render();
+
+/*
+ IMPORTANT:
+
+ This application is intentionally browser-local.
+
+ It does NOT call an AI API.
+
+ Features that require browser permissions, such as camera,
+ microphone or screen capture, can be added using browser
+ APIs such as getUserMedia() and getDisplayMedia().
+
+ File processing can use FileReader, Canvas, Blob and
+ browser-supported APIs.
+
+ Your GitHub Pages URL:
+
+ https://ktanujasri856-cmd.github.io/Toolbox-website/
+*/
 
 </script>
 
