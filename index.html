@@ -2,267 +2,488 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#635bff">
-<title>StudentPro Pro</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+      maximum-scale=1.0,user-scalable=no">
+
+<title>ToolBox Pro Max</title>
+
+<!-- PDF libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<!-- QR -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
 :root{
- --bg:#f4f6fb;
- --card:#fff;
- --text:#151827;
- --muted:#6b7280;
- --primary:#635bff;
- --primary2:#8b5cf6;
- --border:#e5e7eb;
- --danger:#ef4444;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#15171c;
+  --muted:#687080;
+  --border:#e4e7ee;
+  --primary:#5b5ce2;
+  --primary2:#7b61ff;
+  --danger:#e5484d;
+  --shadow:0 8px 30px rgba(20,25,50,.08);
 }
-.dark{
- --bg:#0b1020;
- --card:#151b2e;
- --text:#f8fafc;
- --muted:#aab2c5;
- --border:#29324a;
+
+body.dark{
+  --bg:#101218;
+  --card:#191c24;
+  --text:#f5f7fb;
+  --muted:#aab1c0;
+  --border:#2b303b;
+  --shadow:0 8px 30px rgba(0,0,0,.3);
 }
+
 body{
- margin:0;
- font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
- background:var(--bg);
- color:var(--text);
+  font-family:
+    Inter,Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  transition:.2s;
 }
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-button:active{transform:scale(.98)}
-.app{display:flex;min-height:100vh}
-.sidebar{
- width:250px;
- position:fixed;
- left:0;top:0;bottom:0;
- overflow:auto;
- background:var(--card);
- border-right:1px solid var(--border);
- padding:18px;
- z-index:10;
+
+button,input,textarea,select{
+  font:inherit;
 }
+
+button{
+  cursor:pointer;
+}
+
+.app{
+  max-width:1250px;
+  margin:auto;
+  padding-bottom:90px;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
 .logo{
- font-size:25px;
- font-weight:900;
- margin-bottom:20px;
+  font-size:21px;
+  font-weight:800;
 }
-.logo span{color:var(--primary)}
-.nav-title{
- font-size:11px;
- color:var(--muted);
- text-transform:uppercase;
- margin:18px 8px 7px;
- font-weight:700;
+
+.logo span{
+  color:var(--primary);
 }
-.nav button{
- width:100%;
- border:0;
- background:transparent;
- color:var(--text);
- text-align:left;
- padding:11px;
- margin:2px 0;
- border-radius:10px;
+
+.header-actions{
+  display:flex;
+  gap:8px;
 }
-.nav button:hover,.nav button.active{
- background:#635bff16;
- color:var(--primary);
+
+.icon-btn{
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  width:42px;
+  height:42px;
+  border-radius:13px;
 }
-.main{
- margin-left:250px;
- width:calc(100% - 250px);
- padding:20px;
-}
-.top{
- display:flex;
- gap:10px;
- margin-bottom:18px;
-}
-input,textarea,select{
- width:100%;
- padding:11px;
- border:1px solid var(--border);
- background:var(--card);
- color:var(--text);
- border-radius:10px;
- outline:none;
-}
-textarea{min-height:130px;resize:vertical}
-.search{flex:1}
-.iconbtn,.secondary{
- background:var(--card);
- color:var(--text);
- border:1px solid var(--border);
- padding:10px 14px;
- border-radius:10px;
-}
-.primary{
- background:var(--primary);
- color:white;
- border:0;
- padding:10px 15px;
- border-radius:10px;
-}
-.danger{background:var(--danger);color:white}
-.page{display:none}
-.page.active{display:block}
+
+/* HERO */
+
 .hero{
- background:linear-gradient(135deg,var(--primary),var(--primary2));
- color:#fff;
- padding:30px;
- border-radius:22px;
- margin-bottom:18px;
+  padding:28px 18px 15px;
 }
-.hero h1{margin:0 0 7px;font-size:30px}
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
- gap:14px;
+
+.hero h1{
+  font-size:clamp(28px,6vw,48px);
+  line-height:1.05;
+  margin-bottom:10px;
 }
-.card,.box,.stat{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:16px;
- padding:17px;
+
+.hero h1 span{
+  color:var(--primary);
 }
-.card{
- cursor:pointer;
- transition:.2s;
+
+.hero p{
+  color:var(--muted);
+  margin-bottom:20px;
 }
-.card:hover{transform:translateY(-3px)}
-.card p{color:var(--muted);font-size:14px}
-.icon{font-size:28px}
-.stat b{
- display:block;
- font-size:25px;
- margin-top:5px;
+
+.search{
+  width:100%;
+  padding:16px 18px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:17px;
+  outline:none;
+  box-shadow:var(--shadow);
 }
-.section{margin-top:24px}
-.section h2{margin-bottom:13px}
-.row{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
+
+.search:focus{
+  border-color:var(--primary);
 }
-.field{margin-bottom:12px}
-.field label{
- display:block;
- font-weight:700;
- margin-bottom:5px;
+
+/* CATEGORY */
+
+.section{
+  padding:10px 18px;
 }
-.result{
- margin-top:12px;
- padding:14px;
- background:#635bff12;
- border-radius:10px;
- white-space:pre-wrap;
- line-height:1.6;
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:13px;
 }
-.list{
- margin-top:14px;
+
+.section-title h2{
+  font-size:20px;
 }
-.item{
- display:flex;
- align-items:center;
- gap:10px;
- padding:12px;
- border:1px solid var(--border);
- border-radius:10px;
- margin:7px 0;
+
+.categories{
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(130px,1fr));
+  gap:10px;
 }
-.item span{flex:1}
-.command{
- background:var(--card);
- border:1px solid var(--border);
- padding:12px;
- border-radius:14px;
- margin-bottom:18px;
-}
-.big{
- text-align:center;
- font-size:55px;
- font-weight:900;
- margin:20px 0;
-}
-.progress{
- height:9px;
- background:var(--border);
- border-radius:20px;
- overflow:hidden;
-}
-.progress div{
- height:100%;
- background:var(--primary);
-}
-.tools-grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
- gap:12px;
-}
-.tool{
- background:var(--card);
- border:1px solid var(--border);
- padding:15px;
- border-radius:14px;
- cursor:pointer;
-}
-.tool:hover{border-color:var(--primary)}
-.memory{
- display:grid;
- grid-template-columns:repeat(4,70px);
- gap:8px;
- justify-content:center;
- margin-top:18px;
-}
-.memory button{
- height:70px;
- border:0;
- border-radius:10px;
- background:var(--primary);
- color:#fff;
- font-size:24px;
-}
-table{
- width:100%;
- border-collapse:collapse;
-}
-th,td{
- border:1px solid var(--border);
- padding:8px;
- text-align:center;
-}
-.toast{
- position:fixed;
- right:20px;
- bottom:20px;
- background:#111827;
- color:#fff;
- padding:12px 16px;
- border-radius:10px;
- display:none;
- z-index:100;
-}
-@media(max-width:800px){
- .sidebar{width:68px;padding:8px}
- .logo{font-size:0;text-align:center}
- .logo span{font-size:22px}
- .nav-title{display:none}
- .nav button{
-  font-size:0;
+
+.category{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:17px;
+  padding:18px 10px;
   text-align:center;
- }
- .nav button:first-letter{font-size:20px}
- .main{
-  margin-left:68px;
-  width:calc(100% - 68px);
+  box-shadow:var(--shadow);
+}
+
+.category div{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.category small{
+  color:var(--muted);
+}
+
+/* TOOLS */
+
+.tools{
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+  gap:15px;
+}
+
+.tool{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+
+.tool-head{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.tool-icon{
+  font-size:30px;
+}
+
+.tool h3{
+  font-size:18px;
+  margin-bottom:4px;
+}
+
+.tool p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.45;
+}
+
+.tool-actions{
+  display:flex;
+  gap:8px;
+  margin-top:15px;
+}
+
+.primary{
+  background:var(--primary);
+  color:white;
+  border:0;
+  padding:11px 15px;
+  border-radius:11px;
+  font-weight:700;
+}
+
+.secondary{
+  background:var(--bg);
+  color:var(--text);
+  border:1px solid var(--border);
+  padding:11px 15px;
+  border-radius:11px;
+}
+
+.favorite{
+  position:absolute;
+  right:14px;
+  top:14px;
+  border:0;
+  background:transparent;
+  font-size:20px;
+}
+
+.tool-panel{
+  display:none;
+  margin-top:16px;
+  border-top:1px solid var(--border);
+  padding-top:16px;
+}
+
+.tool-panel.active{
+  display:block;
+}
+
+/* FORMS */
+
+input,textarea,select{
+  width:100%;
   padding:12px;
- }
- .row{grid-template-columns:1fr}
- .hero h1{font-size:24px}
+  margin:5px 0;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  outline:none;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.result{
+  margin-top:10px;
+  padding:14px;
+  border-radius:12px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  word-break:break-word;
+}
+
+.small{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* CALCULATOR */
+
+.calc-display{
+  font-size:25px;
+  text-align:right;
+}
+
+.calc-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(4,1fr);
+  gap:6px;
+  margin-top:8px;
+}
+
+.calc-grid button{
+  padding:14px 5px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  border-radius:10px;
+}
+
+.calc-grid button.equal{
+  background:var(--primary);
+  color:white;
+}
+
+/* IMAGE CREATOR */
+
+.canvas-wrap{
+  overflow:auto;
+  background:
+    repeating-conic-gradient(
+      #ddd 0% 25%,
+      #fff 0% 50%
+    ) 50% / 20px 20px;
+  border-radius:14px;
+  padding:10px;
+  min-height:250px;
+}
+
+body.dark .canvas-wrap{
+  background:
+    repeating-conic-gradient(
+      #30343d 0% 25%,
+      #20232a 0% 50%
+    ) 50% / 20px 20px;
+}
+
+#drawingCanvas{
+  display:block;
+  background:white;
+  touch-action:none;
+  max-width:none;
+  margin:auto;
+}
+
+.toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:8px 0;
+}
+
+.toolbar button{
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  padding:9px 11px;
+  border-radius:9px;
+}
+
+.color-input{
+  width:55px;
+  height:40px;
+  padding:2px;
+}
+
+/* QR */
+
+#qr{
+  display:flex;
+  justify-content:center;
+  padding:15px;
+}
+
+/* PDF */
+
+.file{
+  padding:12px;
+  border:1px dashed var(--border);
+  border-radius:12px;
+}
+
+.preview{
+  display:grid;
+  gap:10px;
+  margin-top:10px;
+}
+
+.preview img{
+  max-width:100%;
+  border-radius:10px;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(700px,100%);
+  background:var(--card);
+  border:1px solid var(--border);
+  z-index:200;
+  display:grid;
+  grid-template-columns:
+    repeat(4,1fr);
+  padding:8px;
+  box-shadow:0 -5px 25px rgba(0,0,0,.08);
+}
+
+.bottom-nav button{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  padding:8px 3px;
+  font-size:12px;
+}
+
+.bottom-nav button strong{
+  display:block;
+  font-size:19px;
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:35px 10px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .app{
+    padding-bottom:80px;
+  }
+
+  .tools{
+    grid-template-columns:1fr;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding-top:22px;
+  }
+
+  .section{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  .categories{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .tool{
+    border-radius:18px;
+  }
+
+  .calc-grid button{
+    padding:13px 4px;
+  }
 }
 </style>
 </head>
@@ -271,2000 +492,2932 @@ th,td{
 
 <div class="app">
 
-<aside class="sidebar">
-<div class="logo">Student<span>Pro</span></div>
+<header>
+  <div class="logo">
+    🧰 ToolBox <span>Pro Max</span>
+  </div>
 
-<div class="nav">
+  <div class="header-actions">
+    <button class="icon-btn"
+            onclick="toggleTheme()"
+            id="themeBtn">🌙</button>
+  </div>
+</header>
 
-<div class="nav-title">Main</div>
-<button class="active" onclick="page('dashboard')">🏠 Dashboard</button>
-<button onclick="page('study')">📚 Study</button>
-<button onclick="page('notes')">📝 Notes</button>
-<button onclick="page('tasks')">✅ Tasks</button>
-<button onclick="page('flashcards')">🃏 Flashcards</button>
-<button onclick="page('quiz')">❓ Quiz</button>
 
-<div class="nav-title">Academic</div>
-<button onclick="page('math')">🧮 Maths</button>
-<button onclick="page('science')">⚛️ Science</button>
-<button onclick="page('coding')">💻 Coding</button>
-<button onclick="page('english')">🔤 English</button>
-<button onclick="page('exam')">🎓 Exams</button>
+<section class="hero">
 
-<div class="nav-title">Utilities</div>
-<button onclick="page('text')">📝 Text</button>
-<button onclick="page('date')">📅 Time & Date</button>
-<button onclick="page('files')">📄 Files</button>
-<button onclick="page('games')">🎮 Games</button>
+  <h1>
+    Everything you need,<br>
+    <span>in one toolbox.</span>
+  </h1>
 
-<div class="nav-title">System</div>
-<button onclick="page('settings')">⚙️ Settings</button>
+  <p>
+    Student tools, image tools, PDF tools and
+    everyday utilities — built for mobile.
+  </p>
 
-</div>
-</aside>
-
-<main class="main">
-
-<div class="top">
-<input class="search" id="search"
-placeholder="🔍 Search StudentPro..."
-oninput="searchTools()">
-<button class="iconbtn" onclick="toggleDark()">🌙</button>
-</div>
-
-<div class="command">
-<input id="command"
-placeholder="⌘ Try: 25% of 800 • binary 1010 • open notes • start timer"
-onkeydown="command(event)">
-<div id="commandResult"></div>
-</div>
-
-<!-- DASHBOARD -->
-
-<section id="dashboard" class="page active">
-
-<div class="hero">
-<h1>StudentPro Pro 🚀</h1>
-<p>Your all-in-one student command center.</p>
-</div>
-
-<div class="grid">
-<div class="stat">🔥 Streak<b id="streak">0 days</b></div>
-<div class="stat">⏱️ Study Time<b id="studyTime">0 min</b></div>
-<div class="stat">✅ Tasks Done<b id="done">0</b></div>
-<div class="stat">🎯 Goal<b id="goal">0%</b></div>
-</div>
-
-<div class="section">
-<h2>⚡ Quick Access</h2>
-<div class="tools-grid">
-<div class="tool" onclick="page('calculator')">🧮 Scientific Calculator</div>
-<div class="tool" onclick="page('gpa')">🎓 GPA Calculator</div>
-<div class="tool" onclick="page('attendance')">📊 Attendance</div>
-<div class="tool" onclick="page('study')">⏱️ Study Timer</div>
-<div class="tool" onclick="page('notes')">📝 Notes</div>
-<div class="tool" onclick="page('tasks')">✅ Tasks</div>
-</div>
-</div>
+  <input
+    id="globalSearch"
+    class="search"
+    placeholder="🔍 Search any tool..."
+    oninput="searchTools()">
 
 </section>
 
-<!-- STUDY -->
 
-<section id="study" class="page">
-<h2>📚 Study Center</h2>
+<section class="section">
 
-<div class="box">
-<h3>⏱️ Pomodoro Study Timer</h3>
-<div class="big" id="studyTimer">25:00</div>
+  <div class="section-title">
+    <h2>📂 Categories</h2>
+  </div>
 
-<button class="primary" onclick="startStudy()">Start</button>
-<button class="secondary" onclick="pauseStudy()">Pause</button>
-<button class="secondary" onclick="resetStudy()">Reset</button>
+  <div class="categories">
 
-<div class="result">
-Sessions completed: <b id="sessions">0</b>
-</div>
-</div>
+    <button class="category"
+            onclick="filterCategory('student')">
+      <div>🎓</div>
+      Student
+      <br>
+      <small>Study tools</small>
+    </button>
 
-<div class="section box">
-<h3>🎯 Today's Goal</h3>
-<div class="progress">
-<div id="goalBar" style="width:0"></div>
-</div>
-<p id="goalText">0% completed</p>
-<button class="primary" onclick="addGoal()">Complete 10%</button>
-</div>
+    <button class="category"
+            onclick="filterCategory('image')">
+      <div>🎨</div>
+      Image
+      <br>
+      <small>Create & edit</small>
+    </button>
+
+    <button class="category"
+            onclick="filterCategory('pdf')">
+      <div>📄</div>
+      PDF
+      <br>
+      <small>PDF tools</small>
+    </button>
+
+    <button class="category"
+            onclick="filterCategory('utility')">
+      <div>🛠️</div>
+      Utilities
+      <br>
+      <small>Everyday tools</small>
+    </button>
+
+  </div>
+
 </section>
 
-<!-- NOTES -->
 
-<section id="notes" class="page">
-<h2>📝 Notes</h2>
+<!-- TOOLS -->
 
-<div class="box">
-<div class="field">
-<label>Title</label>
-<input id="noteTitle" placeholder="My notes">
+<section class="section">
+
+<div class="section-title">
+  <h2>⭐ All Tools</h2>
 </div>
 
-<div class="field">
-<label>Content</label>
-<textarea id="noteContent" placeholder="Write your notes..."></textarea>
+<div class="tools" id="tools">
+
+
+<!-- SCIENTIFIC CALCULATOR -->
+
+<div class="tool"
+     data-category="student"
+     data-name="scientific calculator math">
+
+<button class="favorite"
+        onclick="favoriteTool(this,'Scientific Calculator')">
+  ☆
+</button>
+
+<div class="tool-head">
+  <div class="tool-icon">🧮</div>
+  <div>
+    <h3>Scientific Calculator</h3>
+    <p>Advanced calculations.</p>
+  </div>
 </div>
 
-<button class="primary" onclick="saveNote()">Save Note</button>
-
-<div id="notesList" class="list"></div>
-</div>
-</section>
-
-<!-- TASKS -->
-
-<section id="tasks" class="page">
-<h2>✅ Task Manager</h2>
-
-<div class="box">
-<div class="row">
-<input id="taskInput" placeholder="Enter task">
-<select id="priority">
-<option>Low</option>
-<option selected>Medium</option>
-<option>High</option>
-</select>
+<div class="tool-actions">
+<button class="primary"
+        onclick="openTool('calc')">
+  Open
+</button>
 </div>
 
-<br>
-<button class="primary" onclick="addTask()">Add Task</button>
+<div class="tool-panel" id="calc">
 
-<div id="taskList" class="list"></div>
+<input id="calcDisplay"
+       class="calc-display"
+       value="0"
+       readonly>
+
+<div class="calc-grid">
+
+<button onclick="calcAdd('7')">7</button>
+<button onclick="calcAdd('8')">8</button>
+<button onclick="calcAdd('9')">9</button>
+<button onclick="calcAdd('/')">÷</button>
+
+<button onclick="calcAdd('4')">4</button>
+<button onclick="calcAdd('5')">5</button>
+<button onclick="calcAdd('6')">6</button>
+<button onclick="calcAdd('*')">×</button>
+
+<button onclick="calcAdd('1')">1</button>
+<button onclick="calcAdd('2')">2</button>
+<button onclick="calcAdd('3')">3</button>
+<button onclick="calcAdd('-')">−</button>
+
+<button onclick="calcAdd('0')">0</button>
+<button onclick="calcAdd('.')">.</button>
+<button onclick="calculate()">=</button>
+<button onclick="calcAdd('+')">+</button>
+
 </div>
-</section>
 
-<!-- FLASHCARDS -->
+<div class="toolbar">
 
-<section id="flashcards" class="page">
-<h2>🃏 Flashcards</h2>
+<button onclick="calcFunc('sqrt')">√</button>
+<button onclick="calcFunc('square')">x²</button>
+<button onclick="calcFunc('sin')">sin</button>
+<button onclick="calcFunc('cos')">cos</button>
+<button onclick="calcFunc('tan')">tan</button>
+<button onclick="calcFunc('log')">log</button>
+<button onclick="calcFunc('ln')">ln</button>
+<button onclick="calcFunc('pi')">π</button>
+<button onclick="clearCalc()">Clear</button>
 
-<div class="box">
-<input id="fcQuestion" placeholder="Question">
-<br><br>
-<textarea id="fcAnswer" placeholder="Answer"></textarea>
-<br>
-<button class="primary" onclick="addFlashcard()">Add Flashcard</button>
-<div id="flashcardList" class="list"></div>
 </div>
-</section>
 
-<!-- QUIZ -->
-
-<section id="quiz" class="page">
-<h2>❓ Quiz Maker</h2>
-
-<div class="box">
-<input id="quizQ" placeholder="Question">
-<br><br>
-<input id="quizA" placeholder="Correct answer">
-<br><br>
-<button class="primary" onclick="addQuiz()">Add Question</button>
-
-<div id="quizList" class="list"></div>
-
-<br>
-<button class="primary" onclick="startQuiz()">Start Quiz</button>
-<div id="quizGame"></div>
 </div>
-</section>
-
-<!-- MATH -->
-
-<section id="math" class="page">
-<h2>🧮 Mathematics</h2>
-
-<div class="tools-grid">
-<div class="tool" onclick="page('calculator')">🧮 Scientific Calculator</div>
-<div class="tool" onclick="page('percentage')">📊 Percentage</div>
-<div class="tool" onclick="page('gpa')">🎓 GPA / CGPA</div>
-<div class="tool" onclick="page('attendance')">📅 Attendance</div>
-<div class="tool" onclick="page('quadratic')">📐 Quadratic</div>
-<div class="tool" onclick="page('statistics')">📈 Statistics</div>
-<div class="tool" onclick="page('number')">🔢 Number Systems</div>
-<div class="tool" onclick="page('hcf')">🔢 HCF / LCM</div>
-<div class="tool" onclick="page('prime')">🔢 Prime Checker</div>
-<div class="tool" onclick="page('fraction')">½ Fractions</div>
 </div>
-</section>
 
-<!-- CALCULATOR -->
-
-<section id="calculator" class="page">
-<h2>🧮 Scientific Calculator</h2>
-
-<div class="box">
-<input id="calc" placeholder="Example: sqrt(144)+25*4">
-<br><br>
-<button class="primary" onclick="calculate()">Calculate</button>
-<button class="secondary" onclick="calc.value=''">Clear</button>
-<div class="result" id="calcResult"></div>
-<p style="color:var(--muted)">
-Functions: sqrt(), sin(), cos(), tan(), log(), pi
-</p>
-</div>
-</section>
 
 <!-- PERCENTAGE -->
 
-<section id="percentage" class="page">
-<h2>📊 Percentage Calculator</h2>
+<div class="tool"
+     data-category="student"
+     data-name="percentage calculator">
 
-<div class="box">
-<div class="row">
-<input id="percent" placeholder="Percentage">
-<input id="percentNumber" placeholder="Number">
+<button class="favorite"
+        onclick="favoriteTool(this,'Percentage Calculator')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">📊</div>
+<div>
+<h3>Percentage Calculator</h3>
+<p>Calculate percentages quickly.</p>
 </div>
-<br>
-<button class="primary" onclick="percentage()">Calculate</button>
-<div id="percentResult" class="result"></div>
 </div>
-</section>
 
-<!-- GPA -->
-
-<section id="gpa" class="page">
-<h2>🎓 GPA / CGPA Calculator</h2>
-
-<div class="box">
-<p>Enter GPA values separated by commas.</p>
-<input id="gpaInput" placeholder="8.5, 9, 7.5, 8">
-<br><br>
-<button class="primary" onclick="gpaCalc()">Calculate</button>
-<div id="gpaResult" class="result"></div>
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('percentage')">
+Open
+</button>
 </div>
-</section>
 
-<!-- ATTENDANCE -->
+<div class="tool-panel" id="percentage">
 
-<section id="attendance" class="page">
-<h2>📊 Attendance Calculator</h2>
+<input id="percentValue"
+placeholder="Value">
 
-<div class="box">
-<div class="row">
-<input id="held" type="number" placeholder="Classes held">
-<input id="present" type="number" placeholder="Classes attended">
+<input id="percentTotal"
+placeholder="Total">
+
+<button class="primary"
+onclick="percentageCalc()">
+Calculate
+</button>
+
+<div class="result"
+id="percentageResult"></div>
+
 </div>
-<br>
-<button class="primary" onclick="attendance()">Calculate</button>
-<div id="attendanceResult" class="result"></div>
 </div>
-</section>
 
-<!-- QUADRATIC -->
 
-<section id="quadratic" class="page">
-<h2>📐 Quadratic Solver</h2>
+<!-- CGPA -->
 
-<div class="box">
-<p>ax² + bx + c = 0</p>
-<div class="row">
-<input id="qa" placeholder="a">
-<input id="qb" placeholder="b">
+<div class="tool"
+data-category="student"
+data-name="cgpa calculator gpa marks">
+
+<button class="favorite"
+onclick="favoriteTool(this,'CGPA Calculator')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">🎯</div>
+<div>
+<h3>CGPA Calculator</h3>
+<p>Calculate CGPA from semester GPAs.</p>
 </div>
-<br>
-<input id="qc" placeholder="c">
-<br><br>
-<button class="primary" onclick="quadratic()">Solve</button>
-<div id="quadResult" class="result"></div>
 </div>
-</section>
 
-<!-- STATISTICS -->
-
-<section id="statistics" class="page">
-<h2>📈 Statistics</h2>
-
-<div class="box">
-<input id="stats" placeholder="10,20,30,40,50">
-<br><br>
-<button class="primary" onclick="statistics()">Calculate</button>
-<div id="statsResult" class="result"></div>
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('cgpa')">
+Open
+</button>
 </div>
-</section>
 
-<!-- NUMBER -->
+<div class="tool-panel" id="cgpa">
 
-<section id="number" class="page">
-<h2>🔢 Number System Converter</h2>
+<input id="cgpaValues"
+placeholder="Example: 8.2, 7.8, 9.1">
 
-<div class="box">
-<input id="numberValue" placeholder="Enter number">
+<button class="primary"
+onclick="calculateCGPA()">
+Calculate CGPA
+</button>
+
+<div class="result"
+id="cgpaResult"></div>
+
+</div>
+</div>
+
+
+<!-- NUMBER SYSTEM -->
+
+<div class="tool"
+data-category="student"
+data-name="number system binary decimal octal hexadecimal">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Number System Converter')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">🔢</div>
+<div>
+<h3>Number-System Converter</h3>
+<p>Binary, decimal, octal and hexadecimal.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('numbers')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="numbers">
 
 <select id="numberBase">
+<option value="10">Decimal</option>
 <option value="2">Binary</option>
 <option value="8">Octal</option>
-<option value="10" selected>Decimal</option>
 <option value="16">Hexadecimal</option>
 </select>
 
-<br><br>
-<button class="primary" onclick="numberConvert()">Convert</button>
-<div id="numberResult" class="result"></div>
+<input id="numberInput"
+placeholder="Enter number">
+
+<button class="primary"
+onclick="convertNumbers()">
+Convert
+</button>
+
+<div class="result"
+id="numberResult"></div>
+
 </div>
-</section>
-
-<!-- HCF -->
-
-<section id="hcf" class="page">
-<h2>🔢 HCF / LCM</h2>
-
-<div class="box">
-<input id="hcfInput" placeholder="12,18,24">
-<br><br>
-<button class="primary" onclick="hcfLcm()">Calculate</button>
-<div id="hcfResult" class="result"></div>
 </div>
-</section>
 
-<!-- PRIME -->
 
-<section id="prime" class="page">
-<h2>🔢 Prime Checker</h2>
+<!-- UNIT CONVERTER -->
 
-<div class="box">
-<input id="primeInput" type="number" placeholder="Enter number">
-<br><br>
-<button class="primary" onclick="primeCheck()">Check</button>
-<div id="primeResult" class="result"></div>
+<div class="tool"
+data-category="student utility"
+data-name="unit converter length weight temperature">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Unit Converter')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">📏</div>
+<div>
+<h3>Unit Converter</h3>
+<p>Length, weight and temperature.</p>
 </div>
-</section>
-
-<!-- FRACTION -->
-
-<section id="fraction" class="page">
-<h2>½ Fraction Calculator</h2>
-
-<div class="box">
-<div class="row">
-<input id="f1n" placeholder="Numerator 1">
-<input id="f1d" placeholder="Denominator 1">
 </div>
-<br>
-<div class="row">
-<input id="f2n" placeholder="Numerator 2">
-<input id="f2d" placeholder="Denominator 2">
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('units')">
+Open
+</button>
 </div>
-<br>
-<select id="fop">
-<option value="+">+</option>
-<option value="-">−</option>
-<option value="*">×</option>
-<option value="/">÷</option>
+
+<div class="tool-panel" id="units">
+
+<select id="unitType">
+<option value="kmmi">Kilometres → Miles</option>
+<option value="mft">Metres → Feet</option>
+<option value="kg">Kilograms → Pounds</option>
+<option value="cf">Celsius → Fahrenheit</option>
 </select>
-<br><br>
-<button class="primary" onclick="fractionCalc()">Calculate</button>
-<div id="fractionResult" class="result"></div>
+
+<input id="unitValue"
+placeholder="Enter value">
+
+<button class="primary"
+onclick="convertUnit()">
+Convert
+</button>
+
+<div class="result"
+id="unitResult"></div>
+
 </div>
-</section>
-
-<!-- SCIENCE -->
-
-<section id="science" class="page">
-<h2>⚛️ Science Lab</h2>
-
-<div class="tools-grid">
-<div class="tool" onclick="speed()">🚗 Speed Calculator</div>
-<div class="tool" onclick="force()">💪 Force Calculator</div>
-<div class="tool" onclick="ohm()">⚡ Ohm's Law</div>
-<div class="tool" onclick="density()">🧊 Density</div>
-<div class="tool" onclick="power()">🔋 Electrical Power</div>
-<div class="tool" onclick="moles()">🧪 Mole Calculator</div>
-<div class="tool" onclick="molarity()">🧪 Molarity</div>
-<div class="tool" onclick="page('periodic')">⚗️ Periodic Table</div>
 </div>
-</section>
 
-<!-- PERIODIC -->
 
-<section id="periodic" class="page">
-<h2>⚗️ Periodic Table</h2>
+<!-- WORD COUNTER -->
 
-<div class="tools-grid" id="periodicGrid"></div>
-</section>
+<div class="tool"
+data-category="student utility"
+data-name="word counter character counter text">
 
-<!-- CODING -->
+<button class="favorite"
+onclick="favoriteTool(this,'Word Counter')">
+☆
+</button>
 
-<section id="coding" class="page">
-<h2>💻 Coding Lab</h2>
-
-<div class="tools-grid">
-<div class="tool" onclick="page('playground')">🌐 HTML Playground</div>
-<div class="tool" onclick="page('json')">🧾 JSON Formatter</div>
-<div class="tool" onclick="page('base64')">🔐 Base64</div>
-<div class="tool" onclick="page('ascii')">🔤 ASCII</div>
-<div class="tool" onclick="page('url')">🔗 URL Encoder</div>
+<div class="tool-head">
+<div class="tool-icon">📝</div>
+<div>
+<h3>Word & Character Counter</h3>
+<p>Count words, characters and lines.</p>
 </div>
-</section>
-
-<!-- PLAYGROUND -->
-
-<section id="playground" class="page">
-<h2>🌐 HTML Playground</h2>
-
-<div class="box">
-<textarea id="htmlCode" placeholder="<h1>Hello StudentPro</h1>"></textarea>
-<br>
-<button class="primary" onclick="runHTML()">Run</button>
-<br><br>
-<iframe id="preview"
-style="width:100%;height:300px;border:1px solid var(--border);background:white"></iframe>
 </div>
-</section>
 
-<!-- JSON -->
-
-<section id="json" class="page">
-<h2>🧾 JSON Formatter</h2>
-
-<div class="box">
-<textarea id="jsonInput"></textarea>
-<br>
-<button class="primary" onclick="formatJSON()">Format</button>
-<button class="secondary" onclick="minifyJSON()">Minify</button>
-<div id="jsonResult" class="result"></div>
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('counter')">
+Open
+</button>
 </div>
-</section>
 
-<!-- BASE64 -->
+<div class="tool-panel" id="counter">
 
-<section id="base64" class="page">
-<h2>🔐 Base64</h2>
+<textarea
+id="counterText"
+oninput="countText()"
+placeholder="Type or paste text..."></textarea>
 
-<div class="box">
-<textarea id="base64Input"></textarea>
-<br>
-<button class="primary" onclick="encode64()">Encode</button>
-<button class="primary" onclick="decode64()">Decode</button>
-<div id="base64Result" class="result"></div>
+<div class="result"
+id="counterResult">
+Words: 0<br>
+Characters: 0<br>
+Lines: 0
 </div>
-</section>
 
-<!-- ASCII -->
-
-<section id="ascii" class="page">
-<h2>🔤 ASCII Converter</h2>
-
-<div class="box">
-<input id="asciiInput" placeholder="Hello">
-<br><br>
-<button class="primary" onclick="asciiConvert()">Convert</button>
-<div id="asciiResult" class="result"></div>
 </div>
-</section>
-
-<!-- URL -->
-
-<section id="url" class="page">
-<h2>🔗 URL Encoder / Decoder</h2>
-
-<div class="box">
-<textarea id="urlInput"></textarea>
-<br>
-<button class="primary" onclick="urlEncode()">Encode</button>
-<button class="primary" onclick="urlDecode()">Decode</button>
-<div id="urlResult" class="result"></div>
 </div>
-</section>
 
-<!-- ENGLISH -->
 
-<section id="english" class="page">
-<h2>🔤 English Tools</h2>
+<!-- CASE CONVERTER -->
 
-<div class="tools-grid">
-<div class="tool" onclick="page('text')">🔤 Case Converter</div>
-<div class="tool" onclick="page('text')">🧹 Text Cleaner</div>
-<div class="tool" onclick="page('text')">🔢 Word Counter</div>
-<div class="tool" onclick="page('text')">🔄 Reverse Text</div>
-<div class="tool" onclick="page('lorem')">📝 Lorem Ipsum</div>
+<div class="tool"
+data-category="student utility"
+data-name="case converter uppercase lowercase title">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Case Converter')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">🔤</div>
+<div>
+<h3>Case Converter</h3>
+<p>Change text case instantly.</p>
 </div>
-</section>
-
-<!-- TEXT -->
-
-<section id="text" class="page">
-<h2>📝 Text Toolkit</h2>
-
-<div class="box">
-<textarea id="textInput" placeholder="Enter your text..."></textarea>
-
-<br><br>
-
-<button class="primary" onclick="upper()">UPPERCASE</button>
-<button class="primary" onclick="lower()">lowercase</button>
-<button class="primary" onclick="titleCase()">Title Case</button>
-<button class="primary" onclick="reverseText()">Reverse</button>
-<button class="primary" onclick="cleanText()">Clean</button>
-<button class="primary" onclick="countText()">Count</button>
-
-<div id="textResult" class="result"></div>
 </div>
-</section>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('case')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="case">
+
+<textarea id="caseText"
+placeholder="Enter text"></textarea>
+
+<div class="toolbar">
+<button onclick="caseConvert('upper')">UPPER</button>
+<button onclick="caseConvert('lower')">lower</button>
+<button onclick="caseConvert('title')">Title</button>
+<button onclick="caseConvert('sentence')">Sentence</button>
+</div>
+
+</div>
+</div>
+
 
 <!-- LOREM -->
 
-<section id="lorem" class="page">
-<h2>📝 Lorem Ipsum Generator</h2>
+<div class="tool"
+data-category="utility"
+data-name="lorem ipsum generator">
 
-<div class="box">
-<input id="loremCount" type="number" value="3">
-<br><br>
-<button class="primary" onclick="lorem()">Generate</button>
-<div id="loremResult" class="result"></div>
+<button class="favorite"
+onclick="favoriteTool(this,'Lorem Ipsum')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">📖</div>
+<div>
+<h3>Lorem Ipsum</h3>
+<p>Generate placeholder text.</p>
 </div>
-</section>
-
-<!-- EXAM -->
-
-<section id="exam" class="page">
-<h2>🎓 Exam Center</h2>
-
-<div class="box">
-<label>Exam Date</label>
-<input id="examDate" type="date">
-<br><br>
-<button class="primary" onclick="examCountdown()">Calculate</button>
-<div id="examResult" class="result"></div>
 </div>
-</section>
 
-<!-- TIME -->
-
-<section id="date" class="page">
-<h2>📅 Time & Date</h2>
-
-<div class="tools-grid">
-<div class="tool" onclick="page('age')">🎂 Age Calculator</div>
-<div class="tool" onclick="page('difference')">📅 Date Difference</div>
-<div class="tool" onclick="page('stopwatch')">⏱️ Stopwatch</div>
-<div class="tool" onclick="page('countdown')">⏰ Countdown</div>
-<div class="tool" onclick="page('clock')">🌍 World Clock</div>
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('lorem')">
+Open
+</button>
 </div>
-</section>
 
-<!-- AGE -->
+<div class="tool-panel" id="lorem">
 
-<section id="age" class="page">
-<h2>🎂 Age Calculator</h2>
+<input id="loremCount"
+type="number"
+value="2"
+min="1"
+max="20">
 
-<div class="box">
-<input id="dob" type="date">
-<br><br>
-<button class="primary" onclick="ageCalc()">Calculate</button>
-<div id="ageResult" class="result"></div>
+<button class="primary"
+onclick="generateLorem()">
+Generate
+</button>
+
+<textarea id="loremOutput"></textarea>
+
 </div>
-</section>
+</div>
 
-<!-- DATE DIFFERENCE -->
 
-<section id="difference" class="page">
-<h2>📅 Date Difference</h2>
+<!-- WIFI QR -->
 
-<div class="box">
+<div class="tool"
+data-category="utility"
+data-name="wifi qr generator password">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Wi-Fi QR Generator')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">📶</div>
+<div>
+<h3>Wi-Fi QR Generator</h3>
+<p>Create a scannable Wi-Fi QR code.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('wifi')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="wifi">
+
+<input id="wifiName"
+placeholder="Wi-Fi name">
+
+<input id="wifiPassword"
+placeholder="Wi-Fi password">
+
+<select id="wifiSecurity">
+<option value="WPA">WPA/WPA2</option>
+<option value="WEP">WEP</option>
+<option value="nopass">No password</option>
+</select>
+
+<button class="primary"
+onclick="makeQR()">
+Generate
+</button>
+
+<div id="qr"></div>
+
+</div>
+</div>
+
+
+<!-- IMAGE CREATOR -->
+
+<div class="tool"
+data-category="image"
+data-name="image creator graphic maker drawing poster">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Image Creator')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">🎨</div>
+<div>
+<h3>Image Creator</h3>
+<p>Draw and create graphics with JavaScript.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openImageCreator()">
+Open Creator
+</button>
+</div>
+
+<div class="tool-panel" id="imageCreator">
+
 <div class="row">
-<input id="date1" type="date">
-<input id="date2" type="date">
+
+<div>
+<label class="small">Width</label>
+<input id="canvasWidth"
+type="number"
+value="800">
 </div>
-<br>
-<button class="primary" onclick="dateDiff()">Calculate</button>
-<div id="dateResult" class="result"></div>
+
+<div>
+<label class="small">Height</label>
+<input id="canvasHeight"
+type="number"
+value="500">
+</div>
+
+</div>
+
+<div class="toolbar">
+
+<button onclick="resizeCanvas()">Resize</button>
+
+<button onclick="setTool('draw')">
+✏️ Draw
+</button>
+
+<button onclick="setTool('erase')">
+🧹 Eraser
+</button>
+
+<button onclick="addText()">
+📝 Text
+</button>
+
+<button onclick="drawRectangle()">
+▭ Rectangle
+</button>
+
+<button onclick="drawCircle()">
+⚪ Circle
+</button>
+
+<button onclick="drawLine()">
+➖ Line
+</button>
+
+<button onclick="undoCanvas()">
+↩️ Undo
+</button>
+
+<button onclick="clearCanvas()">
+🧹 Clear
+</button>
+
+</div>
+
+<div class="toolbar">
+
+<label>
+Color
+<input
+id="drawColor"
+class="color-input"
+type="color"
+value="#000000">
+</label>
+
+<label>
+Size
+<input
+id="brushSize"
+type="range"
+min="1"
+max="50"
+value="5">
+</label>
+
+<button onclick="downloadCanvas('png')">
+PNG
+</button>
+
+<button onclick="downloadCanvas('jpg')">
+JPG
+</button>
+
+</div>
+
+<div class="canvas-wrap">
+
+<canvas
+id="drawingCanvas"
+width="800"
+height="500">
+</canvas>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- IMAGE TO PDF -->
+
+<div class="tool"
+data-category="pdf"
+data-name="image to pdf jpg png">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Image to PDF')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">🖼️</div>
+<div>
+<h3>Image → PDF</h3>
+<p>Convert images into one PDF.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('imagePdf')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="imagePdf">
+
+<input
+class="file"
+id="imagePdfFiles"
+type="file"
+accept="image/*"
+multiple>
+
+<button class="primary"
+onclick="imagesToPDF()">
+Create PDF
+</button>
+
+</div>
+</div>
+
+
+<!-- PDF TO IMAGE -->
+
+<div class="tool"
+data-category="pdf"
+data-name="pdf to images png jpg">
+
+<button class="favorite"
+onclick="favoriteTool(this,'PDF to Images')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">📄</div>
+<div>
+<h3>PDF → Images</h3>
+<p>Convert PDF pages to images.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('pdfImage')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="pdfImage">
+
+<input
+class="file"
+id="pdfImageFile"
+type="file"
+accept="application/pdf">
+
+<button class="primary"
+onclick="pdfToImages()">
+Convert
+</button>
+
+<div class="preview"
+id="pdfImagePreview"></div>
+
+</div>
+</div>
+
+
+<!-- MERGE PDF -->
+
+<div class="tool"
+data-category="pdf"
+data-name="merge pdf combine">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Merge PDF')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">📎</div>
+<div>
+<h3>Merge PDFs</h3>
+<p>Combine multiple PDF files.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('merge')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="merge">
+
+<input
+class="file"
+id="mergeFiles"
+type="file"
+accept="application/pdf"
+multiple>
+
+<button class="primary"
+onclick="mergePDF()">
+Merge
+</button>
+
+</div>
+</div>
+
+
+<!-- SPLIT PDF -->
+
+<div class="tool"
+data-category="pdf"
+data-name="split cut pdf pages">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Split PDF')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">✂️</div>
+<div>
+<h3>Split / Cut PDF</h3>
+<p>Extract selected pages.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('split')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="split">
+
+<input
+class="file"
+id="splitFile"
+type="file"
+accept="application/pdf">
+
+<input
+id="splitPages"
+placeholder="Example: 1,3,5 or 2-6">
+
+<button class="primary"
+onclick="splitPDF()">
+Create PDF
+</button>
+
+</div>
+</div>
+
+
+<!-- NOTES -->
+
+<div class="tool"
+data-category="student"
+data-name="notes notepad">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Notes')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">📚</div>
+<div>
+<h3>Student Notes</h3>
+<p>Save notes directly on this device.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('notes')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="notes">
+
+<textarea
+id="notesText"
+placeholder="Write your notes..."></textarea>
+
+<button class="primary"
+onclick="saveNotes()">
+Save Notes
+</button>
+
+<button class="secondary"
+onclick="clearNotes()">
+Clear
+</button>
+
+<div class="result"
+id="notesStatus"></div>
+
+</div>
+</div>
+
+
+<!-- TODO -->
+
+<div class="tool"
+data-category="student"
+data-name="todo task list checklist">
+
+<button class="favorite"
+onclick="favoriteTool(this,'To Do List')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">✅</div>
+<div>
+<h3>To-Do List</h3>
+<p>Manage your tasks.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('todo')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="todo">
+
+<input
+id="todoInput"
+placeholder="Enter task">
+
+<button class="primary"
+onclick="addTodo()">
+Add Task
+</button>
+
+<div id="todoList"></div>
+
+</div>
+</div>
+
+
+<!-- STUDY TIMER -->
+
+<div class="tool"
+data-category="student"
+data-name="study pomodoro timer">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Study Timer')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">⏱️</div>
+<div>
+<h3>Study Timer</h3>
+<p>Focus timer for studying.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('timer')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="timer">
+
+<div class="result"
+style="font-size:38px;text-align:center"
+id="timerDisplay">
+25:00
+</div>
+
+<div class="toolbar">
+
+<button onclick="startTimer()">
+▶ Start
+</button>
+
+<button onclick="pauseTimer()">
+⏸ Pause
+</button>
+
+<button onclick="resetTimer()">
+↻ Reset
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- PASSWORD -->
+
+<div class="tool"
+data-category="utility student"
+data-name="password generator secure password">
+
+<button class="favorite"
+onclick="favoriteTool(this,'Password Generator')">
+☆
+</button>
+
+<div class="tool-head">
+<div class="tool-icon">🔐</div>
+<div>
+<h3>Password Generator</h3>
+<p>Generate random passwords locally.</p>
+</div>
+</div>
+
+<div class="tool-actions">
+<button class="primary"
+onclick="openTool('password')">
+Open
+</button>
+</div>
+
+<div class="tool-panel" id="password">
+
+<input
+id="passwordLength"
+type="number"
+value="16"
+min="4"
+max="100">
+
+<button class="primary"
+onclick="generatePassword()">
+Generate
+</button>
+
+<div class="result"
+id="passwordResult"></div>
+
+</div>
+</div>
+
+
 </div>
 </section>
 
-<!-- STOPWATCH -->
-
-<section id="stopwatch" class="page">
-<h2>⏱️ Stopwatch</h2>
-
-<div class="box">
-<div id="sw" class="big">00:00:00</div>
-<button class="primary" onclick="startSW()">Start</button>
-<button class="secondary" onclick="pauseSW()">Pause</button>
-<button class="secondary" onclick="resetSW()">Reset</button>
-</div>
-</section>
-
-<!-- COUNTDOWN -->
-
-<section id="countdown" class="page">
-<h2>⏰ Countdown Timer</h2>
-
-<div class="box">
-<input id="countMinutes" type="number" placeholder="Minutes">
-<br><br>
-<button class="primary" onclick="startCountdown()">Start</button>
-<div id="countDisplay" class="big">00:00</div>
-</div>
-</section>
-
-<!-- WORLD CLOCK -->
-
-<section id="clock" class="page">
-<h2>🌍 World Clock</h2>
-
-<div class="grid">
-<div class="card"><h3>🇮🇳 India</h3><p id="india"></p></div>
-<div class="card"><h3>🇬🇧 London</h3><p id="london"></p></div>
-<div class="card"><h3>🇺🇸 New York</h3><p id="newyork"></p></div>
-<div class="card"><h3>🇯🇵 Tokyo</h3><p id="tokyo"></p></div>
-</div>
-</section>
-
-<!-- FILES -->
-
-<section id="files" class="page">
-<h2>📄 File Tools</h2>
-
-<div class="tools-grid">
-<div class="tool" onclick="page('image')">🖼️ Image Tools</div>
-<div class="tool" onclick="page('qr')">📱 QR Generator</div>
-</div>
-</section>
-
-<!-- IMAGE -->
-
-<section id="image" class="page">
-<h2>🖼️ Image Tools</h2>
-
-<div class="box">
-<input type="file" id="imageFile" accept="image/*">
-<br><br>
-<button class="primary" onclick="resizeImage()">Resize Image</button>
-<div id="imageResult" class="result"></div>
-</div>
-</section>
-
-<!-- QR -->
-
-<section id="qr" class="page">
-<h2>📱 QR Generator</h2>
-
-<div class="box">
-<p>This offline QR feature uses a browser-compatible QR library only if you add one locally. For a completely dependency-free version, use the text tools above.</p>
-<input id="qrText" placeholder="Text / URL">
-<br><br>
-<button class="primary" onclick="simpleQR()">Generate QR</button>
-<div id="qrResult" class="result"></div>
-</div>
-</section>
-
-<!-- GAMES -->
-
-<section id="games" class="page">
-<h2>🎮 Student Arcade</h2>
-
-<div class="tools-grid">
-<div class="tool" onclick="page('guess')">🎯 Number Guess</div>
-<div class="tool" onclick="page('memory')">🧠 Memory Game</div>
-<div class="tool" onclick="page('typing')">⌨️ Typing Test</div>
-<div class="tool" onclick="page('ttt')">❌⭕ Tic-Tac-Toe</div>
-</div>
-</section>
-
-<!-- GUESS -->
-
-<section id="guess" class="page">
-<h2>🎯 Number Guessing</h2>
-
-<div class="box">
-<p>Guess a number between 1 and 100.</p>
-<input id="guessInput" type="number">
-<br><br>
-<button class="primary" onclick="guessGame()">Guess</button>
-<div id="guessResult" class="result"></div>
-</div>
-</section>
-
-<!-- MEMORY -->
-
-<section id="memory" class="page">
-<h2>🧠 Memory Game</h2>
-
-<div class="box">
-<button class="primary" onclick="startMemory()">Start Game</button>
-<div id="memoryGrid" class="memory"></div>
-</div>
-</section>
-
-<!-- TYPING -->
-
-<section id="typing" class="page">
-<h2>⌨️ Typing Speed Test</h2>
-
-<div class="box">
-<p id="typingText">
-The quick brown fox jumps over the lazy dog.
-</p>
-
-<textarea id="typingInput" placeholder="Type the sentence here..."></textarea>
-<br><br>
-<button class="primary" onclick="typingTest()">Check</button>
-<div id="typingResult" class="result"></div>
-</div>
-</section>
-
-<!-- TIC TAC TOE -->
-
-<section id="ttt" class="page">
-<h2>❌⭕ Tic-Tac-Toe</h2>
-
-<div class="box">
-<div id="board" class="grid"></div>
-<br>
-<button class="primary" onclick="newTTT()">New Game</button>
-<div id="tttResult" class="result"></div>
-</div>
-</section>
-
-<!-- SETTINGS -->
-
-<section id="settings" class="page">
-<h2>⚙️ Settings</h2>
-
-<div class="box">
-<h3>🌙 Appearance</h3>
-<button class="primary" onclick="toggleDark()">Toggle Dark Mode</button>
-
-<hr style="border:0;border-top:1px solid var(--border);margin:20px 0">
-
-<h3>💾 Data</h3>
-<p style="color:var(--muted)">
-StudentPro stores notes, tasks and progress locally in your browser.
-</p>
-
-<button class="primary" onclick="backup()">Export Backup</button>
-<button class="secondary" onclick="restore()">Import Backup</button>
-<button class="primary danger" onclick="clearData()">Delete All Data</button>
-</div>
-</section>
-
-</main>
 </div>
 
-<div id="toast" class="toast"></div>
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+<button onclick="goHome()">
+<strong>🏠</strong>
+Home
+</button>
+
+<button onclick="focusSearch()">
+<strong>🔎</strong>
+Search
+</button>
+
+<button onclick="showFavorites()">
+<strong>⭐</strong>
+Saved
+</button>
+
+<button onclick="toggleTheme()">
+<strong>🌙</strong>
+Theme
+</button>
+
+</nav>
+
 
 <script>
 
 /* =========================
- DATA
+   BASIC NAVIGATION
 ========================= */
 
-let data=JSON.parse(localStorage.getItem("studentPro")||"null")||{
- notes:[],
- tasks:[],
- flashcards:[],
- quiz:[],
- streak:0,
- studyMinutes:0,
- sessions:0,
- goal:0
-};
+function openTool(id){
 
-function save(){
- localStorage.setItem("studentPro",JSON.stringify(data));
- updateDashboard();
-}
+  const panel=document.getElementById(id);
 
-function toast(x){
- let t=document.getElementById("toast");
- t.textContent=x;
- t.style.display="block";
- setTimeout(()=>t.style.display="none",1800);
-}
+  if(!panel) return;
 
-/* =========================
- NAVIGATION
-========================= */
+  panel.classList.toggle("active");
 
-function page(id){
- document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
- let p=document.getElementById(id);
- if(p)p.classList.add("active");
- window.scrollTo({top:0,behavior:"smooth"});
-}
-
-/* =========================
- DARK
-========================= */
-
-function toggleDark(){
- document.body.classList.toggle("dark");
- localStorage.setItem(
-  "studentProDark",
-  document.body.classList.contains("dark")
- );
-}
-
-if(localStorage.getItem("studentProDark")==="true")
- document.body.classList.add("dark");
-
-/* =========================
- DASHBOARD
-========================= */
-
-function updateDashboard(){
- document.getElementById("streak").textContent=data.streak+" days";
- document.getElementById("studyTime").textContent=data.studyMinutes+" min";
- document.getElementById("done").textContent=
- data.tasks.filter(x=>x.done).length;
- document.getElementById("goal").textContent=data.goal+"%";
- document.getElementById("goalBar").style.width=data.goal+"%";
- document.getElementById("goalText").textContent=data.goal+"% completed";
- document.getElementById("sessions").textContent=data.sessions;
-}
-
-/* =========================
- COMMAND
-========================= */
-
-function command(e){
- if(e.key!=="Enter")return;
-
- let q=document.getElementById("command").value.toLowerCase();
- let r=document.getElementById("commandResult");
-
- let m=q.match(/(\d+(?:\.\d+)?)\s*%\s*of\s*(\d+(?:\.\d+)?)/);
-
- if(m){
-  r.innerHTML=`<div class="result">${m[1]}% of ${m[2]} = <b>${m[1]*m[2]/100}</b></div>`;
-  return;
- }
-
- let b=q.match(/binary\s+([01]+)/);
-
- if(b){
-  let n=parseInt(b[1],2);
-  r.innerHTML=`<div class="result">
-Binary: ${b[1]}
-Decimal: ${n}
-Octal: ${n.toString(8)}
-Hex: ${n.toString(16).toUpperCase()}
-</div>`;
-  return;
- }
-
- if(q.includes("calculator"))page("calculator");
- else if(q.includes("notes"))page("notes");
- else if(q.includes("gpa"))page("gpa");
- else if(q.includes("attendance"))page("attendance");
- else if(q.includes("timer"))page("study");
- else if(q.includes("games"))page("games");
- else r.innerHTML='<div class="result">Try "25% of 800", "binary 1010", "calculator", "notes" or "GPA".</div>';
-}
-
-/* =========================
- STUDY TIMER
-========================= */
-
-let studySec=1500;
-let studyInterval=null;
-
-function updateStudy(){
- let m=Math.floor(studySec/60);
- let s=studySec%60;
-
- document.getElementById("studyTimer").textContent=
- `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-}
-
-function startStudy(){
- if(studyInterval)return;
-
- studyInterval=setInterval(()=>{
-  if(studySec<=0){
-   clearInterval(studyInterval);
-   studyInterval=null;
-   data.sessions++;
-   data.studyMinutes+=25;
-   save();
-   alert("🎉 Study session completed!");
-   studySec=1500;
-   updateStudy();
-   return;
+  if(panel.classList.contains("active")){
+    addRecent(id);
   }
-  studySec--;
-  updateStudy();
- },1000);
 }
 
-function pauseStudy(){
- clearInterval(studyInterval);
- studyInterval=null;
+function goHome(){
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
 
-function resetStudy(){
- pauseStudy();
- studySec=1500;
- updateStudy();
+function focusSearch(){
+
+  const search=
+    document.getElementById("globalSearch");
+
+  search.focus();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
 
-function addGoal(){
- data.goal=Math.min(100,data.goal+10);
- save();
-}
-
-/* =========================
- NOTES
-========================= */
-
-function safe(s){
- return String(s).replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",
-  '"':"&quot;","'":"&#039;"
- }[c]));
-}
-
-function saveNote(){
- let title=document.getElementById("noteTitle").value.trim();
- let content=document.getElementById("noteContent").value.trim();
-
- if(!title||!content){
-  toast("Enter title and content");
-  return;
- }
-
- data.notes.unshift({
-  id:Date.now(),title,content,
-  date:new Date().toLocaleString()
- });
-
- save();
- renderNotes();
-
- document.getElementById("noteTitle").value="";
- document.getElementById("noteContent").value="";
-
- toast("Note saved");
-}
-
-function renderNotes(){
- let box=document.getElementById("notesList");
-
- box.innerHTML=data.notes.map(n=>`
- <div class="item">
- <span>
- <b>${safe(n.title)}</b><br>
- <small>${safe(n.content)}</small>
- </span>
- <button class="secondary" onclick="deleteNote(${n.id})">Delete</button>
- </div>
- `).join("");
-}
-
-function deleteNote(id){
- data.notes=data.notes.filter(x=>x.id!==id);
- save();
- renderNotes();
-}
 
 /* =========================
- TASKS
-========================= */
-
-function addTask(){
- let text=document.getElementById("taskInput").value.trim();
-
- if(!text)return;
-
- data.tasks.push({
-  id:Date.now(),
-  text,
-  priority:document.getElementById("priority").value,
-  done:false
- });
-
- document.getElementById("taskInput").value="";
- save();
- renderTasks();
-}
-
-function renderTasks(){
- document.getElementById("taskList").innerHTML=
- data.tasks.map(t=>`
- <div class="item">
- <input type="checkbox"
- ${t.done?"checked":""}
- onchange="toggleTask(${t.id})"
- style="width:auto">
- <span style="${t.done?'text-decoration:line-through':''}">
- ${safe(t.text)} — ${safe(t.priority)}
- </span>
- <button class="secondary" onclick="deleteTask(${t.id})">×</button>
- </div>
- `).join("");
-}
-
-function toggleTask(id){
- let t=data.tasks.find(x=>x.id===id);
- if(t)t.done=!t.done;
- save();
- renderTasks();
-}
-
-function deleteTask(id){
- data.tasks=data.tasks.filter(x=>x.id!==id);
- save();
- renderTasks();
-}
-
-/* =========================
- FLASHCARDS
-========================= */
-
-function addFlashcard(){
- let q=document.getElementById("fcQuestion").value.trim();
- let a=document.getElementById("fcAnswer").value.trim();
-
- if(!q||!a)return;
-
- data.flashcards.push({q,a});
- save();
- renderFlashcards();
-
- document.getElementById("fcQuestion").value="";
- document.getElementById("fcAnswer").value="";
-}
-
-function renderFlashcards(){
- document.getElementById("flashcardList").innerHTML=
- data.flashcards.map((f,i)=>`
- <div class="item">
- <span><b>${safe(f.q)}</b><br>${safe(f.a)}</span>
- <button class="secondary" onclick="deleteFlashcard(${i})">×</button>
- </div>
- `).join("");
-}
-
-function deleteFlashcard(i){
- data.flashcards.splice(i,1);
- save();
- renderFlashcards();
-}
-
-/* =========================
- QUIZ
-========================= */
-
-function addQuiz(){
- let q=document.getElementById("quizQ").value.trim();
- let a=document.getElementById("quizA").value.trim();
-
- if(!q||!a)return;
-
- data.quiz.push({q,a});
- save();
-
- document.getElementById("quizQ").value="";
- document.getElementById("quizA").value="";
-
- renderQuiz();
-}
-
-function renderQuiz(){
- document.getElementById("quizList").innerHTML=
- data.quiz.map((x,i)=>`
- <div class="item">
- <span>${safe(x.q)}</span>
- <button class="secondary" onclick="deleteQuiz(${i})">×</button>
- </div>
- `).join("");
-}
-
-function deleteQuiz(i){
- data.quiz.splice(i,1);
- save();
- renderQuiz();
-}
-
-let quizIndex=0;
-let quizScore=0;
-
-function startQuiz(){
- if(!data.quiz.length){
-  alert("Add questions first.");
-  return;
- }
-
- quizIndex=0;
- quizScore=0;
- showQuiz();
-}
-
-function showQuiz(){
- if(quizIndex>=data.quiz.length){
-  document.getElementById("quizGame").innerHTML=
-  `<div class="result">🏆 Score: ${quizScore}/${data.quiz.length}</div>`;
-  return;
- }
-
- let q=data.quiz[quizIndex];
-
- document.getElementById("quizGame").innerHTML=`
- <div class="result">
- <b>${safe(q.q)}</b>
- <br><br>
- <input id="quizAnswer" placeholder="Your answer">
- <br><br>
- <button class="primary" onclick="checkQuiz()">Submit</button>
- </div>`;
-}
-
-function checkQuiz(){
- let answer=document.getElementById("quizAnswer").value.trim().toLowerCase();
- let correct=data.quiz[quizIndex].a.trim().toLowerCase();
-
- if(answer===correct)quizScore++;
-
- quizIndex++;
- showQuiz();
-}
-
-/* =========================
- CALCULATOR
-========================= */
-
-function calculate(){
- let x=document.getElementById("calc").value;
-
- try{
-  x=x.replace(/\^/g,"**")
-  .replace(/\bpi\b/gi,"Math.PI")
-  .replace(/\bsqrt\(/gi,"Math.sqrt(")
-  .replace(/\bsin\(/gi,"Math.sin(")
-  .replace(/\bcos\(/gi,"Math.cos(")
-  .replace(/\btan\(/gi,"Math.tan(")
-  .replace(/\blog\(/gi,"Math.log10(");
-
-  if(!/^[0-9+\-*/%().,\sA-Za-z*]+$/.test(x))
-   throw Error();
-
-  let ans=Function('"use strict";return ('+x+')')();
-
-  document.getElementById("calcResult").textContent=ans;
- }catch{
-  document.getElementById("calcResult").textContent="Invalid expression";
- }
-}
-
-/* =========================
- PERCENTAGE
-========================= */
-
-function percentage(){
- let p=Number(document.getElementById("percent").value);
- let n=Number(document.getElementById("percentNumber").value);
-
- document.getElementById("percentResult").textContent=
- `${p}% of ${n} = ${p*n/100}`;
-}
-
-/* =========================
- GPA
-========================= */
-
-function gpaCalc(){
- let a=document.getElementById("gpaInput").value
- .split(",").map(Number).filter(Number.isFinite);
-
- if(!a.length)return;
-
- let avg=a.reduce((x,y)=>x+y,0)/a.length;
-
- document.getElementById("gpaResult").textContent=
- `GPA: ${avg.toFixed(2)}`;
-}
-
-/* =========================
- ATTENDANCE
-========================= */
-
-function attendance(){
- let held=Number(document.getElementById("held").value);
- let present=Number(document.getElementById("present").value);
-
- if(held<=0||present<0||present>held)return;
-
- document.getElementById("attendanceResult").textContent=
- `Attendance: ${(present/held*100).toFixed(2)}%`;
-}
-
-/* =========================
- QUADRATIC
-========================= */
-
-function quadratic(){
- let a=Number(document.getElementById("qa").value);
- let b=Number(document.getElementById("qb").value);
- let c=Number(document.getElementById("qc").value);
-
- let d=b*b-4*a*c;
-
- if(d>=0){
-  let x1=(-b+Math.sqrt(d))/(2*a);
-  let x2=(-b-Math.sqrt(d))/(2*a);
-
-  document.getElementById("quadResult").textContent=
-  `x₁ = ${x1}\nx₂ = ${x2}`;
- }else{
-  let real=-b/(2*a);
-  let im=Math.sqrt(-d)/(2*a);
-
-  document.getElementById("quadResult").textContent=
-  `x₁ = ${real}+${im}i\nx₂ = ${real}-${im}i`;
- }
-}
-
-/* =========================
- STATISTICS
-========================= */
-
-function statistics(){
- let a=document.getElementById("stats").value
- .split(",").map(Number).filter(Number.isFinite)
- .sort((x,y)=>x-y);
-
- if(!a.length)return;
-
- let mean=a.reduce((x,y)=>x+y,0)/a.length;
- let median=a.length%2
- ?a[Math.floor(a.length/2)]
- :(a[a.length/2-1]+a[a.length/2])/2;
-
- let variance=a.reduce((s,x)=>s+(x-mean)**2,0)/a.length;
-
- document.getElementById("statsResult").textContent=
- `Mean: ${mean}
-Median: ${median}
-Variance: ${variance}
-Standard Deviation: ${Math.sqrt(variance)}`;
-}
-
-/* =========================
- NUMBER SYSTEM
-========================= */
-
-function numberConvert(){
- let value=document.getElementById("numberValue").value.trim();
- let base=Number(document.getElementById("numberBase").value);
- let n=parseInt(value,base);
-
- if(isNaN(n)){
-  numberResult.textContent="Invalid number";
-  return;
- }
-
- document.getElementById("numberResult").textContent=
- `Binary: ${n.toString(2)}
-Octal: ${n.toString(8)}
-Decimal: ${n}
-Hexadecimal: ${n.toString(16).toUpperCase()}`;
-}
-
-/* =========================
- HCF / LCM
-========================= */
-
-function gcd(a,b){
- while(b){let t=b;b=a%b;a=t}
- return Math.abs(a);
-}
-
-function hcfLcm(){
- let a=document.getElementById("hcfInput").value
- .split(",").map(Number).filter(Number.isFinite);
-
- if(!a.length)return;
-
- let h=a.reduce(gcd);
- let l=a.reduce((x,y)=>Math.abs(x*y)/gcd(x,y));
-
- document.getElementById("hcfResult").textContent=
- `HCF: ${h}
-LCM: ${l}`;
-}
-
-/* =========================
- PRIME
-========================= */
-
-function primeCheck(){
- let n=Number(document.getElementById("primeInput").value);
-
- if(n<2){
-  primeResult.textContent="Not prime";
-  return;
- }
-
- let prime=true;
-
- for(let i=2;i<=Math.sqrt(n);i++)
-  if(n%i===0){prime=false;break}
-
- primeResult.textContent=
- prime?`${n} is Prime`:`${n} is not Prime`;
-}
-
-/* =========================
- FRACTION
-========================= */
-
-function fractionCalc(){
- let a=Number(f1n.value),b=Number(f1d.value);
- let c=Number(f2n.value),d=Number(f2d.value);
- let op=fop.value;
-
- let n,dn;
-
- if(op==="+"){n=a*d+c*b;dn=b*d}
- if(op==="-"){n=a*d-c*b;dn=b*d}
- if(op==="*"){n=a*c;dn=b*d}
- if(op==="/"){n=a*d;dn=b*c}
-
- let g=gcd(n,dn);
-
- fractionResult.textContent=
- `${n/g}/${dn/g}`;
-}
-
-/* =========================
- SCIENCE
-========================= */
-
-function speed(){
- let d=Number(prompt("Distance"));
- let t=Number(prompt("Time"));
- if(t)alert("Speed = "+d/t);
-}
-
-function force(){
- let m=Number(prompt("Mass"));
- let a=Number(prompt("Acceleration"));
- alert("Force = "+m*a+" N");
-}
-
-function ohm(){
- let v=Number(prompt("Voltage"));
- let i=Number(prompt("Current"));
- if(i)alert("Resistance = "+v/i+" Ω");
-}
-
-function density(){
- let m=Number(prompt("Mass"));
- let v=Number(prompt("Volume"));
- if(v)alert("Density = "+m/v);
-}
-
-function power(){
- let v=Number(prompt("Voltage"));
- let i=Number(prompt("Current"));
- alert("Power = "+v*i+" W");
-}
-
-function moles(){
- let mass=Number(prompt("Mass in grams"));
- let molar=Number(prompt("Molar mass"));
- if(molar)alert("Moles = "+mass/molar);
-}
-
-function molarity(){
- let moles=Number(prompt("Moles"));
- let volume=Number(prompt("Volume in litres"));
- if(volume)alert("Molarity = "+moles/volume+" M");
-}
-
-/* =========================
- PERIODIC TABLE
-========================= */
-
-const elements=[
-"H","He","Li","Be","B","C","N","O","F","Ne",
-"Na","Mg","Al","Si","P","S","Cl","Ar",
-"K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni",
-"Cu","Zn","Ga","Ge","As","Se","Br","Kr",
-"Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd",
-"Ag","Cd","In","Sn","Sb","Te","I","Xe"
-];
-
-document.getElementById("periodicGrid").innerHTML=
-elements.map((e,i)=>`
-<div class="tool">
-<b>${i+1}</b><br>${e}
-</div>
-`).join("");
-
-/* =========================
- HTML PLAYGROUND
-========================= */
-
-function runHTML(){
- document.getElementById("preview").srcdoc=
- document.getElementById("htmlCode").value;
-}
-
-/* =========================
- JSON
-========================= */
-
-function formatJSON(){
- try{
-  let x=JSON.parse(jsonInput.value);
-  jsonResult.textContent=JSON.stringify(x,null,2);
- }catch{
-  jsonResult.textContent="Invalid JSON";
- }
-}
-
-function minifyJSON(){
- try{
-  let x=JSON.parse(jsonInput.value);
-  jsonResult.textContent=JSON.stringify(x);
- }catch{
-  jsonResult.textContent="Invalid JSON";
- }
-}
-
-/* =========================
- BASE64
-========================= */
-
-function encode64(){
- try{
-  base64Result.textContent=
-  btoa(unescape(encodeURIComponent(base64Input.value)));
- }catch{
-  base64Result.textContent="Invalid text";
- }
-}
-
-function decode64(){
- try{
-  base64Result.textContent=
-  decodeURIComponent(escape(atob(base64Input.value)));
- }catch{
-  base64Result.textContent="Invalid Base64";
- }
-}
-
-/* =========================
- ASCII
-========================= */
-
-function asciiConvert(){
- asciiResult.textContent=
- [...asciiInput.value]
- .map(x=>`${x} = ${x.charCodeAt(0)}`)
- .join("\n");
-}
-
-/* =========================
- URL
-========================= */
-
-function urlEncode(){
- urlResult.textContent=encodeURIComponent(urlInput.value);
-}
-
-function urlDecode(){
- try{
-  urlResult.textContent=decodeURIComponent(urlInput.value);
- }catch{
-  urlResult.textContent="Invalid URL encoding";
- }
-}
-
-/* =========================
- TEXT
-========================= */
-
-function upper(){
- textResult.textContent=textInput.value.toUpperCase();
-}
-
-function lower(){
- textResult.textContent=textInput.value.toLowerCase();
-}
-
-function titleCase(){
- textResult.textContent=textInput.value
- .toLowerCase()
- .replace(/\b\w/g,x=>x.toUpperCase());
-}
-
-function reverseText(){
- textResult.textContent=[...textInput.value].reverse().join("");
-}
-
-function cleanText(){
- textResult.textContent=textInput.value
- .split("\n")
- .map(x=>x.trim().replace(/\s+/g," "))
- .filter(Boolean).join("\n");
-}
-
-function countText(){
- let t=textInput.value;
- let words=t.trim()?t.trim().split(/\s+/).length:0;
- let lines=t?t.split(/\n/).length:0;
-
- textResult.textContent=
- `Characters: ${t.length}
-Words: ${words}
-Lines: ${lines}`;
-}
-
-/* =========================
- LOREM
-========================= */
-
-function lorem(){
- const words=`lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua`.split(" ");
-
- let count=Math.max(1,Number(loremCount.value)||1);
- let result=[];
-
- for(let i=0;i<count*20;i++)
-  result.push(words[i%words.length]);
-
- loremResult.textContent=result.join(" ");
-}
-
-/* =========================
- AGE
-========================= */
-
-function ageCalc(){
- let birth=new Date(dob.value);
-
- if(isNaN(birth))return;
-
- let now=new Date();
-
- let years=now.getFullYear()-birth.getFullYear();
-
- if(
-  now.getMonth()<birth.getMonth() ||
-  (now.getMonth()===birth.getMonth()&&
-   now.getDate()<birth.getDate())
- )years--;
-
- ageResult.textContent=`Age: ${years} years`;
-}
-
-/* =========================
- DATE DIFFERENCE
-========================= */
-
-function dateDiff(){
- let a=new Date(date1.value);
- let b=new Date(date2.value);
-
- if(isNaN(a)||isNaN(b))return;
-
- let days=Math.abs(Math.round((b-a)/86400000));
-
- dateResult.textContent=
- `${days} days
-${(days/7).toFixed(2)} weeks`;
-}
-
-/* =========================
- STOPWATCH
-========================= */
-
-let swStart=0,swElapsed=0,swInterval;
-
-function updateSW(){
- let ms=swElapsed+(swStart?Date.now()-swStart:0);
-
- let h=Math.floor(ms/3600000);
- let m=Math.floor(ms%3600000/60000);
- let s=Math.floor(ms%60000/1000);
-
- sw.textContent=
- `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-}
-
-function startSW(){
- if(swStart)return;
-
- swStart=Date.now();
- swInterval=setInterval(updateSW,100);
-}
-
-function pauseSW(){
- if(!swStart)return;
-
- swElapsed+=Date.now()-swStart;
- swStart=0;
- clearInterval(swInterval);
- updateSW();
-}
-
-function resetSW(){
- swStart=0;
- swElapsed=0;
- clearInterval(swInterval);
- updateSW();
-}
-
-/* =========================
- COUNTDOWN
-========================= */
-
-let countInterval;
-
-function startCountdown(){
- clearInterval(countInterval);
-
- let sec=Math.max(0,Number(countMinutes.value))*60;
-
- function draw(){
-  let m=Math.floor(sec/60);
-  let s=sec%60;
-
-  countDisplay.textContent=
-  `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-
-  if(sec<=0){
-   clearInterval(countInterval);
-   alert("⏰ Time is up!");
-  }
-
-  sec--;
- }
-
- draw();
- countInterval=setInterval(draw,1000);
-}
-
-/* =========================
- WORLD CLOCK
-========================= */
-
-function clocks(){
- const zones={
-  india:"Asia/Kolkata",
-  london:"Europe/London",
-  newyork:"America/New_York",
-  tokyo:"Asia/Tokyo"
- };
-
- for(let id in zones){
-  document.getElementById(id).textContent=
-  new Intl.DateTimeFormat("en-IN",{
-   timeZone:zones[id],
-   dateStyle:"medium",
-   timeStyle:"medium"
-  }).format(new Date());
- }
-}
-
-setInterval(clocks,1000);
-clocks();
-
-/* =========================
- EXAM
-========================= */
-
-function examCountdown(){
- let d=new Date(examDate.value);
-
- if(isNaN(d))return;
-
- let days=Math.ceil((d-new Date())/86400000);
-
- examResult.textContent=
- days>=0?`${days} days remaining`:"Exam date has passed";
-}
-
-/* =========================
- IMAGE
-========================= */
-
-function resizeImage(){
- let file=imageFile.files[0];
-
- if(!file){
-  imageResult.textContent="Choose an image first.";
-  return;
- }
-
- let img=new Image();
- let reader=new FileReader();
-
- reader.onload=e=>{
-  img.onload=()=>{
-   let canvas=document.createElement("canvas");
-
-   let max=1200;
-   let scale=Math.min(1,max/img.width,max/img.height);
-
-   canvas.width=img.width*scale;
-   canvas.height=img.height*scale;
-
-   let ctx=canvas.getContext("2d");
-   ctx.drawImage(img,0,0,canvas.width,canvas.height);
-
-   canvas.toBlob(blob=>{
-    let url=URL.createObjectURL(blob);
-
-    imageResult.innerHTML=
-    `<a href="${url}" download="studentpro-image.jpg">
-    Download resized image
-    </a>`;
-   },"image/jpeg",.85);
-  };
-
-  img.src=e.target.result;
- };
-
- reader.readAsDataURL(file);
-}
-
-/* =========================
- SIMPLE QR NOTICE
-========================= */
-
-function simpleQR(){
- qrResult.textContent=
- "For a completely offline QR generator, add a local QR encoder library. This single-file version intentionally does not load an external API.";
-}
-
-/* =========================
- GUESS GAME
-========================= */
-
-let secret=Math.floor(Math.random()*100)+1;
-
-function guessGame(){
- let n=Number(guessInput.value);
-
- if(n===secret){
-  guessResult.textContent="🎉 Correct! New number generated.";
-  secret=Math.floor(Math.random()*100)+1;
- }else if(n<secret){
-  guessResult.textContent="⬆️ Try higher.";
- }else{
-  guessResult.textContent="⬇️ Try lower.";
- }
-}
-
-/* =========================
- MEMORY GAME
-========================= */
-
-function startMemory(){
- let icons=["🍎","🍎","🚀","🚀","⭐","⭐","🎯","🎯",
- "🐱","🐱","⚽","⚽","🔥","🔥","🌈","🌈"];
-
- icons.sort(()=>Math.random()-.5);
-
- memoryGrid.innerHTML="";
- let first=null;
- let lock=false;
-
- icons.forEach(icon=>{
-  let b=document.createElement("button");
-  b.textContent="?";
-
-  b.onclick=()=>{
-   if(lock||b.textContent!=="?")return;
-
-   b.textContent=icon;
-
-   if(!first){
-    first={b,icon};
-    return;
-   }
-
-   if(first.icon===icon){
-    first=null;
-   }else{
-    lock=true;
-
-    let old=first;
-
-    setTimeout(()=>{
-     b.textContent="?";
-     old.b.textContent="?";
-     first=null;
-     lock=false;
-    },700);
-   }
-  };
-
-  memoryGrid.appendChild(b);
- });
-}
-
-/* =========================
- TYPING
-========================= */
-
-function typingTest(){
- let original=typingText.textContent.trim();
- let typed=typingInput.value.trim();
-
- let correct=0;
-
- for(let i=0;i<Math.min(original.length,typed.length);i++)
-  if(original[i]===typed[i])correct++;
-
- let accuracy=original.length?
- correct/original.length*100:0;
-
- typingResult.textContent=
- `Characters typed: ${typed.length}
-Accuracy: ${accuracy.toFixed(1)}%`;
-}
-
-/* =========================
- TIC TAC TOE
-========================= */
-
-let boardData=[];
-
-function newTTT(){
- boardData=Array(9).fill("");
-
- board.innerHTML="";
-
- boardData.forEach((_,i)=>{
-  let b=document.createElement("button");
-
-  b.className="primary";
-  b.style.height="70px";
-  b.style.fontSize="25px";
-
-  b.onclick=()=>{
-   if(boardData[i])return;
-
-   boardData[i]="X";
-   b.textContent="X";
-
-   if(checkWin("X")){
-    tttResult.textContent="🎉 You win!";
-    return;
-   }
-
-   let empty=boardData
-   .map((x,i)=>x?null:i)
-   .filter(x=>x!==null);
-
-   if(!empty.length){
-    tttResult.textContent="Draw!";
-    return;
-   }
-
-   let move=empty[Math.floor(Math.random()*empty.length)];
-
-   boardData[move]="O";
-   board.children[move].textContent="O";
-
-   if(checkWin("O"))
-    tttResult.textContent="Computer wins!";
-  };
-
-  board.appendChild(b);
- });
-}
-
-function checkWin(p){
- let w=[
- [0,1,2],[3,4,5],[6,7,8],
- [0,3,6],[1,4,7],[2,5,8],
- [0,4,8],[2,4,6]
- ];
-
- return w.some(x=>x.every(i=>boardData[i]===p));
-}
-
-/* =========================
- BACKUP
-========================= */
-
-function backup(){
- let blob=new Blob(
- [JSON.stringify(data,null,2)],
- {type:"application/json"}
- );
-
- let a=document.createElement("a");
- a.href=URL.createObjectURL(blob);
- a.download="studentpro-backup.json";
- a.click();
-}
-
-function restore(){
- let input=document.createElement("input");
- input.type="file";
- input.accept=".json";
-
- input.onchange=()=>{
-  let file=input.files[0];
-  let reader=new FileReader();
-
-  reader.onload=()=>{
-   try{
-    data=JSON.parse(reader.result);
-    save();
-    renderNotes();
-    renderTasks();
-    renderFlashcards();
-    renderQuiz();
-    toast("Backup restored");
-   }catch{
-    toast("Invalid backup");
-   }
-  };
-
-  reader.readAsText(file);
- };
-
- input.click();
-}
-
-function clearData(){
- if(!confirm("Delete all StudentPro data?"))return;
-
- localStorage.removeItem("studentPro");
-
- data={
-  notes:[],
-  tasks:[],
-  flashcards:[],
-  quiz:[],
-  streak:0,
-  studyMinutes:0,
-  sessions:0,
-  goal:0
- };
-
- renderNotes();
- renderTasks();
- renderFlashcards();
- renderQuiz();
- save();
-
- toast("All data deleted");
-}
-
-/* =========================
- SEARCH
+   SEARCH
 ========================= */
 
 function searchTools(){
- let q=search.value.toLowerCase();
 
- if(q.includes("calculator"))page("calculator");
- else if(q.includes("gpa"))page("gpa");
- else if(q.includes("attendance"))page("attendance");
- else if(q.includes("notes"))page("notes");
- else if(q.includes("games"))page("games");
- else if(q.includes("science"))page("science");
- else if(q.includes("coding"))page("coding");
- else if(q.includes("english"))page("english");
+  const query=
+    document
+    .getElementById("globalSearch")
+    .value
+    .toLowerCase()
+    .trim();
+
+  document
+  .querySelectorAll(".tool")
+  .forEach(tool=>{
+
+    const text=
+      (
+        tool.dataset.name+
+        " "+
+        tool.dataset.category
+      ).toLowerCase();
+
+    tool.style.display=
+      text.includes(query)
+      ? ""
+      : "none";
+
+  });
+
 }
 
+function filterCategory(category){
+
+  document
+  .querySelectorAll(".tool")
+  .forEach(tool=>{
+
+    const categories=
+      tool.dataset.category || "";
+
+    tool.style.display=
+      categories.includes(category)
+      ? ""
+      : "none";
+
+  });
+
+  window.scrollTo({
+    top:400,
+    behavior:"smooth"
+  });
+}
+
+
 /* =========================
- START
+   THEME
 ========================= */
 
-updateDashboard();
-updateStudy();
-renderNotes();
-renderTasks();
-renderFlashcards();
-renderQuiz();
-newTTT();
+function toggleTheme(){
+
+  document.body.classList.toggle("dark");
+
+  const dark=
+    document.body.classList.contains("dark");
+
+  localStorage.setItem(
+    "theme",
+    dark ? "dark" : "light"
+  );
+
+  document.getElementById("themeBtn")
+    .textContent=
+      dark ? "☀️" : "🌙";
+}
+
+(function(){
+
+  if(localStorage.getItem("theme")==="dark"){
+
+    document.body.classList.add("dark");
+
+    document.getElementById("themeBtn")
+      .textContent="☀️";
+
+  }
+
+})();
+
+
+/* =========================
+   FAVORITES
+========================= */
+
+function getFavorites(){
+
+  return JSON.parse(
+    localStorage.getItem("favorites") || "[]"
+  );
+
+}
+
+function favoriteTool(button,name){
+
+  let favorites=getFavorites();
+
+  if(favorites.includes(name)){
+
+    favorites=
+      favorites.filter(x=>x!==name);
+
+    button.textContent="☆";
+
+  }else{
+
+    favorites.push(name);
+
+    button.textContent="★";
+
+  }
+
+  localStorage.setItem(
+    "favorites",
+    JSON.stringify(favorites)
+  );
+
+}
+
+function showFavorites(){
+
+  const favorites=getFavorites();
+
+  if(!favorites.length){
+
+    alert("No favorite tools yet.");
+
+    return;
+
+  }
+
+  alert(
+    "⭐ Your Favorites:\n\n"+
+    favorites.join("\n")
+  );
+
+}
+
+
+/* =========================
+   RECENT TOOLS
+========================= */
+
+function addRecent(id){
+
+  let recent=
+    JSON.parse(
+      localStorage.getItem("recent") || "[]"
+    );
+
+  recent=
+    recent.filter(x=>x!==id);
+
+  recent.unshift(id);
+
+  recent=recent.slice(0,10);
+
+  localStorage.setItem(
+    "recent",
+    JSON.stringify(recent)
+  );
+
+}
+
+
+/* =========================
+   SCIENTIFIC CALCULATOR
+========================= */
+
+let calcExpression="";
+
+function calcAdd(value){
+
+  if(
+    document
+    .getElementById("calcDisplay")
+    .value==="Error"
+  ){
+    calcExpression="";
+  }
+
+  calcExpression+=value;
+
+  document
+    .getElementById("calcDisplay")
+    .value=
+      calcExpression || "0";
+}
+
+function clearCalc(){
+
+  calcExpression="";
+
+  document
+    .getElementById("calcDisplay")
+    .value="0";
+}
+
+function calculate(){
+
+  try{
+
+    if(
+      !/^[0-9+\-*/(). ]+$/
+      .test(calcExpression)
+    ){
+      throw new Error();
+    }
+
+    const result=
+      Function(
+        '"use strict";return ('+
+        calcExpression+
+        ')'
+      )();
+
+    calcExpression=String(result);
+
+    document
+      .getElementById("calcDisplay")
+      .value=result;
+
+  }catch{
+
+    calcExpression="";
+
+    document
+      .getElementById("calcDisplay")
+      .value="Error";
+
+  }
+
+}
+
+function calcFunc(type){
+
+  let value=
+    parseFloat(
+      document
+      .getElementById("calcDisplay")
+      .value
+    );
+
+  if(type==="pi"){
+    calcExpression=String(Math.PI);
+  }
+
+  else if(type==="sqrt"){
+    calcExpression=String(Math.sqrt(value));
+  }
+
+  else if(type==="square"){
+    calcExpression=String(value*value);
+  }
+
+  else if(type==="sin"){
+    calcExpression=
+      String(
+        Math.sin(value*Math.PI/180)
+      );
+  }
+
+  else if(type==="cos"){
+    calcExpression=
+      String(
+        Math.cos(value*Math.PI/180)
+      );
+  }
+
+  else if(type==="tan"){
+    calcExpression=
+      String(
+        Math.tan(value*Math.PI/180)
+      );
+  }
+
+  else if(type==="log"){
+    calcExpression=
+      String(Math.log10(value));
+  }
+
+  else if(type==="ln"){
+    calcExpression=
+      String(Math.log(value));
+  }
+
+  document
+    .getElementById("calcDisplay")
+    .value=
+      calcExpression;
+
+}
+
+
+/* =========================
+   PERCENTAGE
+========================= */
+
+function percentageCalc(){
+
+  const value=
+    parseFloat(
+      document
+      .getElementById("percentValue")
+      .value
+    );
+
+  const total=
+    parseFloat(
+      document
+      .getElementById("percentTotal")
+      .value
+    );
+
+  if(
+    isNaN(value)||
+    isNaN(total)||
+    total===0
+  ){
+
+    document
+      .getElementById("percentageResult")
+      .textContent=
+        "Enter valid values.";
+
+    return;
+  }
+
+  const result=
+    (value/total)*100;
+
+  document
+    .getElementById("percentageResult")
+    .textContent=
+      result.toFixed(2)+"%";
+
+}
+
+
+/* =========================
+   CGPA
+========================= */
+
+function calculateCGPA(){
+
+  const values=
+    document
+    .getElementById("cgpaValues")
+    .value
+    .split(",")
+    .map(Number)
+    .filter(x=>!isNaN(x));
+
+  if(!values.length){
+
+    document
+      .getElementById("cgpaResult")
+      .textContent=
+        "Enter GPAs separated by commas.";
+
+    return;
+  }
+
+  const average=
+    values.reduce(
+      (a,b)=>a+b,0
+    )/values.length;
+
+  document
+    .getElementById("cgpaResult")
+    .textContent=
+      "CGPA: "+average.toFixed(2);
+
+}
+
+
+/* =========================
+   NUMBER SYSTEM
+========================= */
+
+function convertNumbers(){
+
+  const base=
+    parseInt(
+      document
+      .getElementById("numberBase")
+      .value
+    );
+
+  const input=
+    document
+    .getElementById("numberInput")
+    .value
+    .trim();
+
+  const result=
+    document
+    .getElementById("numberResult");
+
+  try{
+
+    const decimal=
+      parseInt(input,base);
+
+    if(isNaN(decimal)){
+      throw new Error();
+    }
+
+    result.innerHTML=
+      "Decimal: "+
+      decimal+
+      "<br><br>"+
+      "Binary: "+
+      decimal.toString(2)+
+      "<br><br>"+
+      "Octal: "+
+      decimal.toString(8)+
+      "<br><br>"+
+      "Hexadecimal: "+
+      decimal.toString(16).toUpperCase();
+
+  }catch{
+
+    result.textContent=
+      "Invalid number for the selected base.";
+
+  }
+
+}
+
+
+/* =========================
+   UNIT CONVERTER
+========================= */
+
+function convertUnit(){
+
+  const value=
+    parseFloat(
+      document
+      .getElementById("unitValue")
+      .value
+    );
+
+  const type=
+    document
+    .getElementById("unitType")
+    .value;
+
+  if(isNaN(value)){
+
+    document
+      .getElementById("unitResult")
+      .textContent=
+        "Enter a valid number.";
+
+    return;
+  }
+
+  let result;
+
+  if(type==="kmmi"){
+    result=value*0.621371;
+    result=result.toFixed(4)+" miles";
+  }
+
+  if(type==="mft"){
+    result=value*3.28084;
+    result=result.toFixed(4)+" feet";
+  }
+
+  if(type==="kg"){
+    result=value*2.20462;
+    result=result.toFixed(4)+" pounds";
+  }
+
+  if(type==="cf"){
+    result=(value*9/5)+32;
+    result=result.toFixed(2)+" °F";
+  }
+
+  document
+    .getElementById("unitResult")
+    .textContent=result;
+
+}
+
+
+/* =========================
+   WORD COUNTER
+========================= */
+
+function countText(){
+
+  const text=
+    document
+    .getElementById("counterText")
+    .value;
+
+  const words=
+    text.trim()
+      ? text.trim().split(/\s+/).length
+      : 0;
+
+  const chars=text.length;
+
+  const lines=
+    text
+    ? text.split("\n").length
+    : 0;
+
+  document
+    .getElementById("counterResult")
+    .innerHTML=
+      "Words: "+words+
+      "<br>Characters: "+chars+
+      "<br>Lines: "+lines;
+
+}
+
+
+/* =========================
+   CASE CONVERTER
+========================= */
+
+function caseConvert(type){
+
+  const area=
+    document.getElementById("caseText");
+
+  const text=area.value;
+
+  if(type==="upper"){
+    area.value=text.toUpperCase();
+  }
+
+  if(type==="lower"){
+    area.value=text.toLowerCase();
+  }
+
+  if(type==="title"){
+
+    area.value=
+      text.toLowerCase()
+      .replace(
+        /\b\w/g,
+        x=>x.toUpperCase()
+      );
+
+  }
+
+  if(type==="sentence"){
+
+    area.value=
+      text
+      .toLowerCase()
+      .replace(
+        /(^\s*\w|[.!?]\s*\w)/g,
+        x=>x.toUpperCase()
+      );
+
+  }
+
+}
+
+
+/* =========================
+   LOREM
+========================= */
+
+const loremWords=[
+"lorem","ipsum","dolor","sit","amet",
+"consectetur","adipiscing","elit","sed",
+"do","eiusmod","tempor","incididunt","ut",
+"labore","et","dolore","magna","aliqua",
+"enim","ad","minim","veniam","quis",
+"nostrud","exercitation","ullamco","laboris",
+"nisi","aliquip","commodo","consequat"
+];
+
+function generateLorem(){
+
+  const count=
+    parseInt(
+      document
+      .getElementById("loremCount")
+      .value
+    )||1;
+
+  let output="";
+
+  for(let p=0;p<count;p++){
+
+    let paragraph="";
+
+    for(let i=0;i<50;i++){
+
+      paragraph+=
+        loremWords[
+          Math.floor(
+            Math.random()*
+            loremWords.length
+          )
+        ]+" ";
+
+    }
+
+    paragraph=
+      paragraph.trim()+". ";
+
+    output+=
+      paragraph+
+      "\n\n";
+
+  }
+
+  document
+    .getElementById("loremOutput")
+    .value=
+      output;
+
+}
+
+
+/* =========================
+   WIFI QR
+========================= */
+
+function escapeWifi(text){
+
+  return text
+    .replace(/\\/g,"\\\\")
+    .replace(/;/g,"\\;")
+    .replace(/,/g,"\\,")
+    .replace(/:/g,"\\:");
+}
+
+function makeQR(){
+
+  const name=
+    document
+    .getElementById("wifiName")
+    .value;
+
+  const password=
+    document
+    .getElementById("wifiPassword")
+    .value;
+
+  const security=
+    document
+    .getElementById("wifiSecurity")
+    .value;
+
+  if(!name){
+
+    alert("Enter the Wi-Fi name.");
+
+    return;
+  }
+
+  const data=
+    "WIFI:T:"+
+    security+
+    ";S:"+
+    escapeWifi(name)+
+    ";P:"+
+    escapeWifi(password)+
+    ";;";
+
+  const qr=
+    document.getElementById("qr");
+
+  qr.innerHTML="";
+
+  new QRCode(qr,{
+    text:data,
+    width:220,
+    height:220
+  });
+
+}
+
+
+/* =========================
+   IMAGE CREATOR
+========================= */
+
+const canvas=
+  document.getElementById(
+    "drawingCanvas"
+  );
+
+const ctx=
+  canvas.getContext("2d");
+
+let drawing=false;
+let currentTool="draw";
+let history=[];
+
+function saveCanvasState(){
+
+  history.push(
+    canvas.toDataURL()
+  );
+
+  if(history.length>20){
+    history.shift();
+  }
+
+}
+
+function restoreImage(data){
+
+  const image=new Image();
+
+  image.onload=function(){
+
+    ctx.clearRect(
+      0,0,
+      canvas.width,
+      canvas.height
+    );
+
+    ctx.drawImage(
+      image,
+      0,0
+    );
+
+  };
+
+  image.src=data;
+
+}
+
+function getPointer(event){
+
+  const rect=
+    canvas.getBoundingClientRect();
+
+  const scaleX=
+    canvas.width/rect.width;
+
+  const scaleY=
+    canvas.height/rect.height;
+
+  let clientX;
+  let clientY;
+
+  if(event.touches){
+
+    clientX=event.touches[0].clientX;
+    clientY=event.touches[0].clientY;
+
+  }else{
+
+    clientX=event.clientX;
+    clientY=event.clientY;
+
+  }
+
+  return {
+    x:(clientX-rect.left)*scaleX,
+    y:(clientY-rect.top)*scaleY
+  };
+
+}
+
+function startDraw(event){
+
+  if(
+    currentTool!=="draw" &&
+    currentTool!=="erase"
+  ) return;
+
+  event.preventDefault();
+
+  saveCanvasState();
+
+  drawing=true;
+
+  const p=getPointer(event);
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    p.x,
+    p.y
+  );
+
+}
+
+function draw(event){
+
+  if(!drawing) return;
+
+  event.preventDefault();
+
+  const p=getPointer(event);
+
+  ctx.lineWidth=
+    parseInt(
+      document
+      .getElementById("brushSize")
+      .value
+    );
+
+  ctx.lineCap="round";
+
+  if(currentTool==="erase"){
+
+    ctx.globalCompositeOperation=
+      "destination-out";
+
+  }else{
+
+    ctx.globalCompositeOperation=
+      "source-over";
+
+    ctx.strokeStyle=
+      document
+      .getElementById("drawColor")
+      .value;
+
+  }
+
+  ctx.lineTo(
+    p.x,
+    p.y
+  );
+
+  ctx.stroke();
+
+}
+
+function stopDraw(){
+
+  drawing=false;
+
+  ctx.globalCompositeOperation=
+    "source-over";
+
+}
+
+canvas.addEventListener(
+  "mousedown",
+  startDraw
+);
+
+canvas.addEventListener(
+  "mousemove",
+  draw
+);
+
+canvas.addEventListener(
+  "mouseup",
+  stopDraw
+);
+
+canvas.addEventListener(
+  "mouseleave",
+  stopDraw
+);
+
+canvas.addEventListener(
+  "touchstart",
+  startDraw,
+  {passive:false}
+);
+
+canvas.addEventListener(
+  "touchmove",
+  draw,
+  {passive:false}
+);
+
+canvas.addEventListener(
+  "touchend",
+  stopDraw
+);
+
+function setTool(tool){
+
+  currentTool=tool;
+
+}
+
+function resizeCanvas(){
+
+  saveCanvasState();
+
+  const old=
+    document
+    .getElementById("drawingCanvas");
+
+  const oldData=
+    old.toDataURL();
+
+  canvas.width=
+    parseInt(
+      document
+      .getElementById("canvasWidth")
+      .value
+    )||800;
+
+  canvas.height=
+    parseInt(
+      document
+      .getElementById("canvasHeight")
+      .value
+    )||500;
+
+  ctx.fillStyle="white";
+
+  ctx.fillRect(
+    0,0,
+    canvas.width,
+    canvas.height
+  );
+
+}
+
+function openImageCreator(){
+
+  openTool("imageCreator");
+
+}
+
+function clearCanvas(){
+
+  saveCanvasState();
+
+  ctx.fillStyle="white";
+
+  ctx.fillRect(
+    0,0,
+    canvas.width,
+    canvas.height
+  );
+
+}
+
+function undoCanvas(){
+
+  if(!history.length){
+
+    return;
+
+  }
+
+  const data=
+    history.pop();
+
+  restoreImage(data);
+
+}
+
+function addText(){
+
+  const text=
+    prompt(
+      "Enter text:"
+    );
+
+  if(!text) return;
+
+  saveCanvasState();
+
+  ctx.globalCompositeOperation=
+    "source-over";
+
+  ctx.fillStyle=
+    document
+    .getElementById("drawColor")
+    .value;
+
+  ctx.font="32px Arial";
+
+  ctx.fillText(
+    text,
+    50,
+    60
+  );
+
+}
+
+function drawRectangle(){
+
+  saveCanvasState();
+
+  ctx.globalCompositeOperation=
+    "source-over";
+
+  ctx.strokeStyle=
+    document
+    .getElementById("drawColor")
+    .value;
+
+  ctx.lineWidth=
+    parseInt(
+      document
+      .getElementById("brushSize")
+      .value
+    );
+
+  ctx.strokeRect(
+    80,80,
+    220,130
+  );
+
+}
+
+function drawCircle(){
+
+  saveCanvasState();
+
+  ctx.globalCompositeOperation=
+    "source-over";
+
+  ctx.strokeStyle=
+    document
+    .getElementById("drawColor")
+    .value;
+
+  ctx.lineWidth=5;
+
+  ctx.beginPath();
+
+  ctx.arc(
+    300,220,
+    80,
+    0,
+    Math.PI*2
+  );
+
+  ctx.stroke();
+
+}
+
+function drawLine(){
+
+  saveCanvasState();
+
+  ctx.strokeStyle=
+    document
+    .getElementById("drawColor")
+    .value;
+
+  ctx.lineWidth=5;
+
+  ctx.beginPath();
+
+  ctx.moveTo(80,80);
+
+  ctx.lineTo(350,250);
+
+  ctx.stroke();
+
+}
+
+function downloadCanvas(type){
+
+  const link=
+    document.createElement("a");
+
+  link.download=
+    "toolbox-image."+
+    type;
+
+  link.href=
+    canvas.toDataURL(
+      type==="jpg"
+      ?"image/jpeg"
+      :"image/png"
+    );
+
+  link.click();
+
+}
+
+
+/* =========================
+   IMAGE TO PDF
+========================= */
+
+async function imagesToPDF(){
+
+  const files=
+    document
+    .getElementById("imagePdfFiles")
+    .files;
+
+  if(!files.length){
+
+    alert("Select images first.");
+
+    return;
+  }
+
+  const PDFDocument=
+    PDFLib.PDFDocument;
+
+  const pdf=
+    await PDFDocument.create();
+
+  for(const file of files){
+
+    const bytes=
+      new Uint8Array(
+        await file.arrayBuffer()
+      );
+
+    let image;
+
+    if(file.type==="image/png"){
+
+      image=
+        await pdf.embedPng(bytes);
+
+    }else{
+
+      image=
+        await pdf.embedJpg(bytes);
+
+    }
+
+    const page=
+      pdf.addPage([
+        image.width,
+        image.height
+      ]);
+
+    page.drawImage(
+      image,
+      {
+        x:0,
+        y:0,
+        width:image.width,
+        height:image.height
+      }
+    );
+
+  }
+
+  const result=
+    await pdf.save();
+
+  downloadBlob(
+    result,
+    "images.pdf",
+    "application/pdf"
+  );
+
+}
+
+
+/* =========================
+   PDF TO IMAGES
+========================= */
+
+async function pdfToImages(){
+
+  const file=
+    document
+    .getElementById("pdfImageFile")
+    .files[0];
+
+  if(!file){
+
+    alert("Select a PDF.");
+
+    return;
+  }
+
+  const buffer=
+    await file.arrayBuffer();
+
+  const pdf=
+    await pdfjsLib
+    .getDocument({
+      data:buffer
+    })
+    .promise;
+
+  const preview=
+    document
+    .getElementById("pdfImagePreview");
+
+  preview.innerHTML="";
+
+  for(
+    let i=1;
+    i<=pdf.numPages;
+    i++
+  ){
+
+    const page=
+      await pdf.getPage(i);
+
+    const viewport=
+      page.getViewport({
+        scale:1.5
+      });
+
+    const canvas=
+      document.createElement("canvas");
+
+    canvas.width=
+      viewport.width;
+
+    canvas.height=
+      viewport.height;
+
+    await page.render({
+      canvasContext:
+        canvas.getContext("2d"),
+      viewport
+    }).promise;
+
+    const image=
+      canvas.toDataURL(
+        "image/png"
+      );
+
+    const img=
+      document.createElement("img");
+
+    img.src=image;
+
+    const download=
+      document.createElement("button");
+
+    download.className=
+      "primary";
+
+    download.textContent=
+      "Download Page "+i;
+
+    download.onclick=()=>{
+
+      const a=
+        document.createElement("a");
+
+      a.href=image;
+
+      a.download=
+        "page-"+i+".png";
+
+      a.click();
+
+    };
+
+    preview.appendChild(img);
+
+    preview.appendChild(download);
+
+  }
+
+}
+
+
+/* =========================
+   MERGE PDF
+========================= */
+
+async function mergePDF(){
+
+  const files=
+    document
+    .getElementById("mergeFiles")
+    .files;
+
+  if(files.length<2){
+
+    alert("Select at least two PDFs.");
+
+    return;
+  }
+
+  const output=
+    await PDFLib
+    .PDFDocument
+    .create();
+
+  for(const file of files){
+
+    const source=
+      await PDFLib
+      .PDFDocument
+      .load(
+        await file.arrayBuffer()
+      );
+
+    const pages=
+      await output.copyPages(
+        source,
+        source.getPageIndices()
+      );
+
+    pages.forEach(
+      page=>output.addPage(page)
+    );
+
+  }
+
+  const bytes=
+    await output.save();
+
+  downloadBlob(
+    bytes,
+    "merged.pdf",
+    "application/pdf"
+  );
+
+}
+
+
+/* =========================
+   SPLIT PDF
+========================= */
+
+function parsePageList(text,total){
+
+  const pages=new Set();
+
+  text
+  .split(",")
+  .forEach(part=>{
+
+    part=part.trim();
+
+    if(part.includes("-")){
+
+      const pieces=
+        part.split("-");
+
+      let start=
+        parseInt(pieces[0]);
+
+      let end=
+        parseInt(pieces[1]);
+
+      if(
+        isNaN(start)||
+        isNaN(end)
+      ) return;
+
+      if(start>end){
+
+        const temp=start;
+
+        start=end;
+        end=temp;
+
+      }
+
+      for(
+        let i=start;
+        i<=end;
+        i++
+      ){
+
+        if(
+          i>=1 &&
+          i<=total
+        ){
+          pages.add(i-1);
+        }
+
+      }
+
+    }else{
+
+      const page=
+        parseInt(part);
+
+      if(
+        page>=1 &&
+        page<=total
+      ){
+        pages.add(page-1);
+      }
+
+    }
+
+  });
+
+  return [...pages].sort(
+    (a,b)=>a-b
+  );
+
+}
+
+async function splitPDF(){
+
+  const file=
+    document
+    .getElementById("splitFile")
+    .files[0];
+
+  const pageText=
+    document
+    .getElementById("splitPages")
+    .value;
+
+  if(!file){
+
+    alert("Select a PDF.");
+
+    return;
+  }
+
+  if(!pageText){
+
+    alert(
+      "Enter pages such as 1,3,5 or 2-6."
+    );
+
+    return;
+  }
+
+  const source=
+    await PDFLib
+    .PDFDocument
+    .load(
+      await file.arrayBuffer()
+    );
+
+  const output=
+    await PDFLib
+    .PDFDocument
+    .create();
+
+  const indices=
+    parsePageList(
+      pageText,
+      source.getPageCount()
+    );
+
+  if(!indices.length){
+
+    alert("No valid pages.");
+
+    return;
+  }
+
+  const pages=
+    await output.copyPages(
+      source,
+      indices
+    );
+
+  pages.forEach(
+    page=>output.addPage(page)
+  );
+
+  const bytes=
+    await output.save();
+
+  downloadBlob(
+    bytes,
+    "split.pdf",
+    "application/pdf"
+  );
+
+}
+
+
+/* =========================
+   DOWNLOAD
+========================= */
+
+function downloadBlob(
+  data,
+  filename,
+  type
+){
+
+  const blob=
+    new Blob(
+      [data],
+      {type:type}
+    );
+
+  const url=
+    URL.createObjectURL(blob);
+
+  const a=
+    document.createElement("a");
+
+  a.href=url;
+
+  a.download=filename;
+
+  document.body.appendChild(a);
+
+  a.click();
+
+  a.remove();
+
+  setTimeout(
+    ()=>URL.revokeObjectURL(url),
+    1000
+  );
+
+}
+
+
+/* =========================
+   NOTES
+========================= */
+
+(function(){
+
+  const saved=
+    localStorage.getItem(
+      "toolboxNotes"
+    );
+
+  if(saved){
+
+    document
+      .getElementById("notesText")
+      .value=saved;
+
+  }
+
+})();
+
+function saveNotes(){
+
+  const text=
+    document
+    .getElementById("notesText")
+    .value;
+
+  localStorage.setItem(
+    "toolboxNotes",
+    text
+  );
+
+  document
+    .getElementById("notesStatus")
+    .textContent=
+      "✅ Notes saved on this device.";
+
+}
+
+function clearNotes(){
+
+  if(
+    confirm(
+      "Clear your saved notes?"
+    )
+  ){
+
+    localStorage.removeItem(
+      "toolboxNotes"
+    );
+
+    document
+      .getElementById("notesText")
+      .value="";
+
+    document
+      .getElementById("notesStatus")
+      .textContent=
+        "Notes cleared.";
+
+  }
+
+}
+
+
+/* =========================
+   TODO
+========================= */
+
+let todos=
+  JSON.parse(
+    localStorage.getItem(
+      "toolboxTodos"
+    )||"[]"
+  );
+
+function renderTodos(){
+
+  const list=
+    document
+    .getElementById("todoList");
+
+  list.innerHTML="";
+
+  todos.forEach(
+    (todo,index)=>{
+
+      const row=
+        document.createElement("div");
+
+      row.className="result";
+
+      row.innerHTML=
+        "☑️ "+
+        escapeHTML(todo)+
+        " <button class='secondary' "+
+        "onclick='deleteTodo("+index+")'>"+
+        "Delete</button>";
+
+      list.appendChild(row);
+
+    }
+  );
+
+}
+
+function addTodo(){
+
+  const input=
+    document
+    .getElementById("todoInput");
+
+  const text=
+    input.value.trim();
+
+  if(!text) return;
+
+  todos.push(text);
+
+  localStorage.setItem(
+    "toolboxTodos",
+    JSON.stringify(todos)
+  );
+
+  input.value="";
+
+  renderTodos();
+
+}
+
+function deleteTodo(index){
+
+  todos.splice(index,1);
+
+  localStorage.setItem(
+    "toolboxTodos",
+    JSON.stringify(todos)
+  );
+
+  renderTodos();
+
+}
+
+function escapeHTML(text){
+
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+renderTodos();
+
+
+/* =========================
+   STUDY TIMER
+========================= */
+
+let timerSeconds=25*60;
+let timerInterval=null;
+
+function updateTimer(){
+
+  const minutes=
+    Math.floor(
+      timerSeconds/60
+    );
+
+  const seconds=
+    timerSeconds%60;
+
+  document
+    .getElementById("timerDisplay")
+    .textContent=
+      String(minutes).padStart(2,"0")+
+      ":"+
+      String(seconds).padStart(2,"0");
+
+}
+
+function startTimer(){
+
+  if(timerInterval) return;
+
+  timerInterval=
+    setInterval(()=>{
+
+      if(timerSeconds<=0){
+
+        clearInterval(timerInterval);
+
+        timerInterval=null;
+
+        alert("🎉 Study session complete!");
+
+        return;
+
+      }
+
+      timerSeconds--;
+
+      updateTimer();
+
+    },1000);
+
+}
+
+function pauseTimer(){
+
+  clearInterval(timerInterval);
+
+  timerInterval=null;
+
+}
+
+function resetTimer(){
+
+  pauseTimer();
+
+  timerSeconds=25*60;
+
+  updateTimer();
+
+}
+
+updateTimer();
+
+
+/* =========================
+   PASSWORD GENERATOR
+========================= */
+
+function generatePassword(){
+
+  const length=
+    Math.min(
+      100,
+      Math.max(
+        4,
+        parseInt(
+          document
+          .getElementById("passwordLength")
+          .value
+        )||16
+      )
+    );
+
+  const chars=
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"+
+    "abcdefghijklmnopqrstuvwxyz"+
+    "0123456789"+
+    "!@#$%^&*()_+-=[]{}";
+
+  let password="";
+
+  const random=
+    new Uint32Array(length);
+
+  crypto.getRandomValues(random);
+
+  for(let i=0;i<length;i++){
+
+    password+=
+      chars[
+        random[i]%chars.length
+      ];
+
+  }
+
+  document
+    .getElementById("passwordResult")
+    .textContent=
+      password;
+
+}
+
+
+/* =========================
+   INITIAL CANVAS
+========================= */
+
+ctx.fillStyle="white";
+
+ctx.fillRect(
+  0,
+  0,
+  canvas.width,
+  canvas.height
+);
 
 </script>
 
