@@ -3421,5 +3421,1854 @@ ctx.fillRect(
 
 </script>
 
+    
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+}
+
+header{
+  padding:20px;
+  background:#111827;
+  color:white;
+  text-align:center;
+}
+
+header h1{
+  font-size:28px;
+}
+
+header p{
+  margin-top:6px;
+  color:#cbd5e1;
+}
+
+.container{
+  width:min(1100px,94%);
+  margin:25px auto;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+h2{
+  margin-bottom:15px;
+}
+
+h3{
+  margin:15px 0 10px;
+}
+
+input[type=file]{
+  width:100%;
+  padding:14px;
+  border:2px dashed #94a3b8;
+  border-radius:12px;
+  background:#f8fafc;
+}
+
+video{
+  width:100%;
+  max-height:500px;
+  background:#000;
+  border-radius:15px;
+  margin-top:15px;
+}
+
+button{
+  border:0;
+  padding:12px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  margin:5px;
+}
+
+.primary{
+  background:#2563eb;
+  color:white;
+}
+
+.secondary{
+  background:#e2e8f0;
+  color:#111827;
+}
+
+.danger{
+  background:#dc2626;
+  color:white;
+}
+
+.green{
+  background:#16a34a;
+  color:white;
+}
+
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:12px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
+
+.tool{
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:14px;
+  padding:15px;
+}
+
+.tool h3{
+  margin-top:0;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+}
+
+input[type=number],
+input[type=text],
+select{
+  width:100%;
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:9px;
+}
+
+.info{
+  background:#eff6ff;
+  padding:15px;
+  border-radius:12px;
+  margin-top:15px;
+  line-height:1.7;
+}
+
+.frames{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;
+  margin-top:15px;
+}
+
+.frames img{
+  width:100%;
+  border-radius:10px;
+}
+
+.record-area{
+  margin-top:15px;
+}
+
+.record-preview{
+  width:100%;
+  border-radius:15px;
+  background:#000;
+}
+
+.progress{
+  width:100%;
+  height:10px;
+  background:#e2e8f0;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.progress div{
+  width:0%;
+  height:100%;
+  background:#2563eb;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#64748b;
+}
+
+@media(max-width:600px){
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  header h1{
+    font-size:23px;
+  }
+
+  button{
+    width:100%;
+    margin:4px 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎥 Tool Master Video Studio</h1>
+  <p>Browser-based video tools — no AI API required</p>
+</header>
+
+<div class="container">
+
+<!-- VIDEO INPUT -->
+<div class="card">
+
+  <h2>🎬 Video Editor</h2>
+
+  <input
+    id="videoFile"
+    type="file"
+    accept="video/*">
+
+  <video
+    id="video"
+    controls
+    playsinline>
+  </video>
+
+  <div id="videoInfo" class="info">
+    Select a video to see its information.
+  </div>
+
+</div>
+
+
+<!-- BASIC CONTROLS -->
+<div class="card">
+
+  <h2>🎛️ Video Controls</h2>
+
+  <div class="buttons">
+
+    <button class="primary"
+      onclick="playVideo()">
+      ▶️ Play
+    </button>
+
+    <button class="secondary"
+      onclick="pauseVideo()">
+      ⏸️ Pause
+    </button>
+
+    <button class="secondary"
+      onclick="restartVideo()">
+      🔄 Restart
+    </button>
+
+    <button class="secondary"
+      onclick="toggleMute()">
+      🔇 Mute
+    </button>
+
+    <button class="secondary"
+      onclick="changeSpeed()">
+      ⚡ Speed
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- VIDEO CUTTER -->
+<div class="card">
+
+  <h2>✂️ Video Cutter</h2>
+
+  <div class="row">
+
+    <div>
+      <label>Start Time (seconds)</label>
+      <input
+        id="startTime"
+        type="number"
+        min="0"
+        value="0">
+    </div>
+
+    <div>
+      <label>End Time (seconds)</label>
+      <input
+        id="endTime"
+        type="number"
+        min="0"
+        value="0">
+    </div>
+
+  </div>
+
+  <button
+    class="primary"
+    onclick="createClip()">
+    ✂️ Create Clip
+  </button>
+
+  <p style="margin-top:10px;color:#64748b">
+    The clip is created in WebM format directly in your browser.
+  </p>
+
+</div>
+
+
+<!-- FRAME EXTRACTOR -->
+<div class="card">
+
+  <h2>📸 Video → Images</h2>
+
+  <p>
+    Extract five frames from your video.
+  </p>
+
+  <button
+    class="primary"
+    onclick="extractFrames()">
+    📸 Extract Frames
+  </button>
+
+  <div
+    id="frames"
+    class="frames">
+  </div>
+
+</div>
+
+
+<!-- VIDEO INFO -->
+<div class="card">
+
+  <h2>ℹ️ Video Information</h2>
+
+  <div
+    id="metadata"
+    class="info">
+    Select a video.
+  </div>
+
+</div>
+
+
+<!-- SCREEN RECORDER -->
+<div class="card">
+
+  <h2>🖥️ Screen Recorder</h2>
+
+  <p>
+    Record your screen directly from the browser.
+  </p>
+
+  <button
+    class="green"
+    onclick="startScreenRecorder()">
+    🔴 Start Screen Recording
+  </button>
+
+  <div id="screenRecorderArea"
+       class="record-area">
+  </div>
+
+</div>
+
+
+<!-- CAMERA -->
+<div class="card">
+
+  <h2>📷 Camera Recorder</h2>
+
+  <button
+    class="green"
+    onclick="startCameraRecorder()">
+    📷 Start Camera
+  </button>
+
+  <div id="cameraArea"
+       class="record-area">
+  </div>
+
+</div>
+
+
+<!-- VOICE -->
+<div class="card">
+
+  <h2>🎤 Voice Recorder</h2>
+
+  <button
+    class="green"
+    onclick="startVoiceRecorder()">
+    🎤 Start Recording
+  </button>
+
+  <div id="voiceArea"
+       class="record-area">
+  </div>
+
+</div>
+
+
+<!-- IMAGE SLIDESHOW -->
+<div class="card">
+
+  <h2>🖼️ Images → Video Slideshow</h2>
+
+  <input
+    id="images"
+    type="file"
+    accept="image/*"
+    multiple>
+
+  <br>
+
+  <button
+    class="primary"
+    onclick="createSlideshow()">
+    🎞️ Create Slideshow
+  </button>
+
+  <div id="slideshowArea"></div>
+
+</div>
+
+
+<!-- THUMBNAIL -->
+<div class="card">
+
+  <h2>🎨 Video Thumbnail Creator</h2>
+
+  <p>
+    Select a frame and download it as a thumbnail.
+  </p>
+
+  <button
+    class="primary"
+    onclick="createThumbnail()">
+    🖼️ Create Thumbnail
+  </button>
+
+  <div id="thumbnailArea"></div>
+
+</div>
+
+
+<!-- EXTRA TOOLS -->
+<div class="card">
+
+  <h2>🛠️ Extra Video Tools</h2>
+
+  <div class="grid">
+
+    <div class="tool">
+      <h3>🔇 Mute</h3>
+      <p>Mute video playback.</p>
+      <button
+        class="secondary"
+        onclick="toggleMute()">
+        Mute
+      </button>
+    </div>
+
+    <div class="tool">
+      <h3>⚡ Speed</h3>
+      <p>Change playback speed.</p>
+      <button
+        class="secondary"
+        onclick="changeSpeed()">
+        Change
+      </button>
+    </div>
+
+    <div class="tool">
+      <h3>📐 Resolution</h3>
+      <p>View video dimensions.</p>
+      <button
+        class="secondary"
+        onclick="showMetadata()">
+        Check
+      </button>
+    </div>
+
+    <div class="tool">
+      <h3>📸 Frame</h3>
+      <p>Capture current frame.</p>
+      <button
+        class="secondary"
+        onclick="captureCurrentFrame()">
+        Capture
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<footer>
+  Tool Master • Video Studio • Runs in your browser
+</footer>
+
+
+<script>
+
+/* =========================
+   VIDEO PLAYER
+========================= */
+
+const video =
+  document.getElementById("video");
+
+const videoFile =
+  document.getElementById("videoFile");
+
+
+videoFile.addEventListener(
+  "change",
+  function(){
+
+    const file =
+      this.files[0];
+
+    if(!file) return;
+
+    video.src =
+      URL.createObjectURL(file);
+
+    video.onloadedmetadata =
+      function(){
+
+        document.getElementById(
+          "endTime"
+        ).value =
+          video.duration.toFixed(2);
+
+        showMetadata();
+
+      };
+
+  }
+);
+
+
+/* PLAY */
+
+function playVideo(){
+
+  video.play();
+
+}
+
+
+/* PAUSE */
+
+function pauseVideo(){
+
+  video.pause();
+
+}
+
+
+/* RESTART */
+
+function restartVideo(){
+
+  video.currentTime = 0;
+
+  video.play();
+
+}
+
+
+/* MUTE */
+
+function toggleMute(){
+
+  video.muted =
+    !video.muted;
+
+}
+
+
+/* SPEED */
+
+function changeSpeed(){
+
+  const speed =
+    prompt(
+      "Enter speed: 0.5, 1, 1.5, 2"
+    );
+
+  const value =
+    parseFloat(speed);
+
+  if(
+    !isNaN(value) &&
+    value > 0 &&
+    value <= 4
+  ){
+
+    video.playbackRate =
+      value;
+
+  }
+
+}
+
+
+/* =========================
+   METADATA
+========================= */
+
+function showMetadata(){
+
+  if(!video.src){
+
+    alert("Please select a video.");
+
+    return;
+
+  }
+
+  const file =
+    videoFile.files[0];
+
+  const info =
+
+    "📁 Name: " +
+    file.name +
+
+    "<br>📦 Size: " +
+    formatBytes(file.size) +
+
+    "<br>🎞️ Type: " +
+    file.type +
+
+    "<br>⏱️ Duration: " +
+    formatTime(video.duration) +
+
+    "<br>📐 Resolution: " +
+    video.videoWidth +
+    " × " +
+    video.videoHeight;
+
+  document.getElementById(
+    "videoInfo"
+  ).innerHTML = info;
+
+  document.getElementById(
+    "metadata"
+  ).innerHTML = info;
+
+}
+
+
+/* =========================
+   VIDEO CUTTER
+========================= */
+
+async function createClip(){
+
+  if(!video.src){
+
+    alert("Please select a video.");
+
+    return;
+
+  }
+
+  const start =
+    parseFloat(
+      document.getElementById(
+        "startTime"
+      ).value
+    );
+
+  const end =
+    parseFloat(
+      document.getElementById(
+        "endTime"
+      ).value
+    );
+
+  if(
+    isNaN(start) ||
+    isNaN(end) ||
+    start < 0 ||
+    end <= start ||
+    end > video.duration
+  ){
+
+    alert(
+      "Please enter valid start and end times."
+    );
+
+    return;
+
+  }
+
+
+  const canvas =
+    document.createElement(
+      "canvas"
+    );
+
+  canvas.width =
+    video.videoWidth;
+
+  canvas.height =
+    video.videoHeight;
+
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  const canvasStream =
+    canvas.captureStream(30);
+
+
+  let audioStream = null;
+
+  try{
+
+    const audioContext =
+      new AudioContext();
+
+    const source =
+      audioContext
+      .createMediaElementSource(video);
+
+    const destination =
+      audioContext
+      .createMediaStreamDestination();
+
+    source.connect(destination);
+
+    source.connect(
+      audioContext.destination
+    );
+
+    audioStream =
+      destination.stream;
+
+    audioStream
+      .getAudioTracks()
+      .forEach(
+        track =>
+          canvasStream.addTrack(track)
+      );
+
+  }catch(error){
+
+    console.log(
+      "Audio unavailable",
+      error
+    );
+
+  }
+
+
+  let options = {};
+
+  if(
+    MediaRecorder
+      .isTypeSupported(
+        "video/webm;codecs=vp9"
+      )
+  ){
+
+    options.mimeType =
+      "video/webm;codecs=vp9";
+
+  }
+
+
+  const recorder =
+    new MediaRecorder(
+      canvasStream,
+      options
+    );
+
+
+  const chunks = [];
+
+
+  recorder.ondataavailable =
+    function(event){
+
+      if(event.data.size > 0){
+
+        chunks.push(
+          event.data
+        );
+
+      }
+
+    };
+
+
+  recorder.onstop =
+    function(){
+
+      const blob =
+        new Blob(
+          chunks,
+          {
+            type:"video/webm"
+          }
+        );
+
+      downloadBlob(
+        blob,
+        "video-clip.webm"
+      );
+
+    };
+
+
+  video.currentTime =
+    start;
+
+
+  await waitForSeek();
+
+
+  recorder.start();
+
+  video.play();
+
+
+  function draw(){
+
+    if(
+      video.currentTime >= end ||
+      video.ended
+    ){
+
+      video.pause();
+
+      recorder.stop();
+
+      return;
+
+    }
+
+
+    ctx.drawImage(
+      video,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+
+    requestAnimationFrame(draw);
+
+  }
+
+
+  draw();
+
+}
+
+
+function waitForSeek(){
+
+  return new Promise(
+    resolve => {
+
+      const done =
+        function(){
+
+          video.removeEventListener(
+            "seeked",
+            done
+          );
+
+          resolve();
+
+        };
+
+      video.addEventListener(
+        "seeked",
+        done
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================
+   EXTRACT FRAMES
+========================= */
+
+async function extractFrames(){
+
+  if(!video.src){
+
+    alert(
+      "Please select a video."
+    );
+
+    return;
+
+  }
+
+
+  const area =
+    document.getElementById(
+      "frames"
+    );
+
+  area.innerHTML = "";
+
+
+  const duration =
+    video.duration;
+
+
+  const count = 5;
+
+
+  for(
+    let i = 0;
+    i < count;
+    i++
+  ){
+
+    const time =
+      duration *
+      (i / (count - 1));
+
+
+    video.currentTime =
+      time;
+
+
+    await waitForSeek();
+
+
+    const canvas =
+      document.createElement(
+        "canvas"
+      );
+
+
+    canvas.width =
+      video.videoWidth;
+
+    canvas.height =
+      video.videoHeight;
+
+
+    canvas
+      .getContext("2d")
+      .drawImage(
+        video,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+
+
+    const image =
+      canvas.toDataURL(
+        "image/png"
+      );
+
+
+    const box =
+      document.createElement(
+        "div"
+      );
+
+
+    const img =
+      document.createElement(
+        "img"
+      );
+
+    img.src =
+      image;
+
+
+    const button =
+      document.createElement(
+        "button"
+      );
+
+    button.className =
+      "primary";
+
+    button.textContent =
+      "Download Frame";
+
+
+    button.onclick =
+      function(){
+
+        downloadDataURL(
+          image,
+          "video-frame-" +
+          (i + 1) +
+          ".png"
+        );
+
+      };
+
+
+    box.appendChild(img);
+
+    box.appendChild(button);
+
+    area.appendChild(box);
+
+  }
+
+}
+
+
+/* =========================
+   CURRENT FRAME
+========================= */
+
+function captureCurrentFrame(){
+
+  if(!video.src){
+
+    alert(
+      "Please select a video."
+    );
+
+    return;
+
+  }
+
+
+  const canvas =
+    document.createElement(
+      "canvas"
+    );
+
+
+  canvas.width =
+    video.videoWidth;
+
+  canvas.height =
+    video.videoHeight;
+
+
+  canvas
+    .getContext("2d")
+    .drawImage(
+      video,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+
+  const image =
+    canvas.toDataURL(
+      "image/png"
+    );
+
+
+  downloadDataURL(
+    image,
+    "video-frame.png"
+  );
+
+}
+
+
+/* =========================
+   THUMBNAIL CREATOR
+========================= */
+
+function createThumbnail(){
+
+  if(!video.src){
+
+    alert(
+      "Please select a video."
+    );
+
+    return;
+
+  }
+
+
+  const canvas =
+    document.createElement(
+      "canvas"
+    );
+
+
+  canvas.width = 1280;
+
+  canvas.height = 720;
+
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  ctx.fillStyle =
+    "#000";
+
+  ctx.fillRect(
+    0,
+    0,
+    1280,
+    720
+  );
+
+
+  const ratio =
+    Math.min(
+      1280 / video.videoWidth,
+      720 / video.videoHeight
+    );
+
+
+  const width =
+    video.videoWidth *
+    ratio;
+
+  const height =
+    video.videoHeight *
+    ratio;
+
+
+  const x =
+    (1280 - width) / 2;
+
+  const y =
+    (720 - height) / 2;
+
+
+  ctx.drawImage(
+    video,
+    x,
+    y,
+    width,
+    height
+  );
+
+
+  const image =
+    canvas.toDataURL(
+      "image/jpeg",
+      .92
+    );
+
+
+  const area =
+    document.getElementById(
+      "thumbnailArea"
+    );
+
+
+  area.innerHTML =
+    "<img style='width:100%;border-radius:12px;margin-top:15px' src='" +
+    image +
+    "'>";
+
+
+  downloadDataURL(
+    image,
+    "youtube-thumbnail.jpg"
+  );
+
+}
+
+
+/* =========================
+   SCREEN RECORDER
+========================= */
+
+async function startScreenRecorder(){
+
+  try{
+
+    const stream =
+      await navigator
+      .mediaDevices
+      .getDisplayMedia({
+        video:true,
+        audio:true
+      });
+
+
+    startRecorder(
+      stream,
+      "screen-recording.webm",
+      "screenRecorderArea"
+    );
+
+
+  }catch(error){
+
+    alert(
+      "Screen recording cancelled."
+    );
+
+  }
+
+}
+
+
+/* =========================
+   CAMERA RECORDER
+========================= */
+
+async function startCameraRecorder(){
+
+  try{
+
+    const stream =
+      await navigator
+      .mediaDevices
+      .getUserMedia({
+        video:true,
+        audio:true
+      });
+
+
+    const area =
+      document.getElementById(
+        "cameraArea"
+      );
+
+
+    area.innerHTML = "";
+
+
+    const preview =
+      document.createElement(
+        "video"
+      );
+
+
+    preview.autoplay = true;
+
+    preview.muted = true;
+
+    preview.className =
+      "record-preview";
+
+    preview.srcObject =
+      stream;
+
+
+    area.appendChild(
+      preview
+    );
+
+
+    createStopButton(
+      area,
+      stream,
+      "camera-recording.webm"
+    );
+
+
+  }catch(error){
+
+    alert(
+      "Camera permission was denied."
+    );
+
+  }
+
+}
+
+
+/* =========================
+   VOICE RECORDER
+========================= */
+
+async function startVoiceRecorder(){
+
+  try{
+
+    const stream =
+      await navigator
+      .mediaDevices
+      .getUserMedia({
+        audio:true
+      });
+
+
+    startRecorder(
+      stream,
+      "voice-recording.webm",
+      "voiceArea"
+    );
+
+
+  }catch(error){
+
+    alert(
+      "Microphone permission was denied."
+    );
+
+  }
+
+}
+
+
+/* =========================
+   MEDIA RECORDER
+========================= */
+
+function startRecorder(
+  stream,
+  filename,
+  areaID
+){
+
+  const chunks = [];
+
+
+  const recorder =
+    new MediaRecorder(
+      stream
+    );
+
+
+  recorder.ondataavailable =
+    function(event){
+
+      if(event.data.size){
+
+        chunks.push(
+          event.data
+        );
+
+      }
+
+    };
+
+
+  recorder.onstop =
+    function(){
+
+      const blob =
+        new Blob(
+          chunks,
+          {
+            type:
+              recorder.mimeType ||
+              "video/webm"
+          }
+        );
+
+
+      downloadBlob(
+        blob,
+        filename
+      );
+
+
+      stream
+        .getTracks()
+        .forEach(
+          track =>
+            track.stop()
+        );
+
+    };
+
+
+  recorder.start();
+
+
+  const area =
+    document.getElementById(
+      areaID
+    );
+
+
+  area.innerHTML = `
+
+    <div class="info">
+
+      🔴 Recording...
+
+      <br>
+
+      <button
+        class="danger"
+        id="stopButton">
+
+        ⏹️ Stop & Save
+
+      </button>
+
+    </div>
+
+  `;
+
+
+  document
+    .getElementById(
+      "stopButton"
+    )
+    .onclick =
+    function(){
+
+      recorder.stop();
+
+    };
+
+}
+
+
+/* =========================
+   CAMERA STOP BUTTON
+========================= */
+
+function createStopButton(
+  area,
+  stream,
+  filename
+){
+
+  const button =
+    document.createElement(
+      "button"
+    );
+
+
+  button.className =
+    "danger";
+
+  button.textContent =
+    "⏹️ Stop & Save";
+
+
+  const chunks = [];
+
+
+  const recorder =
+    new MediaRecorder(
+      stream
+    );
+
+
+  recorder.ondataavailable =
+    event => {
+
+      if(event.data.size){
+
+        chunks.push(
+          event.data
+        );
+
+      }
+
+    };
+
+
+  recorder.onstop =
+    function(){
+
+      const blob =
+        new Blob(
+          chunks,
+          {
+            type:"video/webm"
+          }
+        );
+
+
+      downloadBlob(
+        blob,
+        filename
+      );
+
+
+      stream
+        .getTracks()
+        .forEach(
+          track =>
+            track.stop()
+        );
+
+    };
+
+
+  recorder.start();
+
+
+  button.onclick =
+    function(){
+
+      recorder.stop();
+
+      button.remove();
+
+    };
+
+
+  area.appendChild(
+    button
+  );
+
+}
+
+
+/* =========================
+   IMAGE SLIDESHOW
+========================= */
+
+async function createSlideshow(){
+
+  const files =
+    document.getElementById(
+      "images"
+    ).files;
+
+
+  if(!files.length){
+
+    alert(
+      "Select some images first."
+    );
+
+    return;
+
+  }
+
+
+  const canvas =
+    document.createElement(
+      "canvas"
+    );
+
+
+  canvas.width = 1280;
+
+  canvas.height = 720;
+
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  const stream =
+    canvas.captureStream(30);
+
+
+  const recorder =
+    new MediaRecorder(
+      stream
+    );
+
+
+  const chunks = [];
+
+
+  recorder.ondataavailable =
+    event => {
+
+      if(event.data.size){
+
+        chunks.push(
+          event.data
+        );
+
+      }
+
+    };
+
+
+  recorder.onstop =
+    function(){
+
+      const blob =
+        new Blob(
+          chunks,
+          {
+            type:"video/webm"
+          }
+        );
+
+
+      downloadBlob(
+        blob,
+        "image-slideshow.webm"
+      );
+
+    };
+
+
+  recorder.start();
+
+
+  for(
+    const file of files
+  ){
+
+    const image =
+      await loadImage(file);
+
+
+    ctx.fillStyle =
+      "#000";
+
+    ctx.fillRect(
+      0,
+      0,
+      1280,
+      720
+    );
+
+
+    const ratio =
+      Math.min(
+        1280 / image.width,
+        720 / image.height
+      );
+
+
+    const width =
+      image.width * ratio;
+
+    const height =
+      image.height * ratio;
+
+
+    const x =
+      (1280-width)/2;
+
+    const y =
+      (720-height)/2;
+
+
+    ctx.drawImage(
+      image,
+      x,
+      y,
+      width,
+      height
+    );
+
+
+    await sleep(2000);
+
+  }
+
+
+  recorder.stop();
+
+}
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function loadImage(file){
+
+  return new Promise(
+    resolve => {
+
+      const image =
+        new Image();
+
+      image.onload =
+        () => resolve(image);
+
+      image.src =
+        URL.createObjectURL(
+          file
+        );
+
+    }
+  );
+
+}
+
+
+function sleep(ms){
+
+  return new Promise(
+    resolve =>
+      setTimeout(
+        resolve,
+        ms
+      )
+  );
+
+}
+
+
+function downloadBlob(
+  blob,
+  filename
+){
+
+  const url =
+    URL.createObjectURL(
+      blob
+    );
+
+
+  const a =
+    document.createElement(
+      "a"
+    );
+
+
+  a.href = url;
+
+  a.download =
+    filename;
+
+
+  document.body.appendChild(a);
+
+  a.click();
+
+  a.remove();
+
+
+  setTimeout(
+    () =>
+      URL.revokeObjectURL(
+        url
+      ),
+    1000
+  );
+
+}
+
+
+function downloadDataURL(
+  dataURL,
+  filename
+){
+
+  const a =
+    document.createElement(
+      "a"
+    );
+
+
+  a.href =
+    dataURL;
+
+  a.download =
+    filename;
+
+
+  document.body.appendChild(a);
+
+  a.click();
+
+  a.remove();
+
+}
+
+
+function formatBytes(bytes){
+
+  if(bytes === 0)
+    return "0 Bytes";
+
+
+  const units =
+    [
+      "Bytes",
+      "KB",
+      "MB",
+      "GB"
+    ];
+
+
+  const i =
+    Math.floor(
+      Math.log(bytes) /
+      Math.log(1024)
+    );
+
+
+  return (
+    bytes /
+    Math.pow(1024,i)
+  ).toFixed(2)
+  + " " +
+  units[i];
+
+}
+
+
+function formatTime(seconds){
+
+  if(!isFinite(seconds))
+    return "0:00";
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  return (
+    minutes +
+    ":" +
+    String(secs)
+      .padStart(2,"0")
+  );
+
+}
+
+</script>
+
+
 </body>
 </html>
